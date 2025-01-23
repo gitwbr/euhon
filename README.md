@@ -342,4 +342,3 @@ docker-compose exec db1 psql -U odoo1 -c "SELECT pg_size_pretty(pg_database_size
 2. 修改配置文件後需要重啟對應的服務
 3. 數據庫備份建議定期執行
 4. 開發時注意不同客戶端之間的隔離 
-5. 
