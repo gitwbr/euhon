@@ -39,6 +39,55 @@ services:
     restart: unless-stopped
     command: postgres -c 'max_connections=200'
 
+  # Client4 服務
+  web4:
+    build: .
+    image: custom-odoo:16.0
+    depends_on:
+      - db4
+    volumes:
+      - ./client4/config:/etc/odoo
+      - ./client4/data:/var/lib/odoo/client4
+      - ./client4/logs:/var/log/odoo
+      - ./addons:/mnt/addons
+      - ./custom-addons:/mnt/custom-addons
+    ports:
+      - "8004:8069"
+      - "9004:8072"
+    environment:
+      - LANG=zh_TW.UTF-8
+      - TZ=Asia/Taipei
+    networks:
+      - odoo_net
+    restart: unless-stopped
+
+  db4:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=odoo4
+      - POSTGRES_USER=odoo4
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - ./client4/postgresql:/var/lib/postgresql/data
+    ports:
+      - "5404:5432"
+    networks:
+      - odoo_net
+    restart: unless-stopped
+    command: postgres -c 'max_connections=200'
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=admin123
+    ports:
+      - "5050:80"
+    networks:
+      - odoo_net
+    restart: unless-stopped
+
   # Client2 服務
   web2:
     build: .
@@ -77,17 +126,45 @@ services:
     restart: unless-stopped
     command: postgres -c 'max_connections=200'
 
-  pgadmin:
-    image: dpage/pgadmin4
-    environment:
-      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
-      - PGADMIN_DEFAULT_PASSWORD=admin123
+  # Client3 服務
+  web3:
+    build: .
+    image: custom-odoo:16.0
+    depends_on:
+      - db3
+    volumes:
+      - ./client3/config:/etc/odoo
+      - ./client3/data:/var/lib/odoo/client3
+      - ./client3/logs:/var/log/odoo
+      - ./addons:/mnt/addons
+      - ./custom-addons:/mnt/custom-addons
     ports:
-      - "5050:80"
+      - "8003:8069"
+      - "9003:8072"
+    environment:
+      - LANG=zh_TW.UTF-8
+      - TZ=Asia/Taipei
     networks:
       - odoo_net
     restart: unless-stopped
 
+  db3:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=odoo3
+      - POSTGRES_USER=odoo3
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - ./client3/postgresql:/var/lib/postgresql/data
+    ports:
+      - "5403:5432"
+    networks:
+      - odoo_net
+    restart: unless-stopped
+    command: postgres -c 'max_connections=200'
+
+
 networks:
   odoo_net:
-    driver: bridge 
+    driver: bridge
