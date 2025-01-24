@@ -445,4 +445,66 @@ docker-compose exec db1 psql -U odoo1 -c "SELECT pg_size_pretty(pg_database_size
 2. 修改配置文件后需要重启对应的服務
 3. 数据库备份建议定期执行
 4. 开发时注意不同客户端之间的隔离
-5 
+
+## Nginx 配置步骤
+
+1. 复制并启用 Nginx 配置：
+```bash
+sudo cp odoo_nginx.conf /etc/nginx/sites-available/
+sudo ln -sf /etc/nginx/sites-available/odoo_nginx.conf /etc/nginx/sites-enabled/
+sudo rm -f /etc/nginx/sites-enabled/default
+sudo nginx -t
+```
+
+2. 重启 Nginx 并检查状态：
+```bash
+sudo systemctl restart nginx
+sudo systemctl status nginx
+```
+
+## SSL 证书配置
+
+1. 安装 Certbot：
+```bash
+sudo apt-get update
+sudo apt-get install -y certbot python3-certbot-nginx
+```
+
+2. 为现有客户端申请证书：
+```bash
+sudo certbot --nginx -d client1.euhon.com -d client2.euhon.com -d client3.euhon.com -d client4.euhon.com
+```
+
+3. 为新增客户端添加证书（示例为 client5）：
+```bash
+sudo certbot --nginx -d client5.euhon.com
+```
+
+4. 查看证书状态：
+```bash
+sudo certbot certificates
+```
+
+5. 重启 Nginx 使配置生效：
+```bash
+sudo systemctl restart nginx
+```
+
+## 证书自动续期配置
+
+1. 启用并启动自动续期服务：
+```bash
+sudo systemctl enable certbot.timer
+sudo systemctl start certbot.timer
+```
+
+2. 检查自动续期状态：
+```bash
+sudo systemctl status certbot.timer
+```
+
+注意：
+- 证书有效期为 90 天
+- 系统会在证书过期前 30 天自动续期
+- 每天会自动检查两次是否需要续期
+- 续期成功后会自动重启 Nginx 

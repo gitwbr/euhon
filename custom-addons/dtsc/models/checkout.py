@@ -633,12 +633,12 @@ class Checkout(models.Model):
     # def onchange_customer_id(self):
         # self.customer_class_id = self.customer_id.customclass_id.id
         
-    # @api.depends("customer_id")
-    # def _compute_customer_class_id(self):
-        # print(self.customer_id.customclass_id.id)
-        # self.customer_class_id = self.customer_id.customclass_id.id
+    @api.depends("customer_id")
+    def _compute_customer_class_id(self):
+        print(self.customer_id.customclass_id.id)
+        self.customer_class_id = self.customer_id.customclass_id.id
         
-    @api.depends("customer_id", "checkout_order_state", "crm_lead_id")
+    """ @api.depends("customer_id", "checkout_order_state", "crm_lead_id")
     def _compute_customer_class_id(self):
         for record in self:
             if record.checkout_order_state == 'waiting_confirmation' and record.crm_lead_id:
@@ -649,7 +649,7 @@ class Checkout(models.Model):
                 record.customer_class_id = record.customer_id.customclass_id.id
             else:
                 # 没有符合条件的值时置空
-                record.customer_class_id = False
+                record.customer_class_id = False """
     
     #重製 
     def set_recheck(self):
