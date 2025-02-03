@@ -38,7 +38,7 @@ function create_client() {
     fi
 
     # 创建目录结构
-    mkdir -p ${CLIENT}/{config,data,logs,postgresql}
+    mkdir -p ${CLIENT}/{config,data,logs,postgresql,db}
     chmod -R 777 ${CLIENT}
 
     # 创建配置文件
