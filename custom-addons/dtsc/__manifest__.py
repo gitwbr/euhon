@@ -82,6 +82,7 @@
         'views/crm.xml',   
         'views/work_manager.xml',   
         'views/order_preview.xml',   
+        'views/report_crm_checkout.xml',   
         'views/views.xml',
     ],
 	'assets': {

@@ -163,10 +163,10 @@
 				<field name="estimated_date_str"/>
 				<field name="checkout_order_state" string="狀態"/>
 				<field name="delivery_order" readonly="1"/>
-				<field name="customer_class_id" invisible="1"/>				
+				<field name="customer_class_id" invisible="1"/>
 				<field name="sequence_count" sum="項次數" widget="integer"/>
 				<field name="quantity" widget="integer"/>
-				<field name="unit_all" widget="integer" sum="總才數" string="總才數"/>
+				<field name="unit_all" sum="總才數" widget="integer" string="總才數"/>
 				<!-- <field name="total_price_added_tax" widget="integer"/> -->
 				<field name="user_id"/>
 				<field name="create_id" invisible="1"/>
@@ -213,8 +213,8 @@
 					<button name="button_del" type="object" class="oe_highlight" string="作廢"  attrs="{'invisible': [('checkout_order_state', 'not in', ['draft','quoting','producing','finished'])]}" groups="dtsc.group_dtsc_mg"/>
 					<!-- <button name="p_check" type="object" class="oe_highlight" string="查物料"/> -->
 					<button name="set_recheck" string="重製" type="object" confirm="是否確定生成重製單？" class="oe_highlight" groups="dtsc.group_dtsc_mg" attrs="{'invisible': [('checkout_order_state', 'in', ['cancel', 'waiting_confirmation'])]}"/>
-					<!-- <button name="button_back" type="object" class="oe_highlight" string="返回" groups="dtsc.group_dtsc_gly" attrs="{'invisible': [('checkout_order_state', 'in', ['waiting_confirmation'])]}"/> -->
-					<button name="button_back" type="object" class="oe_highlight" string="返回" attrs="{'invisible':[('checkout_order_state','not in',['quoting','producing','finished','price_review_done','receivable_assigned'])]}" groups="dtsc.group_dtsc_gly"/>
+					<button name="button_back" type="object" class="oe_highlight" string="返回" groups="dtsc.group_dtsc_gly" attrs="{'invisible': [('checkout_order_state', 'in', ['waiting_confirmation'])]}"/>
+					<!-- <button name="button_back" type="object" class="oe_highlight" string="返回" attrs="{'invisible':[('checkout_order_state','not in',['receivable_assigned'])]}" groups="dtsc.group_dtsc_gly"/> -->
 					<field name="checkout_order_state" widget="statusbar" statusbar_visible="draft,quoting,producing,finished,price_review_done,receivable_assigned,closed,cancel"/>
 				
 					<field name="is_delivery" readonly="1" invisible="1"/>
@@ -272,7 +272,7 @@
 							<!-- <field name="estimated_date" attrs="{'readonly': ['|', ('checkout_order_state', 'not in', ['draft', 'quoting', 'producing', 'finished']), ('is_in_by_mg', '=', False)]}"/> -->
 							<!-- <field name="estimated_date" attrs="{'readonly': ['|', ('checkout_order_state', 'not in', ['draft', 'quoting', 'producing', 'finished']), '&amp;', ('is_in_by_mg', '=', False), ('is_in_by_sc', '=', False)]}"/> -->
 							<field name="estimated_date" attrs="{'readonly': [('checkout_order_state', 'in', ['price_review_done'])]}"/>
-							
+							<!-- <field name="estimated_date" /> -->
 							<!-- <field name="delivery_time" attrs="{'readonly':[('checkout_order_state','not in',['draft', 'quoting', 'receivable', 'producing', 'shipping', 'partial_shipping'])]}"/> -->
 							
 							<!-- <field name="delivery_carrier" string="運送方式" attrs="{'readonly': [('is_in_by_mg', '=', False)]}"/> -->

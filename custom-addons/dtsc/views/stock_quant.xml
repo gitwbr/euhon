@@ -10,7 +10,40 @@
             </xpath>
         </field>
     </record> -->
-    
+	
+	<record id="view_dtsc_stock_report" model="ir.ui.view">
+		<field name="name">dtsc.stockreportwizard.report</field>
+		<field name="model">dtsc.stockreportwizard</field>
+		<field name="arch" type="xml">
+			<form>
+				<group>
+					<field name="endtime"/>
+					<field name="select_method"/>		
+				</group>																		
+				<footer>
+					<button string="確認列印" type="object" name="your_confirm_method"/>
+					<button string="取消" class="btn-secondary" special="cancel"/>
+				</footer>
+			</form>
+		</field>
+	</record>
+	
+	<record id="dtsc_stock_quant_report" model="ir.actions.server">
+		<field name="name">列印庫存</field>
+		<field name="model_id" ref="dtsc.model_stock_quant"/>
+		<field name="binding_model_id" ref="dtsc.model_stock_quant"/>
+		<field name="state">code</field>
+		<field name="code">
+			action = {
+				'type': 'ir.actions.act_window',
+				'name': '列印庫存',
+				'res_model': 'dtsc.stockreportwizard',
+				'view_mode': 'form',
+				'target': 'new',
+			}
+		</field>
+	</record>
+		
      <record id="action_report_stock_quant3" model="ir.actions.report">
 			<field name="name">庫存表</field>
 			<field name="model">stock.quant</field>
@@ -79,6 +112,29 @@
 					<field name="categ_id" string="產品分類"/>
 				</searchpanel>
 			</xpath> 
+		</field>
+	</record>
+	
+	<record id="stock_quant_tree_view_inherit" model="ir.ui.view">
+		<field name="name">stock.quant.tree.view.inherit</field>
+		<field name="model">stock.quant</field>
+		<field name="inherit_id" ref="stock.view_stock_quant_tree_inventory_editable"/>
+		<field name="arch" type="xml">
+		
+			<xpath expr="//field[@name='user_id']" position="before">
+				<field name="is_set_date" invisible="1"/>					
+				<field name="stock_date" invisible="1"/>					
+				<field name="stock_date_num" invisible="context.get('default_is_set_date') == False"/>			
+				<field name="lastmodifydate"/>					
+				<field name="average_price"/>
+				<field name="total_value"/>
+			</xpath>
+			<xpath expr="//field[@name='product_uom_id']" position="before">
+				<field name="zksl_cai"/>		 
+			</xpath>
+			<xpath expr="//field[@name='inventory_date']" position="attributes">
+				<attribute name="invisible">1</attribute>	
+			</xpath>
 		</field>
 	</record>
 </odoo>

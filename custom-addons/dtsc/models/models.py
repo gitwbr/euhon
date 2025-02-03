@@ -324,6 +324,22 @@ class PurchaseOrder(models.Model):
     # supp_invoice_form = fields.Selection(related="partner_id.supp_invoice_form" , string="稅別") 
     no_vat_price = fields.Monetary("不含稅總價",store=True,compute="_compute_no_vat_price")
     
+    
+    def button_confirm(self):
+        for order in self:
+            if order.state not in ['draft', 'sent']:
+                continue
+            order.order_line._validate_analytic_distribution()
+            # order._add_supplier_to_product() #終止采購單價格同步到供應商報價單中
+            # Deal with double validation process
+            if order._approval_allowed():
+                order.button_approve()
+            else:
+                order.write({'state': 'to approve'})
+            if order.partner_id not in order.message_partner_ids:
+                order.message_subscribe([order.partner_id.id])
+        return True
+    
     def write(self, vals):
         # 检查是否更改了 is_return_goods
         if 'is_return_goods' in vals:
@@ -419,6 +435,60 @@ class PurchaseOrder(models.Model):
             record.search_line = result    
    
     def go_to_zuofei(self):
+        
+        picking_id = self.env['stock.picking'].search([('origin', '=', self.name)])
+        if picking_id and picking_id.state == 'done':
+            reverse_picking_vals = {
+                'picking_type_id': picking_id.picking_type_id.id,
+                'origin': '退回 ' + self.name,
+            }
+            reverse_picking = self.env['stock.picking'].create(reverse_picking_vals)
+            
+            
+            for move in picking_id.move_ids:
+            
+                print(move.quantity_done)
+                reverse_move_vals = {
+                    'name': move.name,
+                    'reference': "退回" + self.name,
+                    'origin' : self.name,
+                    'product_id': move.product_id.id,
+                    'product_uom_qty': move.product_uom_qty,
+                    'quantity_done': move.quantity_done,
+                    'product_uom': move.product_uom.id,
+                    'picking_id': reverse_picking.id,
+                    'location_id': move.location_dest_id.id,
+                    'location_dest_id': move.location_id.id,
+                }
+                reverse_move = self.env['stock.move'].create(reverse_move_vals)
+                # print(line.id)  
+                # 处理序列号
+                for move_line in move.move_line_ids:
+                    if move_line.lot_id:
+                        print(move_line.qty_done)
+                        reverse_move_line_vals = {
+                            'reference' : "退回"+self.name, 
+                            'origin' : self.name,
+                            'move_id': reverse_move.id,
+                            'product_id': move_line.product_id.id,
+                            'product_uom_id': move_line.product_uom_id.id,
+                            'picking_id': reverse_picking.id,
+                            'reserved_uom_qty': move_line.qty_done,
+                            'qty_done': move_line.qty_done,
+                            'lot_id': move_line.lot_id.id,  # 指定序列号
+                            'location_id': move_line.location_dest_id.id,
+                            'location_dest_id': move_line.location_id.id,
+                        }
+                        moveline  = self.env['stock.move.line'].create(reverse_move_line_vals)
+                        move_line_objs = self.env['stock.move.line'].search([("product_id" , "=" ,move_line.product_id.id ),("lot_id" ,"=" , False ),('picking_id',"=", reverse_picking.id)])
+                        move_line_objs.unlink()
+                
+       
+            # 确认并完成逆向拣货
+            reverse_picking.action_confirm()
+            reverse_picking.action_assign()
+            reverse_picking.button_validate()
+    
         self.write({'my_state': '5'})
         
     
