@@ -63,6 +63,7 @@ function create_client() {
     CONFIG+="    environment:\n"
     CONFIG+="      - LANG=zh_TW.UTF-8\n"
     CONFIG+="      - TZ=Asia/Taipei\n"
+    CONFIG+="    command: -- --init=base,dtsc\n"
     CONFIG+="    networks:\n"
     CONFIG+="      - odoo_net\n"
     CONFIG+="    restart: unless-stopped\n\n"

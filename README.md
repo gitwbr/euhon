@@ -209,6 +209,9 @@ odoo16/
     └── logs/               # Client3 日誌文件
 ```
 
+8 手动更新
+docker-compose restart web1 && sleep 10 && docker-compose exec web1 odoo -d odoo1 -u dtsc --stop-after-init
+
 ## 服务配置
 
 ### 端口配置

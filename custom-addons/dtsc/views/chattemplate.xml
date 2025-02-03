@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
 	<!-- 出货统计表 -->
 	<record id="report_checkout_treee" model="ir.ui.view">
@@ -27,7 +28,7 @@
 			<search>
 				<searchpanel>
                     <field name="user_partner_id" string="業務" />
-                    <field name="report_year" string="年"  select="multi"/>
+                    <field name="report_year" string="年" select="multi"/>
                     <field name="report_month" string="月" context="{'group_by': 'report_year'}" select="multi"/>
 
                 </searchpanel>
@@ -35,10 +36,8 @@
 				<field name="search_line_namee" string="所有訊息"/>
 				<field name="customer_id" string="客戶名稱"/>			
 				
-				<filter string="當月數據"
-				name="custom_26_to_25"
-				domain="[('estimated_date', '&gt;=', context.get('default_start_date')), 
-						 ('estimated_date', '&lt;=', context.get('default_end_date'))]"/>	
+				<filter string="當月數據" name="custom_26_to_25" 
+					domain="[('estimated_date', '>=', context.get('default_start_date')), ('estimated_date', '&lt;=', context.get('default_end_date'))]"/>	
 			</search> 
 		</field>		
 	</record>
@@ -156,7 +155,7 @@
 			<search>
 				<searchpanel>
                     <field name="user_partner_id" string="業務" />
-                    <field name="report_year" string="年"  select="multi"/>
+                    <field name="report_year" string="年" select="multi"/>
                     <field name="report_month" string="月" context="{'group_by': 'report_year'}" select="multi"/>
 
                 </searchpanel>
@@ -164,10 +163,8 @@
 				<field name="search_line_namee" string="所有訊息"/>
 				<field name="customer_id" string="客戶名稱"/>			
 				
-				<filter string="當月數據"
-				name="custom_26_to_25"
-				domain="[('estimated_date', '&gt;=', context.get('default_start_date')), 
-						 ('estimated_date', '&lt;=', context.get('default_end_date'))]"/>	
+				<filter string="當月數據" name="custom_26_to_25" 
+					domain="[('estimated_date', '>=', context.get('default_start_date')), ('estimated_date', '&lt;=', context.get('default_end_date'))]"/>	
 			</search>
 		</field>		
 	</record>
@@ -176,35 +173,30 @@
 		<field name="name">dtsc.checkoutline.machine.search.report</field>
 		<field name="model">dtsc.checkoutline</field>
 		<field name="arch" type="xml">
-			<searchpanel>
-                    <field name="report_year" string="年"  select="multi"/>
-                    <field name="report_month" string="月" context="{'group_by': 'report_year'}" select="multi"/>
-
-            </searchpanel>
 			<search>
-					<field name="machine_id" string="機台"/>		
-					<filter string="當月數據"
-					name="custom_26_to_25"
-					domain="[('estimated_date', '&gt;=', context.get('default_start_date')), 
-							 ('estimated_date', '&lt;=', context.get('default_end_date'))]"/>	
+				<searchpanel>
+					<field name="report_year" string="年" select="multi"/>
+					<field name="report_month" string="月" context="{'group_by': 'report_year'}" select="multi"/>
+				</searchpanel>
+				<field name="machine_id" string="機台"/>        
+				<filter string="當月數據" name="custom_26_to_25" 
+					domain="[('estimated_date', '>=', context.get('default_start_date')), ('estimated_date', '&lt;=', context.get('default_end_date'))]"/>    
 			</search>
-		</field>		
+		</field>        
 	</record>
 
 	<record id="search_checkoutline_product" model="ir.ui.view">
 		<field name="name">dtsc.checkoutline.product.search.report</field>
 		<field name="model">dtsc.checkoutline</field>
 		<field name="arch" type="xml">
-			<searchpanel>
-                    <field name="report_year" string="年"  select="multi"/>
+			<search>
+				<searchpanel>
+                    <field name="report_year" string="年" select="multi"/>
                     <field name="report_month" string="月" context="{'group_by': 'report_year'}" select="multi"/>
 
             </searchpanel>
-			<search>	
-					<filter string="當月數據"
-					name="custom_26_to_25"
-					domain="[('estimated_date', '&gt;=', context.get('default_start_date')), 
-							 ('estimated_date', '&lt;=', context.get('default_end_date'))]"/>	
+			<filter string="當月數據" name="custom_26_to_25" 
+				domain="[('estimated_date', '>=', context.get('default_start_date')), ('estimated_date', '&lt;=', context.get('default_end_date'))]"/>	
 			</search>
 		</field>		
 	</record>
@@ -213,16 +205,14 @@
 		<field name="name">dtsc.makeout.search.report</field>
 		<field name="model">dtsc.makeout</field>
 		<field name="arch" type="xml">
-			<searchpanel>
-                    <field name="report_year" string="年"  select="multi"/>
+			<search>
+				<searchpanel>
+                    <field name="report_year" string="年" select="multi"/>
                     <field name="report_month" string="月" context="{'group_by': 'report_year'}" select="multi"/>
 
             </searchpanel>
-			<search>
-					<filter string="當月數據"
-					name="custom_26_to_25"
-					domain="[('delivery_date', '&gt;=', context.get('default_start_date')), 
-							 ('delivery_date', '&lt;=', context.get('default_end_date'))]"/>	
+			<filter string="當月數據" name="custom_26_to_25" 
+				domain="[('delivery_date', '>=', context.get('default_start_date')), ('delivery_date', '&lt;=', context.get('default_end_date'))]"/>	
 			</search>
 		</field>		
 	</record>

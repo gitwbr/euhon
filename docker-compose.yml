@@ -88,44 +88,6 @@ services:
     restart: unless-stopped
     command: postgres -c 'max_connections=200'
 
-  # Client1 服務
-  web1:
-    build: .
-    image: custom-odoo:16.0
-    depends_on:
-      - db1
-    volumes:
-      - ./client1/config:/etc/odoo
-      - ./client1/data:/var/lib/odoo/client1
-      - ./client1/logs:/var/log/odoo
-      - ./addons:/mnt/addons
-      - ./custom-addons:/mnt/custom-addons
-    ports:
-      - "8001:8069"
-      - "9001:8072"
-    environment:
-      - LANG=zh_TW.UTF-8
-      - TZ=Asia/Taipei
-    networks:
-      - odoo_net
-    restart: unless-stopped
-
-  db1:
-    image: postgres:15
-    environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_PASSWORD=odoo1
-      - POSTGRES_USER=odoo1
-      - PGDATA=/var/lib/postgresql/data/pgdata
-    volumes:
-      - ./client1/postgresql:/var/lib/postgresql/data
-    ports:
-      - "5401:5432"
-    networks:
-      - odoo_net
-    restart: unless-stopped
-    command: postgres -c 'max_connections=200'
-
   # Client4 服務
   web4:
     build: .
@@ -159,6 +121,45 @@ services:
       - ./client4/postgresql:/var/lib/postgresql/data
     ports:
       - "5404:5432"
+    networks:
+      - odoo_net
+    restart: unless-stopped
+    command: postgres -c 'max_connections=200'
+
+  # Client1 服務
+  web1:
+    build: .
+    image: custom-odoo:16.0
+    depends_on:
+      - db1
+    volumes:
+      - ./client1/config:/etc/odoo
+      - ./client1/data:/var/lib/odoo/client1
+      - ./client1/logs:/var/log/odoo
+      - ./addons:/mnt/addons
+      - ./custom-addons:/mnt/custom-addons
+    ports:
+      - "8001:8069"
+      - "9001:8072"
+    environment:
+      - LANG=zh_TW.UTF-8
+      - TZ=Asia/Taipei
+    command: -- --init=base,dtsc
+    networks:
+      - odoo_net
+    restart: unless-stopped
+
+  db1:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=odoo1
+      - POSTGRES_USER=odoo1
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - ./client1/postgresql:/var/lib/postgresql/data
+    ports:
+      - "5401:5432"
     networks:
       - odoo_net
     restart: unless-stopped
