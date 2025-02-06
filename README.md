@@ -288,6 +288,9 @@ docker-compose restart web1 && sleep 10 && docker-compose exec web1 odoo -d odoo
   - Longpolling: 9071
   - Database: 5434
 
+## 管理页面
+https://client1.euhon.com/zh_CN/web/database/manager
+
 ## 使用说明
 
 ### 命令执行位置
@@ -525,78 +528,139 @@ sudo systemctl restart nginx
 sudo systemctl status nginx
 ```
 
-## SSL 证书配置
+## SSL 证书管理
 
+### 初始安装
 1. 安装 Certbot：
 ```bash
 sudo apt-get update
 sudo apt-get install -y certbot python3-certbot-nginx
 ```
 
-2. 为现有客户端申请证书：
+### 证书申请
+为新的客户端申请SSL证书：
+
 ```bash
-sudo certbot --nginx -d client1.euhon.com -d client2.euhon.com -d client3.euhon.com -d client4.euhon.com
+# 方法1：使用nginx插件（推荐）
+sudo certbot --nginx -d clientX.euhon.com
+
+# 方法2：使用standalone模式（如果nginx插件方式失败）
+sudo systemctl stop nginx
+sudo certbot certonly --standalone -d clientX.euhon.com
+sudo systemctl start nginx
 ```
 
-3. 为新增客户端添加证书（示例为 client5）：
-```bash
-sudo certbot --nginx -d client5.euhon.com
+### Nginx SSL配置
+为新客户端添加SSL配置（在odoo_nginx.conf中）：
+
+```nginx
+server {
+    listen 443 ssl;
+    server_name clientX.euhon.com;
+    
+    # SSL 配置
+    ssl_certificate /etc/letsencrypt/live/clientX.euhon.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/clientX.euhon.com/privkey.pem;
+    
+    # SSL 参数
+    ssl_session_timeout 1d;
+    ssl_session_cache shared:SSL:50m;
+    ssl_session_tickets off;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384;
+    ssl_prefer_server_ciphers off;
+    
+    # 基础设置
+    proxy_buffers 16 64k;
+    proxy_buffer_size 128k;
+    proxy_read_timeout 900s;
+    proxy_connect_timeout 900s;
+    proxy_send_timeout 900s;
+    client_max_body_size 100m;
+    
+    location / {
+        proxy_pass http://127.0.0.1:800X;  # X是客户端编号
+        proxy_next_upstream error timeout invalid_header http_500 http_502 http_503;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+    
+    # 长轮询配置
+    location /longpolling {
+        proxy_pass http://127.0.0.1:900X;  # X是客户端编号
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
 ```
 
-4. 查看证书状态：
+### 证书管理命令
+
 ```bash
+# 查看所有证书状态（显示到期时间和证书路径）
 sudo certbot certificates
-```
 
-5. 重启 Nginx 使配置生效：
-```bash
-sudo systemctl restart nginx
-```
+# 测试证书续期（不会真的更新证书）
+sudo certbot renew --dry-run
 
-## 证书自动续期配置
+# 强制更新证书（通常不需要手动执行）
+sudo certbot renew --force-renewal
 
-1. 启用并启动自动续期服务：
-```bash
-sudo systemctl enable certbot.timer
-sudo systemctl start certbot.timer
-```
+# 删除证书
+sudo certbot delete --cert-name client1.euhon.com
 
-2. 检查自动续期状态：
-```bash
+# 查看自动续期服务状态
 sudo systemctl status certbot.timer
 ```
 
-注意：
-- 证书有效期为 90 天
-- 系统会在证书过期前 30 天自动续期
-- 每天会自动检查两次是否需要续期
-- 续期成功后会自动重启 Nginx 
+### 自动续期说明
+- 证书有效期为90天
+- 系统每天在00:00和12:00自动检查证书
+- 当证书剩余30天时会自动续期
+- 续期完成后会自动重启nginx服务
+- 续期日志保存在 `/var/log/letsencrypt/letsencrypt.log`
 
-# Odoo 数据库备份和恢复系统
+### 自动续期机制
+1. 系统使用 `certbot.timer` 服务管理自动续期
+2. 不需要手动执行任何命令，系统会自动处理续期
+3. `certbot renew --dry-run` 命令仅用于测试续期配置是否正确：
+   - 检查续期配置
+   - 验证必要的权限
+   - 测试与Let's Encrypt服务器的连接
+   - 验证nginx配置
+   - 但不会真的更新证书
+4. 可以通过以下方式监控续期状态：
+   - 查看证书状态：`sudo certbot certificates`
+   - 查看续期服务状态：`sudo systemctl status certbot.timer`
+   - 查看续期日志：`tail -f /var/log/letsencrypt/letsencrypt.log`
 
-本系统提供了自动化的数据库备份和恢复功能，用于管理多个 Odoo 客户端实例的数据库。
+### 注意事项
+1. 确保DNS已正确配置，域名可以解析到服务器
+2. 替换配置中的 `clientX` 为实际的客户端编号
+3. 确保端口号正确（800X 和 900X，X为客户端编号）
+4. 证书申请成功后会自动加入到续期计划中
+5. 不需要修改 `.well-known/acme-challenge/` 的配置
+6. 不需要手动执行续期命令，系统会自动处理
 
-## 备份功能
+## 数据库备份和恢复
 
-### 自动备份
+### 备份功能
+
+#### 自动备份
 系统配置了自动备份功能：
 - 每天凌晨 2:00 自动执行备份
 - 备份文件保存在各个客户端目录的 `db` 子目录中
 - 自动保留最近 3 天的备份，超过 3 天的备份文件会被自动删除
 - 备份日志保存在 `/home/bryant/odoo16/backup.log`
 
-### 手动备份
-如需手动执行备份：
-```bash
-./backup_db.sh
-```
-
-备份文件命名格式：
-```
-client{N}/db/odoo{N}_{YYYYMMDD}_{HHMMSS}.sql.gz
-```
-
-## 恢复功能
+### 恢复功能
 
 要恢复数据库，使用以下命令：
 ```bash
@@ -617,24 +681,24 @@ client{N}/db/odoo{N}_{YYYYMMDD}_{HHMMSS}.sql.gz
 6. 更新所有模块
 7. 重启 Odoo 服务
 
-## 定时任务管理
+### 定时任务管理
 
-### 查看当前定时任务
+#### 查看当前定时任务
 ```bash
 crontab -l
 ```
 
-### 修改定时任务
+#### 修改定时任务
 ```bash
 crontab -e
 ```
 
-### 当前定时任务配置
+#### 当前定时任务配置
 ```
 0 2 * * * cd /home/bryant/odoo16 && ./backup_db.sh >> /home/bryant/odoo16/backup.log 2>&1
 ```
 
-## 注意事项
+#### 注意事项
 1. 确保备份和恢复脚本有执行权限：
    ```bash
    chmod +x backup_db.sh restore_db.sh
@@ -644,8 +708,8 @@ crontab -e
 4. 恢复操作会覆盖现有数据，请谨慎操作
 5. 建议定期检查备份日志确保备份正常执行
 
-## 日志查看
+#### 日志查看
 查看备份日志：
 ```bash
 tail -f /home/bryant/odoo16/backup.log
-``` 
+```

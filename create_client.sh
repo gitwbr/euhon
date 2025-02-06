@@ -30,6 +30,7 @@ function create_client() {
     local WEB_PORT=$((8000 + CLIENT_NUM))
     local LONGPOLLING_PORT=$((9000 + CLIENT_NUM))
     local DB_PORT=$((5400 + CLIENT_NUM))
+    local DOMAIN="client${CLIENT_NUM}.euhon.com"
 
     # 检查目录是否已存在
     if [ -d "${CLIENT}" ]; then
@@ -81,7 +82,7 @@ function create_client() {
     CONFIG+="    networks:\n"
     CONFIG+="      - odoo_net\n"
     CONFIG+="    restart: unless-stopped\n"
-    CONFIG+="    command: postgres -c 'max_connections=200'\n\n"
+    CONFIG+="    command: postgres -c 'max_connections=200'\n"
 
     # 使用临时文件来避免多次插入
     awk -v config="$CONFIG" '
@@ -98,11 +99,104 @@ function create_client() {
     # 启动新创建的服务
     echo "Starting services..."
     docker-compose up -d web${CLIENT_NUM} db${CLIENT_NUM}
+
+    # 终止脚本，不继续执行
+    #echo "已删除 nginx 配置，脚本停止执行。"
+    #exit 1
+
+    # 生成当前客户端的nginx配置
+    echo "生成nginx配置文件..."
+    CERT_DOMAIN=${DOMAIN}
+    # 如果是client1或client2，使用自己的证书，否则使用client1的证书
+    #if [ ${CLIENT_NUM} -le 2 ]; then
+    #    CERT_DOMAIN=${DOMAIN}
+    #else
+    #    CERT_DOMAIN="client1.euhon.com"
+    #fi
+    #CERT_DOMAIN="client1.euhon.com"
+    
+    cat > ${CLIENT}_nginx.conf << EOL
+# HTTPS 配置 - ${CLIENT}
+server {
+    listen 443 ssl;
+    server_name ${DOMAIN};
+    
+    # SSL 配置
+    ssl_certificate /etc/letsencrypt/live/${CERT_DOMAIN}/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/${CERT_DOMAIN}/privkey.pem;
+    
+    # SSL 参数
+    ssl_session_timeout 1d;
+    ssl_session_cache shared:SSL:50m;
+    ssl_session_tickets off;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384;
+    ssl_prefer_server_ciphers off;
+    
+    # 基础设置
+    proxy_buffers 16 64k;
+    proxy_buffer_size 128k;
+    proxy_read_timeout 900s;
+    proxy_connect_timeout 900s;
+    proxy_send_timeout 900s;
+    client_max_body_size 100m;
+    
+    location / {
+        proxy_pass http://127.0.0.1:${WEB_PORT};
+        proxy_next_upstream error timeout invalid_header http_500 http_502 http_503;
+        proxy_set_header Host \$host;
+        proxy_set_header X-Real-IP \$remote_addr;
+        proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto \$scheme;
+    }
+    
+    # 长轮询配置
+    location /longpolling {
+        proxy_pass http://127.0.0.1:${LONGPOLLING_PORT};
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade \$http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header Host \$host;
+        proxy_set_header X-Real-IP \$remote_addr;
+        proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto \$scheme;
+    }
+}
+EOL
+
+    # 更新nginx配置
+    echo "更新nginx配置..."
+    sudo bash -c 'cat base_nginx.conf client*_nginx.conf > /etc/nginx/sites-available/odoo_nginx.conf'
+    
+    # 测试并重启nginx
+    echo "测试nginx配置..."
+    sudo nginx -t && sudo systemctl restart nginx
+
+    # ===== SSL证书管理开始 =====
+    echo "开始配置SSL证书..."
+    
+    # 申请新的SSL证书
+    echo "正在申请SSL证书: ${DOMAIN}"
+    sudo certbot certonly --standalone -d ${DOMAIN}
+    
+    # 设置证书权限
+    echo "设置证书权限..."
+    if [ -f "/etc/letsencrypt/archive/${DOMAIN}/privkey1.pem" ]; then
+        sudo chmod 644 /etc/letsencrypt/archive/${DOMAIN}/privkey1.pem
+    fi
+    
+    # 检查证书状态
+    echo "检查证书状态..."
+    sudo certbot certificates
+    echo "检查自动续期状态..."
+    sudo systemctl status certbot.timer
+    # ===== SSL证书管理结束 =====
 }
 
 function delete_client() {
     local CLIENT_NUM=$1
     local CLIENT="client${CLIENT_NUM}"
+    local DOMAIN="client${CLIENT_NUM}.euhon.com"
 
     # 检查客户端是否存在（检查配置或目录）
     if ! grep -q "# Client${CLIENT_NUM} 服務" docker-compose.yml && ! [ -d "${CLIENT}" ]; then
@@ -127,6 +221,26 @@ function delete_client() {
     sed -i "/^[[:space:]]*db${CLIENT_NUM}:/,/^$/d" docker-compose.yml
     # 删除多余的空行，但保留文件结构
     sed -i '/^[[:space:]]*$/N;/^\n[[:space:]]*$/D' docker-compose.yml
+
+    # 终止脚本，不继续执行
+    #echo "已删除 nginx 配置，脚本停止执行。"
+    #exit 1
+
+    # 删除nginx配置文件
+    echo "Removing nginx configuration..."
+    rm -f ${CLIENT}_nginx.conf
+    
+    # 删除SSL证书（如果存在）
+    echo "删除SSL证书..."
+    sudo certbot delete --cert-name ${DOMAIN} --non-interactive
+
+    # 更新nginx配置
+    echo "更新nginx配置..."
+    sudo bash -c 'cat base_nginx.conf client*_nginx.conf > /etc/nginx/sites-available/odoo_nginx.conf'
+    
+    # 测试并重启nginx
+    echo "测试nginx配置..."
+    sudo nginx -t && sudo systemctl restart nginx
     
     echo "Client ${CLIENT} deleted successfully"
 }
