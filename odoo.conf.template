@@ -6,7 +6,7 @@ admin_passwd = admin
 # HTTP
 http_port = 8069
 proxy_mode = True
-longpolling_port = 8072
+gevent_port = 8072
 session_cookie_name = client{CLIENT}_session
 session_cookie_path = /
 session_cookie_secure = False

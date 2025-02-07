@@ -1,7 +1,4 @@
 # 客户端数据和日志
-#client*/logs/
-#client*/data/
-#client*/postgresql/
 client*
 
 # 数据库文件
