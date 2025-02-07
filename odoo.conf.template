@@ -22,6 +22,8 @@ db_sslmode = disable
 list_db = True
 db_maxconn = 64
 db_template = template1
+dbfilter = ^(?:.*)$
+db_filter = ^.*$
 
 # 多進程
 workers = 2
