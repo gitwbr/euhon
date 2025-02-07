@@ -39,24 +39,17 @@ class AccountMove(models.Model):
                             'quantity': line.qty if lot.product_id.tracking == 'lot' else 1.0,
                             'uom_name': line.product_uom_id.name,
                             'lot_name': lot.lot_name,
-                            'pos_lot_id': lot.id,
                         })
 
         return lot_values
 
-    def _compute_payments_widget_reconciled_info(self):
+    def _get_reconciled_vals(self, partial, amount, counterpart_line):
         """Add pos_payment_name field in the reconciled vals to be able to show the payment method in the invoice."""
-        super()._compute_payments_widget_reconciled_info()
-        for move in self:
-            if move.invoice_payments_widget:
-                if move.state == 'posted' and move.is_invoice(include_receipts=True):
-                    reconciled_partials = move._get_all_reconciled_invoice_partials()
-                    for i, reconciled_partial in enumerate(reconciled_partials):
-                        counterpart_line = reconciled_partial['aml']
-                        pos_payment = counterpart_line.move_id.sudo().pos_payment_ids
-                        move.invoice_payments_widget['content'][i].update({
-                            'pos_payment_name': pos_payment.payment_method_id.name,
-                        })
+        result = super()._get_reconciled_vals(partial, amount, counterpart_line)
+        if counterpart_line.move_id.sudo().pos_payment_ids:
+            pos_payment = counterpart_line.move_id.sudo().pos_payment_ids
+            result['pos_payment_name'] = pos_payment.payment_method_id.name
+        return result
 
 class AccountMoveLine(models.Model):
     _inherit = 'account.move.line'

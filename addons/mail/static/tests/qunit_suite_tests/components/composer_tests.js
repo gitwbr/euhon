@@ -2,16 +2,21 @@
 
 import {
     afterNextRender,
+    dragenterFiles,
+    dropFiles,
     insertText,
     nextAnimationFrame,
+    pasteFiles,
     start,
     startServer,
 } from '@mail/../tests/helpers/test_utils';
 
-import { contains, createFile, dragenterFiles, dropFiles, pasteFiles } from "@web/../tests/utils";
-import { file, makeTestPromise } from 'web.test_utils';
+import {
+    file,
+    makeTestPromise,
+} from 'web.test_utils';
 
-const { inputFiles } = file;
+const { createFile, inputFiles } = file;
 
 QUnit.module('mail', {}, function () {
 QUnit.module('components', {}, function () {
@@ -933,49 +938,72 @@ QUnit.test('composer: add an attachment', async function (assert) {
     );
 });
 
-QUnit.test("composer: drop attachments", async () => {
+QUnit.test('composer: drop attachments', async function (assert) {
+    assert.expect(4);
+
     const pyEnv = await startServer();
-    const channelId = pyEnv["mail.channel"].create({});
+    const mailChannelId1 = pyEnv['mail.channel'].create({});
     const { openDiscuss } = await start({
         discuss: {
-            context: { active_id: channelId, },
+            context: { active_id: mailChannelId1, },
         },
     });
     await openDiscuss();
-    await contains(".o_ComposerTextInput");
-    await contains(".o_Composer_dropZone", { count: 0 });
-    await contains(".o_AttachmentCard", { count: 0 });
     const files = [
         await createFile({
-            content: "hello, world",
-            contentType: "text/plain",
-            name: "text.txt",
+            content: 'hello, world',
+            contentType: 'text/plain',
+            name: 'text.txt',
         }),
         await createFile({
-            content: "hello, worlduh",
-            contentType: "text/plain",
-            name: "text2.txt",
+            content: 'hello, worlduh',
+            contentType: 'text/plain',
+            name: 'text2.txt',
         }),
     ];
-    await dragenterFiles(".o_ComposerTextInput", files);
-    await contains(".o_Composer_dropZone");
-    await contains(".o_AttachmentCard", { count: 0 });
-    await dropFiles(".o_Composer_dropZone", files);
-    await contains(".o_Composer_dropZone", { count: 0 });
-    await contains(".o_AttachmentCard", { count: 2 });
-    const extraFiles = [
-        await createFile({
-            content: "hello, world",
-            contentType: "text/plain",
-            name: "text3.txt",
-        }),
-    ];
-    await dragenterFiles(".o_ComposerTextInput", extraFiles);
-    await dropFiles(".o_Composer_dropZone", extraFiles);
-    await contains(".o_AttachmentCard", { count: 3 });
+    await afterNextRender(() => dragenterFiles(document.querySelector('.o_Composer')));
+    assert.ok(
+        document.querySelector('.o_Composer_dropZone'),
+        "should have a drop zone"
+    );
+    assert.strictEqual(
+        document.querySelectorAll(`.o_Composer .o_AttachmentCard`).length,
+        0,
+        "should have no attachment before files are dropped"
+    );
+
+    await afterNextRender(() =>
+        dropFiles(document.querySelector('.o_Composer_dropZone'), files)
+    );
+    assert.strictEqual(
+        document.querySelectorAll(`.o_Composer .o_AttachmentCard`).length,
+        2,
+        "should have 2 attachments in the composer after files dropped"
+    );
+
+    await afterNextRender(() => dragenterFiles(document.querySelector('.o_Composer')));
+    await afterNextRender(async () =>
+        dropFiles(
+            document.querySelector('.o_Composer_dropZone'),
+            [
+                await createFile({
+                    content: 'hello, world',
+                    contentType: 'text/plain',
+                    name: 'text3.txt',
+                })
+            ]
+        )
+    );
+    assert.strictEqual(
+        document.querySelectorAll(`.o_Composer .o_AttachmentCard`).length,
+        3,
+        "should have 3 attachments in the box after files dropped"
+    );
 });
 
 QUnit.test('composer: paste attachments', async function (assert) {
+    assert.expect(2);
+
     const pyEnv = await startServer();
     const mailChannelId1 = pyEnv['mail.channel'].create({});
     const { openDiscuss } = await start({
@@ -996,8 +1024,15 @@ QUnit.test('composer: paste attachments', async function (assert) {
         0,
         "should not have any attachment in the composer before paste"
     );
-    await pasteFiles(".o_ComposerTextInput", files);
-    await contains(".o_Composer .o_AttachmentCard");
+
+    await afterNextRender(() =>
+        pasteFiles(document.querySelector('.o_ComposerTextInput'), files)
+    );
+    assert.strictEqual(
+        document.querySelectorAll(`.o_Composer .o_AttachmentCard`).length,
+        1,
+        "should have 1 attachment in the composer after paste"
+    );
 });
 
 QUnit.test('composer text input cleared on message post', async function (assert) {

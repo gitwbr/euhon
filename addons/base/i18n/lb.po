@@ -22153,12 +22153,12 @@ msgstr "Tunesien"
 
 #. module: base
 #: model:res.country,name:base.tr
-msgid "Türkiye"
+msgid "Turkey"
 msgstr "Tierkei"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_tr
-msgid "Türkiye - Accounting"
+msgid "Turkey - Accounting"
 msgstr ""
 
 #. module: base

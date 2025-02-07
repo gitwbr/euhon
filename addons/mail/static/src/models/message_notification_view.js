@@ -14,9 +14,6 @@ registerModel({
                 this.messageListViewItemOwner.threadViewOwnerAsLastMessageListViewItem.handleVisibleMessage(this.message);
             }
         },
-        async onClick(ev) {
-            await this.messaging.handleClickOnLink(ev);
-        },
     },
     fields: {
         component: attr(),

@@ -9,16 +9,14 @@
 # Martin Trigaux, 2022
 # Odoo Thaidev <odoothaidev@gmail.com>, 2022
 # Wichanon Jamwutthipreecha, 2022
-# Wil Odoo, 2024
-# Rasareeyar Lappiam, 2024
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 16.0\n"
+"Project-Id-Version: Odoo Server 16.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-06 13:32+0000\n"
+"POT-Creation-Date: 2022-12-15 12:51+0000\n"
 "PO-Revision-Date: 2022-09-22 05:53+0000\n"
-"Last-Translator: Rasareeyar Lappiam, 2024\n"
+"Last-Translator: Wichanon Jamwutthipreecha, 2022\n"
 "Language-Team: Thai (https://app.transifex.com/odoo/teams/41243/th/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -36,7 +34,7 @@ msgstr "ทั้งหมด"
 #. module: mrp_subcontracting
 #: model:ir.model,name:mrp_subcontracting.model_report_mrp_report_bom_structure
 msgid "BOM Overview Report"
-msgstr "รายงานภาพรวมบิลวัสดุ (BOM)"
+msgstr ""
 
 #. module: mrp_subcontracting
 #: model:ir.model,name:mrp_subcontracting.model_mrp_bom
@@ -52,7 +50,7 @@ msgstr "ประเภท BoM"
 #: model:ir.model.fields,field_description:mrp_subcontracting.field_res_partner__bom_ids
 #: model:ir.model.fields,field_description:mrp_subcontracting.field_res_users__bom_ids
 msgid "BoMs for which the Partner is one of the subcontractors"
-msgstr "BoMs ที่พาร์ทเนอร์เป็นหนึ่งในผู้รับเหมาช่วง"
+msgstr ""
 
 #. module: mrp_subcontracting
 #: model:ir.model.fields,field_description:mrp_subcontracting.field_mrp_production__bom_product_ids
@@ -76,8 +74,6 @@ msgid ""
 "company. Note that standard subcontracting routes will be adapted so as to "
 "take these into account automatically."
 msgstr ""
-"ทำเครื่องหมายในช่องนี้ เพื่อสร้างสถานที่รับเหมาช่วงเฉพาะใหม่สำหรับบริษัทนี้ "
-"โปรดทราบว่าเส้นทางการรับเหมาช่วงมาตรฐานจะได้รับการปรับเปลี่ยนเพื่อนำมาพิจารณาโดยอัตโนมัติ"
 
 #. module: mrp_subcontracting
 #: model:ir.model.fields,help:mrp_subcontracting.field_product_supplierinfo__is_subcontractor
@@ -109,7 +105,7 @@ msgstr "ต่อไป"
 #. module: mrp_subcontracting
 #: model_terms:ir.ui.view,arch_db:mrp_subcontracting.portal_my_productions
 msgid "Deadline Date"
-msgstr "วันครบกำหนด"
+msgstr ""
 
 #. module: mrp_subcontracting
 #: model_terms:ir.ui.view,arch_db:mrp_subcontracting.subcontracting_portal_production_form_view
@@ -170,15 +166,13 @@ msgstr "ซ่อน"
 #, python-format
 msgid ""
 "In order to manage stock accurately, subcontracting locations must be type "
-"Internal, linked to the appropriate company."
+"Internal, linked to the appropriate company and not specific to a warehouse."
 msgstr ""
-"เพื่อจัดการสต็อกได้อย่างถูกต้อง "
-"สถานที่รับเหมาช่วงจะต้องพิมพ์ภายในเชื่อมโยงกับบริษัทที่เหมาะสม"
 
 #. module: mrp_subcontracting
 #: model_terms:ir.ui.view,arch_db:mrp_subcontracting.mrp_production_subcontracting_filter
 msgid "Incoming transfer"
-msgstr "โอนย้ายเข้ามา"
+msgstr ""
 
 #. module: mrp_subcontracting
 #: model:ir.model,name:mrp_subcontracting.model_stock_location
@@ -193,7 +187,7 @@ msgstr "เป็นสัญญาช่วง"
 #. module: mrp_subcontracting
 #: model:ir.model.fields,field_description:mrp_subcontracting.field_stock_location__is_subcontracting_location
 msgid "Is a Subcontracting Location?"
-msgstr "เป็นสถานที่ของการรับเหมาช่วงหรือไม่?"
+msgstr ""
 
 #. module: mrp_subcontracting
 #: model:ir.model.fields,help:mrp_subcontracting.field_mrp_production__bom_product_ids
@@ -201,21 +195,12 @@ msgid ""
 "List of Products used in the BoM, used to filter the list of products in the"
 " subcontracting portal view"
 msgstr ""
-"รายการสินค้าที่ใช้ใน BoM "
-"ใช้เพื่อกรองรายการสินค้าในมุมมองพอร์ทัลของการรับเหมาช่วง"
-
-#. module: mrp_subcontracting
-#. odoo-python
-#: code:addons/mrp_subcontracting/models/stock_picking.py:0
-#, python-format
-msgid "Locations to update"
-msgstr ""
 
 #. module: mrp_subcontracting
 #: model:ir.model.fields,field_description:mrp_subcontracting.field_res_partner__production_ids
 #: model:ir.model.fields,field_description:mrp_subcontracting.field_res_users__production_ids
 msgid "MRP Productions for which the Partner is the subcontractor"
-msgstr "MRP การผลิตที่พาร์ทเนอร์เป็นผู้รับเหมาช่วง"
+msgstr ""
 
 #. module: mrp_subcontracting
 #. odoo-python
@@ -253,7 +238,7 @@ msgstr "ข้อมูลอ้างอิงการผลิต"
 #. module: mrp_subcontracting
 #: model:ir.model.fields,field_description:mrp_subcontracting.field_stock_picking__move_line_nosuggest_ids
 msgid "Move Line Nosuggest"
-msgstr "ไม่แนะนำการย้ายรายการ"
+msgstr ""
 
 #. module: mrp_subcontracting
 #. odoo-python
@@ -306,8 +291,6 @@ msgid ""
 "Portal users cannot create a stock move with a state 'Done' or change the "
 "current state to 'Done'."
 msgstr ""
-"ผู้ใช้พอร์ทัลไม่สามารถสร้างการเคลื่อนย้ายสต็อกได้ด้วยสถานะ 'เสร็จสิ้น' "
-"หรือเปลี่ยนสถานะปัจจุบันเป็น 'เสร็จสิ้น'"
 
 #. module: mrp_subcontracting
 #: model:ir.model,name:mrp_subcontracting.model_stock_move_line
@@ -329,7 +312,7 @@ msgstr "คำสั่งผลิต"
 #: model_terms:ir.ui.view,arch_db:mrp_subcontracting.portal_my_home_productions
 #: model_terms:ir.ui.view,arch_db:mrp_subcontracting.portal_my_productions
 msgid "Productions"
-msgstr "การผลิต"
+msgstr ""
 
 #. module: mrp_subcontracting
 #: model:ir.model,name:mrp_subcontracting.model_stock_quant
@@ -442,7 +425,7 @@ msgstr "ย้ายสต๊อก"
 #: model:ir.model.fields,field_description:mrp_subcontracting.field_res_partner__picking_ids
 #: model:ir.model.fields,field_description:mrp_subcontracting.field_res_users__picking_ids
 msgid "Stock Pickings for which the Partner is the subcontractor"
-msgstr "การเบิกสต็อกสินค้าโดยพาร์ทเนอร์เป็นผู้รับเหมาช่วง"
+msgstr ""
 
 #. module: mrp_subcontracting
 #: model:ir.model,name:mrp_subcontracting.model_stock_rule
@@ -471,7 +454,7 @@ msgstr "สัญญาช่วง"
 #: code:addons/mrp_subcontracting/models/mrp_production.py:0
 #, python-format
 msgid "Subcontracted manufacturing orders cannot be merged."
-msgstr "ไม่สามารถรวมใบสั่งผลิตที่การรับเหมาช่วงได้"
+msgstr ""
 
 #. module: mrp_subcontracting
 #. odoo-python
@@ -512,7 +495,7 @@ msgstr "ประเภทการปฏิบัติสัญญาช่ว
 #. module: mrp_subcontracting
 #: model:ir.actions.act_window,name:mrp_subcontracting.subcontracting_portal_view_production_action
 msgid "Subcontracting Portal"
-msgstr "พอร์ทัลการรับเหมาช่วง"
+msgstr ""
 
 #. module: mrp_subcontracting
 #: model:ir.model.fields,field_description:mrp_subcontracting.field_stock_warehouse__subcontracting_resupply_type_id
@@ -531,7 +514,7 @@ msgstr "สัญญารับเหมาช่วง:"
 #: code:addons/mrp_subcontracting/report/mrp_report_bom_structure.py:0
 #, python-format
 msgid "Subcontracting: %s"
-msgstr "การรับเหมาช่วง: %s"
+msgstr ""
 
 #. module: mrp_subcontracting
 #: model:ir.model.fields,field_description:mrp_subcontracting.field_mrp_production__subcontractor_id
@@ -575,7 +558,7 @@ msgstr ""
 #. module: mrp_subcontracting
 #: model_terms:ir.ui.view,arch_db:mrp_subcontracting.portal_my_productions
 msgid "There are currently no productions for your account."
-msgstr "ขณะนี้ไม่มีการผลิตสำหรับบัญชีของคุณ"
+msgstr ""
 
 #. module: mrp_subcontracting
 #. odoo-python
@@ -585,7 +568,6 @@ msgid ""
 "There shouldn't be multiple productions to record for the same subcontracted"
 " move."
 msgstr ""
-"ไม่ควรมีการผลิตหลายรายการในการบันทึกสำหรับการย้ายที่รับเหมาช่วงเดียวกัน"
 
 #. module: mrp_subcontracting
 #. odoo-python
@@ -615,7 +597,7 @@ msgstr "โอน"
 #. module: mrp_subcontracting
 #: model:ir.model.fields,help:mrp_subcontracting.field_mrp_production__subcontractor_id
 msgid "Used to restrict access to the portal user through Record Rules"
-msgstr "ใช้เพื่อจำกัดการเข้าถึงผู้ใช้พอร์ทัลผ่านกฎการบันทึก"
+msgstr ""
 
 #. module: mrp_subcontracting
 #: model:ir.model,name:mrp_subcontracting.model_stock_warehouse
@@ -646,21 +628,23 @@ msgstr ""
 #: code:addons/mrp_subcontracting/models/stock_location.py:0
 #, python-format
 msgid "You cannot alter the company's subcontracting location"
-msgstr "คุณไม่สามารถเปลี่ยนแปลงสถานที่รับเหมาช่วงของบริษัทได้"
+msgstr ""
+
+#. module: mrp_subcontracting
+#. odoo-python
+#: code:addons/mrp_subcontracting/models/stock_location.py:0
+#, python-format
+msgid ""
+"You cannot change the subcontracting location as it is still linked to a "
+"subcontractor partner"
+msgstr ""
 
 #. module: mrp_subcontracting
 #. odoo-python
 #: code:addons/mrp_subcontracting/models/mrp_production.py:0
 #, python-format
 msgid "You cannot write on fields %s in mrp.production."
-msgstr "คุณไม่สามารถเขียนลงในช่อง %s ของ mrp.production ได้"
-
-#. module: mrp_subcontracting
-#. odoo-python
-#: code:addons/mrp_subcontracting/models/stock_picking.py:0
-#, python-format
-msgid "You might want to update the locations of this transfer's operations"
-msgstr "คุณอาจต้องการอัปเดตตำแหน่งของการดำเนินการโอนย้ายครั้งนี้"
+msgstr ""
 
 #. module: mrp_subcontracting
 #. odoo-python

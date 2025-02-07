@@ -4,7 +4,6 @@
 # 
 # Translators:
 # Martin Trigaux, 2023
-# Layna Nascimento, 2023
 # 
 msgid ""
 msgstr ""
@@ -12,7 +11,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-04-14 05:51+0000\n"
 "PO-Revision-Date: 2022-09-22 05:44+0000\n"
-"Last-Translator: Layna Nascimento, 2023\n"
+"Last-Translator: Martin Trigaux, 2023\n"
 "Language-Team: Portuguese (Brazil) (https://app.transifex.com/odoo/teams/41243/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,12 +22,12 @@ msgstr ""
 #. module: account_edi_proxy_client
 #: model:ir.model,name:account_edi_proxy_client.model_account_edi_proxy_client_user
 msgid "Account EDI proxy user"
-msgstr "Usuário proxy de EDI da conta"
+msgstr ""
 
 #. module: account_edi_proxy_client
 #: model:ir.model.fields,field_description:account_edi_proxy_client.field_res_company__account_edi_proxy_client_ids
 msgid "Account Edi Proxy Client"
-msgstr "Cliente proxy da EDI da conta"
+msgstr ""
 
 #. module: account_edi_proxy_client
 #: model_terms:ir.ui.view,arch_db:account_edi_proxy_client.view_form_account_edi_proxy_client_user
@@ -73,27 +72,27 @@ msgstr "Nome exibido"
 #. module: account_edi_proxy_client
 #: model:ir.actions.act_window,name:account_edi_proxy_client.action_tree_account_edi_proxy_client_user
 msgid "EDI Proxy User"
-msgstr "Usuário proxy da EDI"
+msgstr ""
 
 #. module: account_edi_proxy_client
 #: model:ir.ui.menu,name:account_edi_proxy_client.menu_account_proxy_client_user
 msgid "EDI Proxy Users"
-msgstr "Usuários proxy da EDI"
+msgstr ""
 
 #. module: account_edi_proxy_client
 #: model:ir.model,name:account_edi_proxy_client.model_account_edi_format
 msgid "EDI format"
-msgstr "Formato para EDI"
+msgstr ""
 
 #. module: account_edi_proxy_client
 #: model:ir.model.fields,field_description:account_edi_proxy_client.field_account_edi_proxy_client_user__edi_format_id
 msgid "Edi Format"
-msgstr "Formato para EDI"
+msgstr ""
 
 #. module: account_edi_proxy_client
 #: model:ir.model.fields,field_description:account_edi_proxy_client.field_account_edi_proxy_client_user__edi_identification
 msgid "Edi Identification"
-msgstr "Identificação da EDI"
+msgstr ""
 
 #. module: account_edi_proxy_client
 #: model:ir.model.fields,field_description:account_edi_proxy_client.field_account_edi_proxy_client_user__id
@@ -103,7 +102,7 @@ msgstr "ID"
 #. module: account_edi_proxy_client
 #: model:ir.model.fields,field_description:account_edi_proxy_client.field_account_edi_proxy_client_user__id_client
 msgid "Id Client"
-msgstr "Cliente do ID"
+msgstr ""
 
 #. module: account_edi_proxy_client
 #: model:ir.model.fields,field_description:account_edi_proxy_client.field_account_edi_proxy_client_user____last_update
@@ -128,7 +127,7 @@ msgstr "Chave privada"
 #. module: account_edi_proxy_client
 #: model:ir.model.fields,field_description:account_edi_proxy_client.field_account_edi_proxy_client_user__private_key_filename
 msgid "Private Key Filename"
-msgstr "Nome de arquivo da chave privada"
+msgstr ""
 
 #. module: account_edi_proxy_client
 #: model:ir.model.fields,field_description:account_edi_proxy_client.field_account_edi_proxy_client_user__refresh_token
@@ -138,7 +137,7 @@ msgstr "Atualizar Token"
 #. module: account_edi_proxy_client
 #: model:ir.model.fields,help:account_edi_proxy_client.field_account_edi_proxy_client_user__private_key
 msgid "The key to encrypt all the user's data"
-msgstr "A chave para criptografar todos os dados do usuário"
+msgstr ""
 
 #. module: account_edi_proxy_client
 #: model:ir.model.fields,help:account_edi_proxy_client.field_account_edi_proxy_client_user__edi_identification
@@ -155,8 +154,6 @@ msgid ""
 "The url that this service requested returned an error. The url it tried to "
 "contact was %s"
 msgstr ""
-"O URL solicitado por esse serviço retornou um erro. O URL que ele tentou "
-"contatar foi %s"
 
 #. module: account_edi_proxy_client
 #. odoo-python
@@ -166,8 +163,6 @@ msgid ""
 "The url that this service requested returned an error. The url it tried to "
 "contact was %s. %s"
 msgstr ""
-"O URL solicitado por esse serviço retornou um erro. O URL que ele tentou "
-"contatar foi %s. %s"
 
 #. module: account_edi_proxy_client
 #. odoo-python
@@ -175,14 +170,14 @@ msgstr ""
 #, python-format
 msgid ""
 "The url that this service tried to contact does not exist. The url was %r"
-msgstr "A URL que este serviço tentou contatar não existe. A URL era %r"
+msgstr ""
 
 #. module: account_edi_proxy_client
 #: model:ir.model.constraint,message:account_edi_proxy_client.constraint_account_edi_proxy_client_user_unique_edi_identification_per_format
 msgid "This edi identification is already assigned to a user"
-msgstr "Essa identificação de EDI já está atribuída a um usuário"
+msgstr ""
 
 #. module: account_edi_proxy_client
 #: model:ir.model.constraint,message:account_edi_proxy_client.constraint_account_edi_proxy_client_user_unique_id_client
 msgid "This id_client is already used on another user."
-msgstr "Esse id_client já é usado em outro usuário."
+msgstr ""

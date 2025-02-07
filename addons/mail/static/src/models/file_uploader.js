@@ -72,7 +72,7 @@ registerModel({
          * @param {Thread} param0.thread
          * @returns {Attachment}
          */
-        async _onAttachmentUploaded({ attachmentData, composer, thread }) {
+        _onAttachmentUploaded({ attachmentData, composer, thread }) {
             if (attachmentData.error || !attachmentData.id) {
                 this.messaging.notify({
                     type: 'danger',
@@ -80,11 +80,11 @@ registerModel({
                 });
                 return;
             }
-            return {
+            return (composer || thread).messaging.models['Attachment'].insert({
                 composer: composer,
                 originThread: (!composer && thread) ? thread : undefined,
                 ...attachmentData,
-            };
+            });
         },
         /**
          * @private
@@ -118,7 +118,6 @@ registerModel({
                 }));
             }
             const attachments = [];
-            const uploadedAttachments = [];
             for (const file of files) {
                 const uploadingAttachment = uploadingAttachments.get(file);
                 if (!uploadingAttachment.exists()) {
@@ -129,13 +128,9 @@ registerModel({
                     return;
                 }
                 try {
-                    const body = this._createFormData({ composer, file, thread });
-                    if (activity) {
-                        body.append("activity_id", activity.id);
-                    }
                     const response = await (composer || thread).messaging.browser.fetch('/mail/attachment/upload', {
                         method: 'POST',
-                        body,
+                        body: this._createFormData({ composer, file, thread }),
                         signal: uploadingAttachment.uploadingAbortController.signal,
                     });
                     const attachmentData = await response.json();
@@ -145,25 +140,19 @@ registerModel({
                     if ((composer && !composer.exists()) || (thread && !thread.exists())) {
                         return;
                     }
-                    const attachment = await this._onAttachmentUploaded({ attachmentData, composer, thread });
-                    if (attachment) {
-                        uploadedAttachments.push(attachment);
-                    }
+                    const attachment = this._onAttachmentUploaded({ attachmentData, composer, thread });
+                    attachments.push(attachment);
                 } catch (e) {
                     if (e.name !== 'AbortError') {
                         throw e;
                     }
                 }
             }
-            for (const data of uploadedAttachments) {
-                const attachment = (composer || thread).messaging.models['Attachment'].insert(data);
-                attachments.push(attachment);
-            }
             if (activity && activity.exists()) {
                 await activity.markAsDone({ attachments });
             }
             if (webRecord) {
-                webRecord.model.load({ offset: webRecord.model.root.offset });
+                webRecord.model.load({ resId: thread.id });
             }
             if (chatter && chatter.exists() && chatter.shouldReloadParentFromFileChanged) {
                 chatter.reloadParentView();

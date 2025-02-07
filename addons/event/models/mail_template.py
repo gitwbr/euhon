@@ -20,10 +20,3 @@ class MailTemplate(models.Model):
         if self.env.context.get('filter_template_on_event'):
             args = expression.AND([[('model', '=', 'event.registration')], args])
         return super(MailTemplate, self)._name_search(name, args, operator, limit, name_get_uid)
-
-    def unlink(self):
-        res = super().unlink()
-        domain = ('template_ref', 'in', [f"{template._name},{template.id}" for template in self])
-        self.env['event.mail'].sudo().search([domain]).unlink()
-        self.env['event.type.mail'].sudo().search([domain]).unlink()
-        return res

@@ -7,9 +7,7 @@
 # F Hariri <fhari1234@gmail.com>, 2023
 # Hamed Mohammadi <hamed@dehongi.com>, 2023
 # Martin Trigaux, 2023
-# Abbas Ebadian, 2024
-# Hanna Kheradroosta, 2024
-# Mostafa Barmshory <mostafa.barmshory@gmail.com>, 2024
+# Hanna Kheradroosta, 2023
 # 
 msgid ""
 msgstr ""
@@ -17,7 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-10 10:23+0000\n"
 "PO-Revision-Date: 2022-09-22 05:45+0000\n"
-"Last-Translator: Mostafa Barmshory <mostafa.barmshory@gmail.com>, 2024\n"
+"Last-Translator: Hanna Kheradroosta, 2023\n"
 "Language-Team: Persian (https://app.transifex.com/odoo/teams/41243/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,7 +26,7 @@ msgstr ""
 #. module: event_booth
 #: model_terms:ir.ui.view,arch_db:event_booth.event_booth_booked_template
 msgid "<b>Renter Email</b>:"
-msgstr "<b>ایمیل مستأجر</b>​​:"
+msgstr ""
 
 #. module: event_booth
 #: model_terms:ir.ui.view,arch_db:event_booth.event_booth_booked_template
@@ -38,17 +36,17 @@ msgstr ""
 #. module: event_booth
 #: model_terms:ir.ui.view,arch_db:event_booth.event_booth_booked_template
 msgid "<b>Renter Name</b>:"
-msgstr "<b>نام اجاره‌کننده</b>:"
+msgstr ""
 
 #. module: event_booth
 #: model_terms:ir.ui.view,arch_db:event_booth.event_booth_booked_template
 msgid "<b>Renter Phone</b>:"
-msgstr "<b>تلفن اجاره‌کننده</b>:"
+msgstr ""
 
 #. module: event_booth
 #: model_terms:ir.ui.view,arch_db:event_booth.event_event_view_form
 msgid "<span class=\"o_stat_text\">Booths</span>"
-msgstr "<span class=\"o_stat_text\">غرفه‌ها</span>"
+msgstr ""
 
 #. module: event_booth
 #: model_terms:event.booth.category,description:event_booth.event_booth_category_premium
@@ -66,71 +64,56 @@ msgstr ""
 #: model_terms:event.booth.category,description:event_booth.event_booth_category_standard
 msgid "<span>1 Branded Booth</span>"
 msgstr ""
-"```html\n"
-"<span> 1 غرفه با نام تجاری </span>\n"
-"```"
 
 #. module: event_booth
 #: model_terms:event.booth.category,description:event_booth.event_booth_category_premium
 #: model_terms:event.booth.category,description:event_booth.event_booth_category_standard
 msgid "<span>1 desk</span>"
 msgstr ""
-"```html\n"
-"<span>۱ میز</span>\n"
-"```"
 
 #. module: event_booth
 #: model_terms:event.booth.category,description:event_booth.event_booth_category_premium
 #: model_terms:event.booth.category,description:event_booth.event_booth_category_vip
 msgid "<span>10 + 1 passes</span>"
-msgstr "<span>۱۱ + ۱۰ گذرها</span>"
+msgstr ""
 
 #. module: event_booth
 #: model_terms:event.booth.category,description:event_booth.event_booth_category_vip
 msgid "<span>100 words description on website</span>"
 msgstr ""
-"```html\n"
-"<span>۱۰۰ کلمه توضیح در وب‌سایت</span>\n"
-"```"
 
 #. module: event_booth
 #: model_terms:event.booth.category,description:event_booth.event_booth_category_vip
 msgid "<span>2 Branded Booth</span>"
-msgstr "<span>۲ غرفه برنددار</span>"
+msgstr ""
 
 #. module: event_booth
 #: model_terms:event.booth.category,description:event_booth.event_booth_category_vip
 msgid "<span>2 desks</span>"
 msgstr ""
-"```html\n"
-"<span>۲ میز</span>\n"
-"```"
 
 #. module: event_booth
 #: model_terms:event.booth.category,description:event_booth.event_booth_category_vip
 msgid "<span>2 x 46\" display screens</span>"
-msgstr "<span>۲ صفحه نمایش ۴۶ اینچی</span>"
+msgstr ""
 
 #. module: event_booth
 #: model_terms:event.booth.category,description:event_booth.event_booth_category_premium
 #: model_terms:event.booth.category,description:event_booth.event_booth_category_standard
 msgid "<span>46\" display screen</span>"
-msgstr "<span>صفحه نمایش 46 اینچی</span>"
+msgstr ""
 
 #. module: event_booth
 #: model_terms:event.booth.category,description:event_booth.event_booth_category_premium
 msgid "<span>50 words description on website</span>"
 msgstr ""
-"```html\n"
-"<span>توضیحات ۵۰ کلمه‌ای در وبسایت</span>\n"
-"```"
 
 #. module: event_booth
 #: model_terms:event.booth.category,description:event_booth.event_booth_category_premium
 #: model_terms:event.booth.category,description:event_booth.event_booth_category_standard
 #: model_terms:event.booth.category,description:event_booth.event_booth_category_vip
 msgid "<span>Logo &amp; link on website</span>"
-msgstr "<span>لوگو و لینک در وب‌سایت</span>"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_booth__message_needaction
@@ -182,40 +165,40 @@ msgstr "در دسترس"
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_event__event_booth_count_available
 msgid "Available Booths"
-msgstr "غرفه‌های موجود"
+msgstr ""
 
 #. module: event_booth
 #: model_terms:ir.ui.view,arch_db:event_booth.event_booth_booked_template
 msgid "Booth"
-msgstr "غرفه"
+msgstr ""
 
 #. module: event_booth
 #: model:event.booth,name:event_booth.event_booth_00_event_7
 #: model:event.booth,name:event_booth.event_booth_0_event_0
 msgid "Booth A1"
-msgstr "A1 غرفه"
+msgstr ""
 
 #. module: event_booth
 #: model:event.booth,name:event_booth.event_booth_01_event_7
 #: model:event.booth,name:event_booth.event_booth_1_event_0
 msgid "Booth A2"
-msgstr "A2 غرفه"
+msgstr ""
 
 #. module: event_booth
 #: model:event.booth,name:event_booth.event_booth_02_event_7
 #: model:event.booth,name:event_booth.event_booth_2_event_0
 msgid "Booth A3"
-msgstr "بخش A3"
+msgstr ""
 
 #. module: event_booth
 #: model:mail.message.subtype,name:event_booth.mt_event_booth_booked
 msgid "Booth Booked"
-msgstr "بوث رزرو شده"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.ui.menu,name:event_booth.menu_event_booth_category
 msgid "Booth Categories"
-msgstr "دسته‌بندی غرفه‌ها"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.actions.act_window,name:event_booth.event_booth_category_action
@@ -223,18 +206,18 @@ msgstr "دسته‌بندی غرفه‌ها"
 #: model:ir.model.fields,field_description:event_booth.field_event_type_booth__booth_category_id
 #: model_terms:ir.ui.view,arch_db:event_booth.event_booth_category_view_form
 msgid "Booth Category"
-msgstr "دسته‌بندی غرفه‌ها"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,help:event_booth.field_event_event__event_booth_category_available_ids
 msgid "Booth Category for which booths are still available. Used in frontend"
-msgstr "غرفه‌هایی که هنوز دسته‌بندی نشده‌اند. مورد استفاده در فرانت اند"
+msgstr ""
 
 #. module: event_booth
 #: model_terms:ir.ui.view,arch_db:event_booth.event_booth_category_view_form
 #: model_terms:ir.ui.view,arch_db:event_booth.event_type_booth_view_search
 msgid "Booth Type"
-msgstr "نوع غرفه"
+msgstr ""
 
 #. module: event_booth
 #: model_terms:ir.actions.act_window,help:event_booth.event_booth_category_action
@@ -242,8 +225,6 @@ msgid ""
 "Booth categories are used to represent the different types of booths you "
 "rent (Premium Booth, Table and Chairs, ...)"
 msgstr ""
-"دسته‌بندی‌های غرفه برای نمایش انواع مختلف غرفه‌هایی که اجاره می‌دهید استفاده"
-" می‌شود (غرفه پریمیوم، میز و صندلی، ...)"
 
 #. module: event_booth
 #: model:ir.actions.act_window,name:event_booth.event_booth_action
@@ -256,30 +237,30 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:event_booth.event_booth_view_tree_from_event
 #: model_terms:ir.ui.view,arch_db:event_booth.event_type_view_form
 msgid "Booths"
-msgstr "غرفه‌ها"
+msgstr ""
 
 #. module: event_booth
 #: model_terms:ir.actions.act_window,help:event_booth.event_booth_action
 #: model_terms:ir.actions.act_window,help:event_booth.event_booth_action_from_event
 #: model_terms:ir.actions.act_window,help:event_booth.event_type_booth_action
 msgid "Booths are the physical stands that you rent during your event."
-msgstr "غرفه‌ها نقاط فیزیکی هستند که شما در طول رویداد خود اجاره می‌کنید."
+msgstr ""
 
 #. module: event_booth
 #: model_terms:ir.actions.act_window,help:event_booth.event_booth_action
 #: model_terms:ir.actions.act_window,help:event_booth.event_booth_action_from_event
 msgid "Create a Booth"
-msgstr "ایجاد غرفه"
+msgstr ""
 
 #. module: event_booth
 #: model_terms:ir.actions.act_window,help:event_booth.event_booth_category_action
 msgid "Create a Booth Category"
-msgstr "ایجاد دسته‌بندی غرفه"
+msgstr ""
 
 #. module: event_booth
 #: model_terms:ir.actions.act_window,help:event_booth.event_type_booth_action
 msgid "Create a Type Booth"
-msgstr "ایجاد یک نوع غرفه"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_booth__create_uid
@@ -319,23 +300,23 @@ msgstr "رویداد"
 #: model:ir.model,name:event_booth.model_event_booth
 #: model_terms:ir.ui.view,arch_db:event_booth.event_booth_view_search
 msgid "Event Booth"
-msgstr "غرفه‌های رویداد"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model,name:event_booth.model_event_booth_category
 #: model:ir.model.fields,field_description:event_booth.field_event_event__event_booth_category_ids
 msgid "Event Booth Category"
-msgstr "دسته‌بندی غرفه‌های رویداد"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_event__event_booth_category_available_ids
 msgid "Event Booth Category Available"
-msgstr "دسته‌بندی‌‌های موجود غرفه‌های رویداد"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model,name:event_booth.model_event_type_booth
 msgid "Event Booth Template"
-msgstr "قالب غرفه‌های رویداد"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_booth__event_type_id
@@ -346,25 +327,25 @@ msgstr "طبقه بندی رویداد"
 #. module: event_booth
 #: model:ir.model,name:event_booth.model_event_type
 msgid "Event Template"
-msgstr "الگوی رویداد"
+msgstr ""
 
 #. module: event_booth
 #: model_terms:ir.ui.view,arch_db:event_booth.event_type_booth_view_form_from_type
 msgid "Event Type Booth"
-msgstr "نوع غرفه رویداد"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.actions.act_window,name:event_booth.event_type_booth_action
 #: model_terms:ir.ui.view,arch_db:event_booth.event_type_booth_view_search
 #: model_terms:ir.ui.view,arch_db:event_booth.event_type_booth_view_tree_from_type
 msgid "Event Type Booths"
-msgstr "غرفه‌های نوع رویداد"
+msgstr ""
 
 #. module: event_booth
 #: model_terms:ir.ui.view,arch_db:event_booth.event_booth_view_graph
 #: model_terms:ir.ui.view,arch_db:event_booth.event_booth_view_pivot
 msgid "Event booth"
-msgstr "غرفه رویداد"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_booth__message_follower_ids
@@ -384,17 +365,17 @@ msgstr "آیکون فونت عالی به عبارتی fa-tasks"
 #. module: event_booth
 #: model:event.booth,name:event_booth.event_booth_20_event_7
 msgid "Gold Booth 1"
-msgstr "طلایی غرفه ۱"
+msgstr ""
 
 #. module: event_booth
 #: model:event.booth,name:event_booth.event_booth_21_event_7
 msgid "Gold Booth 2"
-msgstr "غرفه طلایی ۲"
+msgstr ""
 
 #. module: event_booth
 #: model:event.booth,name:event_booth.event_booth_22_event_7
 msgid "Gold Booth 3"
-msgstr "غرفه طلایی ۳"
+msgstr ""
 
 #. module: event_booth
 #: model_terms:ir.ui.view,arch_db:event_booth.event_booth_view_search
@@ -464,7 +445,7 @@ msgstr "تصویر 512"
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_booth__is_available
 msgid "Is Available"
-msgstr "موجود است"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_booth__message_is_follower
@@ -555,7 +536,7 @@ msgstr "تعداد خطاها"
 #. module: event_booth
 #: model:ir.model.fields,help:event_booth.field_event_booth__message_needaction_counter
 msgid "Number of messages requiring action"
-msgstr "تعداد پیام هایی که نیاز به اقدام دارند"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,help:event_booth.field_event_booth__message_has_error_counter
@@ -565,24 +546,24 @@ msgstr "تعداد پیامهای با خطای تحویل"
 #. module: event_booth
 #: model:event.booth,name:event_booth.event_booth_10_event_7
 msgid "OpenWood Demonstrator 1"
-msgstr "اوپن‌وود نمایش‌دهنده ۱"
+msgstr ""
 
 #. module: event_booth
 #: model:event.booth,name:event_booth.event_booth_11_event_7
 msgid "OpenWood Demonstrator 2"
-msgstr "نمایش‌دهنده OpenWood 2"
+msgstr ""
 
 #. module: event_booth
 #: model:event.booth,name:event_booth.event_booth_12_event_7
 msgid "OpenWood Demonstrator 3"
-msgstr "دمو OpenWood 3"
+msgstr ""
 
 #. module: event_booth
 #: model_terms:ir.ui.view,arch_db:event_booth.event_booth_view_form_from_event
 #: model_terms:ir.ui.view,arch_db:event_booth.event_booth_view_form_quick_create
 #: model_terms:ir.ui.view,arch_db:event_booth.event_type_booth_view_form_from_type
 msgid "Pick a Booth Category..."
-msgstr "یک دسته‌بندی غرفه انتخاب کنید..."
+msgstr ""
 
 #. module: event_booth
 #: model_terms:event.booth.category,description:event_booth.event_booth_category_premium
@@ -592,35 +573,35 @@ msgstr ""
 #. module: event_booth
 #: model:event.booth.category,name:event_booth.event_booth_category_premium
 msgid "Premium Booth"
-msgstr "غرفه برتر"
+msgstr ""
 
 #. module: event_booth
 #: model:event.booth,name:event_booth.event_booth_3_event_0
 msgid "Premium Booth A4"
-msgstr "غرفه درجه یک A4"
+msgstr ""
 
 #. module: event_booth
 #: model:event.booth,name:event_booth.event_booth_2_event_2
 #: model:event.type.booth,name:event_booth.event_type_booth_demo_conference_2
 msgid "Premium Showbooth 1"
-msgstr "پرمیوم شو بوث ۱"
+msgstr ""
 
 #. module: event_booth
 #: model:event.booth,name:event_booth.event_booth_3_event_2
 #: model:event.type.booth,name:event_booth.event_type_booth_demo_conference_3
 msgid "Premium Showbooth 2"
-msgstr "<p>نمایشگاه ویژه ۲</p>"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_booth__partner_id
 msgid "Renter"
-msgstr "اجاره‌کننده"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_booth__contact_email
 #: model_terms:ir.ui.view,arch_db:event_booth.event_booth_view_search
 msgid "Renter Email"
-msgstr "ایمیل اجاره‌کننده"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_booth__contact_mobile
@@ -631,12 +612,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:event_booth.field_event_booth__contact_name
 #: model_terms:ir.ui.view,arch_db:event_booth.event_booth_view_search
 msgid "Renter Name"
-msgstr "نام مستاجر"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_booth__contact_phone
 msgid "Renter Phone"
-msgstr "تلفن مستاجر"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_booth__activity_user_id
@@ -657,13 +638,13 @@ msgstr "دنباله"
 #: model:event.booth,name:event_booth.event_booth_0_event_2
 #: model:event.type.booth,name:event_booth.event_type_booth_demo_conference_0
 msgid "Showbooth 1"
-msgstr "شو بوث ۱"
+msgstr ""
 
 #. module: event_booth
 #: model:event.booth,name:event_booth.event_booth_1_event_2
 #: model:event.type.booth,name:event_booth.event_type_booth_demo_conference_1
 msgid "Showbooth 2"
-msgstr "نمایش غرفه 2"
+msgstr ""
 
 #. module: event_booth
 #: model_terms:event.booth.category,description:event_booth.event_booth_category_standard
@@ -673,7 +654,7 @@ msgstr "استاندارد"
 #. module: event_booth
 #: model:event.booth.category,name:event_booth.event_booth_category_standard
 msgid "Standard Booth"
-msgstr "غرفه استاندارد"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_booth__state
@@ -696,7 +677,7 @@ msgstr ""
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_event__event_booth_count
 msgid "Total Booths"
-msgstr "تعداد غرفه‌ها"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,help:event_booth.field_event_booth__activity_exception_decoration
@@ -707,7 +688,7 @@ msgstr "نوع فعالیت استثنایی برای رکورد."
 #: model:ir.model.fields.selection,name:event_booth.selection__event_booth__state__unavailable
 #: model_terms:ir.ui.view,arch_db:event_booth.event_booth_view_search
 msgid "Unavailable"
-msgstr "ناموجود"
+msgstr ""
 
 #. module: event_booth
 #: model_terms:event.booth.category,description:event_booth.event_booth_category_vip
@@ -717,12 +698,12 @@ msgstr ""
 #. module: event_booth
 #: model:event.booth.category,name:event_booth.event_booth_category_vip
 msgid "VIP Booth"
-msgstr "غرفه VIP"
+msgstr ""
 
 #. module: event_booth
 #: model:event.booth,name:event_booth.event_booth_4_event_0
 msgid "VIP Booth A5"
-msgstr "A5 مجموعه وی‌آی‌پی"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_booth__website_message_ids
@@ -737,16 +718,16 @@ msgstr "تاریخچه ارتباط با وبسایت"
 #. module: event_booth
 #: model_terms:ir.ui.view,arch_db:event_booth.event_booth_category_view_form
 msgid "e.g. \"Those stands will be place near the entrance and...\""
-msgstr "به عنوان نمونه: \"این غرفه‌ها در نزدیکی ورودی قرار خواهند گرفت و...\""
+msgstr ""
 
 #. module: event_booth
 #: model_terms:ir.ui.view,arch_db:event_booth.event_booth_view_form_from_event
 #: model_terms:ir.ui.view,arch_db:event_booth.event_booth_view_form_quick_create
 #: model_terms:ir.ui.view,arch_db:event_booth.event_type_booth_view_form_from_type
 msgid "e.g. First Booth Alley 1"
-msgstr "به عنوان مثال اولین غرفه کوچه 1"
+msgstr ""
 
 #. module: event_booth
 #: model_terms:ir.ui.view,arch_db:event_booth.event_booth_category_view_form
 msgid "e.g. Premium Booth"
-msgstr "مثال: غرفه ویژه"
+msgstr ""

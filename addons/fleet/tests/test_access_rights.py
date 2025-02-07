@@ -15,9 +15,8 @@ class TestFleet(common.TransactionCase):
             "brand_id": brand.id,
             "name": "A3",
         })
-        car = self.env["fleet.vehicle"].with_user(manager).create({
+        self.env["fleet.vehicle"].with_user(manager).create({
             "model_id": model.id,
             "driver_id": user.partner_id.id,
             "plan_to_change_car": False
         })
-        car.with_user(manager).plan_to_change_car = True

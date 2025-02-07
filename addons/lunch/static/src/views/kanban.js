@@ -19,17 +19,7 @@ export class LunchKanbanRecord extends KanbanRecord {
     }
 }
 
-export class LunchKanbanRenderer extends KanbanRenderer {
-    getGroupsOrRecords() {
-        const {locationId} = this.env.searchModel.lunchState;
-        if (!locationId) {
-            return [];
-        } else {
-            return super.getGroupsOrRecords(...arguments);
-        }
-    }
-}
-
+export class LunchKanbanRenderer extends KanbanRenderer {}
 patch(LunchKanbanRenderer.prototype, 'lunch_kanban_renderer_mixin', LunchRendererMixin);
 
 LunchKanbanRenderer.template = 'lunch.KanbanRenderer';

@@ -78,14 +78,9 @@ class AccountMove(models.Model):
         # on expo invoice you can mix services and products
         expo_invoice = self.l10n_latam_document_type_id.code in ['19', '20', '21']
 
-        # WSFEX 1668 - If Expo invoice and we have a "IVA Liberado – Ley Nº 19.640" (Zona Franca) partner
-        # then AFIP concept to use should be type "Others (4)"
-        is_zona_franca = self.partner_id.l10n_ar_afip_responsibility_type_id == self.env.ref("l10n_ar.res_IVA_LIB")
         # Default value "product"
         afip_concept = '1'
-        if expo_invoice and is_zona_franca:
-            afip_concept = '4'
-        elif product_types == service:
+        if product_types == service:
             afip_concept = '2'
         elif product_types - consumable and product_types - service and not expo_invoice:
             afip_concept = '3'
@@ -95,8 +90,8 @@ class AccountMove(models.Model):
     def _get_l10n_ar_codes_used_for_inv_and_ref(self):
         """ List of document types that can be used as an invoice and refund. This list can be increased once needed
         and demonstrated. As far as we've checked document types of wsfev1 don't allow negative amounts so, for example
-        document 61 could not be used as refunds. """
-        return ['99', '186', '188', '189', '60']
+        document 60 and 61 could not be used as refunds. """
+        return ['99', '186', '188', '189']
 
     def _get_l10n_latam_documents_domain(self):
         self.ensure_one()
@@ -149,12 +144,8 @@ class AccountMove(models.Model):
             if rec.company_id.currency_id == rec.currency_id:
                 rec.l10n_ar_currency_rate = 1.0
             elif not rec.l10n_ar_currency_rate:
-                rec.l10n_ar_currency_rate = self.env['res.currency']._get_conversion_rate(
-                    from_currency=rec.currency_id,
-                    to_currency=rec.company_id.currency_id,
-                    company=rec.company_id,
-                    date=rec.invoice_date,
-                )
+                rec.l10n_ar_currency_rate = rec.currency_id._convert(
+                    1.0, rec.company_id.currency_id, rec.company_id, rec.date, round=False)
 
     @api.onchange('partner_id')
     def _onchange_afip_responsibility(self):
@@ -213,7 +204,7 @@ class AccountMove(models.Model):
             })
         return super()._reverse_moves(default_values_list=default_values_list, cancel=cancel)
 
-    @api.onchange('l10n_latam_document_type_id', 'l10n_latam_document_number', 'partner_id')
+    @api.onchange('l10n_latam_document_type_id', 'l10n_latam_document_number')
     def _inverse_l10n_latam_document_number(self):
         super()._inverse_l10n_latam_document_number()
 

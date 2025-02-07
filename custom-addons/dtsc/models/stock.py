@@ -182,19 +182,34 @@ class StockQuant(models.Model):
                 break
         return reserved_quants
     
-    
+    def action_set_inventory_quantity_to_zero(self):
+        # print("action_set_inventory_quantity_to_zero")
+        self.env.cr.execute("""
+        UPDATE stock_quant
+        SET inventory_quantity = NULL
+        WHERE id = %s
+        """, (self.id,))
+        self.inventory_diff_quantity = 0
+        self.inventory_quantity_set = False
     
     
     @api.depends('inventory_quantity','stock_date')
     def _compute_inventory_diff_quantity(self):
-        for quant in self:            
-            if quant.inventory_quantity :
-                if quant.stock_date == datetime.today().strftime('%Y-%m-%d'):
-                    quant.inventory_diff_quantity = quant.inventory_quantity - quant.quantity
-                else:
-                     quant.inventory_diff_quantity = quant.inventory_quantity - quant.stock_date_num
+        for quant in self: 
+            if quant.inventory_quantity is None:
+                quant.inventory_diff_quantity = False  
+                continue
+        
+            # if quant.inventory_quantity :
+            if not self.env.context.get('default_is_set_date', True):  
+                quant.stock_date = fields.Date.today()
+        
+            if quant.stock_date == datetime.today().strftime('%Y-%m-%d'):
+                quant.inventory_diff_quantity = quant.inventory_quantity - quant.quantity
             else:
-                quant.inventory_diff_quantity = 0
+                quant.inventory_diff_quantity = quant.inventory_quantity - quant.stock_date_num
+            # else:
+                # quant.inventory_diff_quantity = 0
     
     @api.depends('quantity')
     def _compute_average_price(self):
@@ -291,6 +306,22 @@ class StockQuant(models.Model):
             else: 
                 record.lastmodifydate = None
     
+    def _search_on_hand(self, operator, value):
+        """Handle the "on_hand" filter, indirectly calling `_get_domain_locations`."""
+        if operator not in ['=', '!='] or not isinstance(value, bool):
+            raise UserError(_('Operation not supported'))
+        domain_loc = self.env['product.product']._get_domain_locations()[0]
+        #bryant add
+        internal_locations = self.env['stock.location'].search([('usage', '=', 'internal')])
+        domain_loc = [('location_id', 'in', internal_locations.ids)]
+        # domain_loc = [('location_id', 'in', [8, 20])]
+        #bryant add
+        quant_query = self.env['stock.quant']._search(domain_loc)
+        if (operator == '!=' and value is True) or (operator == '=' and value is False):
+            domain_operator = 'not in'
+        else:
+            domain_operator = 'in'
+        return [('id', domain_operator, quant_query)]
 
     
     def _get_inventory_move_values(self, qty, location_id, location_dest_id, out=False, date=False):
@@ -302,7 +333,8 @@ class StockQuant(models.Model):
 
         # 使用传入的日期，如果未传入，则保持原行为
         move_date = date or fields.Datetime.now()
-
+        # print("---------------------")
+        # print(move_date)
         return {
             'name': self.env.context.get('inventory_name') or name,
             'product_id': self.product_id.id,
@@ -335,11 +367,13 @@ class StockQuant(models.Model):
         move_vals = []
         past_date = ""
         for quant in self:
-            print(quant.product_id.name)
-            print(quant.stock_date)
+            if not self.env.context.get('default_is_set_date', True):  
+                quant.stock_date = fields.Date.today()
             #如果是盤過去的庫存走這裏
-            if quant.stock_date != datetime.today().strftime('%Y-%m-%d'):
-                # quant.action_apply_inventory_with_past_date(quant.stock_date)
+            print(quant.stock_date.strftime('%Y-%m-%d'))
+            print(datetime.today().strftime('%Y-%m-%d'))
+            if quant.stock_date.strftime('%Y-%m-%d') != datetime.today().strftime('%Y-%m-%d'):
+                print("11111111111111")
                 past_date = quant.stock_date
                 rounding = quant.product_uom_id.rounding
                 # 计算需要调整的库存差异
@@ -380,6 +414,8 @@ class StockQuant(models.Model):
                     products_tracked_without_lot.append(quant.product_id.id)
         
         if all_past_inventory:
+            # print("all_past_inventory")
+            # past_date = datetime.today()
             moves = self.env['stock.move'].with_context(inventory_mode=False).create(move_vals)
             moves._action_done()
             
@@ -390,12 +426,19 @@ class StockQuant(models.Model):
             # 更新库存盘点日期和当前状态
             self.location_id.write({'last_inventory_date': past_date})
             self.write({
-                'inventory_quantity': 0,
-                'user_id': False,
+                'inventory_quantity': False,
+                'user_id': False,                
+                'inventory_quantity_set': False,
                 'inventory_diff_quantity': 0
             })
+            self.env.cr.execute("""
+                UPDATE stock_quant
+                SET inventory_quantity = NULL
+                WHERE id IN %s
+            """, (tuple(self.ids),))
             return
-        
+            
+        # print("out all_past_inventory")
         # for some reason if multi-record, env.context doesn't pass to wizards...
         ctx = dict(self.env.context or {})
         ctx['default_quant_ids'] = self.ids
@@ -424,6 +467,58 @@ class StockQuant(models.Model):
             }
         self._apply_inventory()
         self.inventory_quantity_set = False
+        
+    @api.model_create_multi
+    def create(self, vals_list):
+        """ Override to handle the "inventory mode" and create a quant as
+        superuser the conditions are met.
+        """
+        quants = self.env['stock.quant']
+        is_inventory_mode = self._is_inventory_mode()
+        allowed_fields = self._get_inventory_fields_create()
+        for vals in vals_list:
+            vals.pop('stock_date',None)
+            vals.pop('is_set_date',None)
+            if is_inventory_mode and any(f in vals for f in ['inventory_quantity', 'inventory_quantity_auto_apply']):
+                if any(field for field in vals.keys() if field not in allowed_fields):
+                    _logger = logging.getLogger(__name__)
+                    _logger.info(f"is_inventory_mode: {is_inventory_mode}")
+                    _logger.info(f"vals: {vals}")
+                    _logger.info(f"allowed_fields: {allowed_fields}")
+                    raise UserError(_("Quant's creation is restricted, you can't do this operation."))
+                auto_apply = 'inventory_quantity_auto_apply' in vals
+                inventory_quantity = vals.pop('inventory_quantity_auto_apply', False) or vals.pop(
+                    'inventory_quantity', False) or 0
+                # Create an empty quant or write on a similar one.
+                product = self.env['product.product'].browse(vals['product_id'])
+                location = self.env['stock.location'].browse(vals['location_id'])
+                lot_id = self.env['stock.lot'].browse(vals.get('lot_id'))
+                package_id = self.env['stock.quant.package'].browse(vals.get('package_id'))
+                owner_id = self.env['res.partner'].browse(vals.get('owner_id'))
+                quant = self.env['stock.quant']
+                if not self.env.context.get('import_file'):
+                    # Merge quants later, to make sure one line = one record during batch import
+                    quant = self._gather(product, location, lot_id=lot_id, package_id=package_id, owner_id=owner_id, strict=True)
+                if lot_id:
+                    quant = quant.filtered(lambda q: q.lot_id)
+                if quant:
+                    quant = quant[0].sudo()
+                else:
+                    quant = self.sudo().create(vals)
+                if auto_apply:
+                    quant.write({'inventory_quantity_auto_apply': inventory_quantity})
+                else:
+                    # Set the `inventory_quantity` field to create the necessary move.
+                    quant.inventory_quantity = inventory_quantity
+                    quant.user_id = vals.get('user_id', self.env.user.id)
+                    quant.inventory_date = fields.Date.today()
+                quants |= quant
+            else:
+                quant = super().create(vals)
+                quants |= quant
+                if self._is_inventory_mode():
+                    quant._check_company()
+        return quants
 
 class Productproduct(models.Model):
     _inherit = "product.product"

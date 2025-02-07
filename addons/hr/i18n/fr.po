@@ -7,17 +7,15 @@
 # Geoffrey_GMF <gmf@odoo.com>, 2022
 # Cécile Collart <cco@odoo.com>, 2022
 # Martin Trigaux, 2023
-# Wil Odoo, 2024
-# Jolien De Paepe, 2024
-# Manon Rondou, 2024
+# Jolien De Paepe, 2023
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-06 13:31+0000\n"
+"POT-Creation-Date: 2023-05-23 08:22+0000\n"
 "PO-Revision-Date: 2022-09-22 05:46+0000\n"
-"Last-Translator: Manon Rondou, 2024\n"
+"Last-Translator: Jolien De Paepe, 2023\n"
 "Language-Team: French (https://app.transifex.com/odoo/teams/41243/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,7 +27,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:hr.field_res_company__hr_presence_control_email_amount
 #: model:ir.model.fields,field_description:hr.field_res_config_settings__hr_presence_control_email_amount
 msgid "# emails to send"
-msgstr "# e-mails à envoyer"
+msgstr "# emails à envoyer"
 
 #. module: hr
 #. odoo-python
@@ -257,7 +255,7 @@ msgid ""
 "<span class=\"flex-shrink-0 ml8 me-2\">Minimum number of emails to "
 "send</span>"
 msgstr ""
-"<span class=\"flex-shrink-0 ml8 me-2\">Nombre minimum d'e-mails à "
+"<span class=\"flex-shrink-0 ml8 me-2\">Nombre minimum d'emails à "
 "envoyer</span>"
 
 #. module: hr
@@ -550,8 +548,8 @@ msgid ""
 "All the emails and documents sent to this contact will be translated in this"
 " language."
 msgstr ""
-"Tous les e-mails et documents envoyés à ce contact seront traduits dans "
-"cette langue."
+"Tous les emails et documents envoyés à ce contact seront traduits dans cette"
+" langue."
 
 #. module: hr
 #: model_terms:ir.ui.view,arch_db:hr.res_config_settings_view_form
@@ -751,7 +749,7 @@ msgstr "Sur base des présences"
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_res_config_settings__hr_presence_control_email
 msgid "Based on number of emails sent"
-msgstr "Sur base du nombre de e-mails envoyés"
+msgstr "Sur base du nombre de emails envoyés"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_res_config_settings__hr_presence_control_login
@@ -984,16 +982,6 @@ msgstr "Créer un utilisateur"
 #: model_terms:ir.actions.act_window,help:hr.hr_department_tree_action
 msgid "Create a new department"
 msgstr "Créer un nouveau département"
-
-#. module: hr
-#: model_terms:ir.actions.act_window,help:hr.hr_contract_type_action
-msgid "Create a new employment type"
-msgstr "Créer un nouveau type d'emploi"
-
-#. module: hr
-#: model_terms:ir.actions.act_window,help:hr.hr_work_location_action
-msgid "Create a new work location"
-msgstr "Créer un nouveau lieu de travail"
 
 #. module: hr
 #: model_terms:hr.job,website_description:hr.job_ceo
@@ -1245,7 +1233,7 @@ msgstr "Éducation"
 #: model_terms:ir.ui.view,arch_db:hr.res_users_view_form_profile
 #: model_terms:ir.ui.view,arch_db:hr.view_employee_form
 msgid "Email"
-msgstr "E-mail"
+msgstr "Email"
 
 #. module: hr
 #: model:ir.model,name:hr.model_mail_alias
@@ -1765,7 +1753,7 @@ msgstr "Image 512"
 #: code:addons/hr/models/hr_employee.py:0
 #, python-format
 msgid "Import Template for Employees"
-msgstr "Modèle d'importation pour employés "
+msgstr "Import de modèles pour employés "
 
 #. module: hr
 #: model:hr.contract.type,name:hr.contract_type_interim
@@ -1806,13 +1794,13 @@ msgstr "Description du poste"
 #: model_terms:ir.ui.view,arch_db:hr.view_employee_form
 #: model_terms:ir.ui.view,arch_db:hr.view_job_filter
 msgid "Job Position"
-msgstr "Poste"
+msgstr "Poste de travail"
 
 #. module: hr
 #: model:ir.actions.act_window,name:hr.action_hr_job
 #: model:ir.ui.menu,name:hr.menu_view_hr_job
 msgid "Job Positions"
-msgstr "Postes"
+msgstr "Postes de travail"
 
 #. module: hr
 #: model_terms:ir.ui.view,arch_db:hr.view_hr_job_form
@@ -2511,7 +2499,7 @@ msgstr "Présence des employés"
 #. module: hr
 #: model_terms:ir.ui.view,arch_db:hr.res_config_settings_view_form
 msgid "Presence reporting screen, email and IP address control."
-msgstr "Écran de rapport de présence, contrôle d'adresse e-mail et IP."
+msgstr "Écran de rapport de présence, contrôle d'adresse email et IP."
 
 #. module: hr
 #: model:ir.model.fields.selection,name:hr.selection__hr_employee__hr_icon_display__presence_present
@@ -2560,7 +2548,7 @@ msgstr "Pays privé"
 #: model:ir.model.fields,field_description:hr.field_hr_employee__private_email
 #: model:ir.model.fields,field_description:hr.field_res_users__private_email
 msgid "Private Email"
-msgstr "Adresse e-mail privée"
+msgstr "Adresse email privée"
 
 #. module: hr
 #: model_terms:ir.ui.view,arch_db:hr.res_users_view_form_profile
@@ -3251,7 +3239,7 @@ msgstr "Permis de travail valide pour la Belgique"
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_employee__visa_expire
 #: model:ir.model.fields,field_description:hr.field_res_users__visa_expire
-msgid "Visa Expiration Date"
+msgid "Visa Expire Date"
 msgstr "Date d'expiration du visa"
 
 #. module: hr
@@ -3316,7 +3304,7 @@ msgid ""
 msgstr ""
 "D'un simple coup d’œil sur l'écran de l'employé d'Odoo, vous pouvez aisément"
 " trouver toutes les informations dont vous avez besoin sur chaque personne ;"
-" informations de contact, poste, disponibilité, etc."
+" informations de contact, poste de travail, disponibilité, etc."
 
 #. module: hr
 #: model_terms:ir.actions.act_window,help:hr.open_view_employee_list_my
@@ -3327,7 +3315,7 @@ msgid ""
 msgstr ""
 "D'un simple coup d'œil sur l'écran de l'employé d'Odoo, vous \n"
 "pouvez facilement trouver toutes les informations dont vous avez besoin pour chaque personne ; \n"
-"informations de contact, poste, disponibilité, etc."
+"informations de contact, poste de travail, disponibilité, etc."
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_employee__address_id
@@ -3351,7 +3339,7 @@ msgstr "Contact de travail"
 #: model:ir.model.fields,field_description:hr.field_hr_employee_public__work_email
 #: model:ir.model.fields,field_description:hr.field_res_users__work_email
 msgid "Work Email"
-msgstr "Adresse e-mail professionnelle"
+msgstr "Adresse email professionnelle"
 
 #. module: hr
 #: model_terms:ir.ui.view,arch_db:hr.hr_employee_public_view_form
@@ -3513,8 +3501,3 @@ msgstr "plan"
 #, python-format
 msgid "restricted to employees"
 msgstr "restreint aux employés"
-
-#. module: hr
-#: model:ir.model.fields,field_description:hr.field_hr_employee__work_permit_name
-msgid "work_permit_name"
-msgstr "work_permit_name"

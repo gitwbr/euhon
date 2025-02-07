@@ -6,17 +6,16 @@
 # Yenthe Van Ginneken <yenthespam@gmail.com>, 2022
 # Martin Trigaux, 2022
 # Gunther Clauwaert <gclauwae@hotmail.com>, 2022
-# Jolien De Paepe, 2024
-# Erwin van der Ploeg <erwin@odooexperts.nl>, 2024
-# Manon Rondou, 2024
+# Erwin van der Ploeg <erwin@odooexperts.nl>, 2023
+# Jolien De Paepe, 2023
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-06 13:31+0000\n"
+"POT-Creation-Date: 2023-04-14 05:51+0000\n"
 "PO-Revision-Date: 2022-09-22 05:53+0000\n"
-"Last-Translator: Manon Rondou, 2024\n"
+"Last-Translator: Jolien De Paepe, 2023\n"
 "Language-Team: Dutch (https://app.transifex.com/odoo/teams/41243/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,7 +36,7 @@ msgid ""
 msgstr ""
 " * Concept: de productieorder is nog niet bevestigd.\n"
 "* Bevestigd: de productieorder is bevestigd, de voorraadregels en de bestelling van de onderdelen worden getriggerd.\n"
-"* In behandeling: De productie is gestart (op de productieorder of op de werkorder).\n"
+"* In uitvoering: De productie is gestart (op de productieorder of op de werkorder).\n"
 "* Te sluiten: de productie is klaar, de productieorder moet worden gesloten.\n"
 "* Klaar: de productieorder is gesloten, de voorraadbewegingen zijn geboekt.\n"
 "* Geannuleerd: de productieorder is geannuleerd, kan niet meer worden bevestigd."
@@ -115,6 +114,11 @@ msgstr "%s Onderliggende productieorders"
 #, python-format
 msgid "%s cannot be deleted. Try to cancel them before."
 msgstr "%s kan niet verwijderd worden. Probeer deze eerst te annuleren."
+
+#. module: mrp
+#: model_terms:ir.ui.view,arch_db:mrp.view_immediate_production
+msgid "&gt;"
+msgstr "&gt;"
 
 #. module: mrp
 #: model:ir.actions.report,print_report_name:mrp.action_report_bom_structure
@@ -558,16 +562,6 @@ msgid "Add tag for the workcenter"
 msgstr "Label toevoegen voor de werkplaats"
 
 #. module: mrp
-#: model:ir.model.fields,help:mrp.field_mrp_workcenter_capacity__time_stop
-msgid "Additional time in minutes for the cleaning."
-msgstr "Bijkomende tijd in minuten voor het schoonmaken."
-
-#. module: mrp
-#: model:ir.model.fields,help:mrp.field_mrp_workcenter_capacity__time_start
-msgid "Additional time in minutes for the setup."
-msgstr "Bijkomende tijd in minuten voor het instellen."
-
-#. module: mrp
 #: model:res.groups,name:mrp.group_mrp_manager
 msgid "Administrator"
 msgstr "Beheerder"
@@ -745,8 +739,8 @@ msgid "Attachment URL"
 msgstr "URL bijlage"
 
 #. module: mrp
-#. odoo-javascript
 #. odoo-python
+#. odoo-javascript
 #: code:addons/mrp/models/mrp_bom.py:0
 #: code:addons/mrp/static/src/components/bom_overview_line/mrp_bom_overview_line.js:0
 #: code:addons/mrp/static/src/components/bom_overview_table/mrp_bom_overview_table.xml:0
@@ -1052,6 +1046,15 @@ msgid "BoM Type"
 msgstr "Stuklijstsoort"
 
 #. module: mrp
+#. odoo-python
+#: code:addons/mrp/models/mrp_bom.py:0
+#, python-format
+msgid "BoM line product %s should not be the same as BoM product."
+msgstr ""
+"Product van de stuklijstregel %s kan niet hetzelfde zijn als het "
+"stuklijstproduct."
+
+#. module: mrp
 #: model:product.template,name:mrp.product_product_computer_desk_bolt_product_template
 msgid "Bolt"
 msgstr "Bout"
@@ -1137,17 +1140,6 @@ msgstr "Geannuleerd"
 
 #. module: mrp
 #. odoo-python
-#: code:addons/mrp/models/product.py:0
-#, python-format
-msgid ""
-"Cannot compute days to prepare due to missing route info for at least 1 "
-"component or for the final product."
-msgstr ""
-"Kan het aantal voorbereidingsdagen niet berekenen vanwege ontbrekende route-"
-"informatie voor minstens 1 component of voor het eindproduct."
-
-#. module: mrp
-#. odoo-python
 #: code:addons/mrp/models/mrp_production.py:0
 #, python-format
 msgid "Cannot delete a manufacturing order in done state."
@@ -1168,7 +1160,7 @@ msgstr "Capaciteit moet een positief getal zijn."
 #. module: mrp
 #: model:ir.model.fields,field_description:mrp.field_mrp_workorder__qty_reported_from_previous_wo
 msgid "Carried Quantity"
-msgstr "Overgedragen hoeveelheid"
+msgstr "Vervoerde hoeveelheid"
 
 #. module: mrp
 #: model:ir.model.fields,field_description:mrp.field_mrp_bom__product_uom_category_id
@@ -1874,7 +1866,7 @@ msgstr "Documentatie"
 #: model_terms:ir.ui.view,arch_db:mrp.view_mrp_production_filter
 #: model_terms:ir.ui.view,arch_db:mrp.view_mrp_production_work_order_search
 msgid "Done"
-msgstr "Afgehandeld"
+msgstr "Gereed"
 
 #. module: mrp
 #: model_terms:ir.ui.view,arch_db:mrp.view_document_file_kanban_mrp
@@ -1938,12 +1930,12 @@ msgstr "Duur (minuten)"
 #. module: mrp
 #: model:ir.model.fields,field_description:mrp.field_mrp_routing_workcenter__time_mode
 msgid "Duration Computation"
-msgstr "Berekeningswijze"
+msgstr "Duur berekening"
 
 #. module: mrp
 #: model:ir.model.fields,field_description:mrp.field_mrp_workorder__duration_percent
 msgid "Duration Deviation (%)"
-msgstr "Tijdsduurverschil (%)"
+msgstr "Duur verschil (%)"
 
 #. module: mrp
 #: model:ir.model.fields,field_description:mrp.field_mrp_workorder__duration_unit
@@ -1958,12 +1950,12 @@ msgstr "Bewerken"
 #. module: mrp
 #: model:ir.model.fields,field_description:mrp.field_mrp_workcenter_productivity__loss_type
 msgid "Effectiveness"
-msgstr "Effectiviteit"
+msgstr "Doeltreffendheid"
 
 #. module: mrp
 #: model:ir.model.fields,field_description:mrp.field_mrp_workcenter_productivity_loss__loss_type
 msgid "Effectiveness Category"
-msgstr "Effectiviteitscategorie"
+msgstr "Doeltreffendheidscategorie"
 
 #. module: mrp
 #: model:ir.model.fields,field_description:mrp.field_mrp_production__date_finished
@@ -2113,7 +2105,7 @@ msgstr "Locatie eindproducten"
 #. module: mrp
 #: model:ir.model.fields,field_description:mrp.field_mrp_bom__consumption
 msgid "Flexible Consumption"
-msgstr "Flexibel verbruik"
+msgstr "Soepele consumptie"
 
 #. module: mrp
 #: model:ir.model.fields,field_description:mrp.field_mrp_bom__message_follower_ids
@@ -2479,7 +2471,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:mrp.view_mrp_production_work_order_search
 #: model_terms:ir.ui.view,arch_db:mrp.view_mrp_production_workorder_form_view_filter
 msgid "In Progress"
-msgstr "In behandeling"
+msgstr "In uitvoering"
 
 #. module: mrp
 #: model:ir.model.fields,field_description:mrp.field_mrp_document__index_content
@@ -2555,7 +2547,6 @@ msgstr "Het is al gedeblokkeerd."
 
 #. module: mrp
 #. odoo-python
-#: code:addons/mrp/models/mrp_workorder.py:0
 #: code:addons/mrp/models/mrp_workorder.py:0
 #, python-format
 msgid ""
@@ -3140,8 +3131,8 @@ msgid "Minimum Inventory Rule"
 msgstr "Minimale voorraadregel"
 
 #. module: mrp
-#. odoo-javascript
 #. odoo-python
+#. odoo-javascript
 #: code:addons/mrp/report/mrp_report_bom_structure.py:0
 #: code:addons/mrp/static/src/components/bom_overview_special_line/mrp_bom_overview_special_line.xml:0
 #: model_terms:ir.ui.view,arch_db:mrp.mrp_workcenter_view
@@ -3305,7 +3296,7 @@ msgstr "Geen werkorders te doen!"
 msgid ""
 "No workorder currently in progress. Click to mark work center as blocked."
 msgstr ""
-"Er zijn geen werkorders in behandeling. Klik om de werkplek om ze als "
+"Er zijn geen werkorders in uitvoering. Klik om de werkplek om ze als "
 "geblokkeerd te markeren."
 
 #. module: mrp
@@ -3496,8 +3487,8 @@ msgstr ""
 "                Elke bewerking wordt uitgevoerd op een specifieke afdeling en heeft een specifieke duur."
 
 #. module: mrp
-#. odoo-javascript
 #. odoo-python
+#. odoo-javascript
 #: code:addons/mrp/report/mrp_report_bom_structure.py:0
 #: code:addons/mrp/static/src/components/bom_overview_display_filter/mrp_bom_overview_display_filter.js:0
 #: code:addons/mrp/static/src/components/bom_overview_special_line/mrp_bom_overview_special_line.xml:0
@@ -4346,12 +4337,6 @@ msgid "Route"
 msgstr "Route"
 
 #. module: mrp
-#: code:addons/mrp/models/stock_quant.py:0
-#, python-format
-msgid "Return to Inventory"
-msgstr "Terug naar voorraad"
-
-#. module: mrp
 #: model:ir.model.fields,field_description:mrp.field_mrp_workcenter__routing_line_ids
 msgid "Routing Lines"
 msgstr "Routeregels"
@@ -5027,7 +5012,6 @@ msgstr ""
 "deze producten: %s."
 
 #. module: mrp
-#. odoo-python
 #: code:addons/mrp/models/stock_orderpoint.py:0
 #, python-format
 msgid "The following replenishment order has been generated"
@@ -5307,6 +5291,16 @@ msgstr "Tijdregistratie"
 #, python-format
 msgid "Time Tracking: %(user)s"
 msgstr "Tijdregistratie: %(user)s"
+
+#. module: mrp
+#: model:ir.model.fields,help:mrp.field_mrp_workcenter_capacity__time_stop
+msgid "Additional time in minutes for the cleaning."
+msgstr "Bijkomende tijd in minuten voor het schoonmaken."
+
+#. module: mrp
+#: model:ir.model.fields,help:mrp.field_mrp_workcenter_capacity__time_start
+msgid "Additional time in minutes for the setup."
+msgstr "Bijkomende tijd in minuten voor het instellen."
 
 #. module: mrp
 #: model:ir.model.fields,help:mrp.field_mrp_routing_workcenter__time_cycle_manual
@@ -5700,17 +5694,6 @@ msgid "Validate"
 msgstr "Bevestigen"
 
 #. module: mrp
-#. odoo-python
-#: code:addons/mrp/wizard/mrp_consumption_warning.py:0
-#, python-format
-msgid ""
-"Values cannot be set and validated because a Lot/Serial Number needs to be specified for a tracked product that is having its consumed amount increased:\n"
-"- "
-msgstr ""
-"Waarden kunnen niet worden ingesteld en gevalideerd omdat een partij/serienummer moet worden opgegeven voor een getraceerd product waarvan de verbruikte hoeveelheid wordt verhoogd:\n"
-"- "
-
-#. module: mrp
 #. odoo-javascript
 #: code:addons/mrp/static/src/components/bom_overview_control_panel/mrp_bom_overview_control_panel.xml:0
 #, python-format
@@ -6080,7 +6063,7 @@ msgstr ""
 #. module: mrp
 #: model_terms:ir.ui.view,arch_db:mrp.mrp_workcenter_kanban
 msgid "Work orders in progress. Click to block work center."
-msgstr "Werkorders in behandeling. Klik om een werkplek te blokkeren."
+msgstr "Werkorders in uitvoering. Klik om een werkplek te blokkeren."
 
 #. module: mrp
 #: model_terms:ir.ui.view,arch_db:mrp.mrp_routing_workcenter_filter
@@ -6448,6 +6431,13 @@ msgstr "Je dient een partijnummer in te voeren voor het eindproduct."
 
 #. module: mrp
 #. odoo-python
+#: code:addons/mrp/wizard/mrp_consumption_warning.py:0
+#, python-format
+msgid "You need to supply Lot/Serial Number"
+msgstr "Je moet een partij/serienummer opgeven"
+
+#. module: mrp
+#. odoo-python
 #: code:addons/mrp/wizard/mrp_immediate_production.py:0
 #, python-format
 msgid "You need to supply Lot/Serial Number for products:"
@@ -6464,16 +6454,6 @@ msgstr "Je produceerde minder dan de aanvankelijke vraag"
 #, python-format
 msgid "You should provide a lot number for the final product."
 msgstr "Je dient een partijnummer in te geven voor het eindproduct."
-
-#. module: mrp
-#: code:addons/mrp/models/stock_quant.py:0
-#, python-format
-msgid ""
-"You should update the components quantity instead of directly updating the "
-"quantity of the kit product."
-msgstr ""
-"Je moet het aantal componenten bijwerken in plaats van rechtstreeks het "
-"aantal van het kitproduct bij te werken."
 
 #. module: mrp
 #: model_terms:ir.actions.act_window,help:mrp.mrp_production_action

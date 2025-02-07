@@ -356,7 +356,7 @@ class Checkout(http.Controller):
                 worksheet.write(row, 2, data['total_quantity'])
                 worksheet.write(row, 3, data['total_size'])
                 row += 1
-            excelname = '委外生產統計表.xlsx'
+            excelname = '委外生產統計表(簡易).xlsx'
 
         workbook.close()
 

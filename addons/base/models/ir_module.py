@@ -25,7 +25,7 @@ import psycopg2
 import odoo
 from odoo import api, fields, models, modules, tools, _
 from odoo.addons.base.models.ir_model import MODULE_UNINSTALL_FLAG
-from odoo.exceptions import AccessDenied, UserError, ValidationError
+from odoo.exceptions import AccessDenied, UserError
 from odoo.osv import expression
 from odoo.tools.parse_version import parse_version
 from odoo.tools.misc import topological_sort
@@ -78,7 +78,6 @@ class ModuleCategory(models.Model):
     _name = "ir.module.category"
     _description = "Application"
     _order = 'name'
-    _allow_sudo_commands = False
 
     @api.depends('module_ids')
     def _compute_module_nr(self):
@@ -117,12 +116,6 @@ class ModuleCategory(models.Model):
         for cat in self:
             cat.xml_id = xml_ids.get(cat.id, [''])[0]
 
-    @api.constrains('parent_id')
-    def _check_parent_not_circular(self):
-        if not self._check_recursion():
-            raise ValidationError(_("Error ! You cannot create recursive categories."))
-
-
 class MyFilterMessages(Transform):
     """
     Custom docutils transform to remove `system message` for a document and
@@ -159,20 +152,12 @@ STATES = [
 ]
 
 
-XML_DECLARATION = (
-    '<?xml version='.encode('utf-8'),
-    '<?xml version='.encode('utf-16-be'),
-    '<?xml version='.encode('utf-16-le'),
-)
-
-
 class Module(models.Model):
     _name = "ir.module.module"
     _rec_name = "shortdesc"
     _rec_names_search = ['name', 'shortdesc', 'summary']
     _description = "Module"
     _order = 'application desc,sequence,name'
-    _allow_sudo_commands = False
 
     @api.model
     def get_views(self, views, options=None):
@@ -193,13 +178,6 @@ class Module(models.Model):
 
     @api.depends('name', 'description')
     def _get_desc(self):
-        def _apply_description_images(doc):
-            html = lxml.html.document_fromstring(doc)
-            for element, attribute, link, pos in html.iterlinks():
-                if element.get('src') and not '//' in element.get('src') and not 'static/' in element.get('src'):
-                    element.set('src', "/%s/static/description/%s" % (module.name, element.get('src')))
-            return tools.html_sanitize(lxml.html.tostring(html))
-
         for module in self:
             if not module.name:
                 module.description_html = False
@@ -210,12 +188,11 @@ class Module(models.Model):
             if module_path and path:
                 with tools.file_open(path, 'rb') as desc_file:
                     doc = desc_file.read()
-                    if not doc.startswith(XML_DECLARATION):
-                        try:
-                            doc = doc.decode('utf-8')
-                        except UnicodeDecodeError:
-                            pass
-                    module.description_html = _apply_description_images(doc)
+                    html = lxml.html.document_fromstring(doc)
+                    for element, attribute, link, pos in html.iterlinks():
+                        if element.get('src') and not '//' in element.get('src') and not 'static/' in element.get('src'):
+                            element.set('src', "/%s/static/description/%s" % (module.name, element.get('src')))
+                    module.description_html = tools.html_sanitize(lxml.html.tostring(html))
             else:
                 overrides = {
                     'embed_stylesheet': False,
@@ -225,7 +202,7 @@ class Module(models.Model):
                     'file_insertion_enabled': False,
                 }
                 output = publish_string(source=module.description if not module.application and module.description else '', settings_overrides=overrides, writer=MyWriter())
-                module.description_html = _apply_description_images(output)
+                module.description_html = tools.html_sanitize(output)
 
     @api.depends('name')
     def _get_latest_version(self):
@@ -267,16 +244,17 @@ class Module(models.Model):
 
     @api.depends('icon')
     def _get_icon_image(self):
-        self.icon_image = ''
         for module in self:
-            if not module.id:
-                continue
+            module.icon_image = ''
             if module.icon:
-                path = modules.get_module_resource(*module.icon.split("/")[1:])
-            else:
+                path_parts = module.icon.split('/')
+                path = modules.get_module_resource(path_parts[1], *path_parts[2:])
+            elif module.id:
                 path = modules.module.get_module_icon_path(module)
+            else:
+                path = ''
             if path:
-                with tools.file_open(path, 'rb', filter_ext=('.png', '.svg', '.gif', '.jpeg', '.jpg')) as image_file:
+                with tools.file_open(path, 'rb') as image_file:
                     module.icon_image = base64.b64encode(image_file.read())
 
     name = fields.Char('Technical Name', readonly=True, required=True)
@@ -475,7 +453,7 @@ class Module(models.Model):
         # configure the CoA on his own company, which makes no sense.
         if request:
             request.allowed_company_ids = self.env.companies.ids
-        return self._button_immediate_function(self.env.registry[self._name].button_install)
+        return self._button_immediate_function(type(self).button_install)
 
     @assert_log_admin_access
     def button_install_cancel(self):
@@ -628,7 +606,7 @@ class Module(models.Model):
         returns the next res.config action to execute
         """
         _logger.info('User #%d triggered module uninstallation', self.env.uid)
-        return self._button_immediate_function(self.env.registry[self._name].button_uninstall)
+        return self._button_immediate_function(type(self).button_uninstall)
 
     @assert_log_admin_access
     def button_uninstall(self):
@@ -666,7 +644,7 @@ class Module(models.Model):
         Upgrade the selected module(s) immediately and fully,
         return the next res.config action to execute
         """
-        return self._button_immediate_function(self.env.registry[self._name].button_upgrade)
+        return self._button_immediate_function(type(self).button_upgrade)
 
     @assert_log_admin_access
     def button_upgrade(self):
@@ -790,7 +768,9 @@ class Module(models.Model):
                 mod = self.create(dict(name=mod_name, state=state, **values))
                 res[1] += 1
 
-            mod._update_from_terp(terp)
+            mod._update_dependencies(terp.get('depends', []), terp.get('auto_install'))
+            mod._update_exclusions(terp.get('excludes', []))
+            mod._update_category(terp.get('category', 'Uncategorized'))
 
         return res
 
@@ -898,11 +878,6 @@ class Module(models.Model):
     def get_apps_server(self):
         return tools.config.get('apps_server', 'https://apps.odoo.com/apps')
 
-    def _update_from_terp(self, terp):
-        self._update_dependencies(terp.get('depends', []), terp.get('auto_install'))
-        self._update_exclusions(terp.get('excludes', []))
-        self._update_category(terp.get('category', 'Uncategorized'))
-
     def _update_dependencies(self, depends=None, auto_install_requirements=()):
         self.env['ir.module.module.dependency'].flush_model()
         existing = set(dep.name for dep in self.dependencies_id)
@@ -928,14 +903,9 @@ class Module(models.Model):
 
     def _update_category(self, category='Uncategorized'):
         current_category = self.category_id
-        seen = set()
         current_category_path = []
         while current_category:
             current_category_path.insert(0, current_category.name)
-            seen.add(current_category.id)
-            if current_category.parent_id.id in seen:
-                current_category.parent_id = False
-                _logger.warning('category %r ancestry loop has been detected and fixed', current_category)
             current_category = current_category.parent_id
 
         categs = category.split('/')
@@ -1084,7 +1054,6 @@ class ModuleDependency(models.Model):
     _name = "ir.module.module.dependency"
     _description = "Module dependency"
     _log_access = False  # inserts are done manually, create and write uid, dates are always null
-    _allow_sudo_commands = False
 
     # the dependency name
     name = fields.Char(index=True)
@@ -1127,7 +1096,6 @@ class ModuleDependency(models.Model):
 class ModuleExclusion(models.Model):
     _name = "ir.module.module.exclusion"
     _description = "Module exclusion"
-    _allow_sudo_commands = False
 
     # the exclusion name
     name = fields.Char(index=True)

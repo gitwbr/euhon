@@ -25,23 +25,20 @@
 # Roy Sayag, 2023
 # Yedidel Elhayany, 2023
 # MichaelHadar, 2023
-# yael terner, 2024
-# Orel Nahmany, 2024
-# Ha Ketem <haketem@gmail.com>, 2024
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-06 13:31+0000\n"
+"POT-Creation-Date: 2023-05-23 08:22+0000\n"
 "PO-Revision-Date: 2022-09-22 05:45+0000\n"
-"Last-Translator: Ha Ketem <haketem@gmail.com>, 2024\n"
+"Last-Translator: MichaelHadar, 2023\n"
 "Language-Team: Hebrew (https://app.transifex.com/odoo/teams/41243/he/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Language: he\n"
-"Plural-Forms: nplurals=3; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: 2;\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
 
 #. module: crm
 #: model:ir.model.fields,field_description:crm.field_crm_team__lead_all_assigned_month_count
@@ -128,7 +125,7 @@ msgstr "ההזדמנות של %s"
 #: code:addons/crm/static/src/js/tours/crm.js:0
 #, python-format
 msgid "<b>Create your first opportunity.</b>"
-msgstr "לחץ כאן כדי <b>להוסיף את ההזדמנות שלך</b>."
+msgstr "לחץ כאן כדי <b>להוסיף את ההזדמנות הראשונה שלך</b>."
 
 #. module: crm
 #. odoo-javascript
@@ -294,7 +291,7 @@ msgstr ""
 #. module: crm
 #: model_terms:ir.ui.view,arch_db:crm.crm_lead_merge_summary
 msgid "<span>into this one.</span>"
-msgstr "<span>לתוך זה.</span>"
+msgstr ""
 
 #. module: crm
 #: model:mail.template,body_html:crm.mail_template_demo_crm_lead
@@ -585,8 +582,6 @@ msgid ""
 "As you are a member of no Sales Team, you are showed the Pipeline of the <b>first team by default.</b>\n"
 "                                        To work with the CRM, you should join a team."
 msgstr ""
-"מכיוון שאתה לא חבר בשום צוות מכירות, מוצג לך ה-Pipeline של  <b>הצוות הראשון כברירת מחדל.</b>\n"
-"כדי לעבוד עם ה-CRM, עליך להצטרף לצוות."
 
 #. module: crm
 #: model_terms:ir.ui.view,arch_db:crm.res_config_settings_view_form
@@ -846,7 +841,7 @@ msgstr "לידים סגורים / מתים שלא ניתן להמיר להזדמ
 #. module: crm
 #: model:ir.model.fields,field_description:crm.field_crm_lead_lost__lost_feedback
 msgid "Closing Note"
-msgstr "הודעת סיום"
+msgstr ""
 
 #. module: crm
 #: model:ir.model.fields,field_description:crm.field_crm_lead__color
@@ -1370,7 +1365,7 @@ msgstr "עותק דוא\"ל"
 #. module: crm
 #: model_terms:ir.ui.view,arch_db:crm.crm_lead_merge_summary
 msgid "Email cc:"
-msgstr "עותק במייל:"
+msgstr ""
 
 #. module: crm
 #: model_terms:ir.ui.view,arch_db:crm.crm_lead_merge_summary
@@ -1794,7 +1789,7 @@ msgstr "עוקב"
 #. module: crm
 #: model:ir.model.fields,field_description:crm.field_crm_lead__is_partner_visible
 msgid "Is Partner Visible"
-msgstr "לקוח גלוי"
+msgstr ""
 
 #. module: crm
 #: model:ir.model.fields,field_description:crm.field_crm_stage__is_won
@@ -1834,7 +1829,7 @@ msgstr "ערך זכיה של הזדמנות בניהול קשרי לקוחות"
 #. module: crm
 #: model:ir.model.fields,field_description:crm.field_crm_lead__lang_active_count
 msgid "Lang Active Count"
-msgstr "ספירה פעילה"
+msgstr ""
 
 #. module: crm
 #: model:ir.model.fields,field_description:crm.field_crm_lead__lang_id
@@ -1958,7 +1953,7 @@ msgstr "כריית לידים"
 #. module: crm
 #: model:ir.model.fields,field_description:crm.field_crm_team__lead_properties_definition
 msgid "Lead Properties"
-msgstr "מאפייני ליד"
+msgstr ""
 
 #. module: crm
 #: model:ir.model,name:crm.model_crm_lead_scoring_frequency
@@ -2197,7 +2192,7 @@ msgstr "הפסד"
 #: code:addons/crm/wizard/crm_lead_lost.py:0
 #, python-format
 msgid "Lost Comment"
-msgstr "הודעה אבודה"
+msgstr ""
 
 #. module: crm
 #: model:ir.model.fields,field_description:crm.field_crm_lead_scoring_frequency__lost_count
@@ -2280,7 +2275,7 @@ msgstr "שיווק"
 #. module: crm
 #: model_terms:ir.ui.view,arch_db:crm.crm_lead_merge_summary
 msgid "Marketing:"
-msgstr "שיווק:"
+msgstr ""
 
 #. module: crm
 #: model:ir.model.fields,field_description:crm.field_crm_lead__medium_id
@@ -2294,7 +2289,7 @@ msgstr "אמצעי תקשורת"
 #. module: crm
 #: model_terms:ir.ui.view,arch_db:crm.crm_lead_merge_summary
 msgid "Medium:"
-msgstr "אמצעי תקשורת:"
+msgstr ""
 
 #. module: crm
 #. odoo-python
@@ -2632,7 +2627,7 @@ msgstr "לידים/הזדמנויות מתוכננים לחודש הנוכחי"
 #. module: crm
 #: model:ir.model.fields,help:crm.field_crm_lead__message_needaction_counter
 msgid "Number of messages requiring action"
-msgstr "מספר הודעות הדורשות פעולה"
+msgstr ""
 
 #. module: crm
 #: model:ir.model.fields,help:crm.field_crm_lead__message_has_error_counter
@@ -3085,7 +3080,7 @@ msgstr "הופנה ע\"י"
 #. module: crm
 #: model_terms:ir.ui.view,arch_db:crm.crm_lead_merge_summary
 msgid "Referred By:"
-msgstr "הופנה על-ידי:"
+msgstr ""
 
 #. module: crm
 #: model:ir.model.fields,field_description:crm.field_crm_lead2opportunity_partner__action
@@ -3846,8 +3841,24 @@ msgstr ""
 
 #. module: crm
 #: model_terms:ir.ui.view,arch_db:crm.crm_action_helper
+msgid "Use the top left <i>Create</i> button, or send an email to"
+msgstr "השתמש בכפתור <i>היצירה</i> השמאלי העליון, או שלח אימייל אל"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.crm_action_helper
 msgid "Use the <i>New</i> button, or send an email to"
-msgstr "יש להשתמש בכפתור <i>חדש</i>, או לשלוח מייל ל- "
+msgstr ""
+
+#. module: crm
+#. odoo-python
+#: code:addons/crm/models/crm_lead.py:0
+#, python-format
+msgid ""
+"Use the top left <i>Create</i> button, or send an email to %s to test the "
+"email gateway."
+msgstr ""
+"השתמש בלחצן 'צור' בפינה הימנית העליונה, או שלח דוא\"ל ל- %s כדי לבדוק את "
+"מעבר הדוא\"ל."
 
 #. module: crm
 #. odoo-python
@@ -3855,7 +3866,16 @@ msgstr "יש להשתמש בכפתור <i>חדש</i>, או לשלוח מייל �
 #, python-format
 msgid ""
 "Use the <i>New</i> button, or send an email to %s to test the email gateway."
-msgstr "יש להשתמש בכפתור <i>חדש</i> או לשלוח מייל ל %s לבדיקת דוא\"ל ושערים"
+msgstr ""
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.crm_action_helper
+msgid ""
+"Use the top left Create button, or configure an email alias to test the "
+"email gateway."
+msgstr ""
+"השתמש בלחצן היצירה השמאלי העליון, או הגדר כינוי דוא\"ל כדי לבדוק את שער "
+"הדוא\"ל."
 
 #. module: crm
 #: model_terms:ir.ui.view,arch_db:crm.crm_action_helper

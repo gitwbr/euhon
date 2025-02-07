@@ -13,7 +13,6 @@ class AccountBankStatement(models.Model):
 
     name = fields.Char(
         string='Reference',
-        compute='_compute_name', store=True, readonly=False,
         copy=False,
     )
 
@@ -105,17 +104,10 @@ class AccountBankStatement(models.Model):
     # -------------------------------------------------------------------------
     # COMPUTE METHODS
     # -------------------------------------------------------------------------
-
-    @api.depends('create_date')
-    def _compute_name(self):
-        for stmt in self:
-            stmt.name = _("%s Statement %s", stmt.journal_id.code, stmt.date)
-
     @api.depends('line_ids.internal_index', 'line_ids.state')
     def _compute_date_index(self):
         for stmt in self:
-            # When we create lines manually from the form view, they don't have any `internal_index` set yet.
-            sorted_lines = stmt.line_ids.filtered("internal_index").sorted('internal_index')
+            sorted_lines = stmt.line_ids.sorted('internal_index')
             stmt.first_line_index = sorted_lines[:1].internal_index
             stmt.date = sorted_lines.filtered(lambda l: l.state == 'posted')[-1:].date
 

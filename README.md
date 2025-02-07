@@ -384,8 +384,7 @@ docker volume ls
 
 ### 服务管理命令
 ```bash
-# 启动新的客户端（使用脚本）
-./create_client.sh 4  # 创建 client4
+
 
 # 删除特定客户端
 docker-compose rm -sf web4 db4  # 删除容器
@@ -713,3 +712,14 @@ crontab -e
 ```bash
 tail -f /home/bryant/odoo16/backup.log
 ```
+
+在 Odoo 中，log_level（日志级别）有以下几种常见级别：
+
+debug_rpc_answer - 记录 RPC 响应的详细日志（通常用于调试 RPC）。
+debug_rpc - 记录 RPC 调用的日志。
+debug_sql - 记录 SQL 查询的日志。
+debug - 调试级别日志，输出最详细的信息。
+info - 信息级别日志，记录正常操作的信息（默认级别）。
+warn - 警告级别日志，记录可能需要注意的情况。
+error - 错误级别日志，仅记录错误信息。
+critical - 严重错误级别日志，仅记录系统崩溃或不可恢复的错误。

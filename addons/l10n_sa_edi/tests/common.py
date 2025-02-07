@@ -3,7 +3,6 @@ from datetime import datetime
 
 from odoo import Command
 from odoo.tests import tagged
-from odoo.tests.common import new_test_user
 from odoo.addons.account_edi.tests.common import AccountEdiTestCommon
 
 
@@ -50,7 +49,7 @@ class TestSaEdiCommon(AccountEdiTestCommon):
             'country_id': cls.env.ref('base.us').id,
             'state_id': cls.env['res.country.state'].search([('name', '=', 'California')]).id,
             'email': 'azure.Interior24@example.com',
-            'phone': '+1 870-931-0505',
+            'phone': '(870)-931-0505',
             'company_type': 'company',
             'lang': 'en_US',
         })
@@ -196,7 +195,6 @@ class TestSaEdiCommon(AccountEdiTestCommon):
                     <InstructionNote>___ignore___</InstructionNote>
                 </xpath>
                 '''
-        cls.user_saudi = new_test_user(cls.env, 'xav', email='em@il.com', notification_type='inbox', groups='account.group_account_invoice', tz='Asia/Riyadh')
 
     def _create_invoice(self, **kwargs):
         vals = {
@@ -215,8 +213,7 @@ class TestSaEdiCommon(AccountEdiTestCommon):
             }),
             ],
         }
-        user = kwargs.get('user') or self.env.user
-        move = self.env['account.move'].with_user(user.id).create(vals)
+        move = self.env['account.move'].create(vals)
         move.state = 'posted'
         move.l10n_sa_confirmation_datetime = datetime.now()
         # move.payment_reference = move.name

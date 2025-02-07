@@ -2,12 +2,12 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 import datetime
 
-from odoo.addons.gamification.tests.common import TransactionCaseGamification
+from odoo.addons.base.tests.common import TransactionCaseWithUserDemo
 from odoo.exceptions import UserError
 from odoo.tools import mute_logger
 
 
-class TestGamificationCommon(TransactionCaseGamification):
+class TestGamificationCommon(TransactionCaseWithUserDemo):
 
     def setUp(self):
         super(TestGamificationCommon, self).setUp()

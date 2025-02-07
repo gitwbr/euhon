@@ -13,14 +13,6 @@ import { LunchSearchModel } from './search_model';
 
 
 export class LunchListRenderer extends ListRenderer {
-    setup() {
-        super.setup();
-        const {locationId} = this.env.searchModel.lunchState;
-        if (!locationId) {
-            this.props.list.records = [];
-        }
-    }
-
     onCellClicked(record, column) {
         this.openOrderLine(record.resId);
     }

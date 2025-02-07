@@ -3,7 +3,7 @@
 
 {
     'name': 'Denmark - Accounting',
-    'version': '1.1',
+    'version': '1.0',
     'author': 'Odoo House ApS, VK DATA ApS',
     'website': 'http://odoodanmark.dk',
     'category': 'Accounting/Localizations/Account Charts',

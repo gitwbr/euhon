@@ -3,11 +3,7 @@
 import { registry } from "@web/core/registry";
 import { Many2OneAvatarUserField, KanbanMany2OneAvatarUserField } from "@mail/views/fields/many2one_avatar_user_field/many2one_avatar_user_field";
 
-export class Many2OneAvatarEmployeeField extends Many2OneAvatarUserField {
-    get relation() {
-        return "hr.employee.public";
-    }
-}
+export class Many2OneAvatarEmployeeField extends Many2OneAvatarUserField {}
 
 Many2OneAvatarEmployeeField.extractProps = ({ field, attrs }) => {
     return {
@@ -21,11 +17,7 @@ Many2OneAvatarEmployeeField.additionalClasses = [...Many2OneAvatarUserField.addi
 
 registry.category("fields").add("many2one_avatar_employee", Many2OneAvatarEmployeeField);
 
-export class KanbanMany2OneAvatarEmployeeField extends KanbanMany2OneAvatarUserField {
-    get relation() {
-        return "hr.employee.public";
-    }
-}
+export class KanbanMany2OneAvatarEmployeeField extends KanbanMany2OneAvatarUserField {}
 KanbanMany2OneAvatarEmployeeField.extractProps = ({ attrs, field }) => {
     return {
         ...KanbanMany2OneAvatarUserField.extractProps({ attrs, field }),

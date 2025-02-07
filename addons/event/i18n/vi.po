@@ -7,7 +7,7 @@
 # Trinh Tran Thi Phuong <trinhttp@trobz.com>, 2022
 # Vo Thanh Thuy, 2022
 # Martin Trigaux, 2022
-# Thi Huong Nguyen, 2024
+# Thi Huong Nguyen, 2023
 # 
 msgid ""
 msgstr ""
@@ -15,7 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-23 08:23+0000\n"
 "PO-Revision-Date: 2022-09-22 05:45+0000\n"
-"Last-Translator: Thi Huong Nguyen, 2024\n"
+"Last-Translator: Thi Huong Nguyen, 2023\n"
 "Language-Team: Vietnamese (https://app.transifex.com/odoo/teams/41243/vi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -39,28 +39,28 @@ msgstr "# Đã gửi"
 #: code:addons/event/models/event_event.py:0
 #, python-format
 msgid "%(event_name)s (%(count)s seats remaining)"
-msgstr "%(event_name)s (còn %(count)s chỗ)"
+msgstr ""
 
 #. module: event
 #. odoo-python
 #: code:addons/event/models/event_event.py:0
 #, python-format
 msgid "%(event_name)s (Sold out)"
-msgstr "%(event_name)s (Hết chỗ)"
+msgstr ""
 
 #. module: event
 #. odoo-python
 #: code:addons/event/models/event_ticket.py:0
 #, python-format
 msgid "%(ticket_name)s (%(count)s seats remaining)"
-msgstr "%(ticket_name)s (còn %(count)s chỗ)"
+msgstr ""
 
 #. module: event
 #. odoo-python
 #: code:addons/event/models/event_ticket.py:0
 #, python-format
 msgid "%(ticket_name)s (Sold out)"
-msgstr "%(ticket_name)s (Hết chỗ)"
+msgstr ""
 
 #. module: event
 #. odoo-python
@@ -87,8 +87,6 @@ msgid ""
 "'Full Page Ticket - %s - %s' % ((object.event_id.name or "
 "'Event').replace('/',''), (object.name or '').replace('/',''))"
 msgstr ""
-"'Vé toàn trang - %s - %s' % ((object.event_id.name or 'Sự "
-"kiện').replace('/',''), (object.name or '').replace('/',''))"
 
 #. module: event
 #: model:ir.actions.report,print_report_name:event.action_report_event_event_full_page_ticket
@@ -100,7 +98,7 @@ msgstr "'Vé toàn trang - %s' % (object.name or 'Event').replace('/','')"
 #: code:addons/event/models/event_event.py:0
 #, python-format
 msgid "- \"%(event_name)s\": Missing %(nb_too_many)i seats."
-msgstr "- \"%(event_name)s\": Thiếu %(nb_too_many)i chỗ."
+msgstr ""
 
 #. module: event
 #. odoo-python
@@ -109,7 +107,7 @@ msgstr "- \"%(event_name)s\": Thiếu %(nb_too_many)i chỗ."
 msgid ""
 "- the ticket \"%(ticket_name)s\" (%(event_name)s): Missing %(nb_too_many)i "
 "seats."
-msgstr "- vé \"%(ticket_name)s\" (%(event_name)s): Thiếu %(nb_too_many)i chỗ."
+msgstr ""
 
 #. module: event
 #: model:event.tag,name:event.event_tag_category_1_tag_2
@@ -204,7 +202,7 @@ msgid ""
 "                                            <span class=\"text-muted\">Share a quiz to your attendees once a track is over</span>"
 msgstr ""
 "<br/>\n"
-"                                            <span class=\"text-muted\">Chia sẻ phần quiz với người tham dự khi bài phát biểu kết thúc</span>"
+"                                            <span class=\"text-muted\">Chia sẻ phần đố vui với người tham dự khi bài phát biểu kết thúc</span>"
 
 #. module: event
 #: model:mail.template,body_html:event.event_registration_mail_template_badge
@@ -267,8 +265,6 @@ msgid ""
 "<i class=\"fa fa-info-circle me-2\"></i>This event and all the conferences "
 "are in <b>English</b>!"
 msgstr ""
-"<i class=\"fa fa-info-circle me-2\"></i>Sự kiện này và tất cả các buổi hội "
-"thảo diễn ra bằng <b>tiếng Anh</b>!"
 
 #. module: event
 #: model_terms:ir.ui.view,arch_db:event.view_event_kanban
@@ -314,8 +310,6 @@ msgid ""
 "<span class=\"badge text-bg-secondary o_wevent_badge float-"
 "end\">SPEAKER</span>"
 msgstr ""
-"<span class=\"badge text-bg-secondary o_wevent_badge float-end\">DIỄN "
-"GIẢ</span>"
 
 #. module: event
 #: model_terms:ir.ui.view,arch_db:event.event_registration_view_kanban
@@ -798,7 +792,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:event.field_event_event__message_needaction
 #: model:ir.model.fields,field_description:event.field_event_registration__message_needaction
 msgid "Action Needed"
-msgstr "Tác vụ cần thiết"
+msgstr "Hành động cần thiết"
 
 #. module: event
 #: model:ir.model.fields,field_description:event.field_event_event__active
@@ -854,7 +848,6 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:event.view_event_type_form
 msgid "Add some internal notes (to do lists, contact info, ...)"
 msgstr ""
-"Thêm một số ghi chú nội bộ (danh sách việc cần làm, thông tin liên hệ,...)"
 
 #. module: event
 #: model:ir.model.fields,field_description:event.field_event_event__address_search
@@ -912,7 +905,7 @@ msgstr "Đã thông báo"
 #: code:addons/event/static/src/js/tours/event_tour.js:0
 #, python-format
 msgid "Apply change."
-msgstr "Áp dụng thay đổi."
+msgstr ""
 
 #. module: event
 #: model_terms:ir.ui.view,arch_db:event.view_event_search
@@ -923,7 +916,7 @@ msgstr "Đã lưu"
 #. module: event
 #: model:ir.model.fields,field_description:event.field_event_event_ticket__is_launched
 msgid "Are sales launched"
-msgstr "Đã bắt đầu bán"
+msgstr ""
 
 #. module: event
 #: model_terms:event.event,description:event.event_1
@@ -1136,7 +1129,7 @@ msgstr "Danh mục"
 #. module: event
 #: model:ir.model.fields,field_description:event.field_event_tag__category_sequence
 msgid "Category Sequence"
-msgstr "Trình tự danh mục"
+msgstr ""
 
 #. module: event
 #: model_terms:event.event,description:event.event_2
@@ -1531,7 +1524,7 @@ msgstr "Nhà tổ chức Sự kiện"
 #. module: event
 #: model:ir.model.fields,field_description:event.field_event_registration__event_organizer_id
 msgid "Event Organizer"
-msgstr "Ban tổ chức sự kiện"
+msgstr ""
 
 #. module: event
 #: model:ir.model,name:event.model_event_registration
@@ -1544,7 +1537,7 @@ msgstr "Đăng ký Sự kiện"
 #. module: event
 #: model:ir.model.fields,field_description:event.field_event_registration__event_user_id
 msgid "Event Responsible"
-msgstr "Người phụ trách sự kiện"
+msgstr ""
 
 #. module: event
 #. odoo-python
@@ -1644,9 +1637,6 @@ msgid ""
 "                usually based on the types of events you organize (e.g. \"Workshop\",\n"
 "                \"Roadshow\", \"Online Webinar\", etc)."
 msgstr ""
-"Mẫu sự kiện tổng hợp các cấu hình bạn thường dùng và thường\n"
-"                    dựa vào loại hình sự kiện bạn tổ chức (VD: \"Hội thảo\",\n"
-"                    \"Trưng bày trên phố\", \"Hội thảo trực tuyến\",...)."
 
 #. module: event
 #: model:ir.model,name:event.model_event_event_ticket
@@ -1693,12 +1683,12 @@ msgstr "Sự kiện: Trình lập lịch biểu"
 #. module: event
 #: model:mail.template,name:event.event_registration_mail_template_badge
 msgid "Event: Registration Badge"
-msgstr "Sự kiện: Thẻ đăng ký"
+msgstr "Sự kiện: Huy hiệu đăng ký"
 
 #. module: event
 #: model:mail.template,name:event.event_subscription
 msgid "Event: Registration Confirmation"
-msgstr "Sự kiện: Xác nhận đăng ký"
+msgstr ""
 
 #. module: event
 #: model:mail.template,name:event.event_reminder
@@ -1754,8 +1744,6 @@ msgid ""
 "Every year we invite our community, partners and end-users to come and meet us! It's the ideal event to get together and present new features, roadmap of future versions, achievements of the software, workshops, training sessions, etc...\n"
 "            This event is also an opportunity to showcase our partners' case studies, methodology or developments. Be there and see directly from the source the features of the new version!"
 msgstr ""
-"Hằng năm, chúng tôi mời cộng đồng, đối tác, người dùng cuối cùng tới giao lưu với chúng tôi! Đây là sự kiện lý tưởng để gặp gỡ và giới thiệu những tính năng mới, định hướng các phiên bản trong tương lai, điểm lại thành tựu của phần mềm với các buổi hội thảo, tập huấn,...\n"
-"            Sự kiện này cũng là cơ hội để vinh danh thành tựu, phương pháp và sự phát triển của các đối tác. Hãy tới tham dự và tận mắt chứng kiến các tính năng thú vị của phiên bản mới!"
 
 #. module: event
 #: model_terms:event.event,description:event.event_0
@@ -2047,7 +2035,7 @@ msgstr "Biểu tượng"
 #: code:addons/event/static/src/icon_selection_field/icon_selection_field.js:0
 #, python-format
 msgid "Icon Selection"
-msgstr "Lựa chọn biểu tượng"
+msgstr ""
 
 #. module: event
 #: model:ir.model.fields,help:event.field_event_event__activity_exception_icon
@@ -2282,7 +2270,7 @@ msgstr "Hãy tạo <b>sự kiện</b> đầu tiên."
 #: model:ir.model.fields,field_description:event.field_event_event_ticket__seats_limited
 #: model:ir.model.fields,field_description:event.field_event_type_ticket__seats_limited
 msgid "Limit Attendees"
-msgstr "Hạn chế số người tham dự"
+msgstr ""
 
 #. module: event
 #: model_terms:ir.ui.view,arch_db:event.view_event_form
@@ -2522,12 +2510,12 @@ msgstr "Now that your event is ready, click here to move it to another stage."
 #: model:ir.model.fields,field_description:event.field_event_event__message_needaction_counter
 #: model:ir.model.fields,field_description:event.field_event_registration__message_needaction_counter
 msgid "Number of Actions"
-msgstr "Số lượng tác vụ"
+msgstr "Số lượng hành động"
 
 #. module: event
 #: model:ir.model.fields,field_description:event.field_event_event__seats_used
 msgid "Number of Attendees"
-msgstr "Số lượng người tham dự"
+msgstr ""
 
 #. module: event
 #: model:ir.model.fields,field_description:event.field_event_event__seats_expected
@@ -2537,7 +2525,7 @@ msgstr "Số Người tham dự được Mong đợi"
 #. module: event
 #: model:ir.model.fields,field_description:event.field_event_event__seats_reserved
 msgid "Number of Registrations"
-msgstr "Số lượng đăng ký"
+msgstr ""
 
 #. module: event
 #: model:ir.model.fields,field_description:event.field_event_event__message_has_error_counter
@@ -2594,7 +2582,7 @@ msgstr "Vé trực tuyến"
 #: code:addons/event/static/src/js/tours/event_tour.js:0
 #, python-format
 msgid "Open date range picker. Pick a Start date for your event"
-msgstr "Mở bộ chọn phạm vi ngày. Chọn ngày bắt đầu cho sự kiện của bạn"
+msgstr ""
 
 #. module: event
 #: model_terms:event.event,description:event.event_0
@@ -2624,7 +2612,7 @@ msgstr ""
 #: code:addons/event/models/event_event.py:0
 #, python-format
 msgid "Operation not supported."
-msgstr "Thao tác không được hỗ trợ."
+msgstr ""
 
 #. module: event
 #: model:ir.model.fields,field_description:event.field_event_event__organizer_id
@@ -2818,7 +2806,7 @@ msgstr "Registration open"
 #. module: event
 #: model:ir.actions.act_window,name:event.event_registration_action_stats_from_event
 msgid "Registration statistics"
-msgstr "Thống kê đăng ký"
+msgstr ""
 
 #. module: event
 #: model:ir.model.fields,field_description:event.field_event_event_ticket__registration_ids
@@ -2851,7 +2839,7 @@ msgstr "Báo cáo"
 #. module: event
 #: model:ir.model.fields,field_description:event.field_event_event_ticket__seats_reserved
 msgid "Reserved Seats"
-msgstr "Chỗ đã đặt trước"
+msgstr "Số Chỗ đã Xí"
 
 #. module: event
 #: model:ir.model.fields,field_description:event.field_event_event__user_id
@@ -2955,17 +2943,16 @@ msgstr "Đã gửi"
 msgid ""
 "Sent automatically to attendees if there is a reminder defined on the event"
 msgstr ""
-"Tự động gửi cho người tham dự nếu có lời nhắc được xác định trong sự kiện"
 
 #. module: event
 #: model:mail.template,description:event.event_registration_mail_template_badge
 msgid "Sent automatically to someone after they registered to an event"
-msgstr "Tự động gửi cho ai đó sau khi họ đăng ký tham gia sự kiện"
+msgstr ""
 
 #. module: event
 #: model:mail.template,description:event.event_subscription
 msgid "Sent to attendees after registering to an event"
-msgstr "Gửi cho người tham dự sau khi đăng ký một sự kiện"
+msgstr ""
 
 #. module: event
 #: model:ir.model.fields,field_description:event.field_event_stage__sequence
@@ -3090,8 +3077,8 @@ msgid ""
 "Tag color. No color means no display in kanban or front-end, to distinguish "
 "internal tags from public categorization tags."
 msgstr ""
-"Màu thẻ. Không màu nghĩa là không hiển thị trong kanban hoặc front-end, để "
-"phân biệt thẻ nội bộ với thẻ danh mục công cộng."
+"Tag color. No color means no display in kanban or front-end, to distinguish "
+"internal tags from public categorization tags."
 
 #. module: event
 #: model:ir.model.fields,field_description:event.field_event_event__tag_ids
@@ -3218,8 +3205,6 @@ msgid ""
 "The stop date cannot be earlier than the start date. Please check ticket "
 "%(ticket_name)s"
 msgstr ""
-"Ngày kết thúc không thể sớm hơn ngày bắt đầu. Vui lòng kiểm tra vé "
-"%(ticket_name)s"
 
 #. module: event
 #. odoo-python
@@ -3227,7 +3212,7 @@ msgstr ""
 #, python-format
 msgid ""
 "The template which is referenced should be coming from %(model_name)s model."
-msgstr "Mẫu được tham chiếu phải xuất phát từ model %(model_name)s."
+msgstr ""
 
 #. module: event
 #. odoo-python
@@ -3235,7 +3220,7 @@ msgstr "Mẫu được tham chiếu phải xuất phát từ model %(model_name)
 #: code:addons/event/models/event_ticket.py:0
 #, python-format
 msgid "There are not enough seats available for:"
-msgstr "Không còn đủ chỗ cho:"
+msgstr ""
 
 #. module: event
 #: model_terms:event.event,description:event.event_0
@@ -3502,7 +3487,7 @@ msgstr "Địa điểm "
 #. module: event
 #: model:ir.model.fields,field_description:event.field_event_event__address_inline
 msgid "Venue (formatted for one line uses)"
-msgstr "Địa điểm (được định dạng cho mục đích sử dụng trong một dòng)"
+msgstr ""
 
 #. module: event
 #. odoo-python
@@ -3568,12 +3553,12 @@ msgstr "Whether event has begun"
 #. module: event
 #: model:ir.model.fields,help:event.field_event_event_ticket__sale_available
 msgid "Whether it is possible to sell these tickets"
-msgstr "Liệu có thể bán được những vé này không"
+msgstr ""
 
 #. module: event
 #: model:ir.model.fields,help:event.field_event_event_ticket__is_sold_out
 msgid "Whether seats are not available for this ticket."
-msgstr "Liệu chỗ trống không còn cho vé này."
+msgstr ""
 
 #. module: event
 #: model:event.event.ticket,description:event.event_0_ticket_2
@@ -3618,7 +3603,7 @@ msgstr "e.g. Conference for Architects"
 #: model_terms:ir.ui.view,arch_db:event.view_event_form
 #: model_terms:ir.ui.view,arch_db:event.view_event_type_form
 msgid "e.g. How to get to your event, door closing time, ..."
-msgstr "VD: Làm thế nào để đến sự kiện của bạn, thời gian đóng cửa,..."
+msgstr ""
 
 #. module: event
 #: model_terms:ir.ui.view,arch_db:event.view_event_type_form

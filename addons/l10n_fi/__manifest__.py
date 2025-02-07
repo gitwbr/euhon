@@ -3,7 +3,7 @@
 
 {
     "name": "Finnish Localization",
-    "version": "13.0.2",
+    "version": "13.0.1",
     "author": "Avoin.Systems, "
               "Tawasta, "
               "Vizucom, "

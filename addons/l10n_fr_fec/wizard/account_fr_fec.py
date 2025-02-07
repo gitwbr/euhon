@@ -200,7 +200,7 @@ class AccountFrFec(models.TransientModel):
 
         sql_query += '''
         GROUP BY aml.account_id, aa.account_type
-        HAVING aa.account_type not in ('asset_receivable', 'liability_payable') AND round(sum(aml.balance), %s) != 0
+        HAVING aa.account_type not in ('asset_receivable', 'liability_payable')
         '''
         formatted_date_from = fields.Date.to_string(self.date_from).replace('-', '')
         date_from = self.date_from
@@ -208,8 +208,7 @@ class AccountFrFec(models.TransientModel):
         currency_digits = 2
 
         self._cr.execute(
-            sql_query, (formatted_date_year, formatted_date_from, formatted_date_from, formatted_date_from, self.date_from, company.id,
-                        currency_digits))
+            sql_query, (formatted_date_year, formatted_date_from, formatted_date_from, formatted_date_from, self.date_from, company.id))
 
         for row in self._cr.fetchall():
             listrow = list(row)
@@ -297,11 +296,10 @@ class AccountFrFec(models.TransientModel):
 
         sql_query += '''
         GROUP BY aml.account_id, aa.account_type, rp.ref, rp.id
-        HAVING aa.account_type in ('asset_receivable', 'liability_payable') AND round(sum(aml.balance), %s) != 0
+        HAVING aa.account_type in ('asset_receivable', 'liability_payable')
         '''
         self._cr.execute(
-            sql_query, (formatted_date_year, formatted_date_from, formatted_date_from, formatted_date_from, self.date_from, company.id,
-                        currency_digits))
+            sql_query, (formatted_date_year, formatted_date_from, formatted_date_from, formatted_date_from, self.date_from, company.id))
 
         for row in self._cr.fetchall():
             listrow = list(row)

@@ -78,12 +78,9 @@ var ActivityController = BasicController.extend({
                 const messaging = await owl.Component.env.services.messaging.get();
                 const thread = messaging.models['Thread'].insert({ id: resIds[0], model: this.model.modelName });
                 await messaging.openActivityForm({ thread });
+                this.trigger_up('reload');
             },
-        },
-        {
-            onClose: () => this.trigger_up("reload"),
-        }
-    );
+        });
     },
     /**
      * @private

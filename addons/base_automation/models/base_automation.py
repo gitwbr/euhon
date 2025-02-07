@@ -255,7 +255,7 @@ class BaseAutomation(models.Model):
     def _get_cron_interval(self, actions=None):
         """ Return the expected time interval used by the cron, in minutes. """
         def get_delay(rec):
-            return abs(rec.trg_date_range) * DATE_RANGE_FACTOR[rec.trg_date_range_type]
+            return rec.trg_date_range * DATE_RANGE_FACTOR[rec.trg_date_range_type]
 
         if actions is None:
             actions = self.with_context(active_test=True).search([('trigger', '=', 'on_time')])
@@ -498,7 +498,7 @@ class BaseAutomation(models.Model):
             """ Patch method `name` on `model`, unless it has been patched already. """
             if model not in patched_models[name]:
                 patched_models[name].add(model)
-                ModelClass = model.env.registry[model._name]
+                ModelClass = type(model)
                 origin = getattr(ModelClass, name)
                 method.origin = origin
                 wrapped = api.propagate(origin, method)
@@ -549,8 +549,8 @@ class BaseAutomation(models.Model):
 
     @api.model
     def _check_delay(self, action, record, record_dt):
-        if self._get_calendar(action, record) and action.trg_date_range_type == 'day':
-            return self._get_calendar(action, record).plan_days(
+        if action.trg_date_calendar_id and action.trg_date_range_type == 'day':
+            return action.trg_date_calendar_id.plan_days(
                 action.trg_date_range,
                 fields.Datetime.from_string(record_dt),
                 compute_leaves=True,
@@ -558,10 +558,6 @@ class BaseAutomation(models.Model):
         else:
             delay = DATE_RANGE_FUNCTION[action.trg_date_range_type](action.trg_date_range)
             return fields.Datetime.from_string(record_dt) + delay
-
-    @api.model
-    def _get_calendar(self, action, record):
-        return action.trg_date_calendar_id
 
     @api.model
     def _check(self, automatic=False, use_new_cursor=False):
@@ -573,7 +569,7 @@ class BaseAutomation(models.Model):
         eval_context = self._get_eval_context()
         for action in self.with_context(active_test=True).search([('trigger', '=', 'on_time')]):
             _logger.info("Starting time-based automated action `%s`.", action.name)
-            last_run = fields.Datetime.from_string(action.last_run) or datetime.datetime.fromtimestamp(0, tz=None)
+            last_run = fields.Datetime.from_string(action.last_run) or datetime.datetime.utcfromtimestamp(0)
 
             # retrieve all the records that satisfy the action's condition
             domain = []
@@ -590,29 +586,12 @@ class BaseAutomation(models.Model):
 
             # process action on the records that should be executed
             now = datetime.datetime.now()
-            past_now = {}
-            past_last_run = {}
             for record in records:
                 record_dt = get_record_dt(record)
                 if not record_dt:
                     continue
-                if action.trg_date_calendar_id and action.trg_date_range_type == 'day':
-                    calendar = self._get_calendar(action, record)
-                    if calendar.id not in past_now:
-                        past_now[calendar.id] = calendar.plan_days(
-                            - action.trg_date_range,
-                            now,
-                            compute_leaves=True,
-                        )
-                        past_last_run[calendar.id] = calendar.plan_days(
-                            - action.trg_date_range,
-                            last_run,
-                            compute_leaves=True,
-                        )
-                    is_process_to_run = past_last_run[calendar.id] <= fields.Datetime.to_datetime(record_dt) < past_now[calendar.id]
-                else:
-                    is_process_to_run = last_run <= self._check_delay(action, record, record_dt) < now
-                if is_process_to_run:
+                action_dt = self._check_delay(action, record, record_dt)
+                if last_run <= action_dt < now:
                     try:
                         action._process(record)
                     except Exception:

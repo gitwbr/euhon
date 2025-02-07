@@ -4,12 +4,11 @@
 from unittest.mock import patch
 
 import odoo
+from odoo.tests import HttpCase
 from odoo import http
-from odoo.addons.base.tests.common import HttpCaseWithUserPortal, HttpCaseWithUserDemo
 from odoo.exceptions import AccessError
 
-
-class TestAuthSignupFlow(HttpCaseWithUserPortal, HttpCaseWithUserDemo):
+class TestAuthSignupFlow(HttpCase):
 
     def setUp(self):
         super(TestAuthSignupFlow, self).setUp()
@@ -56,10 +55,10 @@ class TestAuthSignupFlow(HttpCaseWithUserPortal, HttpCaseWithUserDemo):
             self.assertTrue(mail, "The new user must be informed of his registration")
 
     def test_compute_signup_url(self):
-        user = self.user_demo
+        user = self.env.ref('base.user_demo')
         user.groups_id -= self.env.ref('base.group_partner_manager')
 
-        partner = self.partner_portal
+        partner = self.env.ref('base.partner_demo_portal')
         partner.signup_prepare()
 
         with self.assertRaises(AccessError):

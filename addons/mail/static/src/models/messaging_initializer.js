@@ -12,9 +12,6 @@ registerModel({
         async performInitRpc() {
             return await this.messaging.rpc({
                 route: '/mail/init_messaging',
-                params: {
-                    context: this.env.services.user.context,
-                },
             }, { shadow: true });
         },
         /**

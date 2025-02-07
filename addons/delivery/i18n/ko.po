@@ -6,8 +6,6 @@
 # Martin Trigaux, 2022
 # JH CHOI <hwangtog@gmail.com>, 2022
 # Sarah Park, 2023
-# Wil Odoo, 2024
-# Daye Jeong, 2025
 # 
 msgid ""
 msgstr ""
@@ -15,7 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-15 12:50+0000\n"
 "PO-Revision-Date: 2022-09-22 05:45+0000\n"
-"Last-Translator: Daye Jeong, 2025\n"
+"Last-Translator: Sarah Park, 2023\n"
 "Language-Team: Korean (https://app.transifex.com/odoo/teams/41243/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -511,20 +509,6 @@ msgid "Estimated cost"
 msgstr "예상 비용"
 
 #. module: delivery
-#. odoo-python
-#: code:addons/delivery/models/stock_picking.py:0
-#, python-format
-msgid "Exception occurred with respect to carrier on the transfer"
-msgstr "이동과 관련하여 운송 업체에 대한 문제가 발생했습니다."
-
-#. module: delivery
-#. odoo-python
-#: code:addons/delivery/models/stock_picking.py:0
-#, python-format
-msgid "Exception:"
-msgstr "예외:"
-
-#. module: delivery
 #: model:ir.model.fields,help:delivery.field_sale_order__carrier_id
 msgid "Fill this field if you plan to invoice the shipping based on picking."
 msgstr "선적된 실제 수량을 기준으로 송장을 작성하려면 이 필드를 채우십시오."
@@ -680,13 +664,6 @@ msgstr "디버깅을 쉽게 하기 위해 요청을 기록합니다."
 #: model_terms:ir.actions.act_window,help:delivery.action_delivery_zip_prefix_list
 msgid "Manage delivery zip prefixes"
 msgstr "배송 우편번호 앞자리 관리"
-
-#. module: delivery
-#. odoo-python
-#: code:addons/delivery/models/stock_picking.py:0
-#, python-format
-msgid "Manual actions might be needed."
-msgstr "수동 작업이 필요할 수 있습니다."
 
 #. module: delivery
 #: model:ir.model.fields,field_description:delivery.field_delivery_carrier__margin
@@ -1266,24 +1243,6 @@ msgstr ""
 "\n"
 "다음의 배송 내역 (품목, 청구된 수량 및 가격)이 이미 처리가 완료되었습니다:\n"
 "\n"
-
-#. module: delivery
-#: code:addons/delivery/models/product_category.py:0
-#, python-format
-msgid ""
-"You cannot delete the deliveries product category as it is used on the "
-"delivery carriers products."
-msgstr "배송업체 품목 카테고리는 현재 배송업체와 연결된 제품에서 사용되고 있으므로 삭제할 수 없습니다."
-
-#. module: delivery
-#: code:addons/delivery/models/stock_picking.py:0
-#, python-format
-msgid ""
-"You cannot pack products into the same package when they have different "
-"carriers (i.e. check that all of their transfers have a carrier assigned and"
-" are using the same carrier)."
-msgstr ""
-"배송업체가 다른 경우 제품을 동일한 패키지에 포장할 수 없습니다. (모든 배송에 업체가 지정되어 있고 동일한 배송업체를 사용해야 합니다)"
 
 #. module: delivery
 #: model_terms:ir.ui.view,arch_db:delivery.delivery_tracking_url_warning_form

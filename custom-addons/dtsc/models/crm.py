@@ -279,7 +279,7 @@ class CheckoutInherit(models.Model):
         
         
         # 订单明细表头
-        headers = ["項", "製作内容", "尺寸cm", "才數", "數量", "單價", "其他", "小計"]
+        headers = ["項", "製作内容", "尺寸cm", "才數", "數量", "單價", "配件", "小計"]
         row = 6
         sheet.write(row, 0, "項", merge_format)
         sheet.merge_range(row, 1,row, 4, "製作内容", merge_format)
@@ -287,7 +287,7 @@ class CheckoutInherit(models.Model):
         sheet.write(row, 7, "才數", merge_format)
         sheet.write(row, 8, "數量", merge_format)
         sheet.write(row, 9, "單價", merge_format)
-        sheet.write(row, 10, "其他", merge_format)  # 其他字段
+        sheet.write(row, 10, "其它", merge_format)  # 其他字段
         sheet.merge_range(row, 11,row, 13, "小計", merge_format)
         
         # 订单明细数据
@@ -303,7 +303,8 @@ class CheckoutInherit(models.Model):
                 sheet.write(row, 7, order.total_units, merge_format)
                 sheet.write(row, 8, order.quantity, merge_format)
                 sheet.write(row, 9, order.units_price, merge_format)
-                sheet.write(row, 10, "", merge_format)  # 其他字段
+                other_value = order.total_make_price + order.peijian_price
+                sheet.write(row, 10, other_value, merge_format)  # 其他字段
                 sheet.merge_range(row, 11,row, 13, order.price, merge_format)
                 row += 1
 

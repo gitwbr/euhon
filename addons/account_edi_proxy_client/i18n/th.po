@@ -5,7 +5,6 @@
 # Translators:
 # Wichanon Jamwutthipreecha, 2022
 # Martin Trigaux, 2023
-# Rasareeyar Lappiam, 2023
 # 
 msgid ""
 msgstr ""
@@ -13,7 +12,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-04-14 05:51+0000\n"
 "PO-Revision-Date: 2022-09-22 05:44+0000\n"
-"Last-Translator: Rasareeyar Lappiam, 2023\n"
+"Last-Translator: Martin Trigaux, 2023\n"
 "Language-Team: Thai (https://app.transifex.com/odoo/teams/41243/th/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,12 +23,12 @@ msgstr ""
 #. module: account_edi_proxy_client
 #: model:ir.model,name:account_edi_proxy_client.model_account_edi_proxy_client_user
 msgid "Account EDI proxy user"
-msgstr "ผู้ใช้พร็อกซี EDI ของบัญชี"
+msgstr ""
 
 #. module: account_edi_proxy_client
 #: model:ir.model.fields,field_description:account_edi_proxy_client.field_res_company__account_edi_proxy_client_ids
 msgid "Account Edi Proxy Client"
-msgstr "บัญชีไคลเอ็นต์พร็อกซี Edi"
+msgstr ""
 
 #. module: account_edi_proxy_client
 #: model_terms:ir.ui.view,arch_db:account_edi_proxy_client.view_form_account_edi_proxy_client_user
@@ -74,27 +73,27 @@ msgstr "แสดงชื่อ"
 #. module: account_edi_proxy_client
 #: model:ir.actions.act_window,name:account_edi_proxy_client.action_tree_account_edi_proxy_client_user
 msgid "EDI Proxy User"
-msgstr "ผู้ใช้พร็อกซี EDI"
+msgstr ""
 
 #. module: account_edi_proxy_client
 #: model:ir.ui.menu,name:account_edi_proxy_client.menu_account_proxy_client_user
 msgid "EDI Proxy Users"
-msgstr "ผู้ใช้พร็อกซี EDI"
+msgstr ""
 
 #. module: account_edi_proxy_client
 #: model:ir.model,name:account_edi_proxy_client.model_account_edi_format
 msgid "EDI format"
-msgstr "รูปแบบ EDI"
+msgstr ""
 
 #. module: account_edi_proxy_client
 #: model:ir.model.fields,field_description:account_edi_proxy_client.field_account_edi_proxy_client_user__edi_format_id
 msgid "Edi Format"
-msgstr "รูปแบบ Edi"
+msgstr ""
 
 #. module: account_edi_proxy_client
 #: model:ir.model.fields,field_description:account_edi_proxy_client.field_account_edi_proxy_client_user__edi_identification
 msgid "Edi Identification"
-msgstr "บัตรประจำตัวของ Edi"
+msgstr ""
 
 #. module: account_edi_proxy_client
 #: model:ir.model.fields,field_description:account_edi_proxy_client.field_account_edi_proxy_client_user__id
@@ -104,7 +103,7 @@ msgstr "ไอดี"
 #. module: account_edi_proxy_client
 #: model:ir.model.fields,field_description:account_edi_proxy_client.field_account_edi_proxy_client_user__id_client
 msgid "Id Client"
-msgstr "รหัสลูกค้า"
+msgstr ""
 
 #. module: account_edi_proxy_client
 #: model:ir.model.fields,field_description:account_edi_proxy_client.field_account_edi_proxy_client_user____last_update
@@ -124,12 +123,12 @@ msgstr "อัปเดตครั้งล่าสุดเมื่อ"
 #. module: account_edi_proxy_client
 #: model:ir.model.fields,field_description:account_edi_proxy_client.field_account_edi_proxy_client_user__private_key
 msgid "Private Key"
-msgstr "รหัสส่วนตัว"
+msgstr ""
 
 #. module: account_edi_proxy_client
 #: model:ir.model.fields,field_description:account_edi_proxy_client.field_account_edi_proxy_client_user__private_key_filename
 msgid "Private Key Filename"
-msgstr "ชื่อไฟล์ไพรเวทคีย์"
+msgstr ""
 
 #. module: account_edi_proxy_client
 #: model:ir.model.fields,field_description:account_edi_proxy_client.field_account_edi_proxy_client_user__refresh_token
@@ -139,7 +138,7 @@ msgstr "รีเฟรชโทเคน"
 #. module: account_edi_proxy_client
 #: model:ir.model.fields,help:account_edi_proxy_client.field_account_edi_proxy_client_user__private_key
 msgid "The key to encrypt all the user's data"
-msgstr "คีย์สำคัญในการเข้ารหัสข้อมูลทั้งหมดของผู้ใช้"
+msgstr ""
 
 #. module: account_edi_proxy_client
 #: model:ir.model.fields,help:account_edi_proxy_client.field_account_edi_proxy_client_user__edi_identification
@@ -155,7 +154,7 @@ msgstr ""
 msgid ""
 "The url that this service requested returned an error. The url it tried to "
 "contact was %s"
-msgstr "URL ที่บริการนี้ขอส่งคืนข้อผิดพลาด URL ที่พยายามติดต่อคือ %s"
+msgstr ""
 
 #. module: account_edi_proxy_client
 #. odoo-python
@@ -164,7 +163,7 @@ msgstr "URL ที่บริการนี้ขอส่งคืนข้�
 msgid ""
 "The url that this service requested returned an error. The url it tried to "
 "contact was %s. %s"
-msgstr "URL ที่บริการนี้ ขอส่งคืนข้อผิดพลาด URL ที่พยายามติดต่อคือ %s %s"
+msgstr ""
 
 #. module: account_edi_proxy_client
 #. odoo-python
@@ -172,14 +171,14 @@ msgstr "URL ที่บริการนี้ ขอส่งคืนข้�
 #, python-format
 msgid ""
 "The url that this service tried to contact does not exist. The url was %r"
-msgstr "ไม่มี URL ที่บริการนี้พยายามติดต่อ URL คือ %r"
+msgstr ""
 
 #. module: account_edi_proxy_client
 #: model:ir.model.constraint,message:account_edi_proxy_client.constraint_account_edi_proxy_client_user_unique_edi_identification_per_format
 msgid "This edi identification is already assigned to a user"
-msgstr "รหัสประจำตัว edi นี้ถูกกำหนดให้กับผู้ใช้แล้ว"
+msgstr ""
 
 #. module: account_edi_proxy_client
 #: model:ir.model.constraint,message:account_edi_proxy_client.constraint_account_edi_proxy_client_user_unique_id_client
 msgid "This id_client is already used on another user."
-msgstr "id_client นี้ถูกใช้กับผู้ใช้อื่นแล้ว"
+msgstr ""

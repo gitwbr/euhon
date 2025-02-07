@@ -4,8 +4,8 @@
 # 
 # Translators:
 # Martin Trigaux, 2022
+# Sergio Zanchetta <primes2h@gmail.com>, 2022
 # Marianna Ciofani, 2023
-# Sergio Zanchetta <primes2h@gmail.com>, 2024
 # 
 msgid ""
 msgstr ""
@@ -13,7 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-20 09:02+0000\n"
 "PO-Revision-Date: 2022-09-22 05:53+0000\n"
-"Last-Translator: Sergio Zanchetta <primes2h@gmail.com>, 2024\n"
+"Last-Translator: Marianna Ciofani, 2023\n"
 "Language-Team: Italian (https://app.transifex.com/odoo/teams/41243/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,14 +25,11 @@ msgstr ""
 #: model:ir.model.fields,help:onboarding.field_onboarding_onboarding__progress_ids
 msgid "All Onboarding Progress Records (across companies)."
 msgstr ""
-"Tutte le registrazioni dell'avanzamento dell'integrazione (tra aziende)."
 
 #. module: onboarding
 #: model:ir.model.fields,help:onboarding.field_onboarding_onboarding_step__progress_ids
 msgid "All related Onboarding Progress Step Records (across companies)"
 msgstr ""
-"Tutte le registrazioni relative alla fase di progresso dell'integrazione "
-"(tra aziende)."
 
 #. module: onboarding
 #: model_terms:ir.ui.view,arch_db:onboarding.onboarding_onboarding_view_form
@@ -47,17 +44,17 @@ msgstr "Blu"
 #. module: onboarding
 #: model:ir.model.fields,field_description:onboarding.field_onboarding_onboarding_step__button_text
 msgid "Button text"
-msgstr "Testo pulsante"
+msgstr ""
 
 #. module: onboarding
 #: model:ir.model.fields,field_description:onboarding.field_onboarding_onboarding__panel_close_action_name
 msgid "Closing action"
-msgstr "Azione di chiusura"
+msgstr ""
 
 #. module: onboarding
 #: model:ir.model.fields,help:onboarding.field_onboarding_onboarding__panel_background_color
 msgid "Color gradient added to the panel's background."
-msgstr "Gradiente di colore aggiunto allo sfondo del pannello."
+msgstr ""
 
 #. module: onboarding
 #: model:ir.model.fields,field_description:onboarding.field_onboarding_progress__company_id
@@ -110,7 +107,7 @@ msgstr "Completata"
 #. module: onboarding
 #: model:ir.model.fields,field_description:onboarding.field_onboarding_onboarding_step__done_icon
 msgid "Font Awesome Icon when completed"
-msgstr "Icona font awesome una volta terminato"
+msgstr ""
 
 #. module: onboarding
 #: model:ir.model.fields,field_description:onboarding.field_onboarding_onboarding__id
@@ -161,14 +158,12 @@ msgstr "Inizia Ora"
 #. module: onboarding
 #: model:ir.model.fields,field_description:onboarding.field_onboarding_onboarding__name
 msgid "Name of the onboarding"
-msgstr "Nome dell'integrazione"
+msgstr ""
 
 #. module: onboarding
 #: model:ir.model.fields,help:onboarding.field_onboarding_onboarding__panel_close_action_name
 msgid "Name of the onboarding model action to execute when closing the panel."
 msgstr ""
-"Nome dell'azione modello dell'integrazione da eseguire quando viene chiuso "
-"il pannello."
 
 #. module: onboarding
 #: model:ir.model.fields,help:onboarding.field_onboarding_onboarding_step__panel_step_open_action_name
@@ -176,8 +171,6 @@ msgid ""
 "Name of the onboarding step model action to execute when opening the step, "
 "e.g. action_open_onboarding_1_step_1"
 msgstr ""
-"Nome dell'azione modello della fase di integrazione da eseguire quando viene"
-" aperta la fase, ad es. action_open_onboarding_1_step_1"
 
 #. module: onboarding
 #: model:ir.model.fields.selection,name:onboarding.selection__onboarding_onboarding__panel_background_color__none
@@ -202,38 +195,37 @@ msgstr "Inserimento lavorativo"
 #. module: onboarding
 #: model:ir.model.fields,field_description:onboarding.field_onboarding_onboarding__current_progress_id
 msgid "Onboarding Progress"
-msgstr "Avanzamento integrazione"
+msgstr ""
 
 #. module: onboarding
 #: model:ir.model.fields,field_description:onboarding.field_onboarding_onboarding__progress_ids
 msgid "Onboarding Progress Records"
-msgstr "Resoconti avanzamento integrazione"
+msgstr ""
 
 #. module: onboarding
 #: model:ir.model.fields,field_description:onboarding.field_onboarding_onboarding_step__progress_ids
 msgid "Onboarding Progress Step Records"
-msgstr "Resoconti avanzamento fase integrazione"
+msgstr ""
 
 #. module: onboarding
 #: model:ir.model,name:onboarding.model_onboarding_progress_step
 msgid "Onboarding Progress Step Tracker"
-msgstr "Monitoraggio progresso fase integrazione"
+msgstr ""
 
 #. module: onboarding
 #: model:ir.model.fields,help:onboarding.field_onboarding_onboarding_step__current_progress_step_id
 msgid "Onboarding Progress Step for the current context (company)."
 msgstr ""
-"Fase di avanzamento dell'integrazione per il contesto attuale (azienda)."
 
 #. module: onboarding
 #: model:ir.model,name:onboarding.model_onboarding_progress
 msgid "Onboarding Progress Tracker"
-msgstr "Monitoraggio dei progressi dell'integrazione"
+msgstr ""
 
 #. module: onboarding
 #: model:ir.model.fields,help:onboarding.field_onboarding_onboarding__current_progress_id
 msgid "Onboarding Progress for the current context (company)."
-msgstr "Avanzamento dell'integrazione per il contesto attuale (azienda)."
+msgstr ""
 
 #. module: onboarding
 #: model:ir.model,name:onboarding.model_onboarding_onboarding_step
@@ -244,50 +236,50 @@ msgstr "Fase formazione iniziale"
 #. module: onboarding
 #: model:ir.model.fields,field_description:onboarding.field_onboarding_progress_step__step_state
 msgid "Onboarding Step Progress"
-msgstr "Avanzamento fase integrazione"
+msgstr ""
 
 #. module: onboarding
 #: model:ir.actions.act_window,name:onboarding.action_view_onboarding_step
 #: model_terms:ir.ui.view,arch_db:onboarding.onboarding_onboarding_step_view_tree
 msgid "Onboarding Steps"
-msgstr "Fasi integrazione"
+msgstr ""
 
 #. module: onboarding
 #: model:ir.model.constraint,message:onboarding.constraint_onboarding_onboarding_route_name_uniq
 msgid "Onboarding alias must be unique."
-msgstr "L'alias dell'integrazione deve essere unico."
+msgstr ""
 
 #. module: onboarding
 #: model:ir.model.fields,field_description:onboarding.field_onboarding_progress__onboarding_state
 msgid "Onboarding progress"
-msgstr "Avanzamento integrazione"
+msgstr ""
 
 #. module: onboarding
 #: model:ir.model.fields,field_description:onboarding.field_onboarding_onboarding__step_ids
 msgid "Onboarding steps"
-msgstr "Fasi integrazione"
+msgstr ""
 
 #. module: onboarding
 #: model:ir.actions.act_window,name:onboarding.action_view_onboarding_onboarding
 #: model:ir.ui.menu,name:onboarding.menu_onboarding
 #: model_terms:ir.ui.view,arch_db:onboarding.onboarding_onboarding_view_tree
 msgid "Onboardings"
-msgstr "Integrazioni"
+msgstr ""
 
 #. module: onboarding
 #: model:ir.ui.menu,name:onboarding.menu_onboarding_step
 msgid "Onboardings Steps"
-msgstr "Fasi integrazioni"
+msgstr ""
 
 #. module: onboarding
 #: model:ir.model.fields,field_description:onboarding.field_onboarding_onboarding__route_name
 msgid "One word name"
-msgstr "Nome una parola"
+msgstr ""
 
 #. module: onboarding
 #: model:ir.model.fields,field_description:onboarding.field_onboarding_onboarding_step__panel_step_open_action_name
 msgid "Opening action"
-msgstr "Azione di apertura"
+msgstr ""
 
 #. module: onboarding
 #: model:ir.model.fields.selection,name:onboarding.selection__onboarding_onboarding__panel_background_color__orange
@@ -297,27 +289,27 @@ msgstr "Arancione"
 #. module: onboarding
 #: model:ir.model.fields,field_description:onboarding.field_onboarding_onboarding__panel_background_color
 msgid "Panel's Background color"
-msgstr "Colore di sfondo del pannello"
+msgstr ""
 
 #. module: onboarding
 #: model:ir.model.fields,field_description:onboarding.field_onboarding_onboarding__panel_background_image
 msgid "Panel's background image"
-msgstr "Immagine di sfondo del pannello"
+msgstr ""
 
 #. module: onboarding
 #: model:ir.model.fields,field_description:onboarding.field_onboarding_progress__progress_step_ids
 msgid "Progress Steps Trackers"
-msgstr "Monitoraggi fasi di avanzamento"
+msgstr ""
 
 #. module: onboarding
 #: model:ir.model.fields,field_description:onboarding.field_onboarding_progress_step__progress_id
 msgid "Related Onboarding Progress Tracker"
-msgstr "Monitoraggio corrispondente all'avanzamento dell'integrazione"
+msgstr ""
 
 #. module: onboarding
 #: model:ir.model.fields,field_description:onboarding.field_onboarding_progress__onboarding_id
 msgid "Related onboarding tracked"
-msgstr "Integrazione relativa tracciata"
+msgstr ""
 
 #. module: onboarding
 #: model:ir.model.fields,field_description:onboarding.field_onboarding_onboarding__sequence
@@ -328,7 +320,7 @@ msgstr "Sequenza"
 #. module: onboarding
 #: model:ir.model.fields,field_description:onboarding.field_onboarding_onboarding__is_per_company
 msgid "Should be done per company?"
-msgstr "Dovrebbe essere fatto per azienda?"
+msgstr ""
 
 #. module: onboarding
 #: code:addons/onboarding/models/onboarding_step.py:0
@@ -339,17 +331,17 @@ msgstr "Passaggio completato! Fai clic per controllare"
 #. module: onboarding
 #: model:ir.model.fields,field_description:onboarding.field_onboarding_onboarding_step__current_progress_step_id
 msgid "Step Progress"
-msgstr "Avanzamento fase"
+msgstr ""
 
 #. module: onboarding
 #: model:ir.model.fields,help:onboarding.field_onboarding_onboarding_step__button_text
 msgid "Text on the panel's button to start this step"
-msgstr "Testo pulsante del pannello per iniziare questa fase"
+msgstr ""
 
 #. module: onboarding
 #: model:ir.model.fields,field_description:onboarding.field_onboarding_onboarding_step__done_text
 msgid "Text to show when step is completed"
-msgstr "Testo da mostrare quando la fase viene completata"
+msgstr ""
 
 #. module: onboarding
 #: model:ir.model.constraint,message:onboarding.constraint_onboarding_progress_onboarding_company_uniq
@@ -357,8 +349,6 @@ msgid ""
 "There cannot be multiple records of the same onboarding completion for the "
 "same company."
 msgstr ""
-"Non possono esistere più registrazioni dello stesso completamento "
-"dell'integrazione per la stessa azienda."
 
 #. module: onboarding
 #: model:ir.model.constraint,message:onboarding.constraint_onboarding_progress_step_progress_step_uniq
@@ -366,8 +356,6 @@ msgid ""
 "There cannot be multiple records of the same onboarding step completion for "
 "the same Progress record."
 msgstr ""
-"Non possono esistere più registrazioni per lo stesso step di completamento "
-"dell'integrazione per lo stesso record di avanzamento."
 
 #. module: onboarding
 #: model:ir.model.fields,field_description:onboarding.field_onboarding_onboarding_step__title
@@ -378,20 +366,20 @@ msgstr "Titolo"
 #: model_terms:ir.ui.view,arch_db:onboarding.onboarding_onboarding_view_form
 #: model_terms:ir.ui.view,arch_db:onboarding.onboarding_onboarding_view_tree
 msgid "Toggle visibility"
-msgstr "Regola visibilità"
+msgstr ""
 
 #. module: onboarding
 #: model:ir.model.fields.selection,name:onboarding.selection__onboarding_onboarding__panel_background_color__violet
 msgid "Violet"
-msgstr "Viola"
+msgstr "Violetto"
 
 #. module: onboarding
 #: model:ir.model.fields,field_description:onboarding.field_onboarding_onboarding__is_onboarding_closed
 #: model:ir.model.fields,field_description:onboarding.field_onboarding_progress__is_onboarding_closed
 msgid "Was panel closed?"
-msgstr "Il pannello è stato chiuso?"
+msgstr ""
 
 #. module: onboarding
 #: model_terms:ir.ui.view,arch_db:onboarding.onboarding_panel
 msgid "onboarding.onboarding.step"
-msgstr "onboarding.onboarding.step"
+msgstr ""

@@ -115,7 +115,8 @@ function create_client() {
     #fi
     #CERT_DOMAIN="client1.euhon.com"
     
-    cat > ${CLIENT}_nginx.conf << EOL
+    # 在生成 nginx 配置的部分修改如下
+cat > ${CLIENT}_nginx.conf << EOL
 # HTTPS 配置 - ${CLIENT}
 server {
     listen 443 ssl;
@@ -177,7 +178,7 @@ EOL
     
     # 申请新的SSL证书
     echo "正在申请SSL证书: ${DOMAIN}"
-    sudo certbot certonly --standalone -d ${DOMAIN}
+    #sudo certbot certonly --standalone -d ${DOMAIN}
     
     # 设置证书权限
     echo "设置证书权限..."
@@ -223,8 +224,8 @@ function delete_client() {
     sed -i '/^[[:space:]]*$/N;/^\n[[:space:]]*$/D' docker-compose.yml
 
     # 终止脚本，不继续执行
-    #echo "已删除 nginx 配置，脚本停止执行。"
-    #exit 1
+    echo "已删除 nginx 配置，脚本停止执行。"
+    exit 1
 
     # 删除nginx配置文件
     echo "Removing nginx configuration..."

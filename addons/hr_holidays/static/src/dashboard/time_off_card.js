@@ -8,7 +8,7 @@ export class TimeOffCardPopover extends Component {}
 TimeOffCardPopover.components = { Popover };
 
 TimeOffCardPopover.template = 'hr_holidays.TimeOffCardPopover';
-TimeOffCardPopover.props = ['allocated', 'approved', 'planned', 'left', 'usable'];
+TimeOffCardPopover.props = ['allocated', 'approved', 'planned', 'left'];
 
 export class TimeOffCard extends Component {}
 

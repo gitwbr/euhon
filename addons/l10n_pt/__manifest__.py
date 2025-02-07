@@ -6,7 +6,7 @@
 
 {
     'name': 'Portugal - Accounting',
-    'version': '1.1',
+    'version': '0.011',
     'author': 'ThinkOpen Solutions',
     'website': 'http://www.thinkopensolutions.com/',
     'category': 'Accounting/Localizations/Account Charts',

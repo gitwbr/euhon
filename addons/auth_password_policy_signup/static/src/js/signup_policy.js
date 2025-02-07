@@ -7,7 +7,7 @@ import PasswordMeter from "@auth_password_policy_signup/js/password_meter";
 const signupForm = document.querySelector('.oe_signup_form, .oe_reset_password_form');
 if (signupForm) {
     const password = document.querySelector("[type=password][minlength]");
-    const minlength = password ? Number(password.getAttribute("minlength")) : NaN;
+    const minlength = Number(password.getAttribute("minlength"));
     if (!isNaN(minlength)) {
         const meter = new PasswordMeter(null, new ConcretePolicy({minlength}), recommendations);
         meter.insertAfter(password);

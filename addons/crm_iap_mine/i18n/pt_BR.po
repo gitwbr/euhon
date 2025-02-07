@@ -48,10 +48,10 @@ msgid ""
 "</div>"
 msgstr ""
 "<div style=\"margin: 0px; padding: 0px;\">\n"
-"    <p>Prezado(a),</p>\n"
+"    Prazado(a),</p>\n"
 "    <p>Não há mais créditos na sua conta IAP de geração de leads.<br>\n"
 "    Você pode recarregar a sua conta de geração de leads nas definições do aplicativo de CRM.<br></p>\n"
-"   <p> Atenciosamente,</p>\n"
+"    <p>Atenciosamente,</p>\n"
 "    <p>Odoo S.A.</p>\n"
 "</div>"
 
@@ -621,7 +621,7 @@ msgstr "Software & Serviços"
 #. module: crm_iap_mine
 #: model:ir.model.fields,field_description:crm_iap_mine.field_crm_iap_lead_mining_request__state_ids
 msgid "States"
-msgstr "Estados"
+msgstr "Situações"
 
 #. module: crm_iap_mine
 #: model:ir.model.fields,field_description:crm_iap_mine.field_crm_iap_lead_mining_request__state

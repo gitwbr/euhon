@@ -12,6 +12,9 @@
                     > * {
                         @include o-text-overflow(block);
                     }
+                    > strong {
+                        font-weight: $font-weight-bolder;
+                    }
                 }
             }
         }

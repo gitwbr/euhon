@@ -48,7 +48,7 @@
 								<div class="col text-center">才數</div>
 								<div class="col text-center">數量</div>
 								<div class="col text-center">單價</div>
-								<div class="col text-center">其他</div>
+								<div class="col text-center">其它</div>
 								<div class="col text-center">小計</div>
 							</div>	
 							<t t-foreach="doc.product_ids" t-as="order">
@@ -72,7 +72,7 @@
 										<span t-field="order.units_price" />
 									</div>
 									<div class="col text-center" style="flex: 1;">
-										
+										<span t-esc="order.total_make_price + order.peijian_price"/>
 									</div>
 									<div class="col text-center" style="flex: 1;">
 										<span t-field="order.price" />

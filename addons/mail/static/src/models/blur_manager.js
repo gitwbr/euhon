@@ -24,9 +24,7 @@ registerModel({
     lifecycleHooks: {
         _willDelete() {
             this.video.removeEventListener('loadeddata', this._onVideoPlay);
-            if (this.selfieSegmentation) {
-                this.selfieSegmentation.reset();
-            }
+            this.selfieSegmentation.reset();
             this.video.srcObject = null;
             if (this.rejectStreamPromise) {
                 this.rejectStreamPromise(new Error(this.env._t('The blur manager was removed before the beginning of the blur process')));
@@ -48,9 +46,6 @@ registerModel({
          * @private
          */
         _onChangeBackgroundBlurAmountSetting() {
-            if (!this.selfieSegmentation) {
-                return;
-            }
             this.selfieSegmentation.setOptions({
                 backgroundBlur: this.userSetting.backgroundBlurAmount,
             });
@@ -59,9 +54,6 @@ registerModel({
          * @private
          */
         _onChangeEdgeBlurAmountSetting() {
-            if (!this.selfieSegmentation) {
-                return;
-            }
             this.selfieSegmentation.setOptions({
                 edgeBlurAmount: this.userSetting.edgeBlurAmount,
             });
@@ -71,9 +63,7 @@ registerModel({
          */
         async _onChangeSrcStream() {
             this.video.srcObject = null;
-            if (this.selfieSegmentation) {
-                this.selfieSegmentation.reset();
-            }
+            this.selfieSegmentation.reset();
             if (this.rejectStreamPromise) {
                 this.rejectStreamPromise(new Error(this.env._t('The source stream was removed before the beginning of the blur process')));
             }
@@ -91,12 +81,6 @@ registerModel({
                 rejectStreamPromise,
                 resolveStreamPromise,
             });
-            if (!this.selfieSegmentation) {
-                rejectStreamPromise(
-                    new Error(this.env._t("The selfie segmentation library was not loaded"))
-                );
-                return;
-            }
             this.video.srcObject = this.srcStream.webMediaStream;
             this.video.load();
             this.selfieSegmentation.setOptions({
@@ -228,13 +212,11 @@ registerModel({
             inverse: 'blurManager',
         }),
         selfieSegmentation: attr({
-            default: window.SelfieSegmentation
-                ? new window.SelfieSegmentation({
-                      locateFile: (file) => {
-                          return `https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation@0.1/${file}`;
-                      },
-                  })
-                : undefined,
+            default: new window.SelfieSegmentation({
+                locateFile: (file) => {
+                    return `https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation@0.1/${file}`;
+                },
+            }),
         }),
         /**
          * mail.MediaStream, source stream for which the blur effect is computed.

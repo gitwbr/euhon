@@ -88,8 +88,6 @@ class HrEmployeeBase(models.AbstractModel):
             ('holiday_status_id.requires_allocation', '=', 'yes'),
             ('state', '=', 'validate'),
             ('date_from', '<=', current_date),
-            '|',
-            ('date_to', '=', False),
             ('date_to', '>=', current_date),
         ], ['number_of_days:sum', 'employee_id'], ['employee_id'])
         rg_results = dict((d['employee_id'][0], {"employee_id_count": d['employee_id_count'], "number_of_days": d['number_of_days']}) for d in data)
@@ -302,7 +300,7 @@ class HrEmployee(models.Model):
     @api.model
     def get_public_holidays_data(self, date_start, date_end):
         self = self._get_contextual_employee()
-        employee_tz = pytz.timezone(self._get_tz() if self else self.env.user.tz or 'utc')
+        employee_tz = pytz.timezone(self._get_tz() if self else self.env.user.tz)
         public_holidays = self._get_public_holidays(date_start, date_end).sorted('date_from')
         return list(map(lambda bh: {
             'id': -bh.id,
@@ -321,10 +319,15 @@ class HrEmployee(models.Model):
             ('company_id', 'in', self.env.companies.ids),
             ('date_from', '<=', date_end),
             ('date_to', '>=', date_start),
-            '|',
-            ('calendar_id', '=', False),
-            ('calendar_id', '=', self.resource_calendar_id.id),
         ]
+
+        # a user with hr_holidays permissions will be able to see all public holidays from his calendar
+        if not self._is_leave_user():
+            domain += [
+                '|',
+                ('calendar_id', '=', False),
+                ('calendar_id', '=', self.resource_calendar_id.id),
+            ]
 
         return self.env['resource.calendar.leaves'].search(domain)
 
@@ -348,18 +351,22 @@ class HrEmployee(models.Model):
             ('start_date', '<=', end_date),
             ('end_date', '>=', start_date),
             ('company_id', 'in', self.env.companies.ids),
-            '|',
-            ('resource_calendar_id', '=', False),
-            ('resource_calendar_id', '=', self.resource_calendar_id.id),
         ]
 
-        if self.department_id:
+        # a user with hr_holidays permissions will be able to see all stress days from his calendar
+        if not self._is_leave_user():
             domain += [
                 '|',
-                ('department_ids', '=', False),
-                ('department_ids', 'parent_of', self.department_id.id),
+                ('resource_calendar_id', '=', False),
+                ('resource_calendar_id', '=', self.resource_calendar_id.id),
             ]
-        else:
-            domain += [('department_ids', '=', False)]
+            if self.department_id:
+                domain += [
+                    '|',
+                    ('department_ids', '=', False),
+                    ('department_ids', 'parent_of', self.department_id.id),
+                ]
+            else:
+                domain += [('department_ids', '=', False)]
 
         return self.env['hr.leave.stress.day'].search(domain)

@@ -203,8 +203,7 @@ class PaymentTransaction(models.Model):
                 raise ValidationError("Razorpay: " + _("Received data with missing reference."))
             tx = self.search([('reference', '=', reference), ('provider_code', '=', 'razorpay')])
         else:  # 'refund'
-            notes = notification_data.get('notes')
-            reference = isinstance(notes, dict) and notes.get('reference')
+            reference = notification_data.get('notes', {}).get('reference')
             if reference:  # The refund was initiated from Odoo.
                 tx = self.search([('reference', '=', reference), ('provider_code', '=', 'razorpay')])
             else:  # The refund was initiated from Razorpay.

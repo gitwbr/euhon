@@ -4,15 +4,15 @@
 # 
 # Translators:
 # Martin Trigaux, 2022
-# Malaz Abuidris <msea@odoo.com>, 2024
+# Malaz Abuidris <msea@odoo.com>, 2023
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 16.0\n"
+"Project-Id-Version: Odoo Server 16.0beta\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-06 13:32+0000\n"
+"POT-Creation-Date: 2022-10-10 10:23+0000\n"
 "PO-Revision-Date: 2022-09-22 05:53+0000\n"
-"Last-Translator: Malaz Abuidris <msea@odoo.com>, 2024\n"
+"Last-Translator: Malaz Abuidris <msea@odoo.com>, 2023\n"
 "Language-Team: Arabic (https://app.transifex.com/odoo/teams/41243/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,35 +21,30 @@ msgstr ""
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #. module: microsoft_calendar
-#. odoo-python
 #: code:addons/microsoft_calendar/models/calendar.py:0
 #, python-format
 msgid "%(reminder_type)s - %(duration)s Days"
 msgstr "%(reminder_type)s - %(duration)s أيام "
 
 #. module: microsoft_calendar
-#. odoo-python
 #: code:addons/microsoft_calendar/models/calendar.py:0
 #, python-format
 msgid "%(reminder_type)s - %(duration)s Hours"
 msgstr "%(reminder_type)s - %(duration)s ساعات "
 
 #. module: microsoft_calendar
-#. odoo-python
 #: code:addons/microsoft_calendar/models/calendar.py:0
 #, python-format
 msgid "%(reminder_type)s - %(duration)s Minutes"
 msgstr "%(reminder_type)s - %(duration)s دقائق "
 
 #. module: microsoft_calendar
-#. odoo-python
 #: code:addons/microsoft_calendar/models/calendar.py:0
 #, python-format
 msgid "%s - At time of event"
 msgstr "%s - في وقت الفعالية "
 
 #. module: microsoft_calendar
-#. odoo-python
 #: code:addons/microsoft_calendar/models/calendar.py:0
 #, python-format
 msgid "(No title)"
@@ -63,7 +58,7 @@ msgid "Active"
 msgstr "نشط"
 
 #. module: microsoft_calendar
-#. odoo-javascript
+#. openerp-web
 #: code:addons/microsoft_calendar/static/src/views/microsoft_calendar/microsoft_calendar_controller.js:0
 #, python-format
 msgid ""
@@ -73,7 +68,6 @@ msgstr ""
 "يجب أن يقوم أحد المشرفين بتهيئة مزامنة Outlook قبل أن تتمكن من استخدامها! "
 
 #. module: microsoft_calendar
-#. odoo-python
 #: code:addons/microsoft_calendar/models/res_users.py:0
 #, python-format
 msgid ""
@@ -117,7 +111,7 @@ msgid "Config Settings"
 msgstr "تهيئة الإعدادات "
 
 #. module: microsoft_calendar
-#. odoo-javascript
+#. openerp-web
 #: code:addons/microsoft_calendar/static/src/views/microsoft_calendar/microsoft_calendar_controller.js:0
 #: code:addons/microsoft_calendar/static/src/views/microsoft_calendar/microsoft_calendar_controller.js:0
 #, python-format
@@ -198,7 +192,6 @@ msgid "Event Recurrence Rule"
 msgstr "قاعدة تكرار الفعالية "
 
 #. module: microsoft_calendar
-#. odoo-python
 #: code:addons/microsoft_calendar/models/calendar.py:0
 #, python-format
 msgid ""
@@ -209,17 +202,6 @@ msgstr ""
 "للمزامنة بشكل صحيح بين تقويمي أودو وOutlook، يجب أن يكون لكافة الحاضرين عنوان بريد إلكتروني. ولكن، لا تمتثل بعض الءفعاليات بهذا الشرط. لن تتم مزامنة التقويم طالما أن الفعاليات غير صحيحة. \n"
 "إما أن تقوم بتحديث الفعاليات/الحاضرين أو أرشفة هذه الفعاليات %s: \n"
 "%s "
-
-#. module: microsoft_calendar
-#. odoo-python
-#: code:addons/microsoft_calendar/models/calendar.py:0
-#, python-format
-msgid ""
-"For having a different organizer in your event, it is necessary that the "
-"organizer have its Odoo Calendar synced with Outlook Calendar."
-msgstr ""
-"للحصول على منظم مختلف في فعاليتك، من الضروري أن يقوم المنظم بمزامنة تقويم "
-"أودو الخاص به مع تقويم Outlook. "
 
 #. module: microsoft_calendar
 #: model:ir.model.fields,field_description:microsoft_calendar.field_microsoft_calendar_account_reset__id
@@ -234,15 +216,6 @@ msgid ""
 msgstr ""
 "إذا تم تعيين قيمة الحقل النشط إلى خطأ، يمكنك إخفاء معلومات التنبيه للفعالية "
 "دون إزالتها. "
-
-#. module: microsoft_calendar
-#. odoo-python
-#: code:addons/microsoft_calendar/models/calendar.py:0
-#, python-format
-msgid ""
-"It is necessary adding the proposed organizer as attendee before saving the "
-"event."
-msgstr "من الضروري إضافة المنظم المقترح كحاضر قبل حفظ الفعالية. "
 
 #. module: microsoft_calendar
 #: model:ir.model.fields,field_description:microsoft_calendar.field_microsoft_calendar_account_reset____last_update
@@ -323,7 +296,6 @@ msgid "Next Synchronization"
 msgstr "المزامنة التالية"
 
 #. module: microsoft_calendar
-#. odoo-python
 #: code:addons/microsoft_calendar/models/calendar.py:0
 #, python-format
 msgid "Notification"
@@ -337,7 +309,7 @@ msgid "Organizer event Id"
 msgstr "معرّف فعالية المنظم "
 
 #. module: microsoft_calendar
-#. odoo-javascript
+#. openerp-web
 #: code:addons/microsoft_calendar/static/src/views/microsoft_calendar/microsoft_calendar_controller.xml:0
 #: code:addons/microsoft_calendar/static/src/views/microsoft_calendar/microsoft_calendar_controller.xml:0
 #, python-format
@@ -355,7 +327,6 @@ msgid "Outlook Synchronization stopped"
 msgstr "توقفت مزامنة Outlook "
 
 #. module: microsoft_calendar
-#. odoo-python
 #: code:addons/microsoft_calendar/models/calendar.py:0
 #, python-format
 msgid ""
@@ -369,6 +340,7 @@ msgstr ""
 #. module: microsoft_calendar
 #: model:ir.actions.server,name:microsoft_calendar.ir_cron_sync_all_cals_ir_actions_server
 #: model:ir.cron,cron_name:microsoft_calendar.ir_cron_sync_all_cals
+#: model:ir.cron,name:microsoft_calendar.ir_cron_sync_all_cals
 msgid "Outlook: synchronization"
 msgstr "Outlook: المزامنة "
 
@@ -388,7 +360,7 @@ msgid "Reset Outlook Calendar Account"
 msgstr "إعادة تعيين حساب تقويم Outlook "
 
 #. module: microsoft_calendar
-#. odoo-javascript
+#. openerp-web
 #: code:addons/microsoft_calendar/static/src/views/microsoft_calendar/microsoft_calendar_controller.js:0
 #, python-format
 msgid "Success"
@@ -410,7 +382,7 @@ msgid "Synchronize only new events"
 msgstr "مزامنة الفعاليات الجديدة فقط "
 
 #. module: microsoft_calendar
-#. odoo-javascript
+#. openerp-web
 #: code:addons/microsoft_calendar/static/src/views/microsoft_calendar/microsoft_calendar_controller.js:0
 #, python-format
 msgid ""
@@ -419,14 +391,13 @@ msgid ""
 msgstr "يجب تهيئة مزامنة Outlook قبل الاستخدام. أترغب في فعل ذلك الآن؟ "
 
 #. module: microsoft_calendar
-#. odoo-python
 #: code:addons/microsoft_calendar/models/res_users.py:0
 #, python-format
 msgid "The account for the Outlook Calendar service is not configured."
 msgstr "حساب خدمة تقويم Outlook غير مُهيأ. "
 
 #. module: microsoft_calendar
-#. odoo-javascript
+#. openerp-web
 #: code:addons/microsoft_calendar/static/src/views/microsoft_calendar/microsoft_calendar_controller.js:0
 #, python-format
 msgid "The synchronization with Outlook calendar was successfully stopped."
@@ -466,7 +437,7 @@ msgid "User's Existing Events"
 msgstr "فعاليات المستخدم الموجودة بالفعل "
 
 #. module: microsoft_calendar
-#. odoo-javascript
+#. openerp-web
 #: code:addons/microsoft_calendar/static/src/views/microsoft_calendar/microsoft_calendar_controller.js:0
 #, python-format
 msgid ""

@@ -231,7 +231,7 @@ class TestItEdiReverseCharge(TestItEdi):
                     <DatiAnagrafici>
                         <IdFiscaleIVA>
                             <IdPaese>SM</IdPaese>
-                            <IdCodice>6784</IdCodice>
+                            <IdCodice>OO99999999999</IdCodice>
                         </IdFiscaleIVA>
                         <Anagrafica>
                             <Denominazione>Prospectra</Denominazione>

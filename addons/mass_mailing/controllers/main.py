@@ -26,13 +26,6 @@ class MassMailController(http.Controller):
     # SUBSCRIPTION MANAGEMENT
     # ------------------------------------------------------------
 
-    # csrf is disabled here because it will be called by the MUA with unpredictable session at that time
-    @http.route(['/mail/mailing/<int:mailing_id>/unsubscribe_oneclick'], type='http', website=True, auth='public',
-                methods=["POST"], csrf=False)
-    def mailing_unsubscribe_oneclick(self, mailing_id, email=None, res_id=None, token="", **post):
-        self.mailing(mailing_id, email=email, res_id=res_id, token=token, **post)
-        return Response(status=200)
-
     @http.route(['/mail/mailing/<int:mailing_id>/unsubscribe'], type='http', website=True, auth='public')
     def mailing(self, mailing_id, email=None, res_id=None, token="", **post):
         mailing = request.env['mailing.mailing'].sudo().browse(mailing_id)
@@ -55,7 +48,7 @@ class MassMailController(http.Controller):
                 opt_out_list_ids = set([list.id for list in opt_out_list_ids if list not in opt_in_list_ids])
 
                 unique_list_ids = set([list.list_id.id for list in subscription_list_ids])
-                list_ids = request.env['mailing.list'].sudo().browse(unique_list_ids).filtered('active')
+                list_ids = request.env['mailing.list'].sudo().browse(unique_list_ids)
                 unsubscribed_list = ', '.join(str(list.name) for list in mailing.contact_list_ids if list.is_public)
                 return request.render('mass_mailing.page_unsubscribe', {
                     'contacts': contacts,
@@ -71,7 +64,7 @@ class MassMailController(http.Controller):
                 opt_in_lists = request.env['mailing.contact.subscription'].sudo().search([
                     ('contact_id.email_normalized', '=', email),
                     ('opt_out', '=', False)
-                ]).mapped('list_id').filtered('active')
+                ]).mapped('list_id')
                 blacklist_rec = request.env['mail.blacklist'].sudo()._add(email)
                 self._log_blacklist_action(
                     blacklist_rec, mailing_id,

@@ -2,7 +2,7 @@
 
 {
     'name': 'Czech - Accounting',
-    'version': '1.1',
+    'version': '1.0',
     'author': '26HOUSE',
     'website': 'http://www.26house.com',
     'category': 'Accounting/Localizations/Account Charts',

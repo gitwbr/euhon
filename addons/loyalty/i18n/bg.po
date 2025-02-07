@@ -3,31 +3,24 @@
 # 	* loyalty
 # 
 # Translators:
-# KeyVillage, 2023
+# Nikola Iliev, 2023
 # Vladimir Dachev <v.dachev@dalkomotors.com>, 2023
 # Anton Vassilev, 2023
 # B Dochev, 2023
 # aleksandar ivanov, 2023
 # Ivan Goychev <igoychev.projects@gmail.com>, 2023
 # Ивайло Малинов <iv.malinov@gmail.com>, 2023
+# Maria Boyadjieva <marabo2000@gmail.com>, 2023
 # Martin Trigaux, 2023
 # Albena Mincheva <albena_vicheva@abv.bg>, 2023
-# Maria Boyadjieva <marabo2000@gmail.com>, 2024
-# Rumena Georgieva <rumena.georgieva@gmail.com>, 2024
-# Meglen Hadzhitsanchev, 2024
-# Elena Varbanova, 2024
-# Petko Karamotchev, 2024
-# Margarita Katzeva, 2024
-# Milena Georgieva, 2024
-# Veselina Slavkova, 2024
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-06 13:31+0000\n"
+"POT-Creation-Date: 2023-05-23 08:23+0000\n"
 "PO-Revision-Date: 2022-09-22 05:53+0000\n"
-"Last-Translator: Veselina Slavkova, 2024\n"
+"Last-Translator: Albena Mincheva <albena_vicheva@abv.bg>, 2023\n"
 "Language-Team: Bulgarian (https://app.transifex.com/odoo/teams/41243/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -65,7 +58,7 @@ msgstr ""
 #: code:addons/loyalty/models/loyalty_reward.py:0
 #, python-format
 msgid " (Max %s)"
-msgstr " (Макс. %s)"
+msgstr ""
 
 #. module: loyalty
 #. odoo-python
@@ -126,10 +119,11 @@ msgstr ""
 #: model:loyalty.reward,description:loyalty.10_percent_coupon_reward
 #: model:loyalty.reward,description:loyalty.10_percent_with_code_reward
 msgid "10% on your order"
-msgstr "10% от вашата поръчка"
+msgstr ""
 
 #. module: loyalty
 #. odoo-python
+#: code:addons/loyalty/models/loyalty_program.py:0
 #: code:addons/loyalty/models/loyalty_program.py:0
 #, python-format
 msgid "2+1 Free"
@@ -191,8 +185,6 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_rule_view_kanban
 msgid "<i class=\"fa fa-cube fa-fw\" title=\"Products\"/><span>All Products</span>"
 msgstr ""
-"<i class=\"fa fa-cube fa-fw\" title=\"Products\"/><span>Всички "
-"продукти</span>"
 
 #. module: loyalty
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_reward_view_kanban
@@ -276,8 +268,6 @@ msgid ""
 "<span class=\"text-center\">OR</span>\n"
 "                                        <br/>"
 msgstr ""
-"<span class=\"text-center\">ИЛИ</span>\n"
-"                                        <br/>"
 
 #. module: loyalty
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_rule_view_form
@@ -295,27 +285,27 @@ msgstr ""
 #. module: loyalty
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_report
 msgid "<span>Minimum purchase of</span>"
-msgstr "<span>Минимална покупка от</span>"
+msgstr ""
 
 #. module: loyalty
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_report
 msgid "<span>Valid for purchase above</span>"
-msgstr "<span>Валидно при покупка над</span>"
+msgstr ""
 
 #. module: loyalty
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_reward_view_form
 msgid "<span>on</span>"
-msgstr "<span>на</span>"
+msgstr ""
 
 #. module: loyalty
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_report
 msgid "<span>products</span>"
-msgstr "<span>продукти</span>"
+msgstr ""
 
 #. module: loyalty
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_rule_view_form
 msgid "<span>tax</span>"
-msgstr "<span>данък</span>"
+msgstr ""
 
 #. module: loyalty
 #: model_terms:ir.ui.view,arch_db:loyalty.gift_card_report
@@ -374,54 +364,6 @@ msgid ""
 "</tbody></table>\n"
 "        "
 msgstr ""
-"<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"width:100%; margin:0px auto; background:#ffffff; color:#333333;\"><tbody>\n"
-"<tr>\n"
-"    <td valign=\"top\" style=\"text-align: center; font-size: 14px;\">\n"
-"        <t t-if=\"object._get_mail_partner().name\">\n"
-"           Поздравления <t t-out=\"object._get_mail_partner().name or ''\">Brandon Freeman</t>,<br>\n"
-"        </t>\n"
-"\n"
-"        Ето вашия подарък от <t t-out=\"object.program_id.company_id.name or ''\">(името на Вашата фирма)</t>.<br>\n"
-"\n"
-"        <t t-foreach=\"object.program_id.reward_ids\" t-as=\"reward\">\n"
-"            <t t-if=\"reward.required_points &lt;= object.points\">\n"
-"                <span style=\"font-size: 50px; color: #875A7B; font-weight: bold;\" t-esc=\"reward.description\">Описание за подарък</span>\n"
-"                <br>\n"
-"            </t>\n"
-"        </t>\n"
-"    </td>\n"
-"</tr>\n"
-"<tr style=\"margin-top: 16px\">\n"
-"    <td valign=\"top\" style=\"text-align: center; font-size: 14px;\">\n"
-"        Използвайте промо кода\n"
-"        <t t-if=\"object.expiration_date\">\n"
-"            преди <t t-out=\"object.expiration_date or ''\">2021-06-16</t>\n"
-"        </t>\n"
-"        <p style=\"margin-top: 16px;\">\n"
-"            <strong style=\"padding: 16px 8px 16px 8px; border-radius: 3px; background-color: #F1F1F1;\" t-out=\"object.code or ''\">15637502648479132902</strong>\n"
-"        </p>\n"
-"        <t t-foreach=\"object.program_id.rule_ids\" t-as=\"rule\">\n"
-"            <t t-if=\"rule.minimum_qty not in [0, 1]\">\n"
-"                <span style=\"font-size: 14px;\">\n"
-"                    Минимална поръчка <t t-out=\"rule.minimum_qty or ''\">10</t> продука\n"
-"                </span><br>\n"
-"            </t>\n"
-"            <t t-if=\"rule.minimum_amount != 0.00\">\n"
-"                <span style=\"font-size: 14px;\">\n"
-"                   Валидно при покупка на стойност над <t t-out=\"rule.company_id.currency_id.symbol or ''\">$</t><t t-out=\"'%0.2f' % float(rule.minimum_amount) or ''\">10.00</t>\n"
-"                </span><br>\n"
-"            </t>\n"
-"        </t>\n"
-"        <br>\n"
-"       Благодаря Ви,\n"
-"        <t t-if=\"object._get_signature()\">\n"
-"            <br>\n"
-"            <t t-out=\"object._get_signature() or ''\">--<br>Mitchell Admin</t>\n"
-"        </t>\n"
-"    </td>\n"
-"</tr>\n"
-"</tbody></table>\n"
-"        "
 
 #. module: loyalty
 #. odoo-python
@@ -680,7 +622,7 @@ msgstr ""
 #: code:addons/loyalty/models/loyalty_program.py:0
 #, python-format
 msgid "Coupon point(s)"
-msgstr "Точка(и) за купон"
+msgstr ""
 
 #. module: loyalty
 #: model:loyalty.program,portal_point_name:loyalty.10_percent_coupon
@@ -832,7 +774,7 @@ msgstr ""
 #: model:ir.model.fields.selection,name:loyalty.selection__loyalty_program__program_type__promo_code
 #, python-format
 msgid "Discount Code"
-msgstr "Код за отстъпка"
+msgstr ""
 
 #. module: loyalty
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_reward__discount_line_product_id
@@ -843,11 +785,6 @@ msgstr ""
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_reward__discount_mode
 msgid "Discount Mode"
 msgstr ""
-
-#. module: loyalty
-#: model:ir.model.fields,field_description:loyalty.field_loyalty_program__payment_program_discount_product_id
-msgid "Discount Product"
-msgstr "Продукт с отстъпка"
 
 #. module: loyalty
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_reward__discount_product_domain
@@ -869,11 +806,6 @@ msgstr ""
 #: model:loyalty.program,portal_point_name:loyalty.10_percent_with_code
 #, python-format
 msgid "Discount point(s)"
-msgstr ""
-
-#. module: loyalty
-#: model_terms:ir.ui.view,arch_db:loyalty.loyalty_reward_view_form
-msgid "Discount product"
 msgstr ""
 
 #. module: loyalty
@@ -935,7 +867,7 @@ msgstr "Шаблон за имейл"
 #. module: loyalty
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_program__mail_template_id
 msgid "Email template"
-msgstr "Имейл образец"
+msgstr ""
 
 #. module: loyalty
 #: model:ir.model.fields.selection,name:loyalty.selection__loyalty_rule__minimum_amount_tax_mode__excl
@@ -975,7 +907,7 @@ msgstr "Последователи (партньори)"
 #. module: loyalty
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_generate_wizard__mode
 msgid "For"
-msgstr "за"
+msgstr ""
 
 #. module: loyalty
 #. odoo-python
@@ -1043,15 +975,15 @@ msgid "Generate Gift Cards"
 msgstr ""
 
 #. module: loyalty
+#: model_terms:ir.ui.view,arch_db:loyalty.loyalty_program_view_form
+msgid "Generate eWallet"
+msgstr ""
+
+#. module: loyalty
 #. odoo-python
 #: code:addons/loyalty/models/loyalty_program.py:0
 #, python-format
 msgid "Generate and share unique coupons with your customers."
-msgstr ""
-
-#. module: loyalty
-#: model_terms:ir.ui.view,arch_db:loyalty.loyalty_program_view_form
-msgid "Generate eWallet"
 msgstr ""
 
 #. module: loyalty
@@ -1071,7 +1003,7 @@ msgstr ""
 #: model:product.template,name:loyalty.gift_card_product_50_product_template
 #, python-format
 msgid "Gift Card"
-msgstr "Карта за подарък"
+msgstr ""
 
 #. module: loyalty
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_program_view_form
@@ -1125,7 +1057,7 @@ msgstr ""
 #. module: loyalty
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_card__has_message
 msgid "Has Message"
-msgstr "Има съобщение"
+msgstr ""
 
 #. module: loyalty
 #: model_terms:ir.ui.view,arch_db:loyalty.gift_card_report
@@ -1263,7 +1195,7 @@ msgstr "Емблема"
 #: model:ir.model.fields.selection,name:loyalty.selection__loyalty_program__program_type__loyalty
 #, python-format
 msgid "Loyalty Cards"
-msgstr "Карти за лоялност"
+msgstr ""
 
 #. module: loyalty
 #: model:ir.model,name:loyalty.model_loyalty_mail
@@ -1295,7 +1227,7 @@ msgstr "Правило за лоялност"
 #: code:addons/loyalty/models/loyalty_program.py:0
 #, python-format
 msgid "Loyalty point(s)"
-msgstr "Точка(и) за лоялност"
+msgstr ""
 
 #. module: loyalty
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_card__message_main_attachment_id
@@ -1384,7 +1316,7 @@ msgstr "Брой грешки"
 #. module: loyalty
 #: model:ir.model.fields,help:loyalty.field_loyalty_card__message_needaction_counter
 msgid "Number of messages requiring action"
-msgstr "Брой съобщения, изискващи действие"
+msgstr ""
 
 #. module: loyalty
 #: model:ir.model.fields,help:loyalty.field_loyalty_card__message_has_error_counter
@@ -1472,11 +1404,6 @@ msgid "Product Variant"
 msgstr "Продуктов вариант"
 
 #. module: loyalty
-#: model:ir.model.fields,help:loyalty.field_loyalty_program__payment_program_discount_product_id
-msgid "Product used in the sales order to apply the discount."
-msgstr ""
-
-#. module: loyalty
 #: model:ir.model.fields,help:loyalty.field_loyalty_reward__discount_line_product_id
 msgid ""
 "Product used in the sales order to apply the discount. Each reward has its "
@@ -1522,6 +1449,13 @@ msgstr ""
 #. odoo-python
 #: code:addons/loyalty/models/loyalty_program.py:0
 #, python-format
+msgid "Promotion Program"
+msgstr ""
+
+#. module: loyalty
+#. odoo-python
+#: code:addons/loyalty/models/loyalty_program.py:0
+#, python-format
 msgid "Promo point(s)"
 msgstr ""
 
@@ -1531,13 +1465,6 @@ msgstr ""
 #: code:addons/loyalty/models/loyalty_program.py:0
 #, python-format
 msgid "Promos"
-msgstr ""
-
-#. module: loyalty
-#. odoo-python
-#: code:addons/loyalty/models/loyalty_program.py:0
-#, python-format
-msgid "Promotion Program"
 msgstr ""
 
 #. module: loyalty
@@ -1857,13 +1784,6 @@ msgstr ""
 #: code:addons/loyalty/models/loyalty_program.py:0
 #, python-format
 msgid "You can not delete a program in an active state"
-msgstr ""
-
-#. module: loyalty
-#. odoo-python
-#: code:addons/loyalty/models/loyalty_reward.py:0
-#, python-format
-msgid "The reward description field cannot be empty."
 msgstr ""
 
 #. module: loyalty

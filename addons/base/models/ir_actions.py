@@ -13,7 +13,6 @@ import base64
 from collections import defaultdict
 import functools
 import logging
-import contextlib
 
 from pytz import timezone
 
@@ -25,7 +24,6 @@ class IrActions(models.Model):
     _description = 'Actions'
     _table = 'ir_actions'
     _order = 'name'
-    _allow_sudo_commands = False
 
     name = fields.Char(string='Action Name', required=True, translate=True)
     type = fields.Char(string='Action Type', required=True)
@@ -162,7 +160,7 @@ class IrActions(models.Model):
         :return: A read() view of the ir.actions.action safe for web use
         """
         record = self.env.ref(full_xml_id)
-        assert isinstance(self.env[record._name], self.env.registry[self._name])
+        assert isinstance(self.env[record._name], type(self))
         return record._get_action_dict()
 
     def _get_action_dict(self):
@@ -196,7 +194,6 @@ class IrActionsActWindow(models.Model):
     _table = 'ir_act_window'
     _inherit = 'ir.actions.actions'
     _order = 'name'
-    _allow_sudo_commands = False
 
     @api.constrains('res_model', 'binding_model_id')
     def _check_model(self):
@@ -337,7 +334,6 @@ class IrActionsActWindowView(models.Model):
     _table = 'ir_act_window_view'
     _rec_name = 'view_id'
     _order = 'sequence,id'
-    _allow_sudo_commands = False
 
     sequence = fields.Integer()
     view_id = fields.Many2one('ir.ui.view', string='View')
@@ -357,7 +353,6 @@ class IrActionsActWindowclose(models.Model):
     _description = 'Action Window Close'
     _inherit = 'ir.actions.actions'
     _table = 'ir_actions'
-    _allow_sudo_commands = False
 
     type = fields.Char(default='ir.actions.act_window_close')
 
@@ -375,7 +370,6 @@ class IrActionsActUrl(models.Model):
     _table = 'ir_act_url'
     _inherit = 'ir.actions.actions'
     _order = 'name'
-    _allow_sudo_commands = False
 
     type = fields.Char(default='ir.actions.act_url')
     url = fields.Text(string='Action URL', required=True)
@@ -412,7 +406,6 @@ class IrActionsServer(models.Model):
     _table = 'ir_act_server'
     _inherit = 'ir.actions.actions'
     _order = 'sequence,name'
-    _allow_sudo_commands = False
 
     DEFAULT_PYTHON_CODE = """# Available variables:
 #  - env: Odoo Environment on which the action is triggered
@@ -506,7 +499,7 @@ class IrActionsServer(models.Model):
 
     def _get_runner(self):
         multi = True
-        t = self.env.registry[self._name]
+        t = type(self)
         fn = getattr(t, f'_run_action_{self.state}_multi', None)\
           or getattr(t, f'run_action_{self.state}_multi', None)
         if not fn:
@@ -520,7 +513,7 @@ class IrActionsServer(models.Model):
     def _register_hook(self):
         super()._register_hook()
 
-        for cls in self.env.registry[self._name].mro():
+        for cls in type(self).mro():
             for symbol in vars(cls).keys():
                 if symbol.startswith('run_action_'):
                     _logger.warning(
@@ -698,7 +691,6 @@ class IrActionsServer(models.Model):
 class IrServerObjectLines(models.Model):
     _name = 'ir.server.object.lines'
     _description = 'Server Action value mapping'
-    _allow_sudo_commands = False
 
     server_id = fields.Many2one('ir.actions.server', string='Related Server Action', ondelete='cascade')
     col1 = fields.Many2one('ir.model.fields', string='Field', required=True, ondelete='cascade')
@@ -738,7 +730,8 @@ class IrServerObjectLines(models.Model):
 
     @api.constrains('col1', 'evaluation_type')
     def _raise_many2many_error(self):
-        pass  # TODO: remove in master
+        if self.filtered(lambda line: line.col1.ttype == 'many2many' and line.evaluation_type == 'reference'):
+            raise ValidationError(_('many2many fields cannot be evaluated by reference'))
 
     @api.onchange('resource_ref')
     def _set_resource_ref(self):
@@ -748,7 +741,6 @@ class IrServerObjectLines(models.Model):
 
     def eval_value(self, eval_context=None):
         result = {}
-        m2m_exprs = defaultdict(list)
         for line in self:
             expr = line.value
             if line.evaluation_type == 'equation':
@@ -758,14 +750,6 @@ class IrServerObjectLines(models.Model):
                     expr = int(line.value)
                 except Exception:
                     pass
-            elif line.col1.ttype == 'many2many':
-                with contextlib.suppress(Exception):
-                    # if multiple lines target the same column, they need to exist in the same list
-                    expr = m2m_exprs[line.col1]
-                    expr.append(Command.link(int(line.value)))
-            elif line.col1.ttype == 'float':
-                with contextlib.suppress(Exception):
-                    expr = float(line.value)
             result[line.id] = expr
         return result
 
@@ -778,7 +762,6 @@ class IrActionsTodo(models.Model):
     _description = "Configuration Wizards"
     _rec_name = 'action_id'
     _order = "sequence, id"
-    _allow_sudo_commands = False
 
     action_id = fields.Many2one('ir.actions.actions', string='Action', required=True, index=True)
     sequence = fields.Integer(default=10)
@@ -855,7 +838,6 @@ class IrActionsActClient(models.Model):
     _inherit = 'ir.actions.actions'
     _table = 'ir_act_client'
     _order = 'name'
-    _allow_sudo_commands = False
 
     type = fields.Char(default='ir.actions.client')
 

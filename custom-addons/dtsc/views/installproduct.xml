@@ -46,7 +46,7 @@
 					<button name="succ_install_list" type="object" class="oe_highlight" string="完成" attrs="{'invisible': [('install_state', 'in', ['draft','cancel','succ'])]}" groups="dtsc.group_dtsc_mg,dtsc.group_dtsc_yw"/>
 					<button name="back_install_list" type="object" class="oe_highlight" string="返回" attrs="{'invisible': [('install_state', 'in', ['draft','cancel'])]}" groups="dtsc.group_dtsc_mg,dtsc.group_dtsc_yw"/>
 					<button name="del_install_list" type="object" class="oe_highlight" string="作廢" attrs="{'invisible': [('install_state', 'in', ['cancel'])]}" groups="dtsc.group_dtsc_mg,dtsc.group_dtsc_yw"/>
-					<button name="send_google" type="object" class="oe_highlight" string="谷歌行事曆" groups="dtsc.group_dtsc_mg,dtsc.group_dtsc_yw"/>
+					<button name="send_google" type="object" class="oe_highlight" string="行事曆" groups="dtsc.group_dtsc_mg,dtsc.group_dtsc_yw"/>
 					<field name="install_state" widget="statusbar" statusbar_visible="draft,installing,succ,cancel"/>
 				</header>
 				<sheet>

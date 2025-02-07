@@ -4,15 +4,14 @@
 # 
 # Translators:
 # Martin Trigaux, 2023
-# Wil Odoo, 2024
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 16.0\n"
+"Project-Id-Version: Odoo Server 16.0beta\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-06 13:31+0000\n"
+"POT-Creation-Date: 2022-09-23 08:02+0000\n"
 "PO-Revision-Date: 2022-09-22 05:52+0000\n"
-"Last-Translator: Wil Odoo, 2024\n"
+"Last-Translator: Martin Trigaux, 2023\n"
 "Language-Team: Hindi (https://app.transifex.com/odoo/teams/41243/hi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,7 +20,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: hr_skills
-#. odoo-javascript
+#. openerp-web
 #: code:addons/hr_skills/static/src/fields/skills_one2many.xml:0
 #: code:addons/hr_skills/static/src/xml/resume_templates.xml:0
 #, python-format
@@ -29,7 +28,7 @@ msgid "ADD"
 msgstr ""
 
 #. module: hr_skills
-#. odoo-javascript
+#. openerp-web
 #: code:addons/hr_skills/static/src/xml/resume_templates.xml:0
 #, python-format
 msgid "CREATE A NEW ENTRY"
@@ -43,10 +42,10 @@ msgstr ""
 #. module: hr_skills
 #: model:ir.model.fields,field_description:hr_skills.field_hr_employee_skill_report__company_id
 msgid "Company"
-msgstr "संस्था"
+msgstr ""
 
 #. module: hr_skills
-#. odoo-javascript
+#. openerp-web
 #: code:addons/hr_skills/static/src/fields/skills_one2many.xml:0
 #, python-format
 msgid "Create a new entry"
@@ -75,7 +74,7 @@ msgid "Created on"
 msgstr ""
 
 #. module: hr_skills
-#. odoo-javascript
+#. openerp-web
 #: code:addons/hr_skills/static/src/fields/resume_one2many.xml:0
 #, python-format
 msgid "Current"
@@ -85,7 +84,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:hr_skills.field_hr_employee_skill_log__date
 #: model_terms:ir.ui.view,arch_db:hr_skills.hr_employee_skill_log_view_search
 msgid "Date"
-msgstr "तिथि"
+msgstr ""
 
 #. module: hr_skills
 #: model:ir.model.fields,field_description:hr_skills.field_hr_resume_line__date_end
@@ -107,13 +106,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:hr_skills.field_hr_employee_skill_report__department_id
 #: model_terms:ir.ui.view,arch_db:hr_skills.hr_employee_skill_report_view_search
 msgid "Department"
-msgstr "विभाग"
+msgstr ""
 
 #. module: hr_skills
 #: model:ir.model.fields,field_description:hr_skills.field_hr_resume_line__description
 #: model_terms:ir.ui.view,arch_db:hr_skills.resume_line_view_form
 msgid "Description"
-msgstr "विवरण"
+msgstr ""
 
 #. module: hr_skills
 #: model:ir.model.fields,field_description:hr_skills.field_hr_employee_skill__display_name
@@ -140,7 +139,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:hr_skills.hr_employee_skill_log_view_search
 #: model_terms:ir.ui.view,arch_db:hr_skills.hr_employee_skill_report_view_search
 msgid "Employee"
-msgstr "कर्मचारी"
+msgstr ""
 
 #. module: hr_skills
 #: model:ir.model.fields,field_description:hr_skills.field_hr_employee_skill_report__display_name
@@ -175,7 +174,7 @@ msgstr ""
 #. module: hr_skills
 #: model_terms:ir.ui.view,arch_db:hr_skills.hr_skill_view_search
 msgid "Group By..."
-msgstr "द्वारा वर्गीकृत करें"
+msgstr ""
 
 #. module: hr_skills
 #: model:ir.model.fields,field_description:hr_skills.field_hr_employee_skill__id
@@ -252,17 +251,16 @@ msgstr ""
 #: model:ir.model.fields,field_description:hr_skills.field_hr_skill_level__name
 #: model:ir.model.fields,field_description:hr_skills.field_hr_skill_type__name
 msgid "Name"
-msgstr "नाम"
+msgstr ""
 
 #. module: hr_skills
-#. odoo-python
 #: code:addons/hr_skills/models/hr_skill_level.py:0
 #, python-format
 msgid "Only one default level is allowed per skill type."
 msgstr ""
 
 #. module: hr_skills
-#. odoo-javascript
+#. openerp-web
 #: code:addons/hr_skills/static/src/views/skills_list_renderer.js:0
 #, python-format
 msgid "Other"
@@ -339,7 +337,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:hr_skills.field_hr_resume_line_type__sequence
 #: model:ir.model.fields,field_description:hr_skills.field_hr_skill__sequence
 msgid "Sequence"
-msgstr "अनुक्रम"
+msgstr ""
 
 #. module: hr_skills
 #: model_terms:ir.ui.view,arch_db:hr_skills.employee_skill_level_view_tree
@@ -433,14 +431,12 @@ msgid "Skills History"
 msgstr ""
 
 #. module: hr_skills
-#. odoo-python
 #: code:addons/hr_skills/models/hr_employee_skill.py:0
 #, python-format
 msgid "The skill %(name)s and skill type %(type)s doesn't match"
 msgstr ""
 
 #. module: hr_skills
-#. odoo-python
 #: code:addons/hr_skills/models/hr_employee_skill.py:0
 #, python-format
 msgid "The skill level %(level)s is not valid for skill type: %(type)s"
@@ -469,7 +465,7 @@ msgstr ""
 #. module: hr_skills
 #: model:ir.model.fields,field_description:hr_skills.field_hr_resume_line__line_type_id
 msgid "Type"
-msgstr "प्रकार"
+msgstr ""
 
 #. module: hr_skills
 #: model:ir.model,name:hr_skills.model_hr_resume_line_type
@@ -479,7 +475,7 @@ msgstr ""
 #. module: hr_skills
 #: model:ir.model,name:hr_skills.model_res_users
 msgid "User"
-msgstr "उपयोगकर्ता"
+msgstr ""
 
 #. module: hr_skills
 #: model_terms:ir.ui.view,arch_db:hr_skills.hr_employee_skill_type_view_form

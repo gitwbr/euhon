@@ -3,20 +3,18 @@
 # 	* loyalty
 # 
 # Translators:
+# Martin Trigaux, 2022
 # Gunther Clauwaert <gclauwae@hotmail.com>, 2022
 # Erwin van der Ploeg <erwin@odooexperts.nl>, 2023
-# Martin Trigaux, 2023
 # Jolien De Paepe, 2023
-# Wil Odoo, 2024
-# Manon Rondou, 2024
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-06 13:31+0000\n"
+"POT-Creation-Date: 2023-05-23 08:23+0000\n"
 "PO-Revision-Date: 2022-09-22 05:53+0000\n"
-"Last-Translator: Manon Rondou, 2024\n"
+"Last-Translator: Jolien De Paepe, 2023\n"
 "Language-Team: Dutch (https://app.transifex.com/odoo/teams/41243/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -56,7 +54,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"        Toon in webportaal, kassa klantticket, E-commerce kassa, het aantal beschikbare en gebruikt punten per beloning.\n"
+"        Toon in webportaal, kassa klantticket, eCommerce kassa, het aantal beschikbare en gebruikt punten per beloning.\n"
 "        "
 
 #. module: loyalty
@@ -129,6 +127,7 @@ msgstr "10% op je bestelling"
 
 #. module: loyalty
 #. odoo-python
+#: code:addons/loyalty/models/loyalty_program.py:0
 #: code:addons/loyalty/models/loyalty_program.py:0
 #, python-format
 msgid "2+1 Free"
@@ -722,7 +721,7 @@ msgstr "Kortingsbon"
 #. module: loyalty
 #: model:ir.actions.report,name:loyalty.report_loyalty_card
 msgid "Coupon Code"
-msgstr "Kortingsbon"
+msgstr "Code kortingsbon"
 
 #. module: loyalty
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_program__coupon_count
@@ -905,11 +904,6 @@ msgid "Discount Mode"
 msgstr "Kortingsmodus"
 
 #. module: loyalty
-#: model:ir.model.fields,field_description:loyalty.field_loyalty_program__payment_program_discount_product_id
-msgid "Discount Product"
-msgstr "Kortingsproduct"
-
-#. module: loyalty
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_reward__discount_product_domain
 msgid "Discount Product Domain"
 msgstr "Korting Productdomein"
@@ -930,11 +924,6 @@ msgstr "Kortingscode"
 #, python-format
 msgid "Discount point(s)"
 msgstr "Kortingspunt(en)"
-
-#. module: loyalty
-#: model_terms:ir.ui.view,arch_db:loyalty.loyalty_reward_view_form
-msgid "Discount product"
-msgstr "Kortingsproduct"
 
 #. module: loyalty
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_reward__discount_product_category_id
@@ -979,7 +968,7 @@ msgid ""
 "Drive repeat purchases by sending a unique, single-use coupon code for the "
 "next purchase when a customer buys something in your store."
 msgstr ""
-"Stimuleer herhalingsaankopen door een unieke kortingscode voor eenmalig "
+"Stimuleer herhalingsaankopen door een unieke kortingsboncode voor eenmalig "
 "gebruik te sturen voor de volgende aankoop wanneer een klant iets in je "
 "winkel koopt."
 
@@ -1096,8 +1085,8 @@ msgid ""
 "Point of Sale or regular orders to claim the Reward. You can define "
 "constraints on its usage through conditional rule."
 msgstr ""
-"Kortingscodes handmatig genereren & delen. Het kan worden gebruikt in "
-"E-commerce, Kassa of reguliere bestellingen om de beloning te claimen. Je "
+"Kortingsboncodes handmatig genereren & delen. Het kan worden gebruikt in "
+"eCommerce, Kassa of reguliere bestellingen om de beloning te claimen. Je "
 "kunt beperkingen op het gebruik ervan definiëren door middel van een "
 "voorwaardelijke regel."
 
@@ -1113,16 +1102,16 @@ msgid "Generate Gift Cards"
 msgstr "Cadeaubonnen genereren"
 
 #. module: loyalty
+#: model_terms:ir.ui.view,arch_db:loyalty.loyalty_program_view_form
+msgid "Generate eWallet"
+msgstr "eWallet genereren"
+
+#. module: loyalty
 #. odoo-python
 #: code:addons/loyalty/models/loyalty_program.py:0
 #, python-format
 msgid "Generate and share unique coupons with your customers."
 msgstr "Genereer en deel unieke kortingsbonnen met je klanten."
-
-#. module: loyalty
-#: model_terms:ir.ui.view,arch_db:loyalty.loyalty_program_view_form
-msgid "Generate eWallet"
-msgstr "eWallet genereren"
 
 #. module: loyalty
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_program_gift_ewallet_view_form
@@ -1194,7 +1183,7 @@ msgid ""
 "Grant 1 credit for each item bought then reward the customer with Y items in"
 " exchange of X credits."
 msgstr ""
-"Verleen 1 credit voor elk gekocht item en beloon de klant met Y-items in "
+"Verleen 1 krediet voor elk gekocht item en beloon de klant met Y-items in "
 "ruil voor X credits."
 
 #. module: loyalty
@@ -1547,11 +1536,6 @@ msgid "Product Variant"
 msgstr "Productvariant"
 
 #. module: loyalty
-#: model:ir.model.fields,help:loyalty.field_loyalty_program__payment_program_discount_product_id
-msgid "Product used in the sales order to apply the discount."
-msgstr "Producten gebruikt in het verkooporder om korting op toe te passen."
-
-#. module: loyalty
 #: model:ir.model.fields,help:loyalty.field_loyalty_reward__discount_line_product_id
 msgid ""
 "Product used in the sales order to apply the discount. Each reward has its "
@@ -1599,6 +1583,13 @@ msgstr "Programmatrigger"
 #. odoo-python
 #: code:addons/loyalty/models/loyalty_program.py:0
 #, python-format
+msgid "Promotion Program"
+msgstr "Promotieprogramma"
+
+#. module: loyalty
+#. odoo-python
+#: code:addons/loyalty/models/loyalty_program.py:0
+#, python-format
 msgid "Promo point(s)"
 msgstr "Promopunt(en)"
 
@@ -1609,13 +1600,6 @@ msgstr "Promopunt(en)"
 #, python-format
 msgid "Promos"
 msgstr "Promoties"
-
-#. module: loyalty
-#. odoo-python
-#: code:addons/loyalty/models/loyalty_program.py:0
-#, python-format
-msgid "Promotion Program"
-msgstr "Promotieprogramma"
 
 #. module: loyalty
 #. odoo-python
@@ -1957,13 +1941,6 @@ msgstr "Je kunt een programma in een actieve staat niet verwijderen"
 
 #. module: loyalty
 #. odoo-python
-#: code:addons/loyalty/models/loyalty_reward.py:0
-#, python-format
-msgid "The reward description field cannot be empty."
-msgstr "De omschrijving van de beloning mag niet leeg zijn."
-
-#. module: loyalty
-#. odoo-python
 #: code:addons/loyalty/models/product_product.py:0
 #: code:addons/loyalty/models/product_template.py:0
 #, python-format
@@ -1977,7 +1954,7 @@ msgstr ""
 #. module: loyalty
 #: model:mail.template,report_name:loyalty.mail_template_loyalty_card
 msgid "Your Coupon Code"
-msgstr "Je kortingscode"
+msgstr "Je kortingsboncode"
 
 #. module: loyalty
 #: model:mail.template,report_name:loyalty.mail_template_gift_card

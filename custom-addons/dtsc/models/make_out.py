@@ -298,7 +298,7 @@ class MakeOut(models.Model):
     def action_to_excel(self):
         active_ids = self._context.get('active_ids')
         records = self.env['dtsc.makeout'].browse(active_ids)
-        
+        sorted_records = sorted(records, key=lambda r: r.name)
         # 生成 Excel 文件
         output = BytesIO()
         workbook = xlsxwriter.Workbook(output, {'in_memory': True})
@@ -334,7 +334,7 @@ class MakeOut(models.Model):
         worksheet.write(0, 11, '工單號', bold_format)
         
         row = 1
-        for record in records:
+        for record in sorted_records:
             if '-D' in record.name:
                 continue
             supplier_init_name = record.supplier_init_name

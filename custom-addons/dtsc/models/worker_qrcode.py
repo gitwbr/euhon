@@ -75,13 +75,70 @@ class WorkerQRcode(models.Model):
 class CheckOut(models.Model):
     _inherit = "dtsc.checkoutline"     
     
-    outman = fields.Many2one('dtsc.userlist',string="輸出" , domain=[('worktype_ids' , 'in' , [1])])
+    outman = fields.Many2one('dtsc.userlist',string="輸出" , domain=[('worktype_ids' , 'in' , [1])])    
     lengbiao_sign = fields.Char("冷裱")
     guoban_sign = fields.Char("過板")
     caiqie_sign = fields.Char("裁切")
     pinguan_sign = fields.Char("品管")
     daichuhuo_sign = fields.Char("待出貨")
     yichuhuo_sign = fields.Char("已出貨")
+
+    outman_count = fields.Float("輸出",compute="_compute_count",store=True)
+    lengbiao_count = fields.Float("冷裱",compute="_compute_count",store=True)
+    guoban_count = fields.Float("過板",compute="_compute_count",store=True)
+    caiqie_count = fields.Float("裁切",compute="_compute_count",store=True)
+    pinguan_count = fields.Float("品管",compute="_compute_count",store=True)
+    daichuhuo_count = fields.Float("待出貨",compute="_compute_count",store=True)
+    yichuhuo_count = fields.Float("已出貨",compute="_compute_count",store=True)
+
+    def go_make(self):
+        if self.make_orderid:
+            if self.make_orderid[0] == "B":
+                order_prefix = self.make_orderid.split("-")[0]
+                order_id = self.env["dtsc.makein"].search([("name","=",order_prefix)])
+                return {
+                    'name': '内部工單',
+                    'type': 'ir.actions.act_window',
+                    'view_mode': 'form',
+                    'res_model': 'dtsc.makein',
+                    'res_id': order_id.id,
+                    # 'target': 'new',
+                } 
+            if self.make_orderid[0] == "C":
+                order_prefix = self.make_orderid.split("-")[0]
+                order_id = self.env["dtsc.makeout"].search([("name","=",order_prefix)])
+                return {
+                    'name': '委外工單',
+                    'type': 'ir.actions.act_window',
+                    'view_mode': 'form',
+                    'res_model': 'dtsc.makeout',
+                    'res_id': order_id.id,
+                    # 'target': 'new',
+                } 
+        else:
+            pass
+        # print(self.make_orderid)
+    
+    # @api.model
+    # def get_filter_dates(self):
+        # today = date.today()
+        # print(today.isoformat())
+        # return {
+            # 'default_today': today.isoformat(),
+            # 'default_yesterday': (today - timedelta(days=10)).isoformat(),
+            # 'default_after_tomorrow': (today + timedelta(days=2)).isoformat(),
+        # }
+    
+    @api.depends('outman','lengbiao_sign','guoban_sign','guoban_sign','caiqie_sign','pinguan_sign','daichuhuo_sign','yichuhuo_sign')
+    def _compute_count(self):
+        for record in self:
+            record.outman_count =  record.total_units if record.outman else 0
+            record.lengbiao_count =  record.total_units if record.lengbiao_sign else 0
+            record.guoban_count =  record.total_units if record.guoban_sign else 0
+            record.caiqie_count =  record.total_units if record.caiqie_sign else 0
+            record.pinguan_count =  record.total_units if record.pinguan_sign else 0
+            record.daichuhuo_count =  record.total_units if record.daichuhuo_sign else 0
+            record.yichuhuo_count =  record.total_units if record.yichuhuo_sign else 0
 
     cai_done = fields.Float("已完成(才)",compute="_compute_cai_done",store=True)
     cai_not_done = fields.Float("未完成(才)",compute="_compute_cai_done",store=True)

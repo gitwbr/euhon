@@ -5,7 +5,6 @@ import babel
 import copy
 import logging
 import re
-import traceback
 
 from lxml import html
 from markupsafe import Markup
@@ -314,7 +313,7 @@ class MailRenderMixin(models.AbstractModel):
                     group = self.env.ref('mail.group_mail_template_editor')
                     raise AccessError(_('Only users belonging to the "%s" group can modify dynamic templates.', group.name)) from e
                 _logger.info("Failed to render template : %s", template_src, exc_info=True)
-                raise UserError(_("Failed to render QWeb template : %s\n\n%s)", template_src, traceback.format_exc())) from e
+                raise UserError(_("Failed to render QWeb template : %s)", template_src)) from e
             results[record.id] = render_result
 
         return results
@@ -433,14 +432,8 @@ class MailRenderMixin(models.AbstractModel):
 
         :return dict: updated version of rendered per record ID;
         """
-        # TODO make this a parameter
-        model = self.env.context.get('mail_render_postprocess_model')
-        res_ids = list(rendered.keys())
         for res_id, rendered_html in rendered.items():
-            base_url = None
-            if model:
-                base_url = self.env[model].browse(res_id).with_prefetch(res_ids).get_base_url()
-            rendered[res_id] = self._replace_local_links(rendered_html, base_url)
+            rendered[res_id] = self._replace_local_links(rendered_html)
         return rendered
 
     @api.model
@@ -481,7 +474,7 @@ class MailRenderMixin(models.AbstractModel):
             rendered = self._render_template_inline_template(template_src, model, res_ids,
                                                              add_context=add_context, options=options)
         if post_process:
-            rendered = self.with_context(mail_render_postprocess_model=model)._render_template_postprocess(rendered)
+            rendered = self._render_template_postprocess(rendered)
 
         return rendered
 

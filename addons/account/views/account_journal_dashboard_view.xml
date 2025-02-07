@@ -59,11 +59,8 @@
                     </t>
 
                     <t t-name="HasSequenceHoles">
-                        <a t-if="dashboard.has_sequence_holes"
-                           name="show_sequence_holes"
-                           type="object"
-                           class="text-warning"
-                           title="Gaps due to canceled invoices, deleted entries or manual errors in open period.">
+                        <a t-if="dashboard.has_sequence_holes" name="show_sequence_holes" type="object" class="text-warning">
+                            <i class="fa fa-exclamation-triangle"/>
                             Gaps in the sequence
                         </a>
                     </t>
@@ -236,7 +233,7 @@
                                         <a type="object" name="open_action" context="{'action_name': 'action_move_journal_line', 'search_default_to_check': True}"><t t-esc="dashboard.number_to_check"/> to check</a>
                                     </div>
                                     <div class="col-auto text-end">
-                                        <span class="o_kanban_monetary"><t t-esc="dashboard.to_check_balance"/></span>
+                                        <span><t t-esc="dashboard.to_check_balance"/></span>
                                     </div>
                                 </div>
                             </t>
@@ -267,7 +264,7 @@
                                     <span>Running Balance</span>
                                 </div>
                                 <div class="col-auto text-end">
-                                    <span class="o_kanban_monetary"><t t-esc="dashboard.account_balance"/></span>
+                                    <span><t t-esc="dashboard.account_balance"/></span>
                                 </div>
                             </div>
                             <div class="row" t-if="dashboard.nb_lines_outstanding_pay_account_balance > 0">
@@ -275,7 +272,7 @@
                                     <span title="Outstanding Payments/Receipts">Outstanding Payments/Receipts</span>
                                 </div>
                                 <div class="col-auto text-end">
-                                    <span class="o_kanban_monetary"><t t-esc="dashboard.outstanding_pay_account_balance"/></span>
+                                    <span><t t-esc="dashboard.outstanding_pay_account_balance"/></span>
                                 </div>
                             </div>
                             <t t-if="dashboard.has_at_least_one_statement and dashboard.account_balance != dashboard.last_balance">
@@ -284,7 +281,7 @@
                                         <span title="Latest Statement">Latest Statement</span>
                                     </div>
                                     <div class="col-auto text-end">
-                                        <span class="o_kanban_monetary"><t t-esc="dashboard.last_balance"/></span>
+                                        <span><t t-esc="dashboard.last_balance"/></span>
                                     </div>
                                 </div>
                             </t>
@@ -318,7 +315,7 @@
                                     </a>
                                 </div>
                                 <div class="col-auto text-end">
-                                    <span class="o_kanban_monetary"><t t-esc="dashboard.sum_draft"/></span>
+                                    <span><t t-esc="dashboard.sum_draft"/></span>
                                 </div>
                             </div>
                             <div class="row" t-if="dashboard.number_waiting">
@@ -334,7 +331,7 @@
                                     </a>
                                 </div>
                                 <div class="col-auto text-end">
-                                    <span class="o_kanban_monetary"><t t-esc="dashboard.sum_waiting"/></span>
+                                    <span><t t-esc="dashboard.sum_waiting"/></span>
                                 </div>
                             </div>
                             <div class="row" t-if="dashboard.number_late">
@@ -345,7 +342,7 @@
                                     </a>
                                 </div>
                                 <div class="col-auto text-end">
-                                    <span class="o_kanban_monetary"><t t-esc="dashboard.sum_late"/></span>
+                                    <span><t t-esc="dashboard.sum_late"/></span>
                                 </div>
                             </div>
                             <t t-if="dashboard.number_to_check > 0">
@@ -354,7 +351,7 @@
                                         <a type="object" name="open_action" context="{'search_default_to_check': True}"><t t-esc="dashboard.number_to_check"/> to check</a>
                                     </div>
                                     <div class="col-auto text-end">
-                                        <span class="o_kanban_monetary"><t t-esc="dashboard.to_check_balance"/></span>
+                                        <span><t t-esc="dashboard.to_check_balance"/></span>
                                     </div>
                                 </div>
                             </t>

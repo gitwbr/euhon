@@ -5,20 +5,18 @@
 # Translators:
 # Cozmin Candea <office@terrabit.ro>, 2022
 # sharkutz <sharkutz4life@yahoo.com>, 2022
+# Dorin Hongu <dhongu@gmail.com>, 2022
 # Foldi Robert <foldirobert@nexterp.ro>, 2022
+# Martin Trigaux, 2022
 # Hongu Cosmin <cosmin513@gmail.com>, 2022
-# Dorin Hongu <dhongu@gmail.com>, 2023
-# Martin Trigaux, 2024
-# Larisa_nexterp, 2024
-# Lyall Kindmurr, 2024
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 16.0\n"
+"Project-Id-Version: Odoo Server 16.0beta\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-06 13:31+0000\n"
+"POT-Creation-Date: 2022-09-23 08:02+0000\n"
 "PO-Revision-Date: 2022-09-22 05:53+0000\n"
-"Last-Translator: Lyall Kindmurr, 2024\n"
+"Last-Translator: Hongu Cosmin <cosmin513@gmail.com>, 2022\n"
 "Language-Team: Romanian (https://app.transifex.com/odoo/teams/41243/ro/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,21 +25,21 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "%s employees"
-msgstr "%s angajați"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Add Contact To Database"
-msgstr "Adaugă contactul la baza de date"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
@@ -54,96 +52,93 @@ msgid "Allow"
 msgstr "Permite"
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "An error has occurred when trying to fetch translations."
-msgstr "A apărut o eroare la preluarea traducerilor."
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Annual Revenue"
-msgstr "Venit anual"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid ""
 "Attachments could not be logged in Odoo because their total size exceeded "
 "the allowed maximum."
 msgstr ""
-"Atașamentele nu au putut fi înregistrate în Odoo deoarece dimensiunea lor "
-"depășește limita de memorie."
 
 #. module: mail_plugin
-#. odoo-python
 #: code:addons/mail_plugin/controllers/mail_plugin.py:0
 #, python-format
 msgid "Bad Email."
-msgstr "Email incorect."
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Buy More"
-msgstr "Cumpărați"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Buy new credits"
-msgstr "Cumpărați mai mult credit"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Can not save the contact"
-msgstr "Contactul nu poate fi salvat"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Clear Translations Cache"
-msgstr "Golire cache a traducerilor"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Close"
 msgstr "Închide"
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Company"
 msgstr "Companie"
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Company Created."
-msgstr "Companie creată"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Company Insights"
-msgstr "Informații despre companie"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
@@ -151,21 +146,21 @@ msgid "Company Type"
 msgstr "Tip companie"
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Company created"
-msgstr "Companie creată"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Company updated"
-msgstr "Companie actualizată"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #: model:ir.model,name:mail_plugin.model_res_partner
 #, python-format
@@ -173,79 +168,74 @@ msgid "Contact"
 msgstr "Contact"
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Contact Details"
 msgstr "Detalii Contact"
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Contact created"
-msgstr "Contact creat"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Contacts Found (%(count)s)"
-msgstr "Contacte găsite (%(count)s)"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Could not autocomplete the company. Internal error. Try again later..."
 msgstr ""
-"Eroare internă: Nu s-a putut completa automat compania. Vă rugăm să "
-"reîncercați mai târziu."
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Could not connect to database. Try to log out and in."
 msgstr ""
-"Eroare conectare la baza de date. Încercați să vă deconectați și să vă "
-"conectați din nou."
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Could not connect to your database. Please try again."
-msgstr "Eroare conectare la baza de date. Vă rugăm să reîncercați."
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Could not display image %(attachmentName)s, size is over limit."
 msgstr ""
-"Imaginea %(attachmentName)s nu poate fi afișată, dimensiune peste limită."
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Create"
 msgstr "Creează"
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Create a Company"
-msgstr "Creează o companie"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Create a company"
-msgstr "Creează o companie"
+msgstr ""
 
 #. module: mail_plugin
 #: model:ir.model.fields,field_description:mail_plugin.field_res_partner_iap__create_uid
@@ -258,25 +248,25 @@ msgid "Created on"
 msgstr "Creat în"
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Debug"
-msgstr "Debug"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Debug Zone"
-msgstr "Zonă debug"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Debug zone for development purpose."
-msgstr "Zonă debug pentru dezvoltatori."
+msgstr ""
 
 #. module: mail_plugin
 #: model_terms:ir.ui.view,arch_db:mail_plugin.app_auth
@@ -284,7 +274,7 @@ msgid "Deny"
 msgstr "Respinge"
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Description"
@@ -298,17 +288,17 @@ msgstr "Nume afișat"
 #. module: mail_plugin
 #: model:ir.model.fields,help:mail_plugin.field_res_partner_iap__iap_search_domain
 msgid "Domain used to find the company"
-msgstr "Domeniul folosit pentru a găsi compania"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Email already logged on the contact"
-msgstr "Emailul a fost deja înregistrat în contact"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
@@ -316,47 +306,47 @@ msgid "Employees"
 msgstr "Angajați"
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Enrich Company"
-msgstr "Completare automată companie"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Error during enrichment"
-msgstr "Eroare completare automată"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Founded Year"
-msgstr "Anul Fondării"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "From : %(email)s"
-msgstr "De la : %(email)s"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "From:"
 msgstr "De la:"
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Gmail Inbox"
-msgstr "Inbox Gmail"
+msgstr ""
 
 #. module: mail_plugin
 #: model:ir.model,name:mail_plugin.model_ir_http
@@ -368,26 +358,26 @@ msgstr "Rutare HTTP"
 #: model:ir.model.fields,field_description:mail_plugin.field_res_partner_iap__iap_enrich_info
 #: model:ir.model.fields,field_description:mail_plugin.field_res_users__iap_enrich_info
 msgid "IAP Enrich Info"
-msgstr "Informații îmbogățire IAP"
+msgstr ""
 
 #. module: mail_plugin
 #: model:ir.actions.act_window,name:mail_plugin.res_partner_iap_action
 #: model_terms:ir.ui.view,arch_db:mail_plugin.res_partner_iap_view_form
 #: model_terms:ir.ui.view,arch_db:mail_plugin.res_partner_iap_view_tree
 msgid "IAP Partner"
-msgstr "Partener IAP"
+msgstr ""
 
 #. module: mail_plugin
 #: model:ir.ui.menu,name:mail_plugin.res_partner_iap_menu
 msgid "IAP Partners"
-msgstr "Parteneri IAP"
+msgstr ""
 
 #. module: mail_plugin
 #: model:ir.model.fields,help:mail_plugin.field_res_partner__iap_enrich_info
 #: model:ir.model.fields,help:mail_plugin.field_res_partner_iap__iap_enrich_info
 #: model:ir.model.fields,help:mail_plugin.field_res_users__iap_enrich_info
 msgid "IAP response stored as a JSON string"
-msgstr "Răspuns IAP salvat drept mesaj JSON"
+msgstr ""
 
 #. module: mail_plugin
 #: model:ir.model.fields,field_description:mail_plugin.field_res_partner_iap__id
@@ -395,7 +385,7 @@ msgid "ID"
 msgstr "ID"
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
@@ -403,14 +393,14 @@ msgid "Industry"
 msgstr "Industrie"
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Invalid URL"
-msgstr "URL Invalid"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
@@ -438,29 +428,29 @@ msgid "Let"
 msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Log Email Into Contact"
-msgstr "Înregistrează emailul în contact"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Log email"
-msgstr "Înregistrează emailul"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Logged from"
-msgstr "Înregistrat din"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
@@ -468,7 +458,7 @@ msgid "Login"
 msgstr "Autentificare"
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
@@ -476,141 +466,123 @@ msgid "Logout"
 msgstr "Deconectare"
 
 #. module: mail_plugin
-#. odoo-python
-#: code:addons/mail_plugin/controllers/mail_plugin.py:0
-#, python-format
-msgid "No Access"
-msgstr "Fără acces"
-
-#. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "No additional insights were found for this company"
-msgstr "Nu au fost găsite alte informații despre această firmă"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "No company attached to this contact"
-msgstr "Acest contact nu este atașat unei companii"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "No company attached to this contact."
-msgstr "Acest contact nu aparține unei companii"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "No company linked to this contact could be enriched"
-msgstr "Companiile acestui contact nu au putut fi completate automat"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "No company linked to this contact could be enriched or found in Odoo"
 msgstr ""
-"Companiile acestui contact nu au putut fi completate automat sau nu există "
-"în Odoo"
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "No contact found."
-msgstr "Nu a fost găsit niciun contact."
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "No data found for this email address."
-msgstr "Nu au fost găsite date pentru această adresă de email."
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "No extra information found"
-msgstr "Nu s-au găsit informații suplimentare"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "No insights for this company."
-msgstr "Nicio informație pentru această companie."
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "No insights found for this address."
-msgstr "Nicio informație pentru această adresă."
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Not enough credits to enrich."
-msgstr "Credite insuficiente pentru îmbogățire"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-python
-#: code:addons/mail_plugin/controllers/mail_plugin.py:0
-#, python-format
-msgid "Notification"
-msgstr "Notificare"
-
-#. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Odoo Access Token"
-msgstr "Token de acces Odoo"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Odoo Server URL"
-msgstr "URL server Odoo"
+msgstr ""
 
 #. module: mail_plugin
 #: model:ir.model.constraint,message:mail_plugin.constraint_res_partner_iap_unique_partner_id
 msgid "Only one partner IAP is allowed for one partner"
-msgstr "Este permis un singur partener IAP pentru un partener"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid ""
 "Oops, looks like you have exhausted your free enrichment requests. Please "
 "log in to try again."
 msgstr ""
-"Ați folosit toate cererile de îmbogățire gratuite. Vă rugăm să vă conectați "
-"pentru a reîncerca."
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Our IAP server is down, please come back later."
-msgstr "Server-ul IAP este oprit, reveniți mai târziu."
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Outlook Inbox"
-msgstr "Inbox Outlook"
+msgstr ""
 
 #. module: mail_plugin
 #: model:ir.model.fields,field_description:mail_plugin.field_res_partner_iap__partner_id
@@ -620,66 +592,66 @@ msgstr "Partener"
 #. module: mail_plugin
 #: model:ir.model,name:mail_plugin.model_res_partner_iap
 msgid "Partner IAP"
-msgstr "Partener IAP"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Phone"
 msgstr "Telefon"
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Phones"
 msgstr "Telefoane"
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Read more"
 msgstr "Citeste mai mult"
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Refresh"
 msgstr "Actualizare"
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Refresh Contact"
-msgstr "Actualizare contact"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Revenues"
 msgstr "Venituri"
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Save in Odoo"
-msgstr "Salvare în Odoo"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Save the contact to create the company"
-msgstr "Salvați contactul pentru a crea compania"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Search"
@@ -690,127 +662,104 @@ msgstr "Caută"
 #: model:ir.model.fields,field_description:mail_plugin.field_res_partner_iap__iap_search_domain
 #: model:ir.model.fields,field_description:mail_plugin.field_res_users__iap_search_domain
 msgid "Search Domain / Email"
-msgstr "Căutare domeniu/email"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Search In Database"
-msgstr "Caută în baza de date"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Search In Odoo"
-msgstr "Caută în Odoo"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Search contact"
-msgstr "Caută contact"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Search contact in Odoo..."
-msgstr "Caută contact în Odoo"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Something bad happened. Please, try again later."
-msgstr "A apărut o eroare. Reîncercați mai târziu."
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-python
 #: code:addons/mail_plugin/controllers/mail_plugin.py:0
 #, python-format
 msgid "The email of this contact is not valid and we can not enrich it"
 msgstr ""
-"E-mailul acestui contact este invalid, și nu poate fi completat automat"
 
 #. module: mail_plugin
-#. odoo-python
 #: code:addons/mail_plugin/controllers/mail_plugin.py:0
 #, python-format
 msgid "The partner already has a company related to him"
-msgstr "Acest partener are deja o companie atribuită"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "This company has no email address and could not be enriched."
 msgstr ""
-"Această companie nu poate fi completată automat deoarece nu are adresă de "
-"e-mail."
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "This contact does not exist in the Odoo database."
-msgstr "Acest contact nu există în baza de date Odoo."
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "This contact has no email address, no company could be enriched."
 msgstr ""
-"Acest contact nu are adresă de e-mail. Nicio companie nu a putut să fie "
-"completată automat."
 
 #. module: mail_plugin
-#. odoo-python
-#: code:addons/mail_plugin/controllers/mail_plugin.py:0
-#, python-format
-msgid ""
-"This is your notification address. Search the Contact manually to link this "
-"email to a record."
-msgstr ""
-"Aceasta este adresa dvs. de notificare. Căutați manual contactul pentru a "
-"lega acest e-mail la o înregistrare."
-
-#. module: mail_plugin
-#. odoo-python
 #: code:addons/mail_plugin/controllers/mail_plugin.py:0
 #: code:addons/mail_plugin/controllers/mail_plugin.py:0
 #, python-format
 msgid "This partner does not exist"
-msgstr "Acest partener nu există."
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid ""
 "Warning: Attachments could not be logged in Odoo because their total size "
 "exceeded the allowed maximum."
 msgstr ""
-"Alertă: Atașamentele nu au putut fi înregistrate în Odoo deoarece "
-"dimensiunea lor depășește limita de memorie alocată."
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid ""
 "Warning: Could not fetch the attachments %(attachments)s as their sizes are "
 "bigger then the maximum size of %(size)sMB per each attachment."
 msgstr ""
-"Alertă: Nu s-au putut prelua atașmentele %(attachments)s, deoarece "
-"dimensiunea lor depășește dimensiunea maximă de %(size)sMB per atașament."
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
@@ -818,33 +767,32 @@ msgid "Website"
 msgstr "Pagină web"
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Year founded"
-msgstr "Anul fondării"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "You don't have enough credit to enrich."
-msgstr "Credite insuficiente pentru îmbogățire"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-python
 #: code:addons/mail_plugin/controllers/mail_plugin.py:0
 #, python-format
 msgid "You need to specify at least the partner_id or the name and the email"
-msgstr "Trebuie să specificați cel puțin partner_id sau nume și email"
+msgstr ""
 
 #. module: mail_plugin
 #: model_terms:ir.ui.view,arch_db:mail_plugin.app_auth
 msgid "access your Odoo database?"
-msgstr "accesa baza de date Odoo?"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "employees"

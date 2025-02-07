@@ -9,12 +9,12 @@
 
 {
     'name': 'China - Accounting',
-    'version': '1.9',
+    'version': '1.8',
     'category': 'Accounting/Localizations/Account Charts',
     'author': 'www.openerp-china.org',
     'maintainer': 'jeff@osbzr.com',
     'website': 'http://openerp-china.org',
-    'description': r"""
+    'description': """
 Includes the following data for the Chinese localization
 ========================================================
 

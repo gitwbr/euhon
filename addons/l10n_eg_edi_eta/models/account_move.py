@@ -5,7 +5,6 @@ import json
 
 from odoo import api, models, fields, _
 from odoo.exceptions import ValidationError, UserError
-from odoo.tools import float_is_zero
 from odoo.tools.sql import column_exists, create_column
 from datetime import datetime
 
@@ -122,8 +121,4 @@ class AccountMove(models.Model):
         self.ensure_one()
         from_currency = self.currency_id
         to_currency = self.company_id.currency_id
-        if from_currency != to_currency and self.invoice_line_ids:
-            amount_currency = self.invoice_line_ids[0].amount_currency
-            if not float_is_zero(amount_currency, precision_rounding=from_currency.rounding):
-                return abs(self.invoice_line_ids[0].balance / amount_currency)
-        return 1.0
+        return abs(self.invoice_line_ids[0].balance / self.invoice_line_ids[0].amount_currency) if from_currency != to_currency and self.invoice_line_ids else 1.0

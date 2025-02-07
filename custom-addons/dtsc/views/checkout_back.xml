@@ -105,7 +105,7 @@
         <field name="groups_id" eval="[(4, ref('dtsc.group_dtsc_mg'))]"/>
 	</record>
 	<record id="action_printexcel_makeout_list" model="ir.actions.server">
-		<field name="name">委外生產統計表轉Excel</field>
+		<field name="name">統計表生成Excel(簡易)</field>
 		<field name="model_id" ref="model_dtsc_makeout"/>
 		<field name="state">code</field>
 		<field name="code">
@@ -195,11 +195,7 @@
 					<button name="in_out_check" type="object" class="oe_highlight" string="訂單確認" attrs="{'invisible':[('checkout_order_state','not in',['quoting'])]}"  groups="dtsc.group_dtsc_mg"/>
 					<button name="finish_enable" type="object" class="oe_highlight" string="訂單完成" attrs="{'invisible':[('checkout_order_state','not in',['producing'])]}" groups="dtsc.group_dtsc_mg,dtsc.group_dtsc_sc" />
 					<button name="jiage_queren" type="object" class="oe_highlight" string="價格確認" attrs="{
-						'invisible': [
-							'|', 
-							('checkout_order_state', 'not in', ['finished']), 
-							('is_current_user', '=', False)
-						]
+						'invisible': ['|',('checkout_order_state', 'not in', ['finished']),('is_current_user', '=', False)]
 					}"  groups="dtsc.group_dtsc_yw" />
 					<!-- <button name="go_inshou" type="object" class="oe_highlight" string="生成應收賬單" attrs="{'invisible':[('checkout_order_state','not in',['price_review_done'])]}" groups="dtsc.group_dtsc_kj" /> -->
 					<!-- <button name="go_over" type="object" class="oe_highlight" string="結案" attrs="{'invisible':[('checkout_order_state','not in',['receivable_assigned'])]}"  /> -->

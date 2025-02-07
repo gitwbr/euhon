@@ -4,7 +4,6 @@
 # 
 # Translators:
 # Martin Trigaux, 2022
-# Thi Huong Nguyen, 2024
 # 
 msgid ""
 msgstr ""
@@ -12,7 +11,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-04-14 05:51+0000\n"
 "PO-Revision-Date: 2022-09-22 05:44+0000\n"
-"Last-Translator: Thi Huong Nguyen, 2024\n"
+"Last-Translator: Martin Trigaux, 2022\n"
 "Language-Team: Vietnamese (https://app.transifex.com/odoo/teams/41243/vi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,21 +24,21 @@ msgstr ""
 #: code:addons/account_edi/models/account_move.py:0
 #, python-format
 msgid " Electronic invoicing error(s)"
-msgstr "(Các) lỗi lập hoá đơn điện tử"
+msgstr ""
 
 #. module: account_edi
 #. odoo-python
 #: code:addons/account_edi/models/account_move.py:0
 #, python-format
 msgid " Electronic invoicing info(s)"
-msgstr "(Các) thông tin lập hoá đơn điện tử"
+msgstr ""
 
 #. module: account_edi
 #. odoo-python
 #: code:addons/account_edi/models/account_move.py:0
 #, python-format
 msgid " Electronic invoicing warning(s)"
-msgstr "(Các) cảnh báo lập hoá đơn điện tử"
+msgstr ""
 
 #. module: account_edi
 #. odoo-python
@@ -53,7 +52,7 @@ msgstr "Việc hủy bỏ EDI đã được yêu cầu."
 #: code:addons/account_edi/models/account_move.py:0
 #, python-format
 msgid "A request for cancellation of the EDI has been called off."
-msgstr "Yêu cầu hủy bỏ EDI đã bị hủy bỏ."
+msgstr ""
 
 #. module: account_edi
 #: model:ir.model,name:account_edi.model_ir_attachment
@@ -64,7 +63,7 @@ msgstr "Đính kèm"
 #. module: account_edi
 #: model:ir.model.fields,field_description:account_edi.field_account_edi_document__blocking_level
 msgid "Blocking Level"
-msgstr "Mức độ chặn"
+msgstr ""
 
 #. module: account_edi
 #: model:ir.model.fields,help:account_edi.field_account_edi_document__blocking_level
@@ -74,15 +73,11 @@ msgid ""
 "  * Warning: there is an error that doesn't prevent the current Electronic Invoicing operation to succeed.\n"
 "  * Error: there is an error that blocks the current Electronic Invoicing operation."
 msgstr ""
-"Chặn thao tác hiện tại của chứng từ tùy vào mức độ nghiêm trọng của lỗi:\n"
-"* Thông tin: chứng từ không bị chặn và mọi thứ vẫn hoạt động bình thường.\n"
-"* Cảnh báo: có một lỗi không ngăn cản thao tác Lập hóa đơn điện tử hiện tại thành công.\n"
-"* Lỗi: xảy ra lỗi chặn thao tác Lập hóa đơn điện tử hiện tại."
 
 #. module: account_edi
 #: model_terms:ir.ui.view,arch_db:account_edi.view_move_form_inherit
 msgid "Call off EDI Cancellation"
-msgstr "Huỷ lện huỷ EDI"
+msgstr ""
 
 #. module: account_edi
 #: model:ir.model.fields.selection,name:account_edi.selection__account_edi_document__state__cancelled
@@ -152,7 +147,7 @@ msgstr "EDI : Thực hiện các hoạt động dịch vụ web"
 #: model_terms:ir.ui.view,arch_db:account_edi.view_move_form_inherit
 #: model_terms:ir.ui.view,arch_db:account_edi.view_payment_form_inherit
 msgid "EDI Documents"
-msgstr "Chứng từ EDI"
+msgstr ""
 
 #. module: account_edi
 #: model:ir.model,name:account_edi.model_account_edi_format
@@ -169,12 +164,12 @@ msgstr "Định dạng EDI hỗ trợ các bút toán trong sổ nhật ký này
 #: model:ir.model.fields,field_description:account_edi.field_account_move__edi_blocking_level
 #: model:ir.model.fields,field_description:account_edi.field_account_payment__edi_blocking_level
 msgid "Edi Blocking Level"
-msgstr "Mức độ chặn EDI"
+msgstr ""
 
 #. module: account_edi
 #: model:ir.model.fields,field_description:account_edi.field_account_edi_document__edi_content
 msgid "Edi Content"
-msgstr "Nội dung EDI"
+msgstr ""
 
 #. module: account_edi
 #: model:ir.model.fields,field_description:account_edi.field_account_bank_statement_line__edi_document_ids
@@ -195,7 +190,7 @@ msgstr "Edi Error Count"
 #: model:ir.model.fields,field_description:account_edi.field_account_move__edi_error_message
 #: model:ir.model.fields,field_description:account_edi.field_account_payment__edi_error_message
 msgid "Edi Error Message"
-msgstr "Thông báo lỗi EID"
+msgstr ""
 
 #. module: account_edi
 #: model:ir.model.fields,field_description:account_edi.field_account_edi_document__edi_format_id
@@ -207,7 +202,7 @@ msgstr "Định dạng Edi"
 #: model:ir.model.fields,field_description:account_edi.field_account_move__edi_show_abandon_cancel_button
 #: model:ir.model.fields,field_description:account_edi.field_account_payment__edi_show_abandon_cancel_button
 msgid "Edi Show Abandon Cancel Button"
-msgstr "Edi Show Abandon Cancel Button"
+msgstr ""
 
 #. module: account_edi
 #: model:ir.model.fields,field_description:account_edi.field_account_bank_statement_line__edi_show_cancel_button
@@ -246,12 +241,12 @@ msgstr "Hóa đơn điện tử"
 #. module: account_edi
 #: model_terms:ir.ui.view,arch_db:account_edi.view_account_invoice_filter
 msgid "Electronic invoicing processing needed"
-msgstr "Cần xử lý việc lập hoá đơn điện tử"
+msgstr ""
 
 #. module: account_edi
 #: model_terms:ir.ui.view,arch_db:account_edi.view_account_invoice_filter
 msgid "Electronic invoicing state"
-msgstr "Trạng thái lập hoá đơn điện tử"
+msgstr ""
 
 #. module: account_edi
 #: model:ir.model,name:account_edi.model_mail_template
@@ -298,9 +293,6 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
-"Cấu hình hoá đơn không hợp lệ:\n"
-"\n"
-"%s"
 
 #. module: account_edi
 #: model:ir.model,name:account_edi.model_account_journal
@@ -360,7 +352,7 @@ msgstr "Thanh toán"
 #: model_terms:ir.ui.view,arch_db:account_edi.view_move_form_inherit
 #: model_terms:ir.ui.view,arch_db:account_edi.view_payment_form_inherit
 msgid "Process now"
-msgstr "Xử lý ngay"
+msgstr ""
 
 #. module: account_edi
 #: model:ir.model,name:account_edi.model_uom_uom
@@ -370,7 +362,7 @@ msgstr "Đơn vị tính của sản phẩm"
 #. module: account_edi
 #: model:ir.model,name:account_edi.model_ir_actions_report
 msgid "Report Action"
-msgstr "Báo cáo tác vụ"
+msgstr "Báo cáo hành động"
 
 #. module: account_edi
 #: model_terms:ir.ui.view,arch_db:account_edi.view_move_form_inherit
@@ -405,7 +397,6 @@ msgstr "Trạng thái"
 #: model:ir.model.fields,help:account_edi.field_account_payment__edi_state
 msgid "The aggregated state of all the EDIs with web-service of this move"
 msgstr ""
-"Trạng thái tổng hợp của tất cả các EDI kèm dịch vụ web của bút toán này"
 
 #. module: account_edi
 #. odoo-python
@@ -426,14 +417,6 @@ msgstr ""
 "document is processed)."
 
 #. module: account_edi
-#: code:addons/account_edi/wizard/account_resequence.py:0
-#, python-format
-msgid ""
-"The following documents have already been sent and cannot be resequenced: %s"
-msgstr ""
-"Các chứng từ sau đây đã được gửi đi và không thể đánh lại số thứ tự: %s"
-
-#. module: account_edi
 #: model_terms:ir.ui.view,arch_db:account_edi.view_move_form_inherit
 msgid ""
 "The invoice will be processed asynchronously by the following E-invoicing "
@@ -452,7 +435,7 @@ msgstr ""
 msgid ""
 "The text of the last error that happened during Electronic Invoice "
 "operation."
-msgstr "Văn bản báo lỗi cuối cùng xảy ra trong thao tác lập Hóa đơn điện tử."
+msgstr ""
 
 #. module: account_edi
 #: model:ir.model.constraint,message:account_edi.constraint_account_edi_format_unique_code
@@ -464,7 +447,7 @@ msgstr "Mã này đã tồn tại"
 #: code:addons/account_edi/models/account_edi_document.py:0
 #, python-format
 msgid "This document is being sent by another process already. "
-msgstr "Chứng từ này đang được gửi bởi một quá trình khác."
+msgstr ""
 
 #. module: account_edi
 #: model:ir.model.fields.selection,name:account_edi.selection__account_edi_document__state__to_cancel

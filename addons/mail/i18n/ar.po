@@ -4,20 +4,19 @@
 # 
 # Translators:
 # MOHAMMAD IBRAHIM <m.moamir@outlook.com>, 2022
-# Mustafa Rawi <mustafa@mrawi.com>, 2022
+# Mustafa Rawi <mustafa@cubexco.com>, 2022
 # Martin Trigaux, 2022
 # Mustafa J. Kadhem <safi2266@gmail.com>, 2023
+# Malaz Abuidris <msea@odoo.com>, 2023
 # Niyas Raphy, 2023
-# Malaz Abuidris <msea@odoo.com>, 2024
-# Wil Odoo, 2024
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-06 13:31+0000\n"
+"POT-Creation-Date: 2023-05-23 08:22+0000\n"
 "PO-Revision-Date: 2022-09-22 05:53+0000\n"
-"Last-Translator: Wil Odoo, 2024\n"
+"Last-Translator: Niyas Raphy, 2023\n"
 "Language-Team: Arabic (https://app.transifex.com/odoo/teams/41243/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1454,8 +1453,8 @@ msgid "Animals & Nature"
 msgstr "الحيوانات والطبيعة"
 
 #. module: mail
-#. odoo-javascript
 #. odoo-python
+#. odoo-javascript
 #: code:addons/mail/models/mail_channel.py:0
 #: code:addons/mail/static/src/components/message/message.xml:0
 #: code:addons/mail/static/src/models/message.js:0
@@ -1705,22 +1704,9 @@ msgid "Auto subscription"
 msgstr "الاشتراك التلقائي "
 
 #. module: mail
-#: model:ir.model.fields.selection,name:mail.selection__mail_compose_message__message_type__auto_comment
-#: model:ir.model.fields.selection,name:mail.selection__mail_message__message_type__auto_comment
-msgid "Automated Targeted Notification"
-msgstr "الإشعارات المستهدفة المؤتمتة "
-
-#. module: mail
 #: model:ir.model.fields,field_description:mail.field_mail_activity__automated
 msgid "Automated activity"
 msgstr "إجراء مؤتمت "
-
-#. module: mail
-#. odoo-javascript
-#: code:addons/mail/static/src/models/message.js:0
-#, python-format
-msgid "Automated message"
-msgstr "رسالة مؤتمتة "
 
 #. module: mail
 #: model:ir.model.fields,help:mail.field_mail_activity_type__triggered_next_type_id
@@ -2430,11 +2416,9 @@ msgstr "الشركات "
 
 #. module: mail
 #. odoo-javascript
-#. odoo-python
 #: code:addons/mail/static/src/js/activity.js:0
 #: code:addons/mail/static/src/models/composer_view.js:0
 #: code:addons/mail/static/src/models/mail_template.js:0
-#: code:addons/mail/wizard/mail_compose_message.py:0
 #: model:ir.actions.act_window,name:mail.action_email_compose_message_wizard
 #: model_terms:ir.ui.view,arch_db:mail.email_compose_message_wizard_form
 #, python-format
@@ -3713,11 +3697,8 @@ msgstr "فشل"
 #. odoo-python
 #: code:addons/mail/models/mail_render_mixin.py:0
 #, python-format
-msgid ""
-"Failed to render QWeb template : %s\n"
-"\n"
-"%s)"
-msgstr ""
+msgid "Failed to render QWeb template : %s)"
+msgstr "فشل تكوين قالب QWeb: %s) "
 
 #. module: mail
 #. odoo-python
@@ -4123,7 +4104,7 @@ msgid ""
 "Group authorization and group auto-subscription are only supported on "
 "channels."
 msgstr ""
-"خاصيتي التفويض الجماعي والاشتراك التلقائي الجماعي مدعومتان في القنوات فقط. "
+"خاصيتي التفويض الجماعي والاشتاك التلقائي الجماعي مدعومتان في القنوات فقط. "
 
 #. module: mail
 #: model_terms:ir.ui.view,arch_db:mail.view_email_template_search
@@ -4276,7 +4257,6 @@ msgstr "قالب مخفي "
 
 #. module: mail
 #. odoo-javascript
-#: code:addons/mail/static/src/components/chat_window_header/chat_window_header.xml:0
 #: code:addons/mail/static/src/components/thread_view_topbar/thread_view_topbar.xml:0
 #, python-format
 msgid "Hide Call Settings"
@@ -4284,6 +4264,7 @@ msgstr "إخفاء إعدادات المكالمة "
 
 #. module: mail
 #. odoo-javascript
+#: code:addons/mail/static/src/components/chat_window_header/chat_window_header.xml:0
 #: code:addons/mail/static/src/components/chat_window_header/chat_window_header.xml:0
 #: code:addons/mail/static/src/components/thread_view_topbar/thread_view_topbar.xml:0
 #, python-format
@@ -5552,14 +5533,14 @@ msgstr "التسجيل كملاحظة داخلية "
 #: code:addons/mail/static/src/models/composer_view.js:0
 #, python-format
 msgid "Log note"
-msgstr "ملاحظة "
+msgstr "تسجل ملاحظة"
 
 #. module: mail
 #. odoo-javascript
-#: code:addons/mail/static/src/components/welcome_view/welcome_view.js:0
+#: code:addons/mail/static/src/components/welcome_view/welcome_view.xml:0
 #, python-format
-msgid "Logged in as %s"
-msgstr "تم تسجيل الدخول كـ%s "
+msgid "Logged as"
+msgstr "مسجل كـ"
 
 #. module: mail
 #: model_terms:ir.ui.view,arch_db:mail.view_email_server_form
@@ -5854,7 +5835,7 @@ msgstr ""
 #. module: mail
 #: model:ir.model,name:mail.model_base_partner_merge_automatic_wizard
 msgid "Merge Partner Wizard"
-msgstr "معالج دمج الوكيل "
+msgstr "معالج دمج الشريك"
 
 #. module: mail
 #. odoo-python
@@ -6922,14 +6903,6 @@ msgstr "فتح"
 #: model_terms:ir.ui.view,arch_db:mail.view_mail_form
 msgid "Open Document"
 msgstr "فتح المستند "
-
-#. module: mail
-#. odoo-javascript
-#: code:addons/mail/static/src/components/attachment_card/attachment_card.xml:0
-#: code:addons/mail/static/src/components/attachment_card/attachment_card.xml:0
-#, python-format
-msgid "Open Link"
-msgstr "فتح الرابط "
 
 #. module: mail
 #: model_terms:ir.ui.view,arch_db:mail.view_mail_alias_form
@@ -8369,7 +8342,7 @@ msgstr "إرسال رسالة إلى المتابعين …"
 #: model_terms:ir.ui.view,arch_db:mail.res_config_settings_view_form
 msgid "Send and receive emails through your Gmail account."
 msgstr ""
-"قم بإرسال واستلام رسائل البريد الإلكتروني من خلال حساب Gmail الخاص بك. "
+"قم بإرسال واستلام رسائلل البريد الإلكتروني من خلال حساب Gmail الخاص بك. "
 
 #. module: mail
 #: model_terms:ir.ui.view,arch_db:mail.res_config_settings_view_form
@@ -8560,7 +8533,6 @@ msgstr ""
 
 #. module: mail
 #. odoo-javascript
-#: code:addons/mail/static/src/components/chat_window_header/chat_window_header.xml:0
 #: code:addons/mail/static/src/components/thread_view_topbar/thread_view_topbar.xml:0
 #, python-format
 msgid "Show Call Settings"
@@ -8575,6 +8547,7 @@ msgstr "إظهار المتابعين"
 
 #. module: mail
 #. odoo-javascript
+#: code:addons/mail/static/src/components/chat_window_header/chat_window_header.xml:0
 #: code:addons/mail/static/src/components/chat_window_header/chat_window_header.xml:0
 #: code:addons/mail/static/src/components/thread_view_topbar/thread_view_topbar.xml:0
 #, python-format
@@ -9289,13 +9262,6 @@ msgstr ""
 "لم نتمكن من إكمال العملية المطلوبة بسبب قيود أمنية. يرجى التواصل مع مشرف نظامك.\n"
 "\n"
 "(نوع المستند: %s، العملية: %s) "
-
-#. module: mail
-#. odoo-javascript
-#: code:addons/mail/static/src/models/blur_manager.js:0
-#, python-format
-msgid "The selfie segmentation library was not loaded"
-msgstr ""
 
 #. module: mail
 #. odoo-python
@@ -10097,6 +10063,16 @@ msgstr ""
 "(@mycompany.odoo.com). "
 
 #. module: mail
+#: code:addons/mail/models/mail_alias.py:0
+#, python-format
+msgid ""
+"Value for `mail.catchall.domain.allowed` cannot be validated.\n"
+"It should be a comma separated list of domains e.g. example.com,example.org."
+msgstr ""
+"لا يمكن تصديق قيمة `mail.catchall.domain.allowed`.\n"
+"يجب أن تكون قائمة نطاقات مفصولة بفواصل، مثال: example.com,example.org. "
+
+#. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
@@ -10117,17 +10093,6 @@ msgstr "ضد "
 #, python-format
 msgid "VS button"
 msgstr "زر ضد "
-
-#. module: mail
-#. odoo-python
-#: code:addons/mail/models/mail_alias.py:0
-#, python-format
-msgid ""
-"Value for `mail.catchall.domain.allowed` cannot be validated.\n"
-"It should be a comma separated list of domains e.g. example.com,example.org."
-msgstr ""
-"لا يمكن تصديق قيمة `mail.catchall.domain.allowed`.\n"
-"يجب أن تكون قائمة نطاقات مفصولة بفواصل، مثال: example.com,example.org. "
 
 #. module: mail
 #. odoo-javascript
@@ -16425,8 +16390,8 @@ msgid "doctor"
 msgstr "طبيب "
 
 #. module: mail
-#. odoo-javascript
 #. odoo-python
+#. odoo-javascript
 #: code:addons/mail/models/mail_thread.py:0
 #: code:addons/mail/static/src/components/message/message.xml:0
 #: code:addons/mail/static/src/models_data/emoji_data.js:0

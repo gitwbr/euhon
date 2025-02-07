@@ -6,30 +6,28 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-13 21:50+0000\n"
-"PO-Revision-Date: 2024-02-14 09:18+0100\n"
+"POT-Creation-Date: 2023-01-09 13:33+0000\n"
+"PO-Revision-Date: 2023-01-09 13:33+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.4.2\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
 
 #. module: l10n_din5008_purchase
 #. odoo-python
 #: code:addons/l10n_din5008_purchase/models/purchase.py:0
 #, python-format
 msgid "Cancelled Purchase Order"
-msgstr "Bon de commande annulé"
+msgstr "Bon d'achat annulé"
 
 #. module: l10n_din5008_purchase
 #. odoo-python
 #: code:addons/l10n_din5008_purchase/models/purchase.py:0
 #, python-format
 msgid "Cancelled Purchase Order No."
-msgstr "N° de bon de commande annulé"
+msgstr "Bon d'achat annulé n."
 
 #. module: l10n_din5008_purchase
 #. odoo-python
@@ -65,14 +63,14 @@ msgstr "Date de commande"
 #: code:addons/l10n_din5008_purchase/models/purchase.py:0
 #, python-format
 msgid "Order Deadline"
-msgstr "Échéance de commande"
+msgstr "Date d'échéance"
 
 #. module: l10n_din5008_purchase
 #. odoo-python
 #: code:addons/l10n_din5008_purchase/models/purchase.py:0
 #, python-format
 msgid "Order Reference"
-msgstr "Référence de la commande"
+msgstr "Référence commande"
 
 #. module: l10n_din5008_purchase
 #. odoo-python
@@ -80,39 +78,40 @@ msgstr "Référence de la commande"
 #: model:ir.model,name:l10n_din5008_purchase.model_purchase_order
 #, python-format
 msgid "Purchase Order"
-msgstr "Bon de commande"
+msgstr "Commande fournisseur"
 
 #. module: l10n_din5008_purchase
 #. odoo-python
 #: code:addons/l10n_din5008_purchase/models/purchase.py:0
 #, python-format
 msgid "Purchase Order No."
-msgstr "N° de bon de commande"
+msgstr "N° de Bon de Commande"
 
 #. module: l10n_din5008_purchase
 #. odoo-python
 #: code:addons/l10n_din5008_purchase/models/purchase.py:0
 #, python-format
 msgid "Purchase Representative"
-msgstr "Responsable des achats"
+msgstr "Responsable achats"
 
 #. module: l10n_din5008_purchase
 #. odoo-python
 #: code:addons/l10n_din5008_purchase/models/purchase.py:0
 #, python-format
 msgid "Request for Quotation"
-msgstr "Demande de prix"
+msgstr "Demande de devis"
 
 #. module: l10n_din5008_purchase
 #. odoo-python
 #: code:addons/l10n_din5008_purchase/models/purchase.py:0
 #, python-format
 msgid "Request for Quotation No."
-msgstr "N° de demande de prix"
+msgstr "Demande de devis N."
 
 #. module: l10n_din5008_purchase
 #. odoo-python
 #: code:addons/l10n_din5008_purchase/models/purchase.py:0
+#: code:addons/l10n_din5008_purchase/models/purchase.py:0
 #, python-format
 msgid "Shipping Address:"
-msgstr "Adresse de livraison :"
+msgstr "Adresse de livraison:"

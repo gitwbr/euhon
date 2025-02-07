@@ -1,13 +1,11 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-import odoo.tests
-
 from odoo import Command
-from odoo.addons.account.tests.common import AccountTestInvoicingCommon
+import odoo.tests
 
 
 @odoo.tests.tagged('post_install_l10n', 'post_install', '-at_install')
-class TestUi(AccountTestInvoicingCommon, odoo.tests.HttpCase):
+class TestUi(odoo.tests.HttpCase):
 
     @classmethod
     def setUpClass(cls):
@@ -28,10 +26,6 @@ class TestUi(AccountTestInvoicingCommon, odoo.tests.HttpCase):
         # hidden and non-required, and don't make the tour crash.
         # Also remove default taxes from the company and its accounts, to avoid inconsistencies
         # with empty fiscal country.
-        self.env.ref('base.user_admin').write({
-            'company_id': self.env.company.id,
-            'company_ids': [(4, self.env.company.id)],
-        })
         self.env.company.write({
             'country_id': None, # Also resets account_fiscal_country_id
             'account_sale_tax_id': None,
@@ -42,28 +36,19 @@ class TestUi(AccountTestInvoicingCommon, odoo.tests.HttpCase):
         account_with_taxes.write({
             'tax_ids': [Command.clear()],
         })
+
         self.start_tour("/web", 'account_tour', login="admin")
 
     def test_01_account_tax_groups_tour(self):
-        self.env.ref('base.user_admin').write({
-            'company_id': self.env.company.id,
-            'company_ids': [(4, self.env.company.id)],
-        })
-        self.env['res.partner'].create({
-            'name': 'Account Tax Group Partner',
-            'email': 'azure.Interior24@example.com',
-        })
-        product = self.env['product.product'].create({
-            'name': 'Account Tax Group Product',
-            'standard_price': 600.0,
-            'list_price': 147.0,
-            'detailed_type': 'consu',
-        })
+        product = self.env.ref('product.product_product_5')
+        company_used = self.env.companies.sorted(lambda c: c.id)[0]
         new_tax = self.env['account.tax'].create({
             'name': '10% Tour Tax',
             'type_tax_use': 'purchase',
             'amount_type': 'percent',
             'amount': 10,
+            'company_id': company_used.id,
+            'country_id': company_used.account_fiscal_country_id.id
         })
         product.supplier_taxes_id = new_tax
 

@@ -15,8 +15,19 @@ registerModel({
          *
          * @param {MouseEvent} ev
          */
-        async onClickActivity(ev) {
-            await this.messaging.handleClickOnLink(ev);
+        onClickActivity(ev) {
+            if (
+                ev.target.tagName === 'A' &&
+                ev.target.dataset.oeId &&
+                ev.target.dataset.oeModel
+            ) {
+                this.messaging.openProfile({
+                    id: Number(ev.target.dataset.oeId),
+                    model: ev.target.dataset.oeModel,
+                });
+                // avoid following dummy href
+                ev.preventDefault();
+            }
         },
         /**
          * Handles the click on the cancel button

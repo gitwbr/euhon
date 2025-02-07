@@ -93,7 +93,6 @@ class IrSequence(models.Model):
     _name = 'ir.sequence'
     _description = 'Sequence'
     _order = 'name'
-    _allow_sudo_commands = False
 
     def _get_number_next_actual(self):
         '''Return number from ir_sequence row when no_gap implementation,
@@ -232,7 +231,7 @@ class IrSequence(models.Model):
         try:
             interpolated_prefix = _interpolate(self.prefix, d)
             interpolated_suffix = _interpolate(self.suffix, d)
-        except (ValueError, TypeError):
+        except ValueError:
             raise UserError(_('Invalid prefix or suffix for sequence \'%s\'') % self.name)
         return interpolated_prefix, interpolated_suffix
 
@@ -318,7 +317,6 @@ class IrSequenceDateRange(models.Model):
     _name = 'ir.sequence.date_range'
     _description = 'Sequence Date Range'
     _rec_name = "sequence_id"
-    _allow_sudo_commands = False
 
     def _get_number_next_actual(self):
         '''Return number from ir_sequence row when no_gap implementation,

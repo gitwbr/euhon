@@ -1,34 +1,23 @@
-
-from io import StringIO
+# -*- coding: utf-8 -*-
+# Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 import logging
 import sys
 
-_logger = logging.getLogger(__name__)
-
 
 class ExceptionLogger:
     """
-    Redirect any unhandled python exception to the logger to keep track of them in the log file.
+    Redirect Exceptions to the logger to keep track of them in the log file.
     """
+
     def __init__(self):
-        self._buffer = StringIO()
+        self.logger = logging.getLogger()
 
     def write(self, message):
-        self._buffer.write(message)
-        if message.endswith('\n'):
-            self._flush_buffer()
-
-    def _flush_buffer(self):
-        self._buffer.seek(0)
-        _logger.error(self._buffer.getvalue().rstrip('\n'))
-        self._buffer = StringIO()  # Reset the buffer
+        if message != '\n':
+            self.logger.error(message)
 
     def flush(self):
-        if self._buffer.tell() > 0:
-            self._flush_buffer()
-
-    def close(self):
-        self.flush()
+        pass
 
 sys.stderr = ExceptionLogger()

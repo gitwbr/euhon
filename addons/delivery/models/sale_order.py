@@ -54,7 +54,6 @@ class SaleOrder(models.Model):
                 + '\n'.join(['- %s: %s x %s' % (line.product_id.with_context(display_default_code=False).display_name, line.qty_invoiced, line.price_unit) for line in delivery_lines])
             )
         to_delete.unlink()
-        self.carrier_id = self.env['delivery.carrier']  # reset carrier
 
     def set_delivery_line(self, carrier, amount):
         self._remove_delivery_line()
@@ -151,18 +150,9 @@ class SaleOrder(models.Model):
         for order in self:
             if order.invoice_status in ['no', 'invoiced']:
                 continue
-            order_lines = order._get_lines_impacting_invoice_status()
+            order_lines = order.order_line.filtered(lambda x: not x.is_delivery and not x.is_downpayment and not x.display_type and x.invoice_status != 'invoiced')
             if all(line.product_id.invoice_policy == 'delivery' and line.invoice_status == 'no' for line in order_lines):
                 order.invoice_status = 'no'
-
-    def _get_lines_impacting_invoice_status(self):
-        return self.order_line.filtered(
-            lambda line:
-                not line.is_delivery
-                and not line.is_downpayment
-                and not line.display_type
-                and line.invoice_status != 'invoiced'
-        )
 
     def _get_estimated_weight(self):
         self.ensure_one()
@@ -191,7 +181,9 @@ class SaleOrderLine(models.Model):
             line.product_qty = line.product_uom._compute_quantity(line.product_uom_qty, line.product_id.uom_id)
 
     def unlink(self):
-        self.filtered('is_delivery').order_id.filtered('carrier_id').carrier_id = False
+        for line in self:
+            if line.is_delivery:
+                line.order_id.carrier_id = False
         return super(SaleOrderLine, self).unlink()
 
     def _is_delivery(self):
@@ -211,8 +203,3 @@ class SaleOrderLine(models.Model):
 
         undeletable_lines = super()._check_line_unlink()
         return undeletable_lines.filtered(lambda line: not line.is_delivery)
-
-    def _compute_pricelist_item_id(self):
-        delivery_lines = self.filtered('is_delivery')
-        super(SaleOrderLine, self - delivery_lines)._compute_pricelist_item_id()
-        delivery_lines.pricelist_item_id = False

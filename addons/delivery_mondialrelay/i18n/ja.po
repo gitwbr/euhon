@@ -10,9 +10,9 @@
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 16.0\n"
+"Project-Id-Version: Odoo Server 15.5alpha1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-06 13:31+0000\n"
+"POT-Creation-Date: 2022-09-20 09:01+0000\n"
 "PO-Revision-Date: 2022-09-22 05:45+0000\n"
 "Last-Translator: Junko Augias, 2023\n"
 "Language-Team: Japanese (https://app.transifex.com/odoo/teams/41243/ja/)\n"
@@ -26,7 +26,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:delivery_mondialrelay.field_choose_delivery_carrier__mondialrelay_brand
 #: model:ir.model.fields,field_description:delivery_mondialrelay.field_delivery_carrier__mondialrelay_brand
 msgid "Brand Code"
-msgstr "ブランドコード"
+msgstr ""
 
 #. module: delivery_mondialrelay
 #: model:ir.model,name:delivery_mondialrelay.model_res_partner
@@ -49,54 +49,52 @@ msgstr "配送業者選択ガイド"
 #: model:ir.model.fields,field_description:delivery_mondialrelay.field_res_partner__is_mondialrelay
 #: model:ir.model.fields,field_description:delivery_mondialrelay.field_res_users__is_mondialrelay
 msgid "Is Mondialrelay"
-msgstr "Mondialrelayか"
+msgstr ""
 
 #. module: delivery_mondialrelay
 #: model:ir.model.fields,field_description:delivery_mondialrelay.field_choose_delivery_carrier__mondialrelay_last_selected
 msgid "Last Relay Selected"
-msgstr "選択された最後の中継"
+msgstr ""
 
 #. module: delivery_mondialrelay
 #: model:delivery.carrier,name:delivery_mondialrelay.delivery_carrier_mondialrelay_be_lu
 #: model:delivery.carrier,name:delivery_mondialrelay.delivery_carrier_mondialrelay_es
 #: model:delivery.carrier,name:delivery_mondialrelay.delivery_carrier_mondialrelay_fr_nl
+#: model:product.product,name:delivery_mondialrelay.product_product_delivery_mondialrelay
 #: model:product.template,name:delivery_mondialrelay.product_product_delivery_mondialrelay_product_template
 msgid "Mondial Relay"
 msgstr "Mondial Relay"
 
 #. module: delivery_mondialrelay
-#. odoo-python
 #: code:addons/delivery_mondialrelay/models/sale_order.py:0
 #, python-format
 msgid ""
 "Mondial Relay mismatching between delivery method and shipping address."
-msgstr "Mondial Relay 配送方法と配送先住所の不一致。"
+msgstr ""
 
 #. module: delivery_mondialrelay
 #: model:ir.model.fields,field_description:delivery_mondialrelay.field_choose_delivery_carrier__mondialrelay_allowed_countries
 msgid "Mondialrelay Allowed Countries"
-msgstr "Mondialrelay許可国"
+msgstr ""
 
 #. module: delivery_mondialrelay
 #: model:ir.model.fields,field_description:delivery_mondialrelay.field_choose_delivery_carrier__mondialrelay_last_selected_id
 msgid "Mondialrelay Last Selected"
-msgstr "Mondialrelay最終選択"
+msgstr ""
 
 #. module: delivery_mondialrelay
 #: model:ir.model.fields,field_description:delivery_mondialrelay.field_choose_delivery_carrier__mondialrelay_colLivMod
 #: model:ir.model.fields,field_description:delivery_mondialrelay.field_delivery_carrier__mondialrelay_packagetype
 msgid "Mondialrelay Packagetype"
-msgstr "Mondialrelayパッケージタイプ"
+msgstr ""
 
 #. module: delivery_mondialrelay
-#. odoo-python
 #: code:addons/delivery_mondialrelay/models/delivery_carrier.py:0
 #, python-format
 msgid "Operation not supported"
 msgstr "操作はサポートされていません"
 
 #. module: delivery_mondialrelay
-#. odoo-python
 #: code:addons/delivery_mondialrelay/wizard/choose_delivery_carrier.py:0
 #, python-format
 msgid "Please, choose a Parcel Point"
@@ -120,6 +118,12 @@ msgid ""
 msgstr ""
 "ISOの国別コードは2文字です。\n"
 "これを使ってクイックサーチできます。"
+
+#. module: delivery_mondialrelay
+#: model:product.product,uom_name:delivery_mondialrelay.product_product_delivery_mondialrelay
+#: model:product.template,uom_name:delivery_mondialrelay.product_product_delivery_mondialrelay_product_template
+msgid "Units"
+msgstr "個"
 
 #. module: delivery_mondialrelay
 #: model:ir.model.fields,field_description:delivery_mondialrelay.field_choose_delivery_carrier__shipping_zip

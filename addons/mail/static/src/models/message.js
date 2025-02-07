@@ -479,7 +479,7 @@ registerModel({
         }),
         isDiscussionOrNotification: attr({
             compute() {
-                if (this.is_discussion || this.is_notification || this.message_type === "auto_comment") {
+                if (this.is_discussion || this.is_notification) {
                     return true;
                 }
                 return clear();
@@ -638,9 +638,6 @@ registerModel({
             compute() {
                 if (this.message_type === 'notification') {
                     return this.env._t("System notification");
-                }
-                if (this.message_type === "auto_comment") {
-                    return this.env._t("Automated message");
                 }
                 if (!this.is_discussion && !this.is_notification) {
                     return this.env._t("Note");

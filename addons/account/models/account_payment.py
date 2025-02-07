@@ -16,7 +16,6 @@ class AccountPayment(models.Model):
     move_id = fields.Many2one(
         comodel_name='account.move',
         string='Journal Entry', required=True, readonly=True, ondelete='cascade',
-        index=True,
         check_company=True)
 
     is_reconciled = fields.Boolean(string="Is Reconciled", store=True,
@@ -39,7 +38,6 @@ class AccountPayment(models.Model):
     qr_code = fields.Char(string="QR Code URL",
         compute="_compute_qr_code")
     paired_internal_transfer_payment_id = fields.Many2one('account.payment',
-        index='btree_not_null',
         help="When an internal transfer is posted, a paired payment is created. "
         "They are cross referenced through this field", copy=False)
 
@@ -193,12 +191,12 @@ class AccountPayment(models.Model):
 
     def _get_valid_liquidity_accounts(self):
         return (
-            self.journal_id.default_account_id |
-            self.payment_method_line_id.payment_account_id |
-            self.journal_id.company_id.account_journal_payment_debit_account_id |
-            self.journal_id.company_id.account_journal_payment_credit_account_id |
-            self.journal_id.inbound_payment_method_line_ids.payment_account_id |
-            self.journal_id.outbound_payment_method_line_ids.payment_account_id
+            self.journal_id.default_account_id,
+            self.payment_method_line_id.payment_account_id,
+            self.journal_id.company_id.account_journal_payment_debit_account_id,
+            self.journal_id.company_id.account_journal_payment_credit_account_id,
+            self.journal_id.inbound_payment_method_line_ids.payment_account_id,
+            self.journal_id.outbound_payment_method_line_ids.payment_account_id,
         )
 
     def _get_aml_default_display_map(self):
@@ -417,9 +415,6 @@ class AccountPayment(models.Model):
     def _compute_partner_bank_id(self):
         ''' The default partner_bank_id will be the first available on the partner. '''
         for pay in self:
-            # Avoid overwriting existing value
-            if pay.partner_bank_id and pay.partner_bank_id in pay.available_partner_bank_ids:
-                continue
             pay.partner_bank_id = pay.available_partner_bank_ids[:1]._origin
 
     @api.depends('partner_id', 'journal_id', 'destination_journal_id')
@@ -672,8 +667,6 @@ class AccountPayment(models.Model):
         for pay in self:
             if not pay.payment_method_line_id:
                 raise ValidationError(_("Please define a payment method line on your payment."))
-            elif pay.payment_method_line_id.journal_id and pay.payment_method_line_id.journal_id != pay.journal_id:
-                raise ValidationError(_("The selected payment method is not available for this payment, please select the payment method again."))
 
     # -------------------------------------------------------------------------
     # LOW-LEVEL METHODS
@@ -681,7 +674,7 @@ class AccountPayment(models.Model):
 
     def new(self, values=None, origin=None, ref=None):
         payment = super(AccountPayment, self.with_context(is_payment=True)).new(values, origin, ref)
-        if not any(values.values()) and not payment.journal_id and not payment.default_get(['journal_id']):  # might not be computed because declared by inheritance
+        if not payment.journal_id and not payment.default_get(['journal_id']):  # might not be computed because declared by inheritance
             payment.move_id._compute_journal_id()
         return payment
 
@@ -1007,15 +1000,15 @@ class AccountPayment(models.Model):
             'res_model': 'account.bank.statement.line',
             'context': {'create': False},
         }
-        if len(self.reconciled_statement_line_ids) == 1:
+        if len(self.reconciled_statement_lines_ids) == 1:
             action.update({
                 'view_mode': 'form',
-                'res_id': self.reconciled_statement_line_ids.id,
+                'res_id': self.reconciled_statement_lines_ids.id,
             })
         else:
             action.update({
                 'view_mode': 'list,form',
-                'domain': [('id', 'in', self.reconciled_statement_line_ids.ids)],
+                'domain': [('id', 'in', self.reconciled_statement_lines_ids.ids)],
             })
         return action
 

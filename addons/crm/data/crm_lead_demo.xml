@@ -134,7 +134,6 @@
             <field name="priority">2</field>
             <field name="team_id" ref="sales_team.team_sales_department"/>
             <field name="user_id" ref="base.user_admin"/>
-            <field name="date_open" eval="(DateTime.today() - relativedelta(weeks=2)).strftime('%Y-%m-%d %H:%M')"/>
             <field name="stage_id" ref="stage_lead1"/>
             <field name="description"></field>
             <field name="campaign_id" ref="utm.utm_campaign_email_campaign_products"/>
@@ -174,7 +173,6 @@ Contact: +1 813 494 5005</p>]]></field>
             <field name="priority">2</field>
             <field name="team_id" ref="sales_team.team_sales_department"/>
             <field name="user_id" ref="base.user_admin"/>
-            <field name="date_open" eval="(DateTime.today() - relativedelta(weeks=2)).strftime('%Y-%m-%d %H:%M')"/>
             <field name="stage_id" ref="stage_lead1"/>
             <field name="campaign_id" ref="utm.utm_campaign_email_campaign_services"/>
             <field name="source_id" ref="utm.utm_source_mailing"/>
@@ -197,7 +195,6 @@ Contact: +1 813 494 5005</p>]]></field>
             <field name="priority">0</field>
             <field name="team_id" ref="sales_team.team_sales_department"/>
             <field name="user_id" ref="base.user_admin"/>
-            <field name="date_open" eval="(DateTime.today() - relativedelta(weeks=1)).strftime('%Y-%m-%d %H:%M')"/>
             <field name="stage_id" ref="stage_lead1"/>
             <field name="campaign_id" ref="utm.utm_campaign_email_campaign_products"/>
             <field name="source_id" ref="utm.utm_source_mailing"/>
@@ -219,7 +216,6 @@ Contact: +1 813 494 5005</p>]]></field>
             <field name="priority">1</field>
             <field name="team_id" ref="sales_team.team_sales_department"/>
             <field name="user_id" ref="base.user_admin"/>
-            <field name="date_open" eval="(DateTime.today() - relativedelta(days=5)).strftime('%Y-%m-%d %H:%M')"/>
             <field name="stage_id" ref="stage_lead1"/>
             <field name="campaign_id" ref="utm.utm_campaign_email_campaign_products"/>
             <field name="source_id" ref="utm.utm_source_mailing"/>
@@ -255,7 +251,6 @@ ESM Expert<br />]]></field>
             <field name="priority">2</field>
             <field name="team_id" ref="sales_team.crm_team_1"/>
             <field name="user_id" ref="base.user_demo"/>
-            <field name="date_open" eval="(DateTime.today() - relativedelta(days=4)).strftime('%Y-%m-%d %H:%M')"/>
             <field name="stage_id" ref="stage_lead1"/>
             <field name="campaign_id" ref="utm.utm_campaign_email_campaign_products"/>
             <field name="source_id" ref="utm.utm_source_mailing"/>
@@ -277,7 +272,6 @@ ESM Expert<br />]]></field>
             <field name="priority">2</field>
             <field name="team_id" ref="sales_team.crm_team_1"/>
             <field name="user_id" ref="base.user_demo"/>
-            <field name="date_open" eval="(DateTime.today() - relativedelta(days=2)).strftime('%Y-%m-%d %H:%M')"/>
             <field name="stage_id" ref="stage_lead1"/>
             <field name="campaign_id" ref="utm.utm_campaign_email_campaign_products"/>
             <field name="source_id" ref="utm.utm_source_mailing"/>
@@ -313,7 +307,6 @@ Andrew</p>]]></field>
             <field name="priority">2</field>
             <field name="team_id" ref="sales_team.team_sales_department"/>
             <field name="user_id" ref="base.user_admin"/>
-            <field name="date_open" eval="(DateTime.today() - relativedelta(days=1)).strftime('%Y-%m-%d %H:%M')"/>
             <field name="stage_id" ref="stage_lead1"/>
             <field name="campaign_id" ref="utm.utm_campaign_email_campaign_products"/>
             <field name="source_id" ref="utm.utm_source_mailing"/>
@@ -363,7 +356,6 @@ Andrew</p>]]></field>
             <field name="date_deadline" eval="(DateTime.today() + relativedelta(weeks=4)).strftime('%Y-%m-%d %H:%M')"/>
             <field name="team_id" ref="sales_team.team_sales_department"/>
             <field name="user_id" ref="base.user_admin"/>
-            <field name="date_open" eval="(DateTime.today() - relativedelta(weeks=3)).strftime('%Y-%m-%d %H:%M')"/>
             <field name="stage_id" ref="crm.stage_lead1"/>
             <field name="campaign_id" ref="utm.utm_campaign_email_campaign_products"/>
             <field name="medium_id" ref="utm.utm_medium_email"/>
@@ -390,7 +382,6 @@ Andrew</p>]]></field>
             <field name="date_deadline" eval="(DateTime.today() + relativedelta(months=1)).strftime('%Y-%m-%d %H:%M')"/>
             <field name="team_id" ref="sales_team.crm_team_1"/>
             <field name="user_id" ref="base.user_demo"/>
-            <field name="date_open" eval="(DateTime.today() - relativedelta(weeks=2)).strftime('%Y-%m-%d %H:%M')"/>
             <field name="stage_id" ref="crm.stage_lead1"/>
             <field name="campaign_id" ref="utm.utm_campaign_email_campaign_products"/>
             <field name="medium_id" ref="utm.utm_medium_website"/>
@@ -414,7 +405,6 @@ Andrew</p>]]></field>
             <field name="date_deadline" eval="(DateTime.today() + relativedelta(months=1)).strftime('%Y-%m-%d %H:%M')"/>
             <field name="team_id" ref="sales_team.team_sales_department"/>
             <field name="user_id" ref="base.user_admin"/>
-            <field name="date_open" eval="(DateTime.today() - relativedelta(weeks=2)).strftime('%Y-%m-%d %H:%M')"/>
             <field name="stage_id" ref="crm.stage_lead2"/>
             <field name="campaign_id" ref="utm.utm_campaign_email_campaign_services"/>
             <field name="source_id" ref="utm.utm_source_mailing"/>
@@ -508,7 +498,6 @@ Andrew</p>]]></field>
             <field name="date_deadline" eval="DateTime.today().strftime('%Y-%m-%d %H:%M')"/>
             <field name="team_id" ref="sales_team.team_sales_department"/>
             <field name="user_id" ref="base.user_admin"/>
-            <field name="date_open" eval="(DateTime.today() - relativedelta(weeks=1)).strftime('%Y-%m-%d %H:%M')"/>
             <field name="stage_id" ref="crm.stage_lead2"/>
             <field name="campaign_id" ref="utm.utm_campaign_email_campaign_products"/>
             <field name="source_id" ref="utm.utm_source_mailing"/>
@@ -534,7 +523,6 @@ Andrew</p>]]></field>
             <field name="date_deadline" eval="(DateTime.today() + relativedelta(months=1)).strftime('%Y-%m-%d %H:%M')"/>
             <field name="team_id" ref="sales_team.crm_team_1"/>
             <field name="user_id" ref="base.user_demo"/>
-            <field name="date_open" eval="(DateTime.today() - relativedelta(weeks=1)).strftime('%Y-%m-%d %H:%M')"/>
             <field name="stage_id" ref="crm.stage_lead2"/>
             <field name="campaign_id" ref="utm.utm_campaign_email_campaign_products"/>
             <field name="medium_id" ref="utm.utm_medium_website"/>
@@ -568,7 +556,6 @@ Andrew</p>]]></field>
             <field name="date_deadline" eval="(DateTime.today() + relativedelta(months=2)).strftime('%Y-%m-%d %H:%M')"/>
             <field name="team_id" ref="sales_team.crm_team_1"/>
             <field name="user_id" ref="base.user_demo"/>
-            <field name="date_open" eval="(DateTime.today() - relativedelta(weeks=1)).strftime('%Y-%m-%d %H:%M')"/>
             <field name="stage_id" ref="crm.stage_lead2"/>
             <field eval="1" name="active"/>
             <field name="campaign_id" ref="utm.utm_campaign_email_campaign_services"/>
@@ -619,7 +606,6 @@ Andrew</p>]]></field>
             <field name="date_deadline" eval="(DateTime.today() + relativedelta(weeks=1)).strftime('%Y-%m-%d %H:%M')"/>
             <field name="team_id" ref="sales_team.crm_team_1"/>
             <field name="user_id" ref="base.user_demo"/>
-            <field name="date_open" eval="(DateTime.today() - relativedelta(days=5)).strftime('%Y-%m-%d %H:%M')"/>
             <field name="stage_id" ref="crm.stage_lead3"/>
             <field name="campaign_id" ref="utm.utm_campaign_email_campaign_products"/>
             <field name="source_id" ref="utm.utm_source_mailing"/>
@@ -644,7 +630,6 @@ Andrew</p>]]></field>
             <field name="date_deadline" eval="DateTime.today().strftime('%Y-%m-%d %H:%M')"/>
             <field name="team_id" ref="sales_team.team_sales_department"/>
             <field name="user_id" ref="base.user_admin"/>
-            <field name="date_open" eval="(DateTime.today() - relativedelta(days=5)).strftime('%Y-%m-%d %H:%M')"/>
             <field name="stage_id" ref="crm.stage_lead3"/>
             <field name="campaign_id" ref="utm.utm_campaign_email_campaign_services"/>
             <field name="source_id" ref="utm.utm_source_mailing"/>
@@ -665,7 +650,6 @@ Andrew</p>]]></field>
             <field name="priority">2</field>
             <field name="team_id" ref="sales_team.team_sales_department"/>
             <field name="user_id" ref="base.user_admin"/>
-            <field name="date_open" eval="(DateTime.today() - relativedelta(days=5)).strftime('%Y-%m-%d %H:%M')"/>
             <field name="stage_id" ref="crm.stage_lead3"/>
             <field name="campaign_id" ref="utm.utm_campaign_email_campaign_services"/>
             <field name="medium_id" ref="utm.utm_medium_phone"/>
@@ -685,7 +669,6 @@ Andrew</p>]]></field>
             <field name="priority">1</field>
             <field name="team_id" ref="sales_team.team_sales_department"/>
             <field name="user_id" ref="base.user_admin"/>
-            <field name="date_open" eval="(DateTime.today() - relativedelta(days=3)).strftime('%Y-%m-%d %H:%M')"/>
             <field name="stage_id" ref="crm.stage_lead3"/>
             <field name="campaign_id" ref="utm.utm_campaign_email_campaign_products"/>
             <field name="medium_id" ref="utm.utm_medium_email"/>
@@ -704,7 +687,6 @@ Andrew</p>]]></field>
             <field name="date_deadline" eval="DateTime.today().strftime('%Y-%m-%d %H:%M')"/>
             <field name="team_id" ref="sales_team.crm_team_1"/>
             <field name="user_id" ref="base.user_demo"/>
-            <field name="date_open" eval="(DateTime.today() - relativedelta(days=3)).strftime('%Y-%m-%d %H:%M')"/>
             <field name="stage_id" ref="crm.stage_lead3"/>
             <field name="campaign_id" ref="utm.utm_campaign_fall_drive"/>
             <field name="medium_id" ref="utm.utm_medium_direct"/>
@@ -725,7 +707,6 @@ Andrew</p>]]></field>
             <field name="tag_ids" eval="[(6, 0, [ref('sales_team.categ_oppor7')])]"/>
             <field name="team_id" ref="sales_team.team_sales_department"/>
             <field name="user_id" ref="base.user_admin"/>
-            <field name="date_open" eval="(DateTime.today() - relativedelta(days=3)).strftime('%Y-%m-%d %H:%M')"/>
             <field name="stage_id" ref="crm.stage_lead3"/>
             <field name="campaign_id" ref="utm.utm_campaign_email_campaign_products"/>
             <field name="medium_id" ref="utm.utm_medium_website"/>
@@ -750,7 +731,6 @@ Andrew</p>]]></field>
             <field name="tag_ids" eval="[(6, 0, [ref('sales_team.categ_oppor4')])]"/>
             <field name="team_id" ref="sales_team.team_sales_department"/>
             <field name="user_id" ref="base.user_admin"/>
-            <field name="date_open" eval="(DateTime.today() - relativedelta(days=2)).strftime('%Y-%m-%d %H:%M')"/>
             <field name="stage_id" ref="crm.stage_lead3"/>
             <field name="campaign_id" ref="utm.utm_campaign_email_campaign_services"/>
             <field name="medium_id" ref="utm.utm_medium_phone"/>
@@ -774,7 +754,6 @@ Andrew</p>]]></field>
             <field name="tag_ids" eval="[(6, 0, [ref('sales_team.categ_oppor2')])]"/>
             <field name="team_id" ref="sales_team.crm_team_1"/>
             <field name="user_id" ref="base.user_demo"/>
-            <field name="date_open" eval="(DateTime.today() - relativedelta(days=2)).strftime('%Y-%m-%d %H:%M')"/>
             <field name="stage_id" ref="crm.stage_lead3"/>
             <field name="campaign_id" ref="utm.utm_campaign_email_campaign_products"/>
             <field name="medium_id" ref="utm.utm_medium_website"/>
@@ -841,7 +820,7 @@ Andrew</p>]]></field>
             <field name="phone">+33 1 25 54 45 69</field>
             <field name="tag_ids" eval="[(6, 0, [ref('sales_team.categ_oppor6')])]"/>
             <field name="priority">1</field>
-            <field name="date_open" eval="False"/>
+            <field name="date_open" eval="(DateTime.today() - relativedelta(months=2)).strftime('%Y-%m-%d %H:%M')"/>
             <field name="team_id" eval="False"/>
             <field name="user_id" eval="False"/>
             <field name="stage_id" ref="stage_lead2"/>
@@ -865,7 +844,7 @@ Andrew</p>]]></field>
             <field name="phone">+32 22 33 54 07</field>
             <field name="tag_ids" eval="[(6, 0, [ref('sales_team.categ_oppor6')])]"/>
             <field name="priority">1</field>
-            <field name="date_open" eval="False"/>
+            <field name="date_open" eval="(DateTime.today() - relativedelta(months=2)).strftime('%Y-%m-%d %H:%M')"/>
             <field name="team_id" eval="False"/>
             <field name="user_id" eval="False"/>
             <field name="stage_id" ref="stage_lead1"/>

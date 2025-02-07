@@ -5,7 +5,6 @@
 # Translators:
 # Wichanon Jamwutthipreecha, 2022
 # Martin Trigaux, 2022
-# Rasareeyar Lappiam, 2023
 # 
 msgid ""
 msgstr ""
@@ -13,7 +12,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-23 08:02+0000\n"
 "PO-Revision-Date: 2022-09-22 05:44+0000\n"
-"Last-Translator: Rasareeyar Lappiam, 2023\n"
+"Last-Translator: Martin Trigaux, 2022\n"
 "Language-Team: Thai (https://app.transifex.com/odoo/teams/41243/th/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -34,7 +33,7 @@ msgstr "บิล"
 #. module: account_fleet
 #: model:ir.model.fields,field_description:account_fleet.field_fleet_vehicle__bill_count
 msgid "Bills Count"
-msgstr "จำนวนใบเรียกเก็บเงิน"
+msgstr ""
 
 #. module: account_fleet
 #: model_terms:ir.ui.view,arch_db:account_fleet.account_move_view_tree
@@ -54,13 +53,13 @@ msgstr "รายการบันทึก"
 #. module: account_fleet
 #: model:ir.model.fields,field_description:account_fleet.field_account_move_line__need_vehicle
 msgid "Need Vehicle"
-msgstr "ต้องการยานพาหนะ"
+msgstr ""
 
 #. module: account_fleet
 #: code:addons/account_fleet/models/account_move.py:0
 #, python-format
 msgid "Service Vendor Bill: %s"
-msgstr "ใบเรียกเก็บเงินผู้บริการ: %s"
+msgstr ""
 
 #. module: account_fleet
 #: model:ir.model,name:account_fleet.model_fleet_vehicle
@@ -76,4 +75,4 @@ msgstr "บิลผู้ขาย"
 #. module: account_fleet
 #: model_terms:ir.ui.view,arch_db:account_fleet.fleet_vehicle_view_form
 msgid "show the vendor bills for this vehicle"
-msgstr "แสดงใบเรียกเก็บเงินผู้ขายสำหรับยานพาหนะคันนี้"
+msgstr ""

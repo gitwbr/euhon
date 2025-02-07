@@ -96,6 +96,7 @@ class CheckOutLine(models.Model):
     machineAndproduct = fields.Char("大小類別" ,store= True,compute="_compute_machine_and_product")    
     report_year = fields.Many2one("dtsc.year",string="年", related="checkout_product_id.report_year",store=True)
     report_month = fields.Many2one("dtsc.month",string="月", related="checkout_product_id.report_month",store=True)
+    estimated_date_only = fields.Date(string='發貨日期', related='checkout_product_id.estimated_date_only', store=True)
     @api.model
     def action_printexcel_machine(self):
         # print(self._context)
@@ -246,7 +247,7 @@ class CheckOut(models.Model):
     def _compute_year_month(self):
         invoice_due_date = self.env['ir.config_parameter'].sudo().get_param('dtsc.invoice_due_date')
         for record in self:
-            print(record.estimated_date)
+            # print(record.estimated_date)
             current_date = record.estimated_date           
             if current_date.day > int(invoice_due_date):
                 if current_date.month == 12:

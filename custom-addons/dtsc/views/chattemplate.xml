@@ -66,9 +66,10 @@
 		<field name="name">dtsc.makeout.product.report.tree</field>
 		<field name="model">dtsc.makeout</field>
 		<field name="arch" type="xml">
-			<tree default_order="display_name_reportt">			
+			<tree default_order="display_name_reportt,name">		
 				<!-- <group expand="1" string="分組結果">			 -->
 					<field name="display_name_reportt" readonly="1"  />
+					<field name="name" readonly="1"  />
 					<field name="delivery_date" readonly="1"  />
 					<field name="total_quantity" string="數量"  readonly="1"  />
 					<field name="total_size" string="才數"  readonly="1"  />
@@ -129,6 +130,51 @@
 			<!-- </graph> -->
 		<!-- </field> -->
 	<!-- </record> -->
+	<!-- 工單狀態表 -->
+	<record id="report_make_checkoutline_machine" model="ir.ui.view">
+		<field name="name">dtsc.make.checkoutline.machine.report.tree</field>
+		<field name="model">dtsc.checkoutline</field>
+		<field name="arch" type="xml">
+			<tree>				
+				<field name="machine_id" string="機台" readonly="1"  />
+				<field name="make_orderid" string="工單編號" readonly="1"/>
+				<button name="go_make" type="object" string="查看工單"  />
+					
+				<field name="estimated_date_only" readonly="1"  />
+				<field name="total_units" width="140px" string="進單量"  readonly="1"  />
+				<field name="outman_count" width="140px"  readonly="1"  />
+				<field name="lengbiao_count" width="140px"  readonly="1"  />
+				<field name="guoban_count" width="140px"  readonly="1"  />
+				<field name="caiqie_count" width="140px"  readonly="1"  />
+				<field name="pinguan_count" width="140px"  readonly="1"  />
+				<field name="daichuhuo_count" width="140px"  readonly="1"  />
+				<field name="yichuhuo_count" width="140px"  readonly="1"  />
+			</tree>
+		</field>	
+	</record>
+	
+	<record id="search_make_machine_checkoutline_report" model="ir.ui.view">
+		<field name="name">dtsc.checkoutline.machine.search.report</field>
+		<field name="model">dtsc.checkoutline</field>
+		<field name="arch" type="xml">
+			<search>
+				<searchpanel>
+					<field name="report_year" string="年" select="multi"/>
+					<field name="report_month" string="月" context="{'group_by': 'report_year'}" select="multi"/>
+				</searchpanel>
+				<field name="machine_id" string="機台"/> 
+				<filter string="昨天" name="filter_yesterday" domain="[('estimated_date_only','=', (context_today() - relativedelta(days=1)).strftime('%%Y-%%m-%%d'))]"/>
+				<filter string="今天" name="filter_today" domain="[('estimated_date_only','=', context_today().strftime('%%Y-%%m-%%d'))]"/>
+				<filter string="明天" name="filter_yesterday" domain="[('estimated_date_only','=', (context_today() + relativedelta(days=1)).strftime('%%Y-%%m-%%d'))]"/>
+				<filter string="後天" name="filter_yesterday" domain="[('estimated_date_only','=', (context_today() + relativedelta(days=2)).strftime('%%Y-%%m-%%d'))]"/>
+				<!-- <filter string="明天" name="filter_tomorrow" domain="[('estimated_date_only', '=', (context_today() + timedelta(days=1)))]"/> -->
+				<!-- <filter string="後天" name="filter_after_tomorrow" domain="[('estimated_date_only', '=', (context_today() + timedelta(days=2)))]"/> -->
+ 
+				<filter string="機台分組" name="group_by_machine_id" domain="[]" context="{'group_by': 'machine_id'}"/>				
+			</search>
+		</field>        
+	</record>
+	
 	
 	<!-- 机台出货统计表 -->
 	<record id="report_checkoutline_machine" model="ir.ui.view">

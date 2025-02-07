@@ -3,7 +3,7 @@
 
 {
     "name" : "Mongolia - Accounting",
-    "version" : "1.1",
+    "version" : "1.0",
     'category': 'Accounting/Localizations/Account Charts',
     "author" : "BumanIT LLC, Odoo S.A.",
     "description": """

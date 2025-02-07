@@ -11,17 +11,17 @@
 # Ákos Nagy <akos.nagy@oregional.hu>, 2022
 # Tamás Dombos, 2022
 # Martin Trigaux, 2022
+# gezza <geza.nagy@oregional.hu>, 2023
 # krnkris, 2023
 # Tamás Németh <ntomasz81@gmail.com>, 2023
-# gezza <geza.nagy@oregional.hu>, 2024
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-06 13:31+0000\n"
+"POT-Creation-Date: 2023-05-23 08:22+0000\n"
 "PO-Revision-Date: 2022-09-22 05:46+0000\n"
-"Last-Translator: gezza <geza.nagy@oregional.hu>, 2024\n"
+"Last-Translator: Tamás Németh <ntomasz81@gmail.com>, 2023\n"
 "Language-Team: Hungarian (https://app.transifex.com/odoo/teams/41243/hu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -33,7 +33,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:hr.field_res_company__hr_presence_control_email_amount
 #: model:ir.model.fields,field_description:hr.field_res_config_settings__hr_presence_control_email_amount
 msgid "# emails to send"
-msgstr "# elküldendő e-mail"
+msgstr "# elküldendő e-mailek"
 
 #. module: hr
 #. odoo-python
@@ -90,7 +90,7 @@ msgstr "1 telefonhívás"
 #: model_terms:hr.job,website_description:hr.job_marketing
 #: model_terms:hr.job,website_description:hr.job_trainee
 msgid "12 days / year, including <br>6 of your choice."
-msgstr "12 nap / év, amiből <br>6 nap választható."
+msgstr "12 nap évente, amiből <br>6 nap választható."
 
 #. module: hr
 #: model_terms:hr.job,job_details:hr.job_ceo
@@ -122,7 +122,8 @@ msgid ""
 "<b>Congratulations!</b> May I recommend you to setup an <a "
 "href=\"%s\">onboarding plan?</a>"
 msgstr ""
-"<b>Gratulálunk!</b> Beállítsunk egy <a href=\"%s\">beléptetési tervet?</a>"
+"<b>Gratulálunk!</b> Szabad javasolni, hogy állítson be egy <a "
+"href=\"%s\">beléptetési tervet?</a>"
 
 #. module: hr
 #: model_terms:ir.ui.view,arch_db:hr.hr_department_view_kanban
@@ -266,7 +267,7 @@ msgstr ""
 #. module: hr
 #: model_terms:ir.ui.view,arch_db:hr.hr_department_view_kanban
 msgid "<span class=\"fw-bolder\">Reporting</span>"
-msgstr "<span class=\"fw-bolder\">Riportálás</span>"
+msgstr "<span class=\"fw-bolder\">Jelentés</span>"
 
 #. module: hr
 #: model_terms:ir.ui.view,arch_db:hr.hr_departure_wizard_view_form
@@ -290,7 +291,8 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:hr.hr_departure_wizard_view_form
 msgid "<span class=\"o_form_label o_hr_form_label cursor-default\">HR Info</span>"
 msgstr ""
-"<span class=\"o_form_label o_hr_form_label cursor-default\">HR infó</span>"
+"<span class=\"o_form_label o_hr_form_label cursor-default\">Személyügy "
+"infó</span>"
 
 #. module: hr
 #: model_terms:ir.ui.view,arch_db:hr.res_config_settings_view_form
@@ -321,7 +323,7 @@ msgstr "<span class=\"o_stat_text\">Kapcsolatok</span>"
 #. module: hr
 #: model_terms:ir.ui.view,arch_db:hr.res_partner_view_form
 msgid "<span class=\"o_stat_text\">Employee(s)</span>"
-msgstr "<span class=\"o_stat_text\">munkavállaló</span>"
+msgstr "<span class=\"o_stat_text\">alkalmazott</span>"
 
 #. module: hr
 #: model_terms:hr.job,job_details:hr.job_ceo
@@ -381,8 +383,8 @@ msgstr "Teljes munkaidős állás <br>Vonzó bércsomag"
 #: model:ir.model.constraint,message:hr.constraint_hr_employee_user_uniq
 msgid "A user cannot be linked to multiple employees in the same company."
 msgstr ""
-"Egy felhasználó nem kapcsolható össze több munkavállalóval ugyanazon a "
-"vállalaton belül."
+"Egy felhasználó nem kapcsolható össze több alkalmazottal egyazon vállalaton "
+"belül."
 
 #. module: hr
 #: model:ir.model.fields.selection,name:hr.selection__hr_employee__hr_icon_display__presence_absent
@@ -403,7 +405,7 @@ msgstr "Távol lévő"
 #: model_terms:hr.job,website_description:hr.job_marketing
 #: model_terms:hr.job,website_description:hr.job_trainee
 msgid "Achieve monthly sales objectives"
-msgstr "Megvalósítani a havi értékesítési célokat"
+msgstr "Megvalósítani a havi értékesítési célkitűzéseket"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_department__message_needaction
@@ -453,7 +455,7 @@ msgstr "Tevékenység tervezés"
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_employee__activity_state
 msgid "Activity State"
-msgstr "Tevékenység állapot"
+msgstr "Tevékenység állapota"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_plan_activity_type__activity_type_id
@@ -475,7 +477,7 @@ msgstr "Tevékenység alapján"
 #: model_terms:ir.actions.act_window,help:hr.hr_employee_public_action
 #: model_terms:ir.actions.act_window,help:hr.open_view_employee_list_my
 msgid "Add a new employee"
-msgstr "Új munkavállaló"
+msgstr "Új alkalmazott"
 
 #. module: hr
 #: model_terms:ir.actions.act_window,help:hr.hr_plan_action
@@ -540,7 +542,7 @@ msgstr ""
 #. module: hr
 #: model_terms:ir.ui.view,arch_db:hr.res_config_settings_view_form
 msgid "Advanced presence of employees"
-msgstr "Haladó munkavállalók jelenlét"
+msgstr ""
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_mail_alias__alias_contact
@@ -558,12 +560,12 @@ msgstr ""
 #. module: hr
 #: model_terms:ir.ui.view,arch_db:hr.res_config_settings_view_form
 msgid "Allow employees to update their own data"
-msgstr "A munkavállalók módosíthatják saját adataikat"
+msgstr "Az alkalmazottak módosíthatják saját adataikat"
 
 #. module: hr
 #: model_terms:ir.ui.view,arch_db:hr.res_config_settings_view_form
 msgid "Allow employees to update their own data."
-msgstr "Engedélyezi a munkavállalóknak, hogy módosítsák saját adataikat."
+msgstr "Engedélyezi az alkalmazottaknak, hogy módosítsák saját adataikat."
 
 #. module: hr
 #: model_terms:ir.ui.view,arch_db:hr.view_employee_form
@@ -638,7 +640,7 @@ msgstr "Jelenlét/Értékesítési pont"
 #. module: hr
 #: model:ir.model.fields.selection,name:hr.selection__mail_alias__alias_contact__employees
 msgid "Authenticated Employees"
-msgstr "Hitelesített munkavállalók"
+msgstr "Hitelesített alkalmazottak"
 
 #. module: hr
 #: model_terms:ir.ui.view,arch_db:hr.mail_channel_view_form_
@@ -677,25 +679,25 @@ msgstr "Avatár"
 #: model:ir.model.fields,field_description:hr.field_hr_employee__avatar_1024
 #: model:ir.model.fields,field_description:hr.field_hr_employee_public__avatar_1024
 msgid "Avatar 1024"
-msgstr "Avatár 1024"
+msgstr "1024-es avatár"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_employee__avatar_128
 #: model:ir.model.fields,field_description:hr.field_hr_employee_public__avatar_128
 msgid "Avatar 128"
-msgstr "Avatár 128"
+msgstr "128-as avatár"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_employee__avatar_256
 #: model:ir.model.fields,field_description:hr.field_hr_employee_public__avatar_256
 msgid "Avatar 256"
-msgstr "Avatár 256"
+msgstr "256-os avatár"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_employee__avatar_512
 #: model:ir.model.fields,field_description:hr.field_hr_employee_public__avatar_512
 msgid "Avatar 512"
-msgstr "Avatár 512"
+msgstr "512-es avatár"
 
 #. module: hr
 #: model_terms:ir.ui.view,arch_db:hr.res_users_view_form_profile
@@ -747,28 +749,28 @@ msgstr "Jelenlétek alapján"
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_res_config_settings__hr_presence_control_email
 msgid "Based on number of emails sent"
-msgstr "Elküldött e-mailek száma alapján"
+msgstr "Az elküldött e-mailek száma alapján"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_res_config_settings__hr_presence_control_login
 msgid "Based on user status in system"
-msgstr "Felhasználó rendszerbeli állapota alapján"
+msgstr "A felhasználó állapot alapján"
 
 #. module: hr
 #: model:ir.model,name:hr.model_hr_employee_base
 msgid "Basic Employee"
-msgstr "Egyszerű munkavállaló"
+msgstr ""
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_res_users__can_edit
 msgid "Can Edit"
-msgstr "Szerkeszthet"
+msgstr "Módosíthat"
 
 #. module: hr
 #: model_terms:ir.ui.view,arch_db:hr.plan_wizard
 #: model_terms:ir.ui.view,arch_db:hr.view_users_simple_form
 msgid "Cancel"
-msgstr "Mégsem"
+msgstr "Mégse"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_employee__certificate
@@ -787,7 +789,7 @@ msgstr "Beállításaim megváltoztatása"
 #: code:addons/hr/static/src/components/employee_chat/employee_chat.xml:0
 #, python-format
 msgid "Chat"
-msgstr "Csevegés"
+msgstr "Társalgás"
 
 #. module: hr
 #: model:hr.job,name:hr.job_ceo
@@ -829,7 +831,7 @@ msgstr "Tréner"
 #: code:addons/hr/models/hr_plan_activity_type.py:0
 #, python-format
 msgid "Coach of employee %s is not set."
-msgstr "%s munkavállalóhoz nincs beállítva tréner."
+msgstr "%s alkalmazotthoz nincs beállítva tréner."
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_department__color
@@ -879,7 +881,7 @@ msgstr "Vállalati munkaidő"
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_res_users__employee_id
 msgid "Company employee"
-msgstr "Vállalati munkavállaló"
+msgstr "Alkalmazott"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_department__complete_name
@@ -965,7 +967,7 @@ msgstr "Létrehozás dátuma"
 #. module: hr
 #: model_terms:ir.ui.view,arch_db:hr.view_users_simple_form_inherit_hr
 msgid "Create Employee"
-msgstr "Munkavállaló létrehozás"
+msgstr "Alkalmazott létrehozás"
 
 #. module: hr
 #. odoo-python
@@ -982,16 +984,6 @@ msgid "Create a new department"
 msgstr "Új részleg létrehozása"
 
 #. module: hr
-#: model_terms:ir.actions.act_window,help:hr.hr_contract_type_action
-msgid "Create a new employment type"
-msgstr ""
-
-#. module: hr
-#: model_terms:ir.actions.act_window,help:hr.hr_work_location_action
-msgid "Create a new work location"
-msgstr ""
-
-#. module: hr
 #: model_terms:hr.job,website_description:hr.job_ceo
 #: model_terms:hr.job,website_description:hr.job_consultant
 #: model_terms:hr.job,website_description:hr.job_cto
@@ -1005,7 +997,7 @@ msgstr ""
 #. module: hr
 #: model_terms:ir.ui.view,arch_db:hr.res_users_view_form
 msgid "Create employee"
-msgstr "Munkavállaló létrehozás"
+msgstr "Új alkalmazott"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_contract_type__create_uid
@@ -1046,7 +1038,7 @@ msgstr "Pénznem"
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_job__no_of_employee
 msgid "Current Number of Employees"
-msgstr "Jelenlegi munkavállalók száma"
+msgstr "Jelenlegi alkalmazottak száma"
 
 #. module: hr
 #: model_terms:hr.job,website_description:hr.job_ceo
@@ -1422,8 +1414,6 @@ msgid ""
 "Enter here the private address of the employee, not the one linked to your "
 "company."
 msgstr ""
-"Itt lehet megadni a munkavállalói vállalathoz nem kapcsolódó, azaz otthoni "
-"címét."
 
 #. module: hr
 #: model_terms:hr.job,website_description:hr.job_ceo
@@ -1586,7 +1576,7 @@ msgstr "Részlegek"
 #: model:ir.actions.server,name:hr.ir_cron_data_check_work_permit_validity_ir_actions_server
 #: model:ir.cron,cron_name:hr.ir_cron_data_check_work_permit_validity
 msgid "HR Employee: check work permit validity"
-msgstr "HR Munkavállaló: munkavállalási engedély érvényesség ellenőrzése"
+msgstr "Munkavállaló: munkavállalási engedély érvényesség ellenőrzése"
 
 #. module: hr
 #: model_terms:ir.ui.view,arch_db:hr.res_users_view_form_profile
@@ -1678,7 +1668,7 @@ msgstr ""
 #: model:ir.model.fields,help:hr.field_hr_employee__barcode
 #: model:ir.model.fields,help:hr.field_res_users__barcode
 msgid "ID used for employee identification."
-msgstr "Azonosító munkavállalók azonosításához."
+msgstr "ID azonosító az azonosításához."
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_employee__activity_exception_icon
@@ -1755,7 +1745,7 @@ msgstr "512-es kép"
 #: code:addons/hr/models/hr_employee.py:0
 #, python-format
 msgid "Import Template for Employees"
-msgstr "Munkavállaló importálás sablon"
+msgstr "Munkavállalói sablon importálása"
 
 #. module: hr
 #: model:hr.contract.type,name:hr.contract_type_interim
@@ -1866,7 +1856,7 @@ msgstr "Utolsó tevékenység ideje"
 #: model:ir.model.fields,field_description:hr.field_hr_plan_wizard____last_update
 #: model:ir.model.fields,field_description:hr.field_hr_work_location____last_update
 msgid "Last Modified on"
-msgstr "Módosítva"
+msgstr "Legutóbb módosítva"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_contract_type__write_uid
@@ -1946,12 +1936,12 @@ msgstr "Hozzon létre egy munkakört!"
 #: model_terms:ir.ui.view,arch_db:hr.res_users_view_form_profile
 #: model_terms:ir.ui.view,arch_db:hr.view_employee_form
 msgid "Location"
-msgstr "Lokáció"
+msgstr "Helyszín"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_work_location__location_number
 msgid "Location Number"
-msgstr "Lokáció szám"
+msgstr "Helyszín száma"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_department__message_main_attachment_id
@@ -1994,7 +1984,7 @@ msgstr "Családi állapot"
 #. module: hr
 #: model:hr.job,name:hr.job_marketing
 msgid "Marketing and Community Manager"
-msgstr "Marketing és közösségi menedzser"
+msgstr "Marketing és közösségi igazgató"
 
 #. module: hr
 #: model:ir.model.fields.selection,name:hr.selection__hr_employee__marital__married
@@ -2099,7 +2089,7 @@ msgstr "Név"
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_employee__country_id
 msgid "Nationality (Country)"
-msgstr "Állampolgárság (ország)"
+msgstr "Állampolgárság"
 
 #. module: hr
 #: model_terms:hr.job,website_description:hr.job_ceo
@@ -2195,7 +2185,7 @@ msgstr "Megjegyzések"
 #: model:ir.model.fields,field_description:hr.field_hr_employee__message_needaction_counter
 #: model:ir.model.fields,field_description:hr.field_hr_job__message_needaction_counter
 msgid "Number of Actions"
-msgstr "Akciók száma"
+msgstr "Műveletek száma"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_employee__children
@@ -2226,7 +2216,7 @@ msgstr "A toborzás fázisában ebbe a munkakörbe felvett munkavállalók szám
 #: model:ir.model.fields,help:hr.field_hr_employee__message_needaction_counter
 #: model:ir.model.fields,help:hr.field_hr_job__message_needaction_counter
 msgid "Number of messages requiring action"
-msgstr "Üzenetek száma, melyek akciót igényelnek"
+msgstr ""
 
 #. module: hr
 #: model:ir.model.fields,help:hr.field_hr_department__message_has_error_counter
@@ -2412,7 +2402,7 @@ msgstr "Telefon"
 #: model:ir.model.fields,field_description:hr.field_hr_employee__place_of_birth
 #: model:ir.model.fields,field_description:hr.field_res_users__place_of_birth
 msgid "Place of Birth"
-msgstr "Születési hely"
+msgstr "Születés helye"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_department__plan_ids
@@ -2435,7 +2425,7 @@ msgstr "Terv neve"
 #. module: hr
 #: model:ir.model,name:hr.model_hr_plan_wizard
 msgid "Plan Wizard"
-msgstr "Terv varázsló"
+msgstr "Tervkészítő"
 
 #. module: hr
 #: model:ir.model,name:hr.model_hr_plan_activity_type
@@ -2546,7 +2536,7 @@ msgstr "Személyes e-mail"
 #: model_terms:ir.ui.view,arch_db:hr.res_users_view_form_profile
 #: model_terms:ir.ui.view,arch_db:hr.view_employee_form
 msgid "Private Information"
-msgstr "Személyes információk"
+msgstr "Személyes adatok"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_employee__phone
@@ -2557,7 +2547,7 @@ msgstr "Személyes telefon"
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_res_users__private_state_id
 msgid "Private State"
-msgstr "Állam/megye"
+msgstr "Állam"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_res_users__private_street
@@ -2567,7 +2557,7 @@ msgstr "Utca"
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_res_users__private_street2
 msgid "Private Street2"
-msgstr "Utca 2"
+msgstr "2. utca"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_res_users__private_zip
@@ -2659,7 +2649,7 @@ msgstr "Kapcsolódó munkavállaló"
 #. module: hr
 #: model:ir.model.fields,help:hr.field_res_partner__employee_ids
 msgid "Related employees based on their private address"
-msgstr "Otthoni címük alapján kapcsoló munkavállalók"
+msgstr ""
 
 #. module: hr
 #: model:ir.model.fields,help:hr.field_hr_employee__user_id
@@ -2672,7 +2662,7 @@ msgstr ""
 #: model:ir.ui.menu,name:hr.hr_menu_hr_reports
 #: model:ir.ui.menu,name:hr.menu_hr_reporting_timesheet
 msgid "Reporting"
-msgstr "Riportálás"
+msgstr "Kimutatás"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_job__requirements
@@ -2814,7 +2804,8 @@ msgstr "Társadalombiztosítási azonosító jel"
 #: model:ir.model.fields,help:hr.field_hr_plan_activity_type__responsible_id
 msgid "Specific responsible of activity if not linked to the employee."
 msgstr ""
-"Adja meg a tevékenység felelősét, ha az nem kapcsolódik a munkavállalóhoz!"
+"Adja meg a tevékenység felelősét, ha az nincs hozzákapcsolva egy "
+"munkavállalóhoz!"
 
 #. module: hr
 #: model_terms:hr.job,website_description:hr.job_ceo
@@ -2842,7 +2833,7 @@ msgstr "Házastárs neve"
 #. module: hr
 #: model_terms:ir.ui.view,arch_db:hr.res_users_view_form_profile
 msgid "State"
-msgstr "Állam/megye"
+msgstr "Állam"
 
 #. module: hr
 #: model_terms:ir.ui.view,arch_db:hr.res_users_view_form_profile
@@ -2871,7 +2862,7 @@ msgstr "Lépések száma"
 #. module: hr
 #: model_terms:ir.ui.view,arch_db:hr.res_users_view_form_profile
 msgid "Street 2..."
-msgstr "Utca 2..."
+msgstr "2. utca..."
 
 #. module: hr
 #: model_terms:ir.ui.view,arch_db:hr.res_users_view_form_profile
@@ -2939,13 +2930,11 @@ msgstr "Műszaki szakértő"
 #: model:ir.model.fields,field_description:hr.field_res_users__create_employee_id
 msgid "Technical field, bind user to this employee on create"
 msgstr ""
-"Technikai mező, a létrehozás során összeköti a felhasználót és a "
-"munkavállalót"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_res_users__create_employee
 msgid "Technical field, whether to create an employee"
-msgstr "Technikai mező, létrehozásra kerüljön-e munkavállaló"
+msgstr ""
 
 #. module: hr
 #: model:hr.contract.type,name:hr.contract_type_temporary
@@ -2982,7 +2971,7 @@ msgstr "A PIN sorrendbe állított számokat kell tartalmaznia."
 #: code:addons/hr/models/hr_plan_activity_type.py:0
 #, python-format
 msgid "The employee %s should be linked to a user."
-msgstr "%s munkavállalónak kötődnie kéne egy felhasználóhoz."
+msgstr ""
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_employee__is_address_home_a_company
@@ -3217,8 +3206,8 @@ msgstr "Érvényes munkavállalási engedély Belgiumban"
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_employee__visa_expire
 #: model:ir.model.fields,field_description:hr.field_res_users__visa_expire
-msgid "Visa Expiration Date"
-msgstr ""
+msgid "Visa Expire Date"
+msgstr "Vízum lejárati dátuma"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_employee__visa_no
@@ -3419,7 +3408,7 @@ msgstr "Rekurzív részlegek nem hozhatóak létre."
 #: code:addons/hr/models/hr_employee.py:0
 #, python-format
 msgid "You do not have access to this document."
-msgstr "Nincs hozzáférése ehhez a dokumentumhoz."
+msgstr "Önnek nincs hozzáférése ehhez a dokumentumhoz."
 
 #. module: hr
 #. odoo-python
@@ -3448,7 +3437,7 @@ msgstr "részleg"
 #. module: hr
 #: model_terms:ir.ui.view,arch_db:hr.hr_employee_public_view_form
 msgid "e.g. John Doe"
-msgstr "pl. Gipsz Jakab"
+msgstr "pl.: Szabó Géza"
 
 #. module: hr
 #: model_terms:ir.ui.view,arch_db:hr.hr_plan_view_form
@@ -3458,7 +3447,7 @@ msgstr "pl.: Beléptetés"
 #. module: hr
 #: model_terms:ir.ui.view,arch_db:hr.view_hr_job_form
 msgid "e.g. Sales Manager"
-msgstr "pl.: Értékesítési menedzser"
+msgstr "pl.: Értékesítési igazgató"
 
 #. module: hr
 #: model:ir.model,name:hr.model_hr_plan
@@ -3471,8 +3460,3 @@ msgstr "terv"
 #, python-format
 msgid "restricted to employees"
 msgstr "korlátozva a munkavállalókra"
-
-#. module: hr
-#: model:ir.model.fields,field_description:hr.field_hr_employee__work_permit_name
-msgid "work_permit_name"
-msgstr ""

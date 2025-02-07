@@ -1090,7 +1090,7 @@ registerModel({
             if (!this.channel) {
                 return;
             }
-            if (!this.messaging.userSetting.usePushToTalk || !this.messaging.userSetting.isPushToTalkKey(ev)) {
+            if (!this.messaging.userSetting.usePushToTalk || !this.messaging.userSetting.isPushToTalkKey(ev, { ignoreModifiers: true })) {
                 return;
             }
             if (!this.currentRtcSession.isTalking) {

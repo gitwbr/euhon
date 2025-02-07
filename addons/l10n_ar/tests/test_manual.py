@@ -38,12 +38,12 @@ class TestManual(common.TestAr):
         invoice = self._create_invoice({'partner': self.partner_cf})
         self.assertFalse(invoice.fiscal_position_id, 'Fiscal position should be set to empty')
 
-        # Montana Sur > IVA Liberado - Ley Nº 19.640 > Compras / Ventas Zona Franca > IVA Exento
-        invoice = self._create_invoice({'partner': self.res_partner_montana_sur})
+        # Cerro Castor > IVA Liberado – Ley Nº 19.640 > Compras / Ventas Zona Franca > IVA Exento
+        invoice = self._create_invoice({'partner': self.res_partner_cerrocastor})
         self.assertEqual(invoice.fiscal_position_id, self._search_fp('Compras / Ventas Zona Franca'))
 
-        # Barcelona food > Cliente / Proveedor del Exterior >  > IVA Exento
-        invoice = self._create_invoice({'partner': self.res_partner_barcelona_food})
+        # Expresso > Cliente / Proveedor del Exterior >  > IVA Exento
+        invoice = self._create_invoice({'partner': self.res_partner_expresso})
         self.assertEqual(invoice.fiscal_position_id, self._search_fp('Compras / Ventas al exterior'))
 
     def test_03_corner_cases(self):

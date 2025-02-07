@@ -7,7 +7,6 @@ import {
     start,
     startServer,
 } from '@mail/../tests/helpers/test_utils';
-import { click as clickContains, contains } from "@web/../tests/utils";
 
 QUnit.module('mail', {}, function () {
 QUnit.module('components', {}, function () {
@@ -1472,44 +1471,60 @@ QUnit.test('failure on loading more messages should not alter message list displ
 });
 
 QUnit.test('failure on loading more messages should display error and prompt retry button', async function (assert) {
+    assert.expect(3);
+
     // first call needs to be successful as it is the initial loading of messages
     // second call comes from load more and needs to fail in order to show the error alert
     // any later call should work so that retry button and load more clicks would now work
     let messageFetchShouldFail = false;
     const pyEnv = await startServer();
-    const channelId = pyEnv["mail.channel"].create({
-        channel_type: "channel",
+    const mailChannelId1 = pyEnv['mail.channel'].create({
+        channel_type: 'channel',
         name: "General",
     });
-    pyEnv["mail.message"].create(
-        [...Array(60).keys()].map(() => {
-            return {
-                body: "coucou",
-                model: "mail.channel",
-                res_id: channelId,
-            };
-        })
-    );
-    const { openDiscuss } = await start({
+    pyEnv['mail.message'].create([...Array(60).keys()].map(() => {
+        return {
+            body: 'coucou',
+            model: "mail.channel",
+            res_id: mailChannelId1,
+        };
+    }));
+    const { click, openDiscuss } = await start({
         discuss: {
-            context: { active_id: channelId },
+            context: { active_id: mailChannelId1 },
         },
         async mockRPC(route, args) {
-            if (route === "/mail/channel/messages" && messageFetchShouldFail) {
-                return Promise.reject();
+            if (route === '/mail/channel/messages') {
+                if (messageFetchShouldFail) {
+                    throw new Error();
+                }
             }
         },
     });
     await openDiscuss();
-    await contains(".o_Message", { count: 30 });
+
     messageFetchShouldFail = true;
-    await clickContains(".o_MessageList_loadMore");
-    await contains(".o_MessageList_alertLoadingFailed");
-    await contains(".o_MessageList_alertLoadingFailedRetryButton");
-    await contains(".o_MessageList_loadMore", { count: 0 });
+    await click('.o_MessageList_loadMore');
+    assert.containsOnce(
+        document.body,
+        '.o_MessageList_alertLoadingFailed',
+        "should show loading error message"
+    );
+    assert.containsOnce(
+        document.body,
+        '.o_MessageList_alertLoadingFailedRetryButton',
+        "should show loading error message button"
+    );
+    assert.containsNone(
+        document.body,
+        '.o_MessageList_loadMore',
+        "should not show load more buttton"
+    );
 });
 
-QUnit.test('Retry loading more messages on failed load more messages should load more messages', async function () {
+QUnit.test('Retry loading more messages on failed load more messages should load more messages', async function (assert) {
+    assert.expect(0);
+
     // first call needs to be successful as it is the initial loading of messages
     // second call comes from load more and needs to fail in order to show the error alert
     // any later call should work so that retry button and load more clicks would now work
@@ -1526,7 +1541,7 @@ QUnit.test('Retry loading more messages on failed load more messages should load
             res_id: mailChannelId1,
         };
     }));
-    const { openDiscuss } = await start({
+    const { afterEvent, click, openDiscuss } = await start({
         discuss: {
             context: { active_id: mailChannelId1 },
         },
@@ -1539,13 +1554,22 @@ QUnit.test('Retry loading more messages on failed load more messages should load
         }
     });
     await openDiscuss();
-    await contains(".o_Message", { count: 30 });
     messageFetchShouldFail = true;
-    await clickContains(".o_MessageList_loadMore");
-    await contains(".o_MessageList_alertLoadingFailedRetryButton");
+    await click('.o_MessageList_loadMore');
+
     messageFetchShouldFail = false;
-    await clickContains('.o_MessageList_alertLoadingFailedRetryButton');
-    await contains(".o_Message", { count: 60 });
+    await afterEvent({
+        eventName: 'o-thread-view-hint-processed',
+        func: () => document.querySelector('.o_MessageList_alertLoadingFailedRetryButton').click(),
+        message: "should wait until channel loaded more messages after clicked on load more",
+        predicate: ({ hint, threadViewer }) => {
+            return (
+                hint.type === 'more-messages-loaded' &&
+                threadViewer.thread.model === 'mail.channel' &&
+                threadViewer.thread.id === mailChannelId1
+            );
+        },
+    });
 });
 
 QUnit.test("highlight the message mentioning the current user inside the channel", async function (assert) {

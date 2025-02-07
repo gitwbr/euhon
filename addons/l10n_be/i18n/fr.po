@@ -28,21 +28,21 @@ msgstr ""
 #: model:account.tax,name:l10n_be.2_attn_VAT-OUT-00-CC
 #: model:account.tax.template,name:l10n_be.attn_VAT-OUT-00-CC
 msgid "0% Cocont"
-msgstr "0% Cocont"
+msgstr "0% Cocont."
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V82-00-EU-G
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V82-00-EU-G
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V82-00-EU-G
 msgid "0% EU G"
-msgstr "0% EU G"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V83-00-EU
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V83-00-EU
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V83-00-EU
 msgid "0% EU IG"
-msgstr "0% EU IG"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V81-00-EU
@@ -52,7 +52,7 @@ msgstr "0% EU IG"
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V81-00-EU
 #: model:account.tax.template,name:l10n_be.attn_VAT-OUT-00-EU-L
 msgid "0% EU M"
-msgstr "0% EU M"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V82-00-EU-S
@@ -62,77 +62,77 @@ msgstr "0% EU M"
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V82-00-EU-S
 #: model:account.tax.template,name:l10n_be.attn_VAT-OUT-00-EU-S
 msgid "0% EU S"
-msgstr "0% EU S"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-OUT-00-EU-T
 #: model:account.tax,name:l10n_be.2_attn_VAT-OUT-00-EU-T
 #: model:account.tax.template,name:l10n_be.attn_VAT-OUT-00-EU-T
 msgid "0% EU T"
-msgstr "0% EU T"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-OUT-00-ROW
 #: model:account.tax,name:l10n_be.2_attn_VAT-OUT-00-ROW
 #: model:account.tax.template,name:l10n_be.attn_VAT-OUT-00-ROW
 msgid "0% EX"
-msgstr "0% EX"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V83-00-ROW-CC
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V83-00-ROW-CC
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V83-00-ROW-CC
 msgid "0% EX IG"
-msgstr "0% EX IG"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V81-00-ROW-CC
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V81-00-ROW-CC
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V81-00-ROW-CC
 msgid "0% EX M"
-msgstr "0% EX M"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V82-00-ROW-CC
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V82-00-ROW-CC
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V82-00-ROW-CC
 msgid "0% EX S"
-msgstr "0% EX S"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V82-00-G
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V82-00-G
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V82-00-G
 msgid "0% G"
-msgstr "0% G"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V83-00
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V83-00
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V83-00
 msgid "0% IG"
-msgstr "0% IG"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V83-00-CC
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V83-00-CC
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V83-00-CC
 msgid "0% IG.Cocont"
-msgstr "0% IG.Cocont"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V81-00
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V81-00
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V81-00
 msgid "0% M"
-msgstr "0% M"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V81-00-CC
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V81-00-CC
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V81-00-CC
 msgid "0% M.Cocont"
-msgstr "0% M.Cocont"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V82-00-S
@@ -142,14 +142,14 @@ msgstr "0% M.Cocont"
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V82-00-S
 #: model:account.tax.template,name:l10n_be.attn_VAT-OUT-00-S
 msgid "0% S"
-msgstr "0% S"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V82-00-CC
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V82-00-CC
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V82-00-CC
 msgid "0% S.Cocont"
-msgstr "0% S.Cocont"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.report.line,name:l10n_be.tax_report_line_00
@@ -231,84 +231,84 @@ msgstr "12%"
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V82-12-EU-G
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V82-12-EU-G
 msgid "12% EU G"
-msgstr "12% EU G"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V83-12-EU
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V83-12-EU
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V83-12-EU
 msgid "12% EU IG"
-msgstr "12% EU IG"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V81-12-EU
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V81-12-EU
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V81-12-EU
 msgid "12% EU M"
-msgstr "12% EU M"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V82-12-EU-S
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V82-12-EU-S
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V82-12-EU-S
 msgid "12% EU S"
-msgstr "12% EU S"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V83-12-ROW-CC
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V83-12-ROW-CC
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V83-12-ROW-CC
 msgid "12% EX IG"
-msgstr "12% EX IG"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V81-12-ROW-CC
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V81-12-ROW-CC
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V81-12-ROW-CC
 msgid "12% EX M"
-msgstr "12% EX M"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V82-12-ROW-CC
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V82-12-ROW-CC
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V82-12-ROW-CC
 msgid "12% EX S"
-msgstr "12% EX S"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V82-12-G
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V82-12-G
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V82-12-G
 msgid "12% G"
-msgstr "12% G"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V83-12
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V83-12
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V83-12
 msgid "12% IG"
-msgstr "12% IG"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V83-12-CC
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V83-12-CC
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V83-12-CC
 msgid "12% IG.Cocont"
-msgstr "12% IG.Cocont"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V81-12
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V81-12
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V81-12
 msgid "12% M"
-msgstr "12% M"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V81-12-CC
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V81-12-CC
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V81-12-CC
 msgid "12% M.Cocont"
-msgstr "12% M.Cocont"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V82-12-S
@@ -318,14 +318,14 @@ msgstr "12% M.Cocont"
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V82-12-S
 #: model:account.tax.template,name:l10n_be.attn_VAT-OUT-12-S
 msgid "12% S"
-msgstr "12% S"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V82-12-CC
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V82-12-CC
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V82-12-CC
 msgid "12% S.Cocont"
-msgstr "12% S.Cocont"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,description:l10n_be.1_attn_TVA-21-inclus-dans-prix
@@ -393,91 +393,91 @@ msgstr "21%"
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V82-CAR-EXC
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V82-CAR-EXC
 msgid "21% Car"
-msgstr "21% Car"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V82-21-EU-G
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V82-21-EU-G
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V82-21-EU-G
 msgid "21% EU G"
-msgstr "21% EU G"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V83-21-EU
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V83-21-EU
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V83-21-EU
 msgid "21% EU IG"
-msgstr "21% EU IG"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V81-21-EU
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V81-21-EU
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V81-21-EU
 msgid "21% EU M"
-msgstr "21% EU M"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V82-21-EU-S
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V82-21-EU-S
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V82-21-EU-S
 msgid "21% EU S"
-msgstr "21% EU S"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V83-21-ROW-CC
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V83-21-ROW-CC
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V83-21-ROW-CC
 msgid "21% EX IG"
-msgstr "21% EX IG"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V81-21-ROW-CC
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V81-21-ROW-CC
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V81-21-ROW-CC
 msgid "21% EX M"
-msgstr "21% EX M"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V82-21-ROW-CC
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V82-21-ROW-CC
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V82-21-ROW-CC
 msgid "21% EX S"
-msgstr "21% EX S"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V82-21-G
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V82-21-G
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V82-21-G
 msgid "21% G"
-msgstr "21% G"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V83-21
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V83-21
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V83-21
 msgid "21% IG"
-msgstr "21% IG"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V83-21-CC
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V83-21-CC
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V83-21-CC
 msgid "21% IG.Cocont"
-msgstr "21% IG.Cocont"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V81-21
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V81-21
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V81-21
 msgid "21% M"
-msgstr "21% M"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V81-21-CC
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V81-21-CC
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V81-21-CC
 msgid "21% M.Cocont"
-msgstr "21% M.Cocont"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V82-21-S
@@ -487,21 +487,21 @@ msgstr "21% M.Cocont"
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V82-21-S
 #: model:account.tax.template,name:l10n_be.attn_VAT-OUT-21-S
 msgid "21% S"
-msgstr "21% S"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V82-21-CC
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V82-21-CC
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V82-21-CC
 msgid "21% S.Cocont"
-msgstr "21% S.Cocont"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_TVA-21-inclus-dans-prix
 #: model:account.tax,name:l10n_be.2_attn_TVA-21-inclus-dans-prix
 #: model:account.tax.template,name:l10n_be.attn_TVA-21-inclus-dans-prix
 msgid "21% S.TTC"
-msgstr "21% S.TTC"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.report.line,name:l10n_be.tax_report_line_44
@@ -600,84 +600,84 @@ msgstr "59 - TVA déductible"
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V82-06-EU-G
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V82-06-EU-G
 msgid "6% EU G"
-msgstr "6% EU G"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V83-06-EU
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V83-06-EU
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V83-06-EU
 msgid "6% EU IG"
-msgstr "6% EU IG"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V81-06-EU
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V81-06-EU
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V81-06-EU
 msgid "6% EU M"
-msgstr "6% EU M"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V82-06-EU-S
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V82-06-EU-S
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V82-06-EU-S
 msgid "6% EU S"
-msgstr "6% EU S"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V83-06-ROW-CC
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V83-06-ROW-CC
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V83-06-ROW-CC
 msgid "6% EX IG"
-msgstr "6% EX IG"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V81-06-ROW-CC
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V81-06-ROW-CC
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V81-06-ROW-CC
 msgid "6% EX M"
-msgstr "6% EX M"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V82-06-ROW-CC
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V82-06-ROW-CC
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V82-06-ROW-CC
 msgid "6% EX S"
-msgstr "6% EX S"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V82-06-G
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V82-06-G
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V82-06-G
 msgid "6% G"
-msgstr "6% G"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V83-06
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V83-06
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V83-06
 msgid "6% IG"
-msgstr "6% IG"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V83-06-CC
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V83-06-CC
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V83-06-CC
 msgid "6% IG.Cocont"
-msgstr "6% IG.Cocont"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V81-06
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V81-06
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V81-06
 msgid "6% M"
-msgstr "6% M"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V81-06-CC
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V81-06-CC
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V81-06-CC
 msgid "6% M.Cocont"
-msgstr "6% M.Cocont"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V82-06-S
@@ -687,14 +687,14 @@ msgstr "6% M.Cocont"
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V82-06-S
 #: model:account.tax.template,name:l10n_be.attn_VAT-OUT-06-S
 msgid "6% S"
-msgstr "6% S"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.tax,name:l10n_be.1_attn_VAT-IN-V82-06-CC
 #: model:account.tax,name:l10n_be.2_attn_VAT-IN-V82-06-CC
 #: model:account.tax.template,name:l10n_be.attn_VAT-IN-V82-06-CC
 msgid "6% S.Cocont"
-msgstr "6% S.Cocont"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.report.line,name:l10n_be.tax_report_line_61
@@ -772,7 +772,7 @@ msgstr "88 - Services intracommunautaires avec report de perception"
 #. module: l10n_be
 #: model:ir.model,name:l10n_be.model_account_chart_template
 msgid "Account Chart Template"
-msgstr "Modèle de plan comptable"
+msgstr "Account Chart Template"
 
 #. module: l10n_be
 #: model:account.account,name:l10n_be.1_a052
@@ -1586,7 +1586,7 @@ msgstr "Solde"
 #. module: l10n_be
 #: model:account.chart.template,name:l10n_be.l10nbe_chart_template
 msgid "Belgian PCMN"
-msgstr "PCMN belge"
+msgstr "Belgian PCMN"
 
 #. module: l10n_be
 #: model:account.account,name:l10n_be.1_a6703
@@ -1665,7 +1665,7 @@ msgstr ""
 #: model:ir.model.fields.selection,name:l10n_be.selection__account_journal__invoice_reference_model__be
 #: model:ir.ui.menu,name:l10n_be.account_reports_be_statements_menu
 msgid "Belgium"
-msgstr "Belgique"
+msgstr "Belgium"
 
 #. module: l10n_be
 #: model:account.group,name:l10n_be.1_be_group_07
@@ -2354,7 +2354,9 @@ msgstr "Créanciers sous conditions concordataires"
 #: model:account.group.template,name:l10n_be.be_group_290
 #: model:account.group.template,name:l10n_be.be_group_40
 msgid "Créances commerciales"
-msgstr "Créances commerciales"
+msgstr ""
+"Créances commerciales\n"
+" "
 
 #. module: l10n_be
 #: model:account.group,name:l10n_be.1_be_group_416
@@ -2506,7 +2508,7 @@ msgstr ""
 #: model:account.account,name:l10n_be.2_a4001
 #: model:account.account.template,name:l10n_be.a4001
 msgid "Customer (POS)"
-msgstr "Clients (PdV)"
+msgstr "Clients (POS)"
 
 #. module: l10n_be
 #: model:account.group,name:l10n_be.1_be_group_532
@@ -2800,14 +2802,14 @@ msgstr "Distribution aux administrateurs ou gérants"
 #: model:account.account,name:l10n_be.2_a657000
 #: model:account.account.template,name:l10n_be.a657000
 msgid "Discounts Given"
-msgstr "Remises accordées"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.account,name:l10n_be.1_a757000
 #: model:account.account,name:l10n_be.2_a757000
 #: model:account.account.template,name:l10n_be.a757000
 msgid "Discounts Taken"
-msgstr "Remises reçues"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.account,name:l10n_be.1_a608
@@ -3515,12 +3517,12 @@ msgstr "Titulaires d’options (d’achat ou de vente sur titres)"
 #. module: l10n_be
 #: model:account.report.line,name:l10n_be.tax_report_title_operations_sortie
 msgid "II Outgoing"
-msgstr "II À la sortie"
+msgstr "II A la sortie"
 
 #. module: l10n_be
 #: model:account.report.line,name:l10n_be.tax_report_title_operations_entree
 msgid "III Incoming"
-msgstr "III À l'entrée"
+msgstr "III A l'entrée"
 
 #. module: l10n_be
 #: model:account.report.line,name:l10n_be.tax_report_title_taxes_dues
@@ -3794,7 +3796,7 @@ msgstr "Journal"
 #. module: l10n_be
 #: model:ir.model,name:l10n_be.model_account_move
 msgid "Journal Entry"
-msgstr "Pièce comptable"
+msgstr "Écriture comptable"
 
 #. module: l10n_be
 #: model:account.account,name:l10n_be.1_a220
@@ -3915,14 +3917,14 @@ msgstr "Droits d’usage à long terme - Sur terrains et constructions"
 #: model:account.account,name:l10n_be.2_a690
 #: model:account.account.template,name:l10n_be.a690
 msgid "Loss brought forward from previous year"
-msgstr "Perte reportée de l'exercice précédent"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.account,name:l10n_be.1_a141
 #: model:account.account,name:l10n_be.2_a141
 #: model:account.account.template,name:l10n_be.a141
 msgid "Loss carried forward"
-msgstr "Perte reportée"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.account,name:l10n_be.1_a641
@@ -4113,7 +4115,7 @@ msgstr "Montants non appelés (-)"
 #: model:account.account,name:l10n_be.2_a64012
 #: model:account.account.template,name:l10n_be.a64012
 msgid "Non deductible taxes"
-msgstr "TVA non déductible"
+msgstr "T.V.A. non déductible"
 
 #. module: l10n_be
 #: model:account.account,name:l10n_be.1_a2915
@@ -4942,14 +4944,14 @@ msgstr "Produits à reporter"
 #: model:account.account,name:l10n_be.2_a790
 #: model:account.account.template,name:l10n_be.a790
 msgid "Profit brought forward from previous year"
-msgstr "Bénéfice reporté de l'exercice précédent"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.account,name:l10n_be.1_a140
 #: model:account.account,name:l10n_be.2_a140
 #: model:account.account.template,name:l10n_be.a140
 msgid "Profit carried forward"
-msgstr "Bénéfice reporté"
+msgstr ""
 
 #. module: l10n_be
 #: model:account.account,name:l10n_be.1_a693

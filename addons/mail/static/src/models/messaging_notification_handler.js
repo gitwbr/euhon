@@ -437,19 +437,13 @@ registerModel({
          * @param {boolean} param1.sticky
          * @param {string} param1.title
          * @param {boolean} param1.warning
-         * @param {string} param1.type
          */
-        _handleNotificationSimpleNotification({ message, message_is_html, sticky, title, warning, type }) {
-            type = warning
-               ? "warning"
-               : ["info", "success", "warning", "danger"].includes(type)
-               ? type
-               : "danger";
+        _handleNotificationSimpleNotification({ message, message_is_html, sticky, title, warning }) {
             this.messaging.notify({
                 message: message_is_html ? Markup(message) : message,
                 sticky,
                 title,
-                type,
+                type: warning ? 'warning' : 'danger',
             });
         },
         /**
@@ -705,8 +699,9 @@ registerModel({
             const titlePattern = messaging.outOfFocusUnreadMessageCounter === 1
                 ? this.env._t("%s Message")
                 : this.env._t("%s Messages");
-            this.env.services["title"].setParts({
-                _chat: sprintf(titlePattern, messaging.outOfFocusUnreadMessageCounter),
+            this.env.bus.trigger('set_title_part', {
+                part: '_chat',
+                title: sprintf(titlePattern, messaging.outOfFocusUnreadMessageCounter),
             });
         },
         /**

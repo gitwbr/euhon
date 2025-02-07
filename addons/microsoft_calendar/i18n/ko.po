@@ -5,15 +5,15 @@
 # Translators:
 # Martin Trigaux, 2022
 # Sarah Park, 2023
-# Daye Jeong, 2024
+# Daye Jeong, 2023
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 16.0\n"
+"Project-Id-Version: Odoo Server 16.0beta\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-06 13:32+0000\n"
+"POT-Creation-Date: 2022-10-10 10:23+0000\n"
 "PO-Revision-Date: 2022-09-22 05:53+0000\n"
-"Last-Translator: Daye Jeong, 2024\n"
+"Last-Translator: Daye Jeong, 2023\n"
 "Language-Team: Korean (https://app.transifex.com/odoo/teams/41243/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,35 +22,30 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. module: microsoft_calendar
-#. odoo-python
 #: code:addons/microsoft_calendar/models/calendar.py:0
 #, python-format
 msgid "%(reminder_type)s - %(duration)s Days"
 msgstr "%(reminder_type)s - %(duration)s 일"
 
 #. module: microsoft_calendar
-#. odoo-python
 #: code:addons/microsoft_calendar/models/calendar.py:0
 #, python-format
 msgid "%(reminder_type)s - %(duration)s Hours"
 msgstr "%(reminder_type)s - %(duration)s 시간"
 
 #. module: microsoft_calendar
-#. odoo-python
 #: code:addons/microsoft_calendar/models/calendar.py:0
 #, python-format
 msgid "%(reminder_type)s - %(duration)s Minutes"
 msgstr "%(reminder_type)s - %(duration)s 분"
 
 #. module: microsoft_calendar
-#. odoo-python
 #: code:addons/microsoft_calendar/models/calendar.py:0
 #, python-format
 msgid "%s - At time of event"
 msgstr "%s - 행사 시"
 
 #. module: microsoft_calendar
-#. odoo-python
 #: code:addons/microsoft_calendar/models/calendar.py:0
 #, python-format
 msgid "(No title)"
@@ -64,7 +59,7 @@ msgid "Active"
 msgstr "활성"
 
 #. module: microsoft_calendar
-#. odoo-javascript
+#. openerp-web
 #: code:addons/microsoft_calendar/static/src/views/microsoft_calendar/microsoft_calendar_controller.js:0
 #, python-format
 msgid ""
@@ -73,7 +68,6 @@ msgid ""
 msgstr "사용하려면 관리자가 Outlook 동기화 설정을 해야 합니다!"
 
 #. module: microsoft_calendar
-#. odoo-python
 #: code:addons/microsoft_calendar/models/res_users.py:0
 #, python-format
 msgid ""
@@ -116,7 +110,7 @@ msgid "Config Settings"
 msgstr "설정 구성"
 
 #. module: microsoft_calendar
-#. odoo-javascript
+#. openerp-web
 #: code:addons/microsoft_calendar/static/src/views/microsoft_calendar/microsoft_calendar_controller.js:0
 #: code:addons/microsoft_calendar/static/src/views/microsoft_calendar/microsoft_calendar_controller.js:0
 #, python-format
@@ -193,7 +187,6 @@ msgid "Event Recurrence Rule"
 msgstr "일정 반복 규칙"
 
 #. module: microsoft_calendar
-#. odoo-python
 #: code:addons/microsoft_calendar/models/calendar.py:0
 #, python-format
 msgid ""
@@ -206,15 +199,6 @@ msgstr ""
 "%s"
 
 #. module: microsoft_calendar
-#. odoo-python
-#: code:addons/microsoft_calendar/models/calendar.py:0
-#, python-format
-msgid ""
-"For having a different organizer in your event, it is necessary that the "
-"organizer have its Odoo Calendar synced with Outlook Calendar."
-msgstr "행사에 다른 주최자를 추가하려면 주최자의 Odoo 캘린더가 Outlook 캘린더와 동기화되어 있어야 합니다."
-
-#. module: microsoft_calendar
 #: model:ir.model.fields,field_description:microsoft_calendar.field_microsoft_calendar_account_reset__id
 msgid "ID"
 msgstr "ID"
@@ -225,15 +209,6 @@ msgid ""
 "If the active field is set to false, it will allow you to hide the event "
 "alarm information without removing it."
 msgstr "사용중인 필드를 아니오로 설정하면 일정 알람 정보를 제거하지 않고 숨길 수 있습니다."
-
-#. module: microsoft_calendar
-#. odoo-python
-#: code:addons/microsoft_calendar/models/calendar.py:0
-#, python-format
-msgid ""
-"It is necessary adding the proposed organizer as attendee before saving the "
-"event."
-msgstr "행사를 저장하기 전에 제안된 주최자를 참석자로 추가해야 합니다."
 
 #. module: microsoft_calendar
 #: model:ir.model.fields,field_description:microsoft_calendar.field_microsoft_calendar_account_reset____last_update
@@ -314,7 +289,6 @@ msgid "Next Synchronization"
 msgstr "다음 동기화"
 
 #. module: microsoft_calendar
-#. odoo-python
 #: code:addons/microsoft_calendar/models/calendar.py:0
 #, python-format
 msgid "Notification"
@@ -328,7 +302,7 @@ msgid "Organizer event Id"
 msgstr "주최자 행사 아이디"
 
 #. module: microsoft_calendar
-#. odoo-javascript
+#. openerp-web
 #: code:addons/microsoft_calendar/static/src/views/microsoft_calendar/microsoft_calendar_controller.xml:0
 #: code:addons/microsoft_calendar/static/src/views/microsoft_calendar/microsoft_calendar_controller.xml:0
 #, python-format
@@ -346,7 +320,6 @@ msgid "Outlook Synchronization stopped"
 msgstr "아웃룩 동기화가 중지되었습니다"
 
 #. module: microsoft_calendar
-#. odoo-python
 #: code:addons/microsoft_calendar/models/calendar.py:0
 #, python-format
 msgid ""
@@ -360,6 +333,7 @@ msgstr ""
 #. module: microsoft_calendar
 #: model:ir.actions.server,name:microsoft_calendar.ir_cron_sync_all_cals_ir_actions_server
 #: model:ir.cron,cron_name:microsoft_calendar.ir_cron_sync_all_cals
+#: model:ir.cron,name:microsoft_calendar.ir_cron_sync_all_cals
 msgid "Outlook: synchronization"
 msgstr "아웃룩: 동기화"
 
@@ -379,7 +353,7 @@ msgid "Reset Outlook Calendar Account"
 msgstr "Outlook 캘린더 계정 재설정"
 
 #. module: microsoft_calendar
-#. odoo-javascript
+#. openerp-web
 #: code:addons/microsoft_calendar/static/src/views/microsoft_calendar/microsoft_calendar_controller.js:0
 #, python-format
 msgid "Success"
@@ -401,7 +375,7 @@ msgid "Synchronize only new events"
 msgstr "새로운 행사만 동기화"
 
 #. module: microsoft_calendar
-#. odoo-javascript
+#. openerp-web
 #: code:addons/microsoft_calendar/static/src/views/microsoft_calendar/microsoft_calendar_controller.js:0
 #, python-format
 msgid ""
@@ -410,14 +384,13 @@ msgid ""
 msgstr "Outlook 동기화 사용하려면 먼저 설정을 해야 합니다. 지금 설정하시겠습니까?"
 
 #. module: microsoft_calendar
-#. odoo-python
 #: code:addons/microsoft_calendar/models/res_users.py:0
 #, python-format
 msgid "The account for the Outlook Calendar service is not configured."
 msgstr "Outlook 캘린더 서비스의 계정이 설정되어 있지 않습니다."
 
 #. module: microsoft_calendar
-#. odoo-javascript
+#. openerp-web
 #: code:addons/microsoft_calendar/static/src/views/microsoft_calendar/microsoft_calendar_controller.js:0
 #, python-format
 msgid "The synchronization with Outlook calendar was successfully stopped."
@@ -457,7 +430,7 @@ msgid "User's Existing Events"
 msgstr "사용자의 기존 행사"
 
 #. module: microsoft_calendar
-#. odoo-javascript
+#. openerp-web
 #: code:addons/microsoft_calendar/static/src/views/microsoft_calendar/microsoft_calendar_controller.js:0
 #, python-format
 msgid ""

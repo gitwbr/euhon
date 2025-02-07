@@ -4,6 +4,7 @@ odoo.define('mass_mailing.mass_mailing_tour', function (require) {
     const {_t} = require('web.core');
     const {Markup} = require('web.utils');
     var tour = require('web_tour.tour');
+    var now = moment();
 
     tour.register('mass_mailing_tour', {
         url: '/web',
@@ -25,10 +26,10 @@ odoo.define('mass_mailing.mass_mailing_tour', function (require) {
         content: Markup(_t("Start by creating your first <b>Mailing</b>.")),
         position: 'bottom',
     }, {
-        trigger: 'div[name="subject"]',
+        trigger: 'input[name="subject"]',
         content: Markup(_t('Pick the <b>email subject</b>.')),
         position: 'bottom',
-        run: 'click',
+        run: 'text ' + now.format("MMMM") + " Newsletter",
     }, {
         trigger: 'div[name="contact_list_ids"] > .o_input_dropdown > input[type="text"]',
         run: 'click',
@@ -50,7 +51,7 @@ odoo.define('mass_mailing.mass_mailing_tour', function (require) {
         edition: 'community',
         run: 'click',
     }, {
-        trigger: 'div[name="body_arch"] iframe div.theme_selection_done div.s_text_block',
+        trigger: 'div[name="body_arch"] iframe div.s_text_block',
         content: _t('Click on this paragraph to edit it.'),
         position: 'top',
         edition: 'enterprise',

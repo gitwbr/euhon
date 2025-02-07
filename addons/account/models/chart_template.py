@@ -9,7 +9,7 @@ from odoo.exceptions import UserError, ValidationError
 from odoo.http import request
 from odoo.addons.account.models.account_tax import TYPE_TAX_USE
 from odoo.addons.account.models.account_account import ACCOUNT_CODE_REGEX
-from odoo.tools import float_compare, html_escape
+from odoo.tools import html_escape
 
 import logging
 import re
@@ -58,7 +58,7 @@ def update_taxes_from_templates(cr, chart_template_xmlid):
             env['ir.model.data'].search([('module', '=', module), ('name', '=', name)]).unlink()
 
         def _avoid_name_conflict(company, template):
-            conflict_taxes = env['account.tax'].with_context(active_test=False).search([
+            conflict_taxes = env['account.tax'].search([
                 ('name', '=', template.name), ('company_id', '=', company.id),
                 ('type_tax_use', '=', template.type_tax_use), ('tax_scope', '=', template.tax_scope)
             ])
@@ -138,15 +138,11 @@ def update_taxes_from_templates(cr, chart_template_xmlid):
             template_rep_lines = template.invoice_repartition_line_ids + template.refund_repartition_line_ids
             return (
                     tax.amount_type == template.amount_type
-                    and float_compare(tax.amount, template.amount, precision_digits=4) == 0
+                    and tax.amount == template.amount
                     and (
                          len(tax_rep_lines) == len(template_rep_lines)
                          and all(
-                             float_compare(
-                                 rep_line_tax.factor_percent,
-                                 rep_line_template.factor_percent,
-                                 precision_digits=4
-                             ) == 0
+                             rep_line_tax.factor_percent == rep_line_template.factor_percent
                              for rep_line_tax, rep_line_template in zip(tax_rep_lines, template_rep_lines)
                          )
                     )
@@ -962,7 +958,7 @@ class AccountChartTemplate(models.Model):
         for tax in account_template.tax_ids:
             tax_ids.append(tax_template_ref[tax].id)
         val = {
-                'name': account_template.name.strip(),
+                'name': account_template.name,
                 'currency_id': account_template.currency_id and account_template.currency_id.id or False,
                 'code': code_acc,
                 'account_type': account_template.account_type or False,
@@ -1582,7 +1578,7 @@ class AccountTaxRepartitionLineTemplate(models.Model):
                 domains.append(self.env['account.account.tag']._get_tax_tags_domain(report_expression.formula, country.id, sign=sign))
 
         if domains:
-            tags_to_add |= self.env['account.account.tag'].with_context(active_test=False, lang='en_US').search(osv.expression.OR(domains))
+            tags_to_add |= self.env['account.account.tag'].with_context(active_test=False).search(osv.expression.OR(domains))
 
         return tags_to_add
 

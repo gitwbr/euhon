@@ -1,9 +1,9 @@
 <odoo>
     <!-- Your existing tree view definition -->
-    <record id="model_dtsc_makeout" model="ir.model">
-        <field name="name">委外訂單</field>
-        <field name="model">dtsc.makeout</field>
-    </record>
+    <!-- <record id="model_dtsc_makeout" model="ir.model"> -->
+        <!-- <field name="name">委外訂單</field> -->
+        <!-- <field name="model">dtsc.makeout</field> -->
+    <!-- </record> -->
 	
     <record id="view_makeoutt_tree" model="ir.ui.view">
         <field name="name">dtsc.makeout.tree</field>
@@ -24,7 +24,7 @@
     </record>
     
 	<record id="action_to_excel_makeout_list" model="ir.actions.server">
-		<field name="name">To Excel</field>
+		<field name="name">統計表生成Excel(完整)</field>
 		<field name="model_id" ref="model_dtsc_makeout"/>
 		<field name="state">code</field>
 		<field name="code">

@@ -33,7 +33,7 @@ msgstr ""
 #: code:addons/mass_mailing_crm/models/mailing_mailing.py:0
 #, python-format
 msgid "LEADS"
-msgstr "LEADS"
+msgstr ""
 
 #. module: mass_mailing_crm
 #: model:ir.model,name:mass_mailing_crm.model_crm_lead
@@ -56,7 +56,7 @@ msgstr "Analisa Prospek"
 #. module: mass_mailing_crm
 #: model:ir.model.fields,field_description:mass_mailing_crm.field_mailing_mailing__crm_lead_count
 msgid "Leads/Opportunities Count"
-msgstr "Jumlah Lead/Opportunities"
+msgstr ""
 
 #. module: mass_mailing_crm
 #: model:ir.model,name:mass_mailing_crm.model_mailing_mailing
@@ -67,7 +67,7 @@ msgstr "Pengiriman Massal"
 #: code:addons/mass_mailing_crm/models/mailing_mailing.py:0
 #, python-format
 msgid "No %s yet!"
-msgstr "Belum ada %s"
+msgstr ""
 
 #. module: mass_mailing_crm
 #: code:addons/mass_mailing_crm/models/mailing_mailing.py:0
@@ -76,8 +76,6 @@ msgid ""
 "Note that Odoo cannot track replies if they are sent towards email addresses"
 " to this database."
 msgstr ""
-"Ingat bahwa Odoo tidak melacak balasan bila mereka dikirim ke alamat email "
-"ke database ini."
 
 #. module: mass_mailing_crm
 #: code:addons/mass_mailing_crm/models/mailing_mailing.py:0
@@ -88,7 +86,7 @@ msgstr "Peluang"
 #. module: mass_mailing_crm
 #: model:ir.model.fields,help:mass_mailing_crm.field_utm_campaign__ab_testing_winner_selection
 msgid "Selection to determine the winner mailing that will be sent."
-msgstr "Pemilihan untuk menentukan mailing pemenang yang akan dikirim."
+msgstr ""
 
 #. module: mass_mailing_crm
 #: model:ir.model,name:mass_mailing_crm.model_utm_campaign
@@ -103,4 +101,4 @@ msgstr "Gunakan Lead"
 #. module: mass_mailing_crm
 #: model:ir.model.fields,field_description:mass_mailing_crm.field_utm_campaign__ab_testing_winner_selection
 msgid "Winner Selection"
-msgstr "Pemilihan Pemenang"
+msgstr ""

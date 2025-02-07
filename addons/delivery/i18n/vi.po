@@ -6,8 +6,7 @@
 # Martin Trigaux, 2022
 # Vo Thanh Thuy, 2022
 # Nancy Momoland <thanh.np2502@gmail.com>, 2023
-# Wil Odoo, 2024
-# Thi Huong Nguyen, 2025
+# Thi Huong Nguyen, 2023
 # 
 msgid ""
 msgstr ""
@@ -15,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-15 12:50+0000\n"
 "PO-Revision-Date: 2022-09-22 05:45+0000\n"
-"Last-Translator: Thi Huong Nguyen, 2025\n"
+"Last-Translator: Thi Huong Nguyen, 2023\n"
 "Language-Team: Vietnamese (https://app.transifex.com/odoo/teams/41243/vi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -111,7 +110,7 @@ msgstr "<strong>HS Code</strong>"
 #. module: delivery
 #: model_terms:ir.ui.view,arch_db:delivery.delivery_report_saleorder_document
 msgid "<strong>Shipping Description:</strong>"
-msgstr "<strong>Nội dung vận chuyển:</strong>"
+msgstr ""
 
 #. module: delivery
 #: model_terms:ir.ui.view,arch_db:delivery.report_package_barcode_delivery
@@ -162,14 +161,11 @@ msgid ""
 "customers on the Sales Order and sales confirmation email.E.g. instructions "
 "for customers to follow."
 msgstr ""
-"Mô tả về phương thức giao hàng mà bạn muốn đưa ra cho khách hàng của mình "
-"trên Đơn bán hàng và email xác nhận bán hàng. Ví dụ: hướng dẫn dành cho "
-"khách hàng."
 
 #. module: delivery
 #: model:ir.model.fields,help:delivery.field_delivery_carrier__integration_level
 msgid "Action while validating Delivery Orders"
-msgstr "Tác vụ trong khi xác thực Đơn giao hàng"
+msgstr "Hành động trong khi xác thực Đơn giao hàng"
 
 #. module: delivery
 #: model:ir.model.fields,field_description:delivery.field_delivery_carrier__active
@@ -268,7 +264,7 @@ msgstr "Mã nhà vận chuyển"
 #. module: delivery
 #: model:ir.model.fields,field_description:delivery.field_delivery_carrier__carrier_description
 msgid "Carrier Description"
-msgstr "Mô tả hãng vận chuyển"
+msgstr ""
 
 #. module: delivery
 #: model:ir.model.fields,field_description:delivery.field_stock_move_line__carrier_name
@@ -418,7 +414,7 @@ msgstr "Delivery Set"
 #. module: delivery
 #: model:ir.model,name:delivery.model_delivery_zip_prefix
 msgid "Delivery Zip Prefix"
-msgstr "Tiền tố Zip giao hàng"
+msgstr ""
 
 #. module: delivery
 #: model:ir.model.fields,field_description:delivery.field_sale_order__recompute_delivery_price
@@ -518,20 +514,6 @@ msgid "Estimated cost"
 msgstr "Estimated cost"
 
 #. module: delivery
-#. odoo-python
-#: code:addons/delivery/models/stock_picking.py:0
-#, python-format
-msgid "Exception occurred with respect to carrier on the transfer"
-msgstr "Ngoại lệ xảy ra đối với đơn vị vận chuyển khi chuyển hàng"
-
-#. module: delivery
-#. odoo-python
-#: code:addons/delivery/models/stock_picking.py:0
-#, python-format
-msgid "Exception:"
-msgstr "Ngoại lệ:"
-
-#. module: delivery
 #: model:ir.model.fields,help:delivery.field_sale_order__carrier_id
 msgid "Fill this field if you plan to invoice the shipping based on picking."
 msgstr ""
@@ -557,7 +539,7 @@ msgstr "Giá cố định"
 #: code:addons/delivery/models/sale_order.py:0
 #, python-format
 msgid "Free Shipping"
-msgstr "Miễn phí vận chuyển"
+msgstr "Miễn phí giao hàng"
 
 #. module: delivery
 #: model:delivery.carrier,name:delivery.free_delivery_carrier
@@ -623,7 +605,7 @@ msgstr "Cài đặt thêm nhà cung cấp"
 #. module: delivery
 #: model:ir.model.fields,field_description:delivery.field_delivery_carrier__shipping_insurance
 msgid "Insurance Percentage"
-msgstr "Phần trăm bảo hiểm"
+msgstr ""
 
 #. module: delivery
 #: model:ir.model.fields,field_description:delivery.field_delivery_carrier__integration_level
@@ -681,7 +663,7 @@ msgstr "Cập nhật lần cuối vào"
 #: model:delivery.carrier,name:delivery.delivery_local_delivery
 #: model:product.template,name:delivery.product_product_local_delivery_product_template
 msgid "Local Delivery"
-msgstr "Giao hàng trong nước"
+msgstr ""
 
 #. module: delivery
 #: model:ir.model.fields,help:delivery.field_delivery_carrier__debug_logging
@@ -691,14 +673,7 @@ msgstr "Ghi nhận yêu cầu để dễ dàng tìm kiếm"
 #. module: delivery
 #: model_terms:ir.actions.act_window,help:delivery.action_delivery_zip_prefix_list
 msgid "Manage delivery zip prefixes"
-msgstr "Quản lý tiền tố zip giao hàng"
-
-#. module: delivery
-#. odoo-python
-#: code:addons/delivery/models/stock_picking.py:0
-#, python-format
-msgid "Manual actions might be needed."
-msgstr "Có thể cần thao tác thủ công."
+msgstr ""
 
 #. module: delivery
 #: model:ir.model.fields,field_description:delivery.field_delivery_carrier__margin
@@ -730,7 +705,7 @@ msgstr "Tên"
 #: code:addons/delivery/models/delivery_carrier.py:0
 #, python-format
 msgid "New Providers"
-msgstr "Nhà cung cấp mới"
+msgstr ""
 
 #. module: delivery
 #: model:ir.model.fields.selection,name:delivery.selection__stock_package_type__package_carrier_type__none
@@ -805,7 +780,7 @@ msgstr "Tiền tố"
 #. module: delivery
 #: model:ir.model.constraint,message:delivery.constraint_delivery_zip_prefix_name_uniq
 msgid "Prefix already exists!"
-msgstr "Tiền tố này đã tồn tại!"
+msgstr ""
 
 #. module: delivery
 #: model:ir.model.fields,help:delivery.field_delivery_carrier__zip_prefix_ids
@@ -815,10 +790,6 @@ msgid ""
 "i.e. '$' can be added to end of prefix to match the exact zip (e.g. '100$' "
 "will only match '100' and not '1000')"
 msgstr ""
-"Tiền tố của mã zip mà nhà hãng vận chuyển này áp dụng. Lưu ý rằng biểu thức "
-"thông thường có thể được sử dụng để hỗ trợ các quốc gia có độ dài mã zip "
-"khác nhau, tức là có thể thêm '$' vào cuối tiền tố để khớp với mã zip chính "
-"xác (ví dụ: '100$' sẽ chỉ khớp với '100' chứ không phải '1000')"
 
 #. module: delivery
 #: model:ir.model.fields.selection,name:delivery.selection__delivery_price_rule__variable__price
@@ -856,7 +827,7 @@ msgstr "Sản phẩm"
 #. module: delivery
 #: model:ir.model,name:delivery.model_stock_move_line
 msgid "Product Moves (Stock Move Line)"
-msgstr "Điều chuyển sản phẩm (Chi tiết phiếu kho)"
+msgstr "Chuyển sản phẩm (Chi tiết phiếu kho)"
 
 #. module: delivery
 #: model:ir.model.fields,field_description:delivery.field_sale_order_line__product_qty
@@ -1008,8 +979,6 @@ msgid ""
 "Shipping insurance is a service which may reimburse senders whose parcels "
 "are lost, stolen, and/or damaged in transit."
 msgstr ""
-"Bảo hiểm vận chuyển là một dịch vụ có thể bồi hoàn cho người gửi có bưu kiện"
-" bị mất, bị đánh cắp và/hoặc bị hư hỏng trong quá trình vận chuyển."
 
 #. module: delivery
 #: model_terms:ir.ui.view,arch_db:delivery.view_delivery_carrier_form
@@ -1017,8 +986,6 @@ msgid ""
 "Shipping method details to be included at bottom sales orders and their "
 "confirmation emails. E.g. Instructions for customers to follow."
 msgstr ""
-"Chi tiết về phương thức vận chuyển sẽ được đưa vào cuối đơn bán hàng và "
-"email xác nhận đơn bán hàng đó. Ví dụ: Hướng dẫn dành cho khách hàng."
 
 #. module: delivery
 #: model:ir.model.fields,help:delivery.field_product_product__hs_code
@@ -1038,7 +1005,7 @@ msgstr "Tỉnh/TP"
 #. module: delivery
 #: model:ir.model,name:delivery.model_stock_move
 msgid "Stock Move"
-msgstr "Điều chuyển tồn kho"
+msgstr "Dịch chuyển kho"
 
 #. module: delivery
 #: model:ir.model,name:delivery.model_stock_package_type
@@ -1048,7 +1015,7 @@ msgstr "Kiểu đóng gói kho"
 #. module: delivery
 #: model:ir.model.fields,field_description:delivery.field_delivery_carrier__supports_shipping_insurance
 msgid "Supports Shipping Insurance"
-msgstr "Hỗ trợ bảo hiểm vận chuyển"
+msgstr ""
 
 #. module: delivery
 #: model:ir.model.fields,field_description:delivery.field_stock_quant_package__weight_uom_rounding
@@ -1104,7 +1071,7 @@ msgstr "The return label is automatically generated at the delivery."
 #. module: delivery
 #: model:ir.model.constraint,message:delivery.constraint_delivery_carrier_shipping_insurance_is_percentage
 msgid "The shipping insurance must be a percentage between 0 and 100."
-msgstr "Bảo hiểm vận chuyển phải là tỷ lệ phần trăm từ 0 đến 100."
+msgstr ""
 
 #. module: delivery
 #. odoo-python
@@ -1213,7 +1180,7 @@ msgstr "Truy vết:"
 #. module: delivery
 #: model:ir.model,name:delivery.model_stock_picking
 msgid "Transfer"
-msgstr "Lệnh chuyển hàng"
+msgstr "Điều chuyển"
 
 #. module: delivery
 #: model_terms:ir.ui.view,arch_db:delivery.choose_delivery_carrier_view_form
@@ -1298,29 +1265,6 @@ msgstr ""
 "\n"
 
 #. module: delivery
-#: code:addons/delivery/models/product_category.py:0
-#, python-format
-msgid ""
-"You cannot delete the deliveries product category as it is used on the "
-"delivery carriers products."
-msgstr ""
-"Bạn không thể xóa danh mục sản phẩm vận chuyển vì nó được sử dụng cho các "
-"sản phẩm của đơn vị vận chuyển."
-
-#. module: delivery
-#: code:addons/delivery/models/stock_picking.py:0
-#, python-format
-msgid ""
-"You cannot pack products into the same package when they have different "
-"carriers (i.e. check that all of their transfers have a carrier assigned and"
-" are using the same carrier)."
-msgstr ""
-"Bạn không thể đóng gói sản phẩm vào cùng một kiện hàng khi chúng được vận "
-"chuyển bởi các hãng vận chuyển khác nhau (nghĩa là hãy kiểm tra để đảm bảo "
-"tất cả lệnh chuyển hàng của chúng đã được chỉ định cho cùng một hãng vận "
-"chuyển)."
-
-#. module: delivery
 #: model_terms:ir.ui.view,arch_db:delivery.delivery_tracking_url_warning_form
 msgid "You have multiple tracker links, they are available in the chatter."
 msgstr "Bạn có nhiều liên kết để truy vết, chúng sẵn có ở khung tán gẫu"
@@ -1345,7 +1289,7 @@ msgstr "Tiền tố mã bưu chính"
 #. module: delivery
 #: model:ir.model.fields,field_description:delivery.field_delivery_carrier__zip_prefix_ids
 msgid "Zip Prefixes"
-msgstr "Tiền tố zip"
+msgstr ""
 
 #. module: delivery
 #: model_terms:ir.ui.view,arch_db:delivery.label_package_template_view_delivery

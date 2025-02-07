@@ -185,10 +185,9 @@ class EventMailScheduler(models.Model):
                 # do not send emails if the mailing was scheduled before the event but the event is over
                 if scheduler.scheduled_date <= now and (scheduler.interval_type != 'before_event' or scheduler.event_id.date_end > now):
                     scheduler.event_id.mail_attendees(scheduler.template_ref.id)
-                    # Mail is sent to all attendees (unconfirmed as well), so count all attendees
                     scheduler.update({
                         'mail_done': True,
-                        'mail_count_done': scheduler.event_id.seats_expected,
+                        'mail_count_done': scheduler.event_id.seats_reserved + scheduler.event_id.seats_used,
                     })
         return True
 
@@ -260,7 +259,6 @@ You receive this email because you are:
     @api.model
     def schedule_communications(self, autocommit=False):
         schedulers = self.search([
-            ('event_id.active', '=', True),
             ('mail_done', '=', False),
             ('scheduled_date', '<=', fields.Datetime.now())
         ])
@@ -302,13 +300,13 @@ class EventMailRegistration(models.Model):
         for reg_mail in todo:
             organizer = reg_mail.scheduler_id.event_id.organizer_id
             company = self.env.company
-            author = self.env.ref('base.user_root').partner_id
+            author = self.env.ref('base.user_root')
             if organizer.email:
                 author = organizer
             elif company.email:
                 author = company.partner_id
             elif self.env.user.email:
-                author = self.env.user.partner_id
+                author = self.env.user
 
             email_values = {
                 'author_id': author.id,

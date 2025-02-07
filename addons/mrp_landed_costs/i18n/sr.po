@@ -4,7 +4,6 @@
 # 
 # Translators:
 # Dragan Vukosavljevic <dragan.vukosavljevic@gmail.com>, 2022
-# コフスタジオ, 2024
 # 
 msgid ""
 msgstr ""
@@ -12,7 +11,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-09 14:06+0000\n"
 "PO-Revision-Date: 2022-09-22 05:53+0000\n"
-"Last-Translator: コフスタジオ, 2024\n"
+"Last-Translator: Dragan Vukosavljevic <dragan.vukosavljevic@gmail.com>, 2022\n"
 "Language-Team: Serbian (https://app.transifex.com/odoo/teams/41243/sr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +22,7 @@ msgstr ""
 #. module: mrp_landed_costs
 #: model:ir.model.fields,field_description:mrp_landed_costs.field_stock_landed_cost__target_model
 msgid "Apply On"
-msgstr "Primeni na"
+msgstr ""
 
 #. module: mrp_landed_costs
 #: model:ir.model.fields.selection,name:mrp_landed_costs.selection__stock_landed_cost__target_model__manufacturing
@@ -33,9 +32,9 @@ msgstr "Nalozi za proizvodnj"
 #. module: mrp_landed_costs
 #: model:ir.model.fields,field_description:mrp_landed_costs.field_stock_landed_cost__mrp_production_ids
 msgid "Manufacturing order"
-msgstr "Manufacturing order"
+msgstr ""
 
 #. module: mrp_landed_costs
 #: model:ir.model,name:mrp_landed_costs.model_stock_landed_cost
 msgid "Stock Landed Cost"
-msgstr "Stock Landed Cost"
+msgstr ""

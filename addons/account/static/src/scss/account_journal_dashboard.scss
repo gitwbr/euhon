@@ -31,10 +31,6 @@
         .o_dashboard_graph {
             margin-bottom: -$o-horizontal-padding/2;
         }
-
-        .o_field_widget.o_field_kanban_vat_activity {
-            display: block;
-        }
     }
 
     &.o_kanban_ungrouped {
@@ -45,7 +41,8 @@
 
     .o_kanban_group {
         &:not(.o_column_folded) {
-            --KanbanGroup-width: 450px;
+            width: 450px + 2*$o-kanban-group-padding;
+
             @include media-breakpoint-down(md) {
                 width: 100%;
             }

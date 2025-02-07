@@ -20776,12 +20776,12 @@ msgstr ""
 
 #. module: base
 #: model:res.country,name:base.tr
-msgid "Türkiye"
+msgid "Turkey"
 msgstr "Turska"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_tr
-msgid "Türkiye - Accounting"
+msgid "Turkey - Accounting"
 msgstr "Turska - Računovodstvo"
 
 #. module: base

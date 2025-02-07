@@ -29,7 +29,7 @@ class RecurrenceRule(models.Model):
         # modified in Odoo but computed from other fields).
         for recurrence in self.filtered('rrule'):
             values = self._rrule_parse(recurrence.rrule, recurrence.dtstart)
-            recurrence.with_context(dont_notify=True).write(dict(values, need_sync_m=False))
+            recurrence.write(dict(values, need_sync_m=False))
 
     def _apply_recurrence(self, specific_values_creation=None, no_send_edit=False, generic_values_creation=None):
         events = self.filtered('need_sync_m').calendar_event_ids
@@ -182,11 +182,3 @@ class RecurrenceRule(models.Model):
             )
 
         return new_recurrence
-
-    def _get_event_user_m(self, user_id=None):
-        """ Get the user who will send the request to Microsoft (organizer if synchronized and current user otherwise). """
-        self.ensure_one()
-        event = self._get_first_event()
-        if event:
-            return event._get_event_user_m(user_id)
-        return self.env.user

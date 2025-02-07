@@ -5,7 +5,6 @@
 # Translators:
 # Сергей Шебанин <sergey@shebanin.ru>, 2022
 # Martin Trigaux, 2023
-# Wil Odoo, 2024
 # 
 msgid ""
 msgstr ""
@@ -13,7 +12,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-23 08:23+0000\n"
 "PO-Revision-Date: 2022-09-22 05:53+0000\n"
-"Last-Translator: Wil Odoo, 2024\n"
+"Last-Translator: Martin Trigaux, 2023\n"
 "Language-Team: Russian (https://app.transifex.com/odoo/teams/41243/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,9 +27,6 @@ msgid ""
 "company. Note that standard subcontracting routes will be adapted so as to "
 "take these into account automatically."
 msgstr ""
-"Установите этот флажок, чтобы создать новое выделенное место субподряда для "
-"этой компании. Обратите внимание, что стандартные маршруты субподряда будут "
-"адаптированы таким образом, чтобы учитывать их автоматически."
 
 #. module: mrp_subcontracting_dropshipping
 #: model:ir.model,name:mrp_subcontracting_dropshipping.model_res_company
@@ -40,7 +36,7 @@ msgstr "Компании"
 #. module: mrp_subcontracting_dropshipping
 #: model:ir.model.fields,field_description:mrp_subcontracting_dropshipping.field_res_company__dropship_subcontractor_pick_type_id
 msgid "Dropship Subcontractor Pick Type"
-msgstr "Тип выбора субподрядчика для челнока"
+msgstr ""
 
 #. module: mrp_subcontracting_dropshipping
 #. odoo-python
@@ -50,22 +46,22 @@ msgstr "Тип выбора субподрядчика для челнока"
 #: model:stock.route,name:mrp_subcontracting_dropshipping.route_subcontracting_dropshipping
 #, python-format
 msgid "Dropship Subcontractor on Order"
-msgstr "Субподрядчик-челнок по заказу"
+msgstr ""
 
 #. module: mrp_subcontracting_dropshipping
 #: model:ir.model.fields,field_description:mrp_subcontracting_dropshipping.field_stock_warehouse__subcontracting_dropshipping_to_resupply
 msgid "Dropship Subcontractors"
-msgstr "Субподрядчики десантных кораблей"
+msgstr ""
 
 #. module: mrp_subcontracting_dropshipping
 #: model:ir.model.fields,help:mrp_subcontracting_dropshipping.field_stock_warehouse__subcontracting_dropshipping_to_resupply
 msgid "Dropship subcontractors with components"
-msgstr "Субподрядчики-челноки с компонентами"
+msgstr ""
 
 #. module: mrp_subcontracting_dropshipping
 #: model:ir.model.fields,field_description:mrp_subcontracting_dropshipping.field_purchase_order__default_location_dest_id_is_subcontracting_loc
 msgid "Is a Subcontracting Location?"
-msgstr "Является ли это местом заключения субподряда?"
+msgstr ""
 
 #. module: mrp_subcontracting_dropshipping
 #: model:ir.model,name:mrp_subcontracting_dropshipping.model_stock_warehouse_orderpoint
@@ -78,8 +74,6 @@ msgstr "Правило минимального остатка"
 #, python-format
 msgid "Please note this purchase order is for subcontracting purposes."
 msgstr ""
-"Пожалуйста, обратите внимание, что данный заказ на покупку предназначен для "
-"целей субподряда."
 
 #. module: mrp_subcontracting_dropshipping
 #: model:ir.model,name:mrp_subcontracting_dropshipping.model_purchase_order
@@ -99,7 +93,7 @@ msgstr "Правило склада"
 #. module: mrp_subcontracting_dropshipping
 #: model:ir.model.fields,field_description:mrp_subcontracting_dropshipping.field_stock_warehouse__subcontracting_dropshipping_pull_id
 msgid "Subcontracting-Dropshipping MTS Rule"
-msgstr "ПравилоMTS о субподряде-дропшиппинге"
+msgstr ""
 
 #. module: mrp_subcontracting_dropshipping
 #: model:ir.model,name:mrp_subcontracting_dropshipping.model_stock_picking

@@ -8,21 +8,18 @@
 # Triine Aavik <triine@avalah.ee>, 2022
 # Piia Paurson <piia@avalah.ee>, 2022
 # Rivo Zängov <eraser@eraser.ee>, 2022
+# Eneli Õigus <enelioigus@gmail.com>, 2022
 # Algo Kärp <algokarp@gmail.com>, 2022
+# Anna, 2023
 # JanaAvalah, 2023
-# Eneli Õigus <enelioigus@gmail.com>, 2024
-# Kärt Villako, 2024
-# Birgit Vijar, 2024
-# Stevin Lilla, 2024
-# Anna, 2024
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 16.0\n"
+"Project-Id-Version: Odoo Server 16.0beta\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-06 13:31+0000\n"
+"POT-Creation-Date: 2022-09-23 08:02+0000\n"
 "PO-Revision-Date: 2022-09-22 05:53+0000\n"
-"Last-Translator: Anna, 2024\n"
+"Last-Translator: JanaAvalah, 2023\n"
 "Language-Team: Estonian (https://app.transifex.com/odoo/teams/41243/et/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,21 +28,21 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "%s employees"
-msgstr "%s töötajad"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Add Contact To Database"
-msgstr "Lisa kontakt andmebaasi"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
@@ -58,21 +55,21 @@ msgid "Allow"
 msgstr "Luba"
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "An error has occurred when trying to fetch translations."
 msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Annual Revenue"
-msgstr "Aasta käive"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid ""
@@ -81,71 +78,70 @@ msgid ""
 msgstr ""
 
 #. module: mail_plugin
-#. odoo-python
 #: code:addons/mail_plugin/controllers/mail_plugin.py:0
 #, python-format
 msgid "Bad Email."
-msgstr "Vale e-post"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Buy More"
 msgstr "Osta veel"
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Buy new credits"
 msgstr "Ostke punkte juurde"
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Can not save the contact"
-msgstr "Kontakti ei saa salvestada"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Clear Translations Cache"
-msgstr "Kustuta tõlgete vahemälu"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Close"
 msgstr "Sulge"
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Company"
 msgstr "Ettevõte"
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Company Created."
-msgstr "Ettevõtte loodud."
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Company Insights"
-msgstr "Ettevõtte ülevaade"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
@@ -153,21 +149,21 @@ msgid "Company Type"
 msgstr "Ettevõtte liik"
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Company created"
-msgstr "Ettevõtte loodud"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Company updated"
-msgstr "Ettevõtte uuendatud"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #: model:ir.model,name:mail_plugin.model_res_partner
 #, python-format
@@ -175,74 +171,74 @@ msgid "Contact"
 msgstr "Kontakt"
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Contact Details"
 msgstr "Kontakti andmed"
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Contact created"
-msgstr "Leping loodud"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Contacts Found (%(count)s)"
-msgstr "Kontaktid leitud (%(count)s)"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Could not autocomplete the company. Internal error. Try again later..."
 msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Could not connect to database. Try to log out and in."
 msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Could not connect to your database. Please try again."
 msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Could not display image %(attachmentName)s, size is over limit."
 msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Create"
 msgstr "Loo"
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Create a Company"
-msgstr "Loo ettevõte"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Create a company"
-msgstr "Loo ettevõte"
+msgstr ""
 
 #. module: mail_plugin
 #: model:ir.model.fields,field_description:mail_plugin.field_res_partner_iap__create_uid
@@ -255,21 +251,21 @@ msgid "Created on"
 msgstr "Loomise kuupäev"
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Debug"
-msgstr "Debug"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Debug Zone"
-msgstr "Veaotsingu ala"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Debug zone for development purpose."
@@ -281,7 +277,7 @@ msgid "Deny"
 msgstr "Keela"
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Description"
@@ -295,17 +291,17 @@ msgstr "Näidatav nimi"
 #. module: mail_plugin
 #: model:ir.model.fields,help:mail_plugin.field_res_partner_iap__iap_search_domain
 msgid "Domain used to find the company"
-msgstr "Domeen, mida kasutati ettevõtte leidmiseks"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Email already logged on the contact"
 msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
@@ -313,47 +309,47 @@ msgid "Employees"
 msgstr "Töötajad"
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Enrich Company"
-msgstr "Täienda ettevõtet"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Error during enrichment"
-msgstr "Täiendamise ajal ilmnes viga"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Founded Year"
-msgstr "Asutamise aasta"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "From : %(email)s"
-msgstr "Saatja : %(email)s"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "From:"
 msgstr "Lähtekoht:"
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Gmail Inbox"
-msgstr "Gmaili postkast"
+msgstr ""
 
 #. module: mail_plugin
 #: model:ir.model,name:mail_plugin.model_ir_http
@@ -365,19 +361,19 @@ msgstr "HTTP Routing"
 #: model:ir.model.fields,field_description:mail_plugin.field_res_partner_iap__iap_enrich_info
 #: model:ir.model.fields,field_description:mail_plugin.field_res_users__iap_enrich_info
 msgid "IAP Enrich Info"
-msgstr "IAP täienduse info"
+msgstr ""
 
 #. module: mail_plugin
 #: model:ir.actions.act_window,name:mail_plugin.res_partner_iap_action
 #: model_terms:ir.ui.view,arch_db:mail_plugin.res_partner_iap_view_form
 #: model_terms:ir.ui.view,arch_db:mail_plugin.res_partner_iap_view_tree
 msgid "IAP Partner"
-msgstr "IAP partner"
+msgstr ""
 
 #. module: mail_plugin
 #: model:ir.ui.menu,name:mail_plugin.res_partner_iap_menu
 msgid "IAP Partners"
-msgstr "IAP partnerid"
+msgstr ""
 
 #. module: mail_plugin
 #: model:ir.model.fields,help:mail_plugin.field_res_partner__iap_enrich_info
@@ -392,7 +388,7 @@ msgid "ID"
 msgstr "ID"
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
@@ -400,14 +396,14 @@ msgid "Industry"
 msgstr "Valdkond"
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Invalid URL"
-msgstr "Vigane URL"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
@@ -432,32 +428,32 @@ msgstr "Viimati uuendatud"
 #. module: mail_plugin
 #: model_terms:ir.ui.view,arch_db:mail_plugin.app_auth
 msgid "Let"
-msgstr "Lase"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Log Email Into Contact"
-msgstr "Lisa meil kontaktile"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Log email"
-msgstr "Logi email"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Logged from"
-msgstr "Logitud aadressilt"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
@@ -465,7 +461,7 @@ msgid "Login"
 msgstr "Sisselogimine"
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
@@ -473,110 +469,95 @@ msgid "Logout"
 msgstr "Logi välja"
 
 #. module: mail_plugin
-#. odoo-python
-#: code:addons/mail_plugin/controllers/mail_plugin.py:0
-#, python-format
-msgid "No Access"
-msgstr "Ligipääs puudub"
-
-#. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "No additional insights were found for this company"
 msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "No company attached to this contact"
-msgstr "Selle kontaktiga pole seotud ühtegi ettevõtet"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "No company attached to this contact."
-msgstr "Selle kontaktiga pole seotud ühtegi ettevõtet."
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "No company linked to this contact could be enriched"
 msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "No company linked to this contact could be enriched or found in Odoo"
 msgstr ""
-"Selle kontaktiga seotud ettevõtet ei saanud Odoos täiendada ega leida."
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "No contact found."
-msgstr "Kontakti ei leitud."
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "No data found for this email address."
 msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "No extra information found"
-msgstr "Lisainformatsiooni ei leitud"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "No insights for this company."
 msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "No insights found for this address."
-msgstr "Selle aadressi kohta ei leitud teavet"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Not enough credits to enrich."
-msgstr "Pole piisavalt krediiti."
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-python
-#: code:addons/mail_plugin/controllers/mail_plugin.py:0
-#, python-format
-msgid "Notification"
-msgstr "Teavitused"
-
-#. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Odoo Access Token"
-msgstr "Odoo ligipääsuvõti"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Odoo Server URL"
-msgstr "Odoo Server URL"
+msgstr ""
 
 #. module: mail_plugin
 #: model:ir.model.constraint,message:mail_plugin.constraint_res_partner_iap_unique_partner_id
@@ -584,7 +565,7 @@ msgid "Only one partner IAP is allowed for one partner"
 msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid ""
@@ -593,18 +574,18 @@ msgid ""
 msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Our IAP server is down, please come back later."
 msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Outlook Inbox"
-msgstr "Outlooki postkast"
+msgstr ""
 
 #. module: mail_plugin
 #: model:ir.model.fields,field_description:mail_plugin.field_res_partner_iap__partner_id
@@ -614,66 +595,66 @@ msgstr "Partner"
 #. module: mail_plugin
 #: model:ir.model,name:mail_plugin.model_res_partner_iap
 msgid "Partner IAP"
-msgstr "Partner IAP"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Phone"
 msgstr "Telefon"
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Phones"
 msgstr "Telefonid"
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Read more"
 msgstr "Loe rohkem"
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Refresh"
 msgstr "Uuenda"
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Refresh Contact"
-msgstr "Värskenda kontakti"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Revenues"
 msgstr "Tulud"
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Save in Odoo"
-msgstr "Salvesta Odoos"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Save the contact to create the company"
-msgstr "Salvesta kontakt, et luua ettevõte"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Search"
@@ -684,38 +665,38 @@ msgstr "Otsi"
 #: model:ir.model.fields,field_description:mail_plugin.field_res_partner_iap__iap_search_domain
 #: model:ir.model.fields,field_description:mail_plugin.field_res_users__iap_search_domain
 msgid "Search Domain / Email"
-msgstr "Otsi domeeni / e-maili"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Search In Database"
-msgstr "Otsi andmebaasist"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Search In Odoo"
-msgstr "Otsi Odoost"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "Search contact"
-msgstr "Otsi kontakt"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Search contact in Odoo..."
-msgstr "Otsi kontakti Odoost.."
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
@@ -723,59 +704,47 @@ msgid "Something bad happened. Please, try again later."
 msgstr ""
 
 #. module: mail_plugin
-#. odoo-python
 #: code:addons/mail_plugin/controllers/mail_plugin.py:0
 #, python-format
 msgid "The email of this contact is not valid and we can not enrich it"
 msgstr ""
 
 #. module: mail_plugin
-#. odoo-python
 #: code:addons/mail_plugin/controllers/mail_plugin.py:0
 #, python-format
 msgid "The partner already has a company related to him"
 msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "This company has no email address and could not be enriched."
 msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "This contact does not exist in the Odoo database."
-msgstr "Valitud kontakt puudub Odoo andmebaasist."
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "This contact has no email address, no company could be enriched."
 msgstr ""
 
 #. module: mail_plugin
-#. odoo-python
-#: code:addons/mail_plugin/controllers/mail_plugin.py:0
-#, python-format
-msgid ""
-"This is your notification address. Search the Contact manually to link this "
-"email to a record."
-msgstr ""
-
-#. module: mail_plugin
-#. odoo-python
 #: code:addons/mail_plugin/controllers/mail_plugin.py:0
 #: code:addons/mail_plugin/controllers/mail_plugin.py:0
 #, python-format
 msgid "This partner does not exist"
-msgstr "Seda partnerit ei eksisteeri"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid ""
@@ -784,7 +753,7 @@ msgid ""
 msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid ""
@@ -793,7 +762,7 @@ msgid ""
 msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
@@ -801,21 +770,20 @@ msgid "Website"
 msgstr "Veebileht"
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "Year founded"
-msgstr "Asutamise aasta"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_outlook.xml:0
 #, python-format
 msgid "You don't have enough credit to enrich."
 msgstr ""
 
 #. module: mail_plugin
-#. odoo-python
 #: code:addons/mail_plugin/controllers/mail_plugin.py:0
 #, python-format
 msgid "You need to specify at least the partner_id or the name and the email"
@@ -824,10 +792,10 @@ msgstr ""
 #. module: mail_plugin
 #: model_terms:ir.ui.view,arch_db:mail_plugin.app_auth
 msgid "access your Odoo database?"
-msgstr "pääsete oma Odoo andmebaasi juurde?"
+msgstr ""
 
 #. module: mail_plugin
-#. odoo-javascript
+#. openerp-web
 #: code:addons/mail_plugin/static/src/to_translate/translations_gmail.xml:0
 #, python-format
 msgid "employees"

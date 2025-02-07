@@ -2,17 +2,13 @@
 # This file contains the translation of the following modules:
 # 	* event_booth
 # 
-# Translators:
-# Kristófer Arnþórsson, 2024
-# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0beta\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-10 10:23+0000\n"
 "PO-Revision-Date: 2022-09-22 05:45+0000\n"
-"Last-Translator: Kristófer Arnþórsson, 2024\n"
-"Language-Team: Icelandic (https://app.transifex.com/odoo/teams/41243/is/)\n"
+"Language-Team: Icelandic (https://www.transifex.com/odoo/teams/41243/is/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
@@ -114,12 +110,12 @@ msgstr ""
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_booth__message_needaction
 msgid "Action Needed"
-msgstr "Aðgerða þörf"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_booth_category__active
 msgid "Active"
-msgstr "Virk"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_booth__activity_ids
@@ -145,12 +141,12 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:event_booth.event_booth_category_view_form
 #: model_terms:ir.ui.view,arch_db:event_booth.event_booth_category_view_search
 msgid "Archived"
-msgstr "Vistuð"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_booth__message_attachment_count
 msgid "Attachment Count"
-msgstr "Fjöldi viðhengja"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields.selection,name:event_booth.selection__event_booth__state__available
@@ -263,27 +259,27 @@ msgstr ""
 #: model:ir.model.fields,field_description:event_booth.field_event_booth_category__create_uid
 #: model:ir.model.fields,field_description:event_booth.field_event_type_booth__create_uid
 msgid "Created by"
-msgstr "Búið til af"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_booth__create_date
 #: model:ir.model.fields,field_description:event_booth.field_event_booth_category__create_date
 #: model:ir.model.fields,field_description:event_booth.field_event_type_booth__create_date
 msgid "Created on"
-msgstr "Búið til þann"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_booth_category__description
 #: model_terms:ir.ui.view,arch_db:event_booth.event_booth_category_view_form
 msgid "Description"
-msgstr "Lýsing"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_booth__display_name
 #: model:ir.model.fields,field_description:event_booth.field_event_booth_category__display_name
 #: model:ir.model.fields,field_description:event_booth.field_event_type_booth__display_name
 msgid "Display Name"
-msgstr "Birtingarnafn"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model,name:event_booth.model_event_event
@@ -346,12 +342,12 @@ msgstr ""
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_booth__message_follower_ids
 msgid "Followers"
-msgstr "Fylgjendur"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_booth__message_partner_ids
 msgid "Followers (Partners)"
-msgstr "Fylgjendur (samstarfsaðilar)"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,help:event_booth.field_event_booth__activity_type_icon
@@ -377,19 +373,19 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:event_booth.event_booth_view_search
 #: model_terms:ir.ui.view,arch_db:event_booth.event_type_booth_view_search
 msgid "Group By"
-msgstr "Hópað eftir"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_booth__has_message
 msgid "Has Message"
-msgstr "Hefur skilaboð"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_booth__id
 #: model:ir.model.fields,field_description:event_booth.field_event_booth_category__id
 #: model:ir.model.fields,field_description:event_booth.field_event_type_booth__id
 msgid "ID"
-msgstr "Auðkenni (ID)"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_booth__activity_exception_icon
@@ -404,38 +400,38 @@ msgstr ""
 #. module: event_booth
 #: model:ir.model.fields,help:event_booth.field_event_booth__message_needaction
 msgid "If checked, new messages require your attention."
-msgstr "Ef hakað er við krefjast ný skilaboð athygli þinnar."
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,help:event_booth.field_event_booth__message_has_error
 #: model:ir.model.fields,help:event_booth.field_event_booth__message_has_sms_error
 msgid "If checked, some messages have a delivery error."
-msgstr "Ef hakað er við hafa sum skilaboð sendingarvillu."
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_booth_category__image_1920
 msgid "Image"
-msgstr "Mynd"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_booth_category__image_1024
 msgid "Image 1024"
-msgstr "Mynd 1024"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_booth_category__image_128
 msgid "Image 128"
-msgstr "Mynd 128"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_booth_category__image_256
 msgid "Image 256"
-msgstr "Mynd 256"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_booth_category__image_512
 msgid "Image 512"
-msgstr "Mynd 512"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_booth__is_available
@@ -445,7 +441,7 @@ msgstr ""
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_booth__message_is_follower
 msgid "Is Follower"
-msgstr "Er fylgjandi"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_booth____last_update
@@ -459,29 +455,29 @@ msgstr ""
 #: model:ir.model.fields,field_description:event_booth.field_event_booth_category__write_uid
 #: model:ir.model.fields,field_description:event_booth.field_event_type_booth__write_uid
 msgid "Last Updated by"
-msgstr "Síðast uppfært af"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_booth__write_date
 #: model:ir.model.fields,field_description:event_booth.field_event_booth_category__write_date
 #: model:ir.model.fields,field_description:event_booth.field_event_type_booth__write_date
 msgid "Last Updated on"
-msgstr "Síðast uppfært þann"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_booth__message_main_attachment_id
 msgid "Main Attachment"
-msgstr "Aðal viðhengi"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_booth__message_has_error
 msgid "Message Delivery error"
-msgstr "Villa við afhendingu skilaboða"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_booth__message_ids
 msgid "Messages"
-msgstr "Skilaboð"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_booth__my_activity_date_deadline
@@ -496,7 +492,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:event_booth.event_booth_view_search
 #: model_terms:ir.ui.view,arch_db:event_booth.event_type_booth_view_form_from_type
 msgid "Name"
-msgstr "Nafn"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_booth__activity_calendar_event_id
@@ -521,22 +517,22 @@ msgstr ""
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_booth__message_needaction_counter
 msgid "Number of Actions"
-msgstr "Fjöldi aðgerða"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_booth__message_has_error_counter
 msgid "Number of errors"
-msgstr "Fjöldi villna"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,help:event_booth.field_event_booth__message_needaction_counter
-msgid "Number of messages requiring action"
-msgstr "Fjöldi skeyta sem krefjast aðgerða"
+msgid "Number of messages which requires an action"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,help:event_booth.field_event_booth__message_has_error_counter
 msgid "Number of messages with delivery error"
-msgstr "Fjöldi skeyta með sendingarvillu"
+msgstr ""
 
 #. module: event_booth
 #: model:event.booth,name:event_booth.event_booth_10_event_7
@@ -622,12 +618,12 @@ msgstr ""
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_booth__message_has_sms_error
 msgid "SMS Delivery error"
-msgstr "SMS sendingarvilla"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_booth_category__sequence
 msgid "Sequence"
-msgstr "Röð"
+msgstr ""
 
 #. module: event_booth
 #: model:event.booth,name:event_booth.event_booth_0_event_2
@@ -654,7 +650,7 @@ msgstr ""
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_booth__state
 msgid "Status"
-msgstr "Staða"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,help:event_booth.field_event_booth__activity_state
@@ -679,7 +675,7 @@ msgstr ""
 #: model:ir.model.fields.selection,name:event_booth.selection__event_booth__state__unavailable
 #: model_terms:ir.ui.view,arch_db:event_booth.event_booth_view_search
 msgid "Unavailable"
-msgstr "Ekki tiltæk"
+msgstr ""
 
 #. module: event_booth
 #: model_terms:event.booth.category,description:event_booth.event_booth_category_vip
@@ -699,12 +695,12 @@ msgstr ""
 #. module: event_booth
 #: model:ir.model.fields,field_description:event_booth.field_event_booth__website_message_ids
 msgid "Website Messages"
-msgstr "Skilaboð á vefsíðu"
+msgstr ""
 
 #. module: event_booth
 #: model:ir.model.fields,help:event_booth.field_event_booth__website_message_ids
 msgid "Website communication history"
-msgstr "Samskiptasaga vefsíðu"
+msgstr ""
 
 #. module: event_booth
 #: model_terms:ir.ui.view,arch_db:event_booth.event_booth_category_view_form

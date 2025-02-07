@@ -8,8 +8,10 @@
 # Gökhan Yüksel <yg_yuksel@hotmail.com>, 2022
 # İlknur Püskül <ilknurpuskull@gmail.com>, 2022
 # ANIL TAN SAĞIR <anils@projetgrup.com>, 2022
+# Tugay Hatıl <tugayh@projetgrup.com>, 2022
 # Özlem Atalay <ozlema@eskayazilim.com.tr>, 2022
 # Ali Zeynel AĞCA <zeynelagca@gmail.com>, 2022
+# Ozlem Cikrikci <ozlemc@eskayazilim.com.tr>, 2022
 # Murat Durmuş <muratd@projetgrup.com>, 2022
 # Ediz Duman <neps1192@gmail.com>, 2022
 # Ayhan KIZILTAN <akiziltan76@hotmail.com>, 2022
@@ -23,21 +25,18 @@
 # Martin Trigaux, 2022
 # Levent Karakaş <levent@mektup.at>, 2022
 # abc Def <hdogan1974@gmail.com>, 2022
-# Halil, 2023
+# Murat Kaplan <muratk@projetgrup.com>, 2022
+# Ertuğrul Güreş <ertugrulg@projetgrup.com>, 2023
 # Melih Melik Sonmez, 2023
-# Tugay Hatıl <tugayh@projetgrup.com>, 2024
-# Ozlem Cikrikci <ozlemc@eskayazilim.com.tr>, 2024
-# Ayhan Kızıltan, 2024
-# Murat Kaplan <muratk@projetgrup.com>, 2024
-# Ertuğrul Güreş <ertugrulg@projetgrup.com>, 2024
+# Halil, 2023
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-06 13:31+0000\n"
+"POT-Creation-Date: 2023-08-18 13:48+0000\n"
 "PO-Revision-Date: 2022-09-22 05:53+0000\n"
-"Last-Translator: Ertuğrul Güreş <ertugrulg@projetgrup.com>, 2024\n"
+"Last-Translator: Halil, 2023\n"
 "Language-Team: Turkish (https://app.transifex.com/odoo/teams/41243/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -112,20 +111,6 @@ msgstr "%s toplam %s varsa, bu siparişi silmek istediğinizden emin misiniz?"
 #, python-format
 msgid "%s product(s) found for \"%s\"."
 msgstr "\"%s\" için %s ürün(ler) bulundu."
-
-#. module: point_of_sale
-#. odoo-python
-#: code:addons/point_of_sale/models/pos_session.py:0
-#, python-format
-msgid "%s untaxed"
-msgstr ""
-
-#. module: point_of_sale
-#. odoo-python
-#: code:addons/point_of_sale/models/pos_session.py:0
-#, python-format
-msgid "%s with %s"
-msgstr "%s ile %s"
 
 #. module: point_of_sale
 #. odoo-javascript
@@ -985,10 +970,13 @@ msgstr "Hazırlık Süresi:"
 #: model:ir.model.fields,help:point_of_sale.field_pos_config__limited_partners_loading
 #: model:ir.model.fields,help:point_of_sale.field_res_config_settings__pos_limited_partners_loading
 msgid ""
-"By default, 10000 partners are loaded.\n"
+"By default, 100 partners are loaded.\n"
 "When the session is open, we keep on loading all remaining partners in the background.\n"
 "In the meantime, you can use the 'Load Customers' button to load partners from database."
 msgstr ""
+"Varsayılan olarak, 100 iş ortağı yüklenir.\n"
+"Oturum açık olduğunda, kalan tüm iş ortaklarını arka planda yüklemeye devam ederiz.\n"
+"Bu arada, iş ortaklarını veritabanından yüklemek için 'Müşterileri Yükle' düğmesini kullanabilirsiniz."
 
 #. module: point_of_sale
 #: model:ir.model.fields,help:point_of_sale.field_pos_config__iface_print_via_proxy
@@ -1368,13 +1356,6 @@ msgstr "Oturumu Kapat ve Girişleri Gönder"
 #: model:ir.model,name:point_of_sale.model_pos_close_session_wizard
 msgid "Close Session Wizard"
 msgstr "Oturum Kapatma Sihirbazı"
-
-#. module: point_of_sale
-#. odoo-javascript
-#: code:addons/point_of_sale/static/src/js/models.js:0
-#, python-format
-msgid "Close anyway"
-msgstr ""
 
 #. module: point_of_sale
 #: model:ir.model.fields.selection,name:point_of_sale.selection__pos_session__state__closed
@@ -2153,13 +2134,6 @@ msgstr "Reddet"
 #: model:ir.model.fields,field_description:point_of_sale.field_report_pos_order__display_name
 msgid "Display Name"
 msgstr "Görünüm Adı"
-
-#. module: point_of_sale
-#. odoo-javascript
-#: code:addons/point_of_sale/static/src/js/models.js:0
-#, python-format
-msgid "Do not close"
-msgstr ""
 
 #. module: point_of_sale
 #. odoo-python
@@ -3031,7 +3005,7 @@ msgstr ""
 #: code:addons/point_of_sale/static/src/js/models.js:0
 #, python-format
 msgid "It is not allowed to mix refunds and sales"
-msgstr "İade ve satışların karıştırılmasına izin verilmez"
+msgstr ""
 
 #. module: point_of_sale
 #. odoo-javascript
@@ -3295,13 +3269,6 @@ msgstr "Lot Adı"
 
 #. module: point_of_sale
 #. odoo-javascript
-#: code:addons/point_of_sale/static/src/xml/Screens/ReceiptScreen/OrderReceipt.xml:0
-#, python-format
-msgid "Lot Number"
-msgstr "Lot Numarası"
-
-#. module: point_of_sale
-#. odoo-javascript
 #: code:addons/point_of_sale/static/src/js/Screens/ProductScreen/OrderWidget.js:0
 #: code:addons/point_of_sale/static/src/js/Screens/ProductScreen/ProductScreen.js:0
 #, python-format
@@ -3548,11 +3515,6 @@ msgid "Newspaper Rack"
 msgstr "Gazetelik"
 
 #. module: point_of_sale
-#: model:ir.model.fields,field_description:point_of_sale.field_pos_session__activity_calendar_event_id
-msgid "Next Activity Calendar Event"
-msgstr "Sonraki Aktivite Takvim Etkinliği"
-
-#. module: point_of_sale
 #: model:ir.model.fields,field_description:point_of_sale.field_pos_session__activity_date_deadline
 msgid "Next Activity Deadline"
 msgstr "Sonraki Aktivite Zaman Sınırı"
@@ -3772,7 +3734,7 @@ msgstr "Çevrimdışı Hata"
 
 #. module: point_of_sale
 #. odoo-javascript
-#: code:addons/point_of_sale/static/src/js/models.js:0
+#: code:addons/point_of_sale/static/src/js/Chrome.js:0
 #, python-format
 msgid "Offline Orders"
 msgstr "Çevrimdışı siparişler"
@@ -3820,12 +3782,6 @@ msgid ""
 msgstr ""
 "Bu iade satırı için yalnızca negatif bir miktara izin verilir. İade edilecek"
 " miktarı değiştirmek için +/- üzerine tıklayın."
-
-#. module: point_of_sale
-#: code:addons/point_of_sale/models/pos_config.py:0
-#, python-format
-msgid "Only administrators can edit receipt headers and footers"
-msgstr ""
 
 #. module: point_of_sale
 #: model:ir.model.fields,field_description:point_of_sale.field_pos_config__only_round_cash_method
@@ -4625,20 +4581,11 @@ msgid "PoS Product Category"
 msgstr "POS Ürün Kategorisi"
 
 #. module: point_of_sale
-#. odoo-python
-#: code:addons/point_of_sale/models/pos_session.py:0
-#, python-format
-msgid "PoS order %s can not be processed"
-msgstr ""
-
-#. module: point_of_sale
 #: model_terms:ir.ui.view,arch_db:point_of_sale.view_partner_property_form
 msgid "Point Of Sale"
 msgstr "Satış Noktası"
 
 #. module: point_of_sale
-#. odoo-python
-#: code:addons/point_of_sale/models/pos_config.py:0
 #: model:ir.actions.act_window,name:point_of_sale.action_pos_config_kanban
 #: model:ir.model.fields,field_description:point_of_sale.field_pos_config__name
 #: model:ir.model.fields,field_description:point_of_sale.field_pos_order__config_id
@@ -4652,7 +4599,6 @@ msgstr "Satış Noktası"
 #: model_terms:ir.ui.view,arch_db:point_of_sale.view_account_journal_pos_user_form
 #: model_terms:ir.ui.view,arch_db:point_of_sale.view_pos_session_search
 #: model_terms:ir.ui.view,arch_db:point_of_sale.view_report_pos_order_search
-#, python-format
 msgid "Point of Sale"
 msgstr "Satış Noktası"
 
@@ -5285,8 +5231,6 @@ msgstr "Görüntüyü Yenile"
 
 #. module: point_of_sale
 #. odoo-javascript
-#. odoo-python
-#: code:addons/point_of_sale/models/pos_session.py:0
 #: code:addons/point_of_sale/static/src/js/Screens/TicketScreen/TicketScreen.js:0
 #: code:addons/point_of_sale/static/src/xml/Screens/ProductScreen/ControlButtons/RefundButton.xml:0
 #: code:addons/point_of_sale/static/src/xml/Screens/ProductScreen/ControlButtons/RefundButton.xml:0
@@ -5312,7 +5256,7 @@ msgstr "İade Siparişleri"
 #: code:addons/point_of_sale/static/src/js/models.js:0
 #, python-format
 msgid "Refund and Sales not allowed"
-msgstr "İade ve Satışa izin verilmez"
+msgstr ""
 
 #. module: point_of_sale
 #. odoo-javascript
@@ -5563,13 +5507,6 @@ msgid "Sale line"
 msgstr "Satış Satırı"
 
 #. module: point_of_sale
-#. odoo-python
-#: code:addons/point_of_sale/models/pos_session.py:0
-#, python-format
-msgid "Sales"
-msgstr "Satış"
-
-#. module: point_of_sale
 #: model:ir.actions.act_window,name:point_of_sale.action_report_pos_details
 #: model:ir.actions.report,name:point_of_sale.sale_details_report
 #: model:ir.ui.menu,name:point_of_sale.menu_report_order_details
@@ -5736,7 +5673,7 @@ msgstr "Ürünleri sat ve daha sonra teslim et."
 #: code:addons/point_of_sale/static/src/xml/Screens/PaymentScreen/PaymentScreenPaymentLines.xml:0
 #, python-format
 msgid "Send"
-msgstr "Gönder"
+msgstr "Para Gönderme"
 
 #. module: point_of_sale
 #. odoo-javascript
@@ -5966,7 +5903,7 @@ msgstr "Ürün bilgilerinde marjları ve maliyetleri gösterme"
 #. module: point_of_sale
 #: model_terms:ir.ui.view,arch_db:point_of_sale.ticket_validation_screen
 msgid "Sign in"
-msgstr "Giriş"
+msgstr "Portal"
 
 #. module: point_of_sale
 #: model_terms:ir.ui.view,arch_db:point_of_sale.res_config_settings_view_form
@@ -6010,7 +5947,7 @@ msgstr "Bazı Seri/Lot Numaraları eksik"
 
 #. module: point_of_sale
 #. odoo-javascript
-#: code:addons/point_of_sale/static/src/js/models.js:0
+#: code:addons/point_of_sale/static/src/js/Chrome.js:0
 #, python-format
 msgid ""
 "Some orders could not be submitted to the server due to configuration "
@@ -6022,7 +5959,7 @@ msgstr ""
 
 #. module: point_of_sale
 #. odoo-javascript
-#: code:addons/point_of_sale/static/src/js/models.js:0
+#: code:addons/point_of_sale/static/src/js/Chrome.js:0
 #, python-format
 msgid ""
 "Some orders could not be submitted to the server due to internet connection "
@@ -6359,17 +6296,6 @@ msgstr ""
 "destekler."
 
 #. module: point_of_sale
-#. odoo-python
-#: code:addons/point_of_sale/models/pos_session.py:0
-#, python-format
-msgid ""
-"The Point of Sale order with the following reference %s was received by the "
-"Odoo server, but the order processing phase failed.<br/>The datas received "
-"from the point of sale has been saved in the attachments.<br/>Please contact"
-" your support service to assist you on restoring it"
-msgstr ""
-
-#. module: point_of_sale
 #. odoo-javascript
 #: code:addons/point_of_sale/static/src/js/Screens/PaymentScreen/PaymentScreen.js:0
 #, python-format
@@ -6385,9 +6311,9 @@ msgstr ""
 #: code:addons/point_of_sale/static/src/js/Screens/PaymentScreen/PaymentScreen.js:0
 #, python-format
 msgid ""
-"The amount of your payment lines must be rounded to validate the transaction.\n"
-"The rounding precision is %s so you should set %s or %s as payment amount instead of %s."
-msgstr ""
+"The amount of your payment lines must be rounded to validate the "
+"transaction."
+msgstr "İşlemi doğrulamak için ödeme satırlarınızın tutarı yuvarlanmalıdır."
 
 #. module: point_of_sale
 #. odoo-javascript
@@ -6497,8 +6423,13 @@ msgstr "%s satış noktasının fatura yevmiyesi aynı şirkete ait olmalıdır.
 #, python-format
 msgid ""
 "The maximum difference allowed is %s.\n"
-"Please contact your manager to accept the closing difference."
+"\n"
+"                        Please contact your manager to accept the closing difference."
 msgstr ""
+"İzin verilen maksimum fark %s.\n"
+"\n"
+"\n"
+"                        Kapanış farkını kabul etmek için lütfen yöneticinizle iletişime geçin."
 
 #. module: point_of_sale
 #. odoo-python
@@ -7593,6 +7524,15 @@ msgstr "Hesap kilitleme tarihinden önce oturum oluşturamazsınız."
 
 #. module: point_of_sale
 #. odoo-python
+#: code:addons/point_of_sale/models/account_bank_statement.py:0
+#, python-format
+msgid ""
+"You cannot delete a bank statement line linked to Point of Sale session."
+msgstr ""
+"Satış Noktası oturumuna bağlı bir banka ekstresi satırını silemezsiniz."
+
+#. module: point_of_sale
+#. odoo-python
 #: code:addons/point_of_sale/models/pos_category.py:0
 #, python-format
 msgid ""
@@ -7620,15 +7560,6 @@ msgid ""
 msgstr ""
 "Etkin PoS oturumları varken kişileri silemezsiniz. Önce oturum(lar)ı kapatın"
 " %s."
-
-#. module: point_of_sale
-#. odoo-python
-#: code:addons/point_of_sale/models/pos_session.py:0
-#, python-format
-msgid ""
-"You do not have permission to open a POS session. Please try opening a "
-"session with a different user"
-msgstr ""
 
 #. module: point_of_sale
 #. odoo-python

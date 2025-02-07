@@ -50,7 +50,7 @@ msgstr "Kommissionierungsart für Subunternehmer im Streckengeschäft"
 #: model:stock.route,name:mrp_subcontracting_dropshipping.route_subcontracting_dropshipping
 #, python-format
 msgid "Dropship Subcontractor on Order"
-msgstr "Subunternehmer per Streckengeschäft je Auftrag beliefern"
+msgstr "Subunternehmer für Streckengeschäft bei Auftrag"
 
 #. module: mrp_subcontracting_dropshipping
 #: model:ir.model.fields,field_description:mrp_subcontracting_dropshipping.field_stock_warehouse__subcontracting_dropshipping_to_resupply
@@ -78,13 +78,13 @@ msgstr "Mindestbestandsregel"
 #, python-format
 msgid "Please note this purchase order is for subcontracting purposes."
 msgstr ""
-"Bitte beachten Sie, dass diese Bestellung für die Vergabe von Unteraufträgen"
-" bestimmt ist."
+"Bitte beachten Sie, dass dieser Einkaufsauftrag für die Vergabe von "
+"Unteraufträgen bestimmt ist."
 
 #. module: mrp_subcontracting_dropshipping
 #: model:ir.model,name:mrp_subcontracting_dropshipping.model_purchase_order
 msgid "Purchase Order"
-msgstr "Bestellung"
+msgstr "Einkaufsauftrag"
 
 #. module: mrp_subcontracting_dropshipping
 #: model:ir.model,name:mrp_subcontracting_dropshipping.model_stock_move

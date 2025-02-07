@@ -49,7 +49,7 @@ msgstr "نَص الزر "
 #. module: onboarding
 #: model:ir.model.fields,field_description:onboarding.field_onboarding_onboarding__panel_close_action_name
 msgid "Closing action"
-msgstr "الإجراء الختامي "
+msgstr "العمل الختامي"
 
 #. module: onboarding
 #: model:ir.model.fields,help:onboarding.field_onboarding_onboarding__panel_background_color
@@ -197,7 +197,7 @@ msgstr "تهيئة المتقدمين "
 #. module: onboarding
 #: model:ir.model.fields,field_description:onboarding.field_onboarding_onboarding__current_progress_id
 msgid "Onboarding Progress"
-msgstr "تقدم التأهيل "
+msgstr "التقدم على متن الطائرة"
 
 #. module: onboarding
 #: model:ir.model.fields,field_description:onboarding.field_onboarding_onboarding__progress_ids
@@ -370,7 +370,7 @@ msgstr "العنوان"
 #: model_terms:ir.ui.view,arch_db:onboarding.onboarding_onboarding_view_form
 #: model_terms:ir.ui.view,arch_db:onboarding.onboarding_onboarding_view_tree
 msgid "Toggle visibility"
-msgstr "قابلية ظهور Toggle "
+msgstr "تبديل الرؤية"
 
 #. module: onboarding
 #: model:ir.model.fields.selection,name:onboarding.selection__onboarding_onboarding__panel_background_color__violet

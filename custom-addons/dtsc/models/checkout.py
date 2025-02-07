@@ -1604,11 +1604,12 @@ class Checkout(models.Model):
         else:  
             # print(install_name)
             self.out_check()
+            view_id = self.env.ref('dtsc.view_makeoutt_tree').id
             return{
-                'name' : '委外工單',
-                'view_type' : 'tree,form', 
-                'view_mode' : 'tree,form',
+                'name' : '委外訂單',
+                'view_mode' : 'tree',
                 'res_model' : 'dtsc.makeout',
+                'view_id' : view_id,
                 'type' : 'ir.actions.act_window',
             }
         

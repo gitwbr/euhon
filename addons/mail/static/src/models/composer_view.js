@@ -147,9 +147,6 @@ registerModel({
             if (this.composerSuggestionListView.activeSuggestionView.suggestable.partner) {
                 Object.assign(updateData, { rawMentionedPartners: link(this.composerSuggestionListView.activeSuggestionView.suggestable.partner) });
             }
-            if (this.composerSuggestionListView.activeSuggestionView.suggestable.cannedResponse) {
-                Object.assign(updateData, { cannedResponses: link(this.composerSuggestionListView.activeSuggestionView.suggestable.cannedResponse) });
-            }
             this.composer.update(updateData);
             for (const composerView of this.composer.composerViews) {
                 composerView.update({ hasToRestoreContent: true });
@@ -683,7 +680,7 @@ registerModel({
                 const command = this._getCommandFromText(this.composer.textInputContent);
                 if (command) {
                     await command.execute({ channel: this.composer.thread, body: this.composer.textInputContent });
-                    if (this.exists() && this.composer) {
+                    if (this.composer.exists()) {
                         this.composer._reset();
                     }
                     return;
@@ -754,7 +751,7 @@ registerModel({
         _generateEmojisOnHtml(htmlString) {
             for (const emoji of this.messaging.emojiRegistry.allEmojis) {
                 for (const source of emoji.sources) {
-                    const escapedSource = escape(String(source)).replace(
+                    const escapedSource = String(source).replace(
                         /([.*+?=^!:${}()|[\]/\\])/g,
                         '\\$1');
                     const regexp = new RegExp(
@@ -861,7 +858,6 @@ registerModel({
                 body: this._generateMessageBody(),
                 message_type: 'comment',
                 partner_ids: this.composer.recipients.map(partner => partner.id),
-                canned_response_ids: this.composer.cannedResponses.map(response => response.id),
             };
         },
         /**

@@ -47,7 +47,7 @@ class AdyenController(http.Controller):
         :param float amount: The transaction amount
         :param int currency_id: The transaction currency, as a `res.currency` id
         :param int partner_id: The partner making the transaction, as a `res.partner` id
-        :return: The JSON-formatted content of the response and formatted amount
+        :return: The JSON-formatted content of the response
         :rtype: dict
         """
         provider_sudo = request.env['payment.provider'].sudo().browse(provider_id)
@@ -64,26 +64,22 @@ class AdyenController(http.Controller):
         # provide the lang string as is (after adapting the format) and let Adyen find the best fit.
         lang_code = (request.context.get('lang') or 'en-US').replace('_', '-')
         shopper_reference = partner_sudo and f'ODOO_PARTNER_{partner_sudo.id}'
-        amount = {
-            'value': converted_amount,
-            'currency': request.env['res.currency'].browse(currency_id).name,  # ISO 4217
-        }
         data = {
             'merchantAccount': provider_sudo.adyen_merchant_account,
-            'amount': amount,
+            'amount': converted_amount,
             'countryCode': partner_sudo.country_id.code or None,  # ISO 3166-1 alpha-2 (e.g.: 'BE')
             'shopperLocale': lang_code,  # IETF language tag (e.g.: 'fr-BE')
             'shopperReference': shopper_reference,
             'channel': 'Web',
         }
-        payment_methods_data = provider_sudo._adyen_make_request(
+        response_content = provider_sudo._adyen_make_request(
             url_field_name='adyen_checkout_api_url',
             endpoint='/paymentMethods',
             payload=data,
             method='POST'
         )
-        _logger.info("paymentMethods request response:\n%s", pprint.pformat(payment_methods_data))
-        return {'payment_methods_data': payment_methods_data, 'amount_formatted': amount}
+        _logger.info("paymentMethods request response:\n%s", pprint.pformat(response_content))
+        return response_content
 
     @http.route('/payment/adyen/payments', type='json', auth='public')
     def adyen_payments(
@@ -106,7 +102,7 @@ class AdyenController(http.Controller):
         # Check that the transaction details have not been altered. This allows preventing users
         # from validating transactions by paying less than agreed upon.
         if not payment_utils.check_access_token(
-            access_token, reference, converted_amount, currency_id, partner_id
+            access_token, reference, converted_amount, partner_id
         ):
             raise ValidationError("Adyen: " + _("Received tampered payment request data."))
 
@@ -125,9 +121,9 @@ class AdyenController(http.Controller):
             'recurringProcessingModel': 'CardOnFile',  # Most susceptible to trigger a 3DS check
             'shopperIP': payment_utils.get_customer_ip_address(),
             'shopperInteraction': 'Ecommerce',
-            'shopperEmail': tx_sudo.partner_email or "",
+            'shopperEmail': tx_sudo.partner_email,
             'shopperName': adyen_utils.format_partner_name(tx_sudo.partner_name),
-            'telephoneNumber': tx_sudo.partner_phone or "",
+            'telephoneNumber': tx_sudo.partner_phone,
             'storePaymentMethod': tx_sudo.tokenize,  # True by default on Adyen side
             'additionalData': {
                 'allow3DS2': True
@@ -156,15 +152,11 @@ class AdyenController(http.Controller):
             data.update(captureDelayHours=0)
 
         # Make the payment request to Adyen
-        idempotency_key = payment_utils.generate_idempotency_key(
-            tx_sudo, scope='payment_request_controller'
-        )
         response_content = provider_sudo._adyen_make_request(
             url_field_name='adyen_checkout_api_url',
             endpoint='/payments',
             payload=data,
-            method='POST',
-            idempotency_key=idempotency_key,
+            method='POST'
         )
 
         # Handle the payment request response

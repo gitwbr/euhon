@@ -10,9 +10,9 @@
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 16.0\n"
+"Project-Id-Version: Odoo Server 15.5alpha1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-06 13:31+0000\n"
+"POT-Creation-Date: 2022-09-20 09:01+0000\n"
 "PO-Revision-Date: 2022-09-22 05:45+0000\n"
 "Last-Translator: Dorin Hongu <dhongu@gmail.com>, 2023\n"
 "Language-Team: Romanian (https://app.transifex.com/odoo/teams/41243/ro/)\n"
@@ -71,7 +71,6 @@ msgid "Available Fields"
 msgstr "Câmpuri Disponibile"
 
 #. module: digest
-#. odoo-python
 #: code:addons/digest/models/digest.py:0
 #, python-format
 msgid "Choose the metrics you care about"
@@ -93,7 +92,6 @@ msgid "Configure Digest Emails"
 msgstr "Configurare Rezumat Mail"
 
 #. module: digest
-#. odoo-python
 #: code:addons/digest/models/digest.py:0
 #, python-format
 msgid "Connect"
@@ -157,6 +155,7 @@ msgstr "Rezumat Email"
 #: model:ir.actions.act_window,name:digest.digest_digest_action
 #: model:ir.actions.server,name:digest.ir_cron_digest_scheduler_action_ir_actions_server
 #: model:ir.cron,cron_name:digest.ir_cron_digest_scheduler_action
+#: model:ir.cron,name:digest.ir_cron_digest_scheduler_action
 #: model:ir.model.fields,field_description:digest.field_res_config_settings__digest_emails
 #: model:ir.ui.menu,name:digest.digest_menu
 msgid "Digest Emails"
@@ -222,7 +221,6 @@ msgid "ID"
 msgstr "ID"
 
 #. module: digest
-#. odoo-python
 #: code:addons/digest/controllers/portal.py:0
 #, python-format
 msgid "Invalid periodicity set on digest"
@@ -265,21 +263,18 @@ msgid "Kpi Res Users Connected Value"
 msgstr "Valoare Conectată Utilizatori Kpi Res "
 
 #. module: digest
-#. odoo-python
 #: code:addons/digest/models/digest.py:0
 #, python-format
 msgid "Last 24 hours"
 msgstr "Ultimele 24 de ore"
 
 #. module: digest
-#. odoo-python
 #: code:addons/digest/models/digest.py:0
 #, python-format
 msgid "Last 30 Days"
 msgstr "Ultimele 30 zile"
 
 #. module: digest
-#. odoo-python
 #: code:addons/digest/models/digest.py:0
 #, python-format
 msgid "Last 7 Days"
@@ -350,7 +345,6 @@ msgid "Powered by"
 msgstr "Cu sprijinul"
 
 #. module: digest
-#. odoo-python
 #: code:addons/digest/models/digest.py:0
 #, python-format
 msgid "Prefer a broader overview ?"
@@ -409,7 +403,6 @@ msgid "Status"
 msgstr "Stare"
 
 #. module: digest
-#. odoo-python
 #: code:addons/digest/models/digest.py:0
 #, python-format
 msgid "Switch to weekly Digests"
@@ -505,14 +498,12 @@ msgid "Want to add your own KPIs?<br/>"
 msgstr ""
 
 #. module: digest
-#. odoo-python
 #: code:addons/digest/models/digest.py:0
 #, python-format
 msgid "Want to customize this email?"
 msgstr "Doritți să personalizați acest email?"
 
 #. module: digest
-#. odoo-python
 #: code:addons/digest/models/digest.py:0
 #, python-format
 msgid ""
@@ -561,21 +552,18 @@ msgid "e.g. Your Weekly Digest"
 msgstr "de exemplu. Rezumatul dvs. săptămânal"
 
 #. module: digest
-#. odoo-python
 #: code:addons/digest/models/digest.py:0
 #, python-format
 msgid "monthly"
 msgstr "lunar"
 
 #. module: digest
-#. odoo-python
 #: code:addons/digest/models/digest.py:0
 #, python-format
 msgid "quarterly"
 msgstr "trimestrial"
 
 #. module: digest
-#. odoo-python
 #: code:addons/digest/models/digest.py:0
 #, python-format
 msgid "weekly"

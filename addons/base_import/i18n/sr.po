@@ -6,16 +6,14 @@
 # Uros Kalajdzic <ukalajdzic@gmail.com>, 2022
 # Martin Trigaux, 2022
 # Dragan Vukosavljevic <dragan.vukosavljevic@gmail.com>, 2022
-# Milan Bojovic <mbojovic@outlook.com>, 2023
-# コフスタジオ, 2024
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 16.0\n"
+"Project-Id-Version: Odoo Server 15.5alpha1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-06 13:31+0000\n"
+"POT-Creation-Date: 2022-09-20 09:01+0000\n"
 "PO-Revision-Date: 2022-09-22 05:45+0000\n"
-"Last-Translator: コフスタジオ, 2024\n"
+"Last-Translator: Dragan Vukosavljevic <dragan.vukosavljevic@gmail.com>, 2022\n"
 "Language-Team: Serbian (https://app.transifex.com/odoo/teams/41243/sr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,7 +22,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/js/import_action.js:0
 #: code:addons/base_import/static/src/legacy/js/import_action.js:0
 #, python-format
@@ -32,7 +30,7 @@ msgid "%d records successfully imported"
 msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/js/import_action.js:0
 #, python-format
 msgid ""
@@ -41,28 +39,28 @@ msgid ""
 msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/js/import_action.js:0
 #, python-format
 msgid "Additional Fields"
-msgstr "Dodatna polja"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "Advanced"
 msgstr "Napredno"
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "Allow matching with subfields"
-msgstr "Dozvolite uparivanje sa podpoljima"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/js/import_action.js:0
 #, python-format
 msgid ""
@@ -71,10 +69,6 @@ msgid ""
 " transient. If the issue still occurs, try to split the file rather than "
 "import it at once."
 msgstr ""
-"Nepoznat problem se desio tokom uvoza (moguće je da je izgubljena veza, "
-"prekoračen limit podataka ili prekoračeni limiti memorije). Molimo pokušajte"
-" ponovo ukoliko je problem privremen. Ako se problem i dalje javlja, "
-"pokušajte da podelite fajl umesto da ga uvozite odjednom."
 
 #. module: base_import
 #: model:ir.model,name:base_import.model_base
@@ -89,87 +83,82 @@ msgstr "Osnovni uvoz"
 #. module: base_import
 #: model:ir.model,name:base_import.model_base_import_mapping
 msgid "Base Import Mapping"
-msgstr "Mapiranje baze uvoza"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "Batch Import"
-msgstr "Batch Import"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "Batch limit"
-msgstr "Limit serije"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "Cancel"
 msgstr "Otkaži"
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "Click 'Resume' to proceed with the import, resuming at line"
 msgstr ""
 
 #. module: base_import
-#. odoo-python
 #: code:addons/base_import/models/base_import.py:0
 #, python-format
 msgid "Column %s contains incorrect values (value: %s)"
-msgstr "Kolona %s sadrži netačne vrednosti (vrednost: %s)"
+msgstr ""
 
 #. module: base_import
-#. odoo-python
 #: code:addons/base_import/models/base_import.py:0
 #, python-format
 msgid "Column %s contains incorrect values. Error in line %d: %s"
-msgstr "Kolona %s sadrži netačne vrednosti. Greška u liniji %d: %s"
+msgstr ""
 
 #. module: base_import
 #: model:ir.model.fields,field_description:base_import.field_base_import_mapping__column_name
 msgid "Column Name"
-msgstr "Naziv kolone"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/js/import_action.js:0
 #: code:addons/base_import/static/src/legacy/js/import_action.js:0
 #, python-format
 msgid "Comma"
-msgstr "Zarez"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "Comments"
 msgstr "Komentari"
 
 #. module: base_import
-#. odoo-python
 #: code:addons/base_import/models/base_import.py:0
 #, python-format
 msgid ""
 "Could not retrieve URL: %(url)s [%(field_name)s: L%(line_number)d]: "
 "%(error)s"
 msgstr ""
-"Nije moguće dobiti URL: %(url)s [%(field_name)s: L%(line_number)d]: "
-"%(error)s"
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "Create new values"
-msgstr "Kreiraj nove vrednosti"
+msgstr ""
 
 #. module: base_import
 #: model:ir.model.fields,field_description:base_import.field_base_import_import__create_uid
@@ -220,29 +209,28 @@ msgid "Currency"
 msgstr "Valuta"
 
 #. module: base_import
-#. odoo-python
 #: code:addons/base_import/models/base_import.py:0
 #: code:addons/base_import/models/base_import.py:0
 #, python-format
 msgid "Database ID"
-msgstr "Baza podataka ID"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/js/import_action.js:0
 #, python-format
 msgid "Date Format:"
-msgstr "Format datuma:"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/js/import_action.js:0
 #, python-format
 msgid "Datetime Format:"
-msgstr "Datetime Format:"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/js/import_action.js:0
 #, python-format
 msgid "Decimal Separator:"
@@ -270,14 +258,14 @@ msgid "Display Name"
 msgstr "Naziv za prikaz"
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/js/import_action.js:0
 #, python-format
 msgid "Dot"
-msgstr "Tačka"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
@@ -287,7 +275,7 @@ msgid "Download"
 msgstr "Preuzmi"
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "Download Template"
@@ -299,69 +287,45 @@ msgid "Dt"
 msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/js/import_action.js:0
 #, python-format
 msgid "Encoding:"
-msgstr "Kodiranje."
+msgstr ""
 
 #. module: base_import
-#. odoo-python
 #: code:addons/base_import/models/base_import.py:0
 #, python-format
 msgid "Error Parsing Date [%s:L%d]: %s"
-msgstr "Greška pri parsiranju datuma [%s:L%d]: %s"
-
-#. module: base_import
-#. odoo-python
-#: code:addons/base_import/models/base_import.py:0
-#, python-format
-msgid ""
-"Error while importing records: Text Delimiter should be a single character."
 msgstr ""
-"Greška prilikom uvoza zapisa: Delimiter teksta treba da bude jedan karakter."
 
 #. module: base_import
-#. odoo-python
-#: code:addons/base_import/models/base_import.py:0
-#, python-format
-msgid ""
-"Error while importing records: all rows should be of the same size, but the "
-"title row has %d entries while the first row has %d. You may need to change "
-"the separator character."
-msgstr ""
-"Greška prilikom uvoza zapisa: sve vrste treba da budu iste veličine, ali "
-"naslovna vrsta ima %d unosa dok prva vrsta ima %d. Možda ćete morati da "
-"promenite karakter separatora."
-
-#. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "Estimated time left:"
-msgstr "Preostalo vreme:"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/js/import_action.js:0
 #, python-format
 msgid "Everything seems valid."
-msgstr "Sve izgleda validno."
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "Excel files are recommended as formatting is automatic."
-msgstr "Excel fajlovi se preporučuju jer je formatiranje automatsko."
+msgstr ""
 
 #. module: base_import
-#. odoo-python
 #: code:addons/base_import/models/base_import.py:0
 #: code:addons/base_import/models/base_import.py:0
 #, python-format
 msgid "External ID"
-msgstr "Spoljni ID"
+msgstr ""
 
 #. module: base_import
 #: model:ir.model.fields,field_description:base_import.field_base_import_mapping__field_name
@@ -374,14 +338,14 @@ msgid "File"
 msgstr "Datoteka"
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "File Column"
-msgstr "Kolona fajla"
+msgstr ""
 
 #. module: base_import
 #: model:ir.model.fields,field_description:base_import.field_base_import_import__file_name
@@ -391,75 +355,69 @@ msgstr "Ime fajla"
 #. module: base_import
 #: model:ir.model.fields,field_description:base_import.field_base_import_import__file_type
 msgid "File Type"
-msgstr "Tip fajla"
+msgstr ""
 
 #. module: base_import
-#. odoo-python
 #: code:addons/base_import/models/base_import.py:0
 #: code:addons/base_import/models/base_import.py:0
 #, python-format
 msgid "File size exceeds configured maximum (%s bytes)"
-msgstr "Veličina fajla premašuje konfigurisanu maksimalnu vrednost (%s bajta)"
+msgstr ""
 
 #. module: base_import
 #: model:ir.model.fields,help:base_import.field_base_import_import__file
 msgid "File to check and/or import, raw binary (not base64)"
-msgstr "Datoteka za proveru i/ili uvoz, red binarni (ne base64)"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "Finalizing current batch before interrupting..."
-msgstr "Završavanje trenutne serije pre nego što se prekine..."
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "For CSV files, you may need to select the correct separator."
 msgstr ""
-"Za CSV fajlove, možda će vam biti potrebno da izaberete odgovarajući "
-"separator."
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "Formatting"
-msgstr "Formatiranje"
+msgstr ""
 
 #. module: base_import
-#. odoo-python
 #: code:addons/base_import/models/base_import.py:0
 #, python-format
 msgid ""
 "Found invalid image data, images should be imported as either URLs or "
 "base64-encoded data."
 msgstr ""
-"Pronađeni su nevažeći podaci o slici, slike treba uvesti kao URL-ove ili "
-"base64 kodirane podatke."
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "Go to Import FAQ"
-msgstr "Idi na Uvoz često postavljana pitanja."
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "Help"
 msgstr "Pomoć"
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "Here is the start of the file we could not import:"
-msgstr "Evo početka datoteke koju nismo mogli da uvezemo."
+msgstr ""
 
 #. module: base_import
 #: model:ir.model.fields,field_description:base_import.field_base_import_import__id
@@ -483,7 +441,7 @@ msgid "ID"
 msgstr "ID"
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid ""
@@ -492,13 +450,9 @@ msgid ""
 "                    field corresponding to the column. This makes imports\n"
 "                    simpler especially when the file has many columns."
 msgstr ""
-"Ako datoteka sadrži\n"
-"                    imena kolona, Odoo može pokušati automatski otkriti\n"
-"                    polje koje odgovara koloni. Ovo olakšava uvoz\n"
-"                    posebno kada datoteka ima mnogo kolona."
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid ""
@@ -507,85 +461,89 @@ msgid ""
 msgstr ""
 
 #. module: base_import
-#. odoo-python
 #: code:addons/base_import/models/base_import.py:0
 #, python-format
 msgid ""
 "Image size excessive, imported images must be smaller than 42 million pixel"
 msgstr ""
-"Veličina slike je prevelika, uvezenim slikama mora biti manje od 42 miliona "
-"piksela."
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "Import"
-msgstr "Uvoz"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "Import FAQ"
-msgstr "Uvoz često postavljana pitanja"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/js/import_action.js:0
 #, python-format
 msgid "Import a File"
-msgstr "Uvezi fajl"
+msgstr ""
 
 #. module: base_import
-#. odoo-python
 #: code:addons/base_import/models/base_import.py:0
 #, python-format
 msgid "Import file has no content or is corrupt"
-msgstr "Uvozna datoteka nema sadržaj ili je oštećena."
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "Import preview failed due to:"
 msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/import_records/import_records.xml:0
 #, python-format
 msgid "Import records"
-msgstr "Uvoz zapisa"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
+#: code:addons/base_import/static/src/legacy/js/import_action.js:0
+#, python-format
+msgid ""
+"Import timed out. Please retry. If you still encounter this issue, the file "
+"may be too big for the system's configuration, try to split it (import less "
+"records per file)."
+msgstr ""
+
+#. module: base_import
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "Imported file"
-msgstr "Uvezena datoteka"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/js/import_action.js:0
 #, python-format
 msgid "Importing"
-msgstr "Uvoz"
+msgstr ""
 
 #. module: base_import
-#. odoo-python
 #: code:addons/base_import/models/base_import.py:0
 #, python-format
 msgid "Invalid cell value at row %(row)s, column %(col)s: %(cell_value)s"
 msgstr ""
-"Nevažeća vrednost ćelije u redu %(row)s, koloni %(col)s: %(cell_value)s"
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/js/import_action.js:0
 #, python-format
 msgid "Label"
-msgstr "Oznaka"
+msgstr ""
 
 #. module: base_import
 #: model:ir.model.fields,field_description:base_import.field_base_import_import____last_update
@@ -651,21 +609,21 @@ msgid "Last Updated on"
 msgstr "Poslednje ažuriranje dana"
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/js/import_action.js:0
 #, python-format
 msgid "Load File"
-msgstr "Učitaj datoteku"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/js/import_action.js:0
 #, python-format
 msgid "Loading file..."
-msgstr "Učitavanje fajla..."
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/js/import_action.js:0
 #: model:ir.model.fields,field_description:base_import.field_base_import_import__res_model
 #, python-format
@@ -673,14 +631,14 @@ msgid "Model"
 msgstr "Model"
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "Multiple errors occurred"
-msgstr "Višestruke greške su se desile."
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/js/import_action.js:0
 #: model:ir.model.fields,field_description:base_import.field_base_import_tests_models_o2m__name
 #: model:ir.model.fields,field_description:base_import.field_base_import_tests_models_preview__name
@@ -689,39 +647,39 @@ msgid "Name"
 msgstr "Ime"
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "Need Help?"
-msgstr "Potrebna pomoć?"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/js/import_action.js:0
 #, python-format
 msgid "No Separator"
-msgstr "Nema separatora"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "No matching records found for"
 msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "No matching records found for the following"
 msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "Odoo Field"
-msgstr "Odoo Polje"
+msgstr ""
 
 #. module: base_import
 #: model:ir.model.fields,field_description:base_import.field_base_import_tests_models_preview__othervalue
@@ -734,115 +692,115 @@ msgid "Parent"
 msgstr "Roditelj"
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "Prevent import"
-msgstr "Sprečiti uvoz"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/js/import_action.js:0
 #, python-format
 msgid "Preview"
 msgstr "Pregled"
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/js/import_action.js:0
 #, python-format
 msgid "Relation Fields"
-msgstr "Polja veza"
+msgstr ""
 
 #. module: base_import
 #: model:ir.model.fields,field_description:base_import.field_base_import_mapping__res_model
 msgid "Res Model"
-msgstr "Res Model"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "Resume"
 msgstr "Nastavi"
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/js/import_action.js:0
 #, python-format
 msgid "Search for a field..."
 msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "See possible values"
-msgstr "Vidi moguće vrednosti"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/js/import_action.js:0
 #, python-format
 msgid "Selected Sheet:"
-msgstr "Izabrani list:"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/js/import_action.js:0
 #, python-format
 msgid "Semicolon"
-msgstr "Tacka zarez"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/js/import_action.js:0
 #, python-format
 msgid "Separator:"
-msgstr "Separator:"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "Set to:"
 msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "Set to: False"
-msgstr "Postavljeno na: Netačno"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "Set to: True"
-msgstr "Postavljeno na: Tačno"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "Set value as empty"
-msgstr "Postavite vrednost kao prazno."
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "Sheet:"
-msgstr "List:"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "Skip record"
-msgstr "Preskoči zapis"
+msgstr ""
 
 #. module: base_import
 #: model:ir.model.fields,field_description:base_import.field_base_import_tests_models_preview__somevalue
@@ -850,60 +808,60 @@ msgid "Some Value"
 msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/js/import_action.js:0
 #, python-format
 msgid "Space"
-msgstr "Prostor"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/js/import_action.js:0
 #, python-format
 msgid "Standard Fields"
-msgstr "Standardna polja"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "Start at line"
-msgstr "Počni na liniji"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "Stop Import"
-msgstr "Zaustavi uvoz"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/js/import_action.js:0
 #, python-format
 msgid "Suggested Fields"
-msgstr "Predložena polja"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/js/import_action.js:0
 #, python-format
 msgid "Tab"
-msgstr "Tab"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "Test"
 msgstr "Test"
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/js/import_action.js:0
 #, python-format
 msgid "Testing"
-msgstr "Testiranje"
+msgstr ""
 
 #. module: base_import
 #: model:ir.model,name:base_import.model_base_import_tests_models_preview
@@ -981,127 +939,122 @@ msgid "Tests: Base Import Model Float"
 msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/js/import_action.js:0
 #, python-format
 msgid "Text Delimiter:"
-msgstr "Tekst Delimiter:"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/js/import_action.js:0
 #, python-format
 msgid "The file contains blocking errors (see below)"
-msgstr "Fajl sadrži blokirajuće greške (vidi ispod)"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/js/import_action.js:0
 #, python-format
 msgid "The file contains non-blocking warnings (see below)"
 msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "The file will be imported by batches"
-msgstr "Fajl će biti uvezen po grupama"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "This column will be concatenated in field"
-msgstr "Ova kolona će biti sačinjena u polje."
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/js/import_action.js:0
 #, python-format
 msgid "This file has been successfully imported up to line %d."
 msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/js/import_action.js:0
 #, python-format
 msgid "Thousands Separator:"
-msgstr "Hiljada Separator:"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "To import multiple values, separate them by a comma"
 msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/js/import_action.js:0
 #, python-format
 msgid "To import, select a field..."
-msgstr "Da biste uvezli, izaberite polje..."
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "Track history during import"
-msgstr "Pratite istoriju tokom uvoza"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/js/import_action.js:0
 #, python-format
 msgid "Type"
 msgstr "Vrsta"
 
 #. module: base_import
-#. odoo-python
 #: code:addons/base_import/models/base_import.py:0
 #, python-format
 msgid "Unable to load \"{extension}\" file: requires Python module \"{modname}\""
 msgstr ""
-"Nije moguće učitati \"{extension}\" datoteku: zahteva Python modul "
-"\"{modname}\""
 
 #. module: base_import
-#. odoo-python
 #: code:addons/base_import/models/base_import.py:0
 #, python-format
 msgid ""
 "Unsupported file format \"{}\", import only supports CSV, ODS, XLS and XLSX"
 msgstr ""
-"Nepodržan format datoteke \"{}\", uvoz podržava samo CSV, ODS, XLS i XLSX."
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "Untitled"
-msgstr "Bez naslova"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "Upload File"
-msgstr "Postavi datoteku"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "Upload an Excel or CSV file to import"
-msgstr "Postavite Excel ili CSV datoteku za uvoz"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "Use first row as header"
-msgstr "Koristite prvi red kao zaglavlje"
+msgstr ""
 
 #. module: base_import
 #: model:ir.model,name:base_import.model_res_users
@@ -1131,7 +1084,7 @@ msgid "Value2"
 msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid ""
@@ -1140,90 +1093,85 @@ msgid ""
 msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "When a value cannot be matched:"
-msgstr "Kada vrednost ne može biti uparena:"
+msgstr ""
 
 #. module: base_import
-#. odoo-python
 #: code:addons/base_import/models/base_import.py:0
 #, python-format
 msgid ""
 "You can not import images via URL, check with your administrator or support "
 "for the reason."
 msgstr ""
-"Nije moguće uvoziti slike putem URL-a, proverite sa svojim administratorom "
-"ili podrškom za razlog."
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "You can test or reload your file before resuming the import."
-msgstr "Možete testirati ili ponovo učitati svoj fajl pre nastavka uvoza."
+msgstr ""
 
 #. module: base_import
-#. odoo-python
 #: code:addons/base_import/models/base_import.py:0
 #, python-format
 msgid "You must configure at least one field to import"
-msgstr "Morate konfigurisati barem jedno polje za uvoz"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "at multiple rows"
-msgstr "na više redova"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "at row"
-msgstr "u redu"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "batch"
 msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "in field"
-msgstr "u polju"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "minutes"
-msgstr "minuta"
+msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "more)"
 msgstr ""
 
 #. module: base_import
-#. odoo-javascript
+#. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "out of"
-msgstr "izvan"
+msgstr ""
 
 #. module: base_import
-#. odoo-python
 #: code:addons/base_import/models/base_import.py:0
 #, python-format
 msgid "unknown error code %s"
-msgstr "nepoznati kod greške %s"
+msgstr ""

@@ -36,22 +36,20 @@ export class AddToBoard extends Component {
 
     async addToBoard() {
         const { domain, globalContext } = this.env.searchModel;
-        const { context, groupBys, orderBy } = this.env.searchModel.getPreFavoriteValues();
-        const comparison = this.env.searchModel.comparison;
+        const {
+            comparison,
+            context,
+            groupBys,
+            orderBy,
+        } = this.env.searchModel.getPreFavoriteValues();
         const contextToSave = {
-            ...Object.fromEntries(
-                Object.entries(globalContext).filter(
-                    (entry) => !entry[0].startsWith("search_default_")
-                )
-            ),
+            ...globalContext,
             ...context,
+            comparison,
             orderedBy: orderBy,
             group_by: groupBys,
             dashboard_merge_domains_contexts: false,
         };
-        if (comparison) {
-            contextToSave.comparison = comparison;
-        }
 
         const result = await this.rpc("/board/add_to_dashboard", {
             action_id: this.env.config.actionId || false,
