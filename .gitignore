@@ -52,3 +52,5 @@ env/
 *.log 
 
 docker-compose.yml
+
+addons/
