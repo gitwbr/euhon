@@ -5,6 +5,9 @@ client*
 *.sql
 pgadmin-data/
 
+# 大文件
+*.zip
+
 # Python
 __pycache__/
 *.py[cod]
