@@ -83,7 +83,7 @@ function create_client() {
     CONFIG+="    networks:\n"
     CONFIG+="      - odoo_net\n"
     CONFIG+="    restart: unless-stopped\n"
-    CONFIG+="    command: postgres -c 'max_connections=200'\n"
+    CONFIG+="    command: postgres -c 'max_connections=100'\n"
 
     # 使用临时文件来避免多次插入
     awk -v config="$CONFIG" '

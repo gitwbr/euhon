@@ -291,6 +291,10 @@ docker-compose restart web1 && sleep 10 && docker-compose exec web1 odoo -d odoo
 ## 管理页面
 https://client1.euhon.com/zh_CN/web/database/manager
 
+#导入数据库之后修改配置
+dbfilter = ^ceshi$
+db_filter = ^ceshi$
+
 ## 使用说明
 
 ### 命令执行位置
