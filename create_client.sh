@@ -44,6 +44,7 @@ function create_client() {
 
     # 创建配置文件
     sed "s/{CLIENT}/${CLIENT_NUM}/g; s/{DB_HOST}/${DB_HOST}/g; s/{DB_USER}/${DB_USER}/g; s/{DB_PASSWORD}/${DB_PASSWORD}/g" odoo.conf.template > ${CLIENT}/config/odoo.conf
+    chmod 777 ${CLIENT}/config/odoo.conf
 
     # 添加服务到 docker-compose.yml
     local CONFIG="  # Client${CLIENT_NUM} 服務\n"
@@ -153,7 +154,7 @@ server {
     
     # 长轮询配置
     location /websocket {
-        proxy_pass http://127.0.0.1:\${LONGPOLLING_PORT};
+        proxy_pass http://127.0.0.1:${LONGPOLLING_PORT};
         proxy_http_version 1.1;
         proxy_set_header Upgrade \$http_upgrade;
         proxy_set_header Connection 'Upgrade';

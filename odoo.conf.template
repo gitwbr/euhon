@@ -1,7 +1,7 @@
 [options]
 addons_path = /mnt/addons,/mnt/custom-addons
 data_dir = /var/lib/odoo/client{CLIENT}
-admin_passwd = admin
+admin_passwd = admin_123
 
 # HTTP
 http_port = 8069

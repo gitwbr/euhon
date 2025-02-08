@@ -424,6 +424,9 @@ docker-compose exec db1 psql -U odoo1 -c "SELECT pg_size_pretty(pg_database_size
 - Client2: http://localhost:8070/web/database/manager
 - Client3: http://localhost:8071/web/database/manager
 
+# 查看数据库内容
+docker-compose exec web2 psql -h db2 -U odoo2 -d postgres -c "\l" | cat
+
 ## 开发指南
 
 ### 添加新模块
