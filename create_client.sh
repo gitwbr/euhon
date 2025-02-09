@@ -46,6 +46,17 @@ function create_client() {
     sed "s/{CLIENT}/${CLIENT_NUM}/g; s/{DB_HOST}/${DB_HOST}/g; s/{DB_USER}/${DB_USER}/g; s/{DB_PASSWORD}/${DB_PASSWORD}/g" odoo.conf.template > ${CLIENT}/config/odoo.conf
     chmod 777 ${CLIENT}/config/odoo.conf
 
+    # 添加权限修复命令
+    (
+        while true; do
+            sleep 5
+            if [ -d "${CLIENT}/data/addons" ] || [ -d "${CLIENT}/data/filestore" ] || [ -d "${CLIENT}/data/sessions" ]; then
+                sudo chmod -R 777 ${CLIENT}/data/*
+                break
+            fi
+        done
+    ) &
+
     # 添加服务到 docker-compose.yml
     local CONFIG="  # Client${CLIENT_NUM} 服務\n"
     CONFIG+="  web${CLIENT_NUM}:\n"
@@ -65,7 +76,7 @@ function create_client() {
     CONFIG+="    environment:\n"
     CONFIG+="      - LANG=zh_TW.UTF-8\n"
     CONFIG+="      - TZ=Asia/Taipei\n"
-    CONFIG+="    command: -- --init=base,dtsc\n"
+    #CONFIG+="    command: -- --init=base,product,mrp,web,sale,stock,website_sale,account,purchase,delivery,crm,note,hr_expense,hr_holidays,hr_attendance,dtsc\n"
     CONFIG+="    networks:\n"
     CONFIG+="      - odoo_net\n"
     CONFIG+="    restart: unless-stopped\n\n"
