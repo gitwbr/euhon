@@ -430,7 +430,7 @@ class LotMpr(models.Model):
             record.picking_id = picking.id
             move = self.env['stock.move'].create({
                 'name' : record.name,
-                'reference' : "工单扣料"+record.name, 
+                'reference' : "工單扣料"+record.name, 
                 'product_id': self.product_id.id,
                 'product_uom_qty' : qty_done_cai,
                 'product_uom' : uomid,
@@ -444,7 +444,7 @@ class LotMpr(models.Model):
             
             stock_lot_obj = self.env['stock.lot'].search([('barcode', '=', self.name)],limit=1)
             move_line = self.env['stock.move.line'].create({
-                'reference' : "工单扣料"+record.name, 
+                'reference' : "工單扣料"+record.name, 
                 'origin' : record.name,
                 "move_id": move.id, 
                 "picking_id" : picking.id,

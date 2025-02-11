@@ -84,6 +84,9 @@
 				<field name="quantity_show"  attrs="{'column_invisible':[('parent.move_type','=','in_invoice')]}"/>
 				<field name="price_unit_show"  attrs="{'column_invisible':[('parent.move_type','=','in_invoice')]}"/>
 				<field name="make_price"  attrs="{'column_invisible':[('parent.move_type','=','in_invoice')]}"/>
+				<field name="account_move_change_id" options="{'no_create': True, 'no_create_edit': True}" optional="hide" domain="[('partner_id','=',partner_id)]" attrs="{'column_invisible':[('parent.move_type','=','in_invoice')]}"/>
+				<button name="action_confirm_transfer" string="確認" confirm="確定要轉移該項次嗎？" type="object" class="oe_highlight" attrs="{'invisible': [('account_move_change_id', '=', False)]}"/>
+				<button name="action_cancel_transfer" string="清空" type="object" class="oe_highlight" attrs="{'invisible': [('account_move_change_id', '=', False)]}"/>
 			</xpath>
 			<xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='tax_ids']" position="before">
 				<field name="zhekou"  attrs="{'column_invisible':[('parent.move_type','=','in_invoice')]}"/>

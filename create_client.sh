@@ -113,8 +113,8 @@ function create_client() {
     docker-compose up -d web${CLIENT_NUM} db${CLIENT_NUM}
 
     # 终止脚本，不继续执行
-    #echo "已删除 nginx 配置，脚本停止执行。"
-    #exit 1
+    echo "已删除 nginx 配置，脚本停止执行。"
+    exit 1
 
     # 生成当前客户端的nginx配置
     echo "生成nginx配置文件..."

@@ -655,65 +655,6 @@ sudo systemctl status certbot.timer
 5. 不需要修改 `.well-known/acme-challenge/` 的配置
 6. 不需要手动执行续期命令，系统会自动处理
 
-## 数据库备份和恢复
-
-### 备份功能
-
-#### 自动备份
-系统配置了自动备份功能：
-- 每天凌晨 2:00 自动执行备份
-- 备份文件保存在各个客户端目录的 `db` 子目录中
-- 自动保留最近 3 天的备份，超过 3 天的备份文件会被自动删除
-- 备份日志保存在 `/home/bryant/odoo16/backup.log`
-
-### 恢复功能
-
-要恢复数据库，使用以下命令：
-```bash
-./restore_db.sh <备份文件路径>
-```
-
-示例：
-```bash
-./restore_db.sh client1/db/odoo1_20250203_075630.sql.gz
-```
-
-### 恢复过程包括：
-1. 停止相关的 Odoo 服务
-2. 删除现有数据库（如果存在）
-3. 创建新的数据库
-4. 恢复数据库内容
-5. 设置正确的数据库权限
-6. 更新所有模块
-7. 重启 Odoo 服务
-
-### 定时任务管理
-
-#### 查看当前定时任务
-```bash
-crontab -l
-```
-
-#### 修改定时任务
-```bash
-crontab -e
-```
-
-#### 当前定时任务配置
-```
-0 2 * * * cd /home/bryant/odoo16 && ./backup_db.sh >> /home/bryant/odoo16/backup.log 2>&1
-```
-
-#### 注意事项
-1. 确保备份和恢复脚本有执行权限：
-   ```bash
-   chmod +x backup_db.sh restore_db.sh
-   ```
-2. 确保目标目录有足够的磁盘空间
-3. 建议在系统负载较低时执行备份（默认凌晨 2 点）
-4. 恢复操作会覆盖现有数据，请谨慎操作
-5. 建议定期检查备份日志确保备份正常执行
-
 #### 日志查看
 查看备份日志：
 ```bash
@@ -730,3 +671,63 @@ info - 信息级别日志，记录正常操作的信息（默认级别）。
 warn - 警告级别日志，记录可能需要注意的情况。
 error - 错误级别日志，仅记录错误信息。
 critical - 严重错误级别日志，仅记录系统崩溃或不可恢复的错误。
+
+
+## 常见问题排查
+# 检查文件同步状态
+docker-compose exec web3 ls -l /mnt/custom-addons/dtsc/static/src/js/
+
+# 检查模块注册状态
+docker-compose exec web3 odoo shell -d odoo3_prod <<EOF
+print(self.env['ir.module.module'].search([('name','=','dtsc')]).state)
+EOF
+
+# 清除缓存
+docker-compose exec web3 rm -rf /var/lib/odoo/client3/filestore/*
+
+# 生产环境优化方案
+web3:
+    environment:
+      - DEV_MODE=0
+    command:
+      - odoo
+      - --workers=4
+      - --proxy-mode
+	  - --max-cron-threads=1
+    volumes:
+      - ./custom-addons:/mnt/custom-addons:ro  # 只读挂载
+
+# 开发者环境优化方案
+web3:
+    # 新增开发模式配置
+    environment:
+      - DEV_MODE=1
+    command: 
+      - odoo
+      - --dev=reload,qweb,werkzeug,xml
+      - --workers=0
+    volumes:
+      - ./custom-addons:/mnt/custom-addons:rw  # 确保可写挂载
+      - ./addons:/mnt/addons:rw
+
+代码类型	            开发环境（自动生效）	                 生产环境（手动更新）
+Python (.py)	     ✅ 自动生效（监听变更）	            ❌ docker restart odoo 或 -u 更新
+XML (.xml)	        ✅ 自动生效（视图更新）	            ❌ -u my_module 重新加载
+JavaScript (.js)	  ⚠️ 部分自动生效（强制刷新浏览器）	     ❌ -u web 更新缓存
+
+
+修改配置生效  
+|docker-compose.yml        	| 环境变量 | 重新创建容器 | environment配置 | docker-compose up -d web3 |
+|docker-compose.yml        	| 端口映射 | 重新创建容器 | ports: "8003:8069" | docker-compose up -d web3 |
+|docker-compose.yml        	| 卷挂载路径 | 重新创建容器 + 重启服务 | volumes: ./new:/path | docker-compose up -d web3 |
+|docker-compose.yml        	| 镜像版本 | 重新构建镜像 + 创建容器 | image: custom-odoo:16.1| docker-compose up --build -d web3 |
+|docker-compose.yml        	| 资源限制 | 重新创建容器 | mem_limit: 2g | docker-compose up -d web3 |
+|docker-compose.yml        	| 命令参数 | 重新创建容器 | command: odoo --dev | docker-compose up -d web3 |
+| web1/odoo.conf            | docker restart web1 | 
+| Dockerfile                | docker-compose build web1 && docker-compose up -d web1 | 依赖变更时建议：<br>docker-compose build --no-cache web1 |
+| requirements.txt          | 1. docker-compose exec web1 pip install -r requirements.txt<br>2. docker restart web1 | 生产环境建议重建镜像 |
+| Odoo模块代码 (web1-addons)  | docker-compose exec web1 odoo --update=my_module --stop-after-init -d web1_prod<br>docker restart web1 | 模块需在 addons_path 中正确配置 |
+| 数据库配置<br>(db1相关)      | 轻量级修改：<br>docker-compose restart web1 db1<br>深度修改：<br>docker exec -it db1 pg_ctl reload | PostgreSQL 用户为 odoo1，数据库为 odoo1 |
+| 检查日志 | docker-compose logs -f web1 | 过滤关键日志：<br>docker-compose logs web1 \| grep ERROR |
+| 进入web1容器检查 | docker exec -it web1 bash<br>odoo --config=/etc/odoo/odoo.conf | 测试命令：<br>odoo shell -d odoo1 |
+| 进入db1容器检查 | docker exec -it db1 bash<br>psql -U odoo1 -d odoo1 | 备份命令：<br>pg_dump -U odoo1 odoo1 > web1_backup.sql |

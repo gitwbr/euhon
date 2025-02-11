@@ -675,7 +675,7 @@ class Mpr(models.Model):
             
             move = self.env['stock.move'].create({
                 'name' : self.name.replace("W","B/W/"),
-                'reference' : "工单扣料"+self.name.replace("W","B"), 
+                'reference' : "工單扣料"+self.name.replace("W","B"), 
                 'product_id': record.product_product_id.id,
                 'product_uom_qty' : final_use,
                 'product_uom' : uomid,
@@ -690,7 +690,7 @@ class Mpr(models.Model):
             if record.product_lot:    
                 # move_line_obj = self.env['stock.move.line'].browse(move.id)
                 move_line = self.env['stock.move.line'].create({
-                    'reference' : "工单扣料"+self.name.replace("W","B"), 
+                    'reference' : "工單扣料"+self.name.replace("W","B"), 
                     'origin' : self.name.replace("W","B"),
                     "move_id": move.id, 
                     "picking_id" : picking.id,

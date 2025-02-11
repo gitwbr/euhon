@@ -41,7 +41,7 @@ max_cron_threads = 1
 # 日誌設置
 logfile = /var/log/odoo/odoo.log
 log_level = warn
-log_handler = :INFO
+#log_handler = :INFO
 
 # 語言設置
 load_language = zh_TW,zh_CN

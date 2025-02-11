@@ -18,7 +18,7 @@ from pprint import pprint
 import json
 import hashlib
 _logger = logging.getLogger(__name__)
-      
+from odoo.http import request 
 class Department(models.Model):
     _name = 'dtsc.department'
     
@@ -1954,11 +1954,10 @@ class Checkout(models.Model):
                 raw_data = f"{install_name}{self.customer_id.id}"
                 token = hashlib.sha256(raw_data.encode('utf-8')).hexdigest()
                 
-                # url_mail = "https://www.viewbal.com/order/"+token+"/"+install_name
-                # mailstring = f'<p><a href="{url_mail}">點擊查詢訂單:'+install_name+'</a></p>'
+                domain = request.httprequest.host
                 mailstring = '<p>親愛的客戶：</p>'
                 mailstring += '<p>您可以通過以下鏈接登錄我們的訂單查詢系統，使用您的統編作爲帳號和密碼：</p>'
-                mailstring += '<a href="https://www.viewbal.com/custom/login">點擊此處登錄</a>'
+                mailstring += f'<a href="https://{domain}/custom/login">點擊此處登錄</a>'
                 mailstring += '<p>如過有任何問題，請聯係我們。</p>'
                 
                 print(mailstring)
@@ -2935,6 +2934,14 @@ class AccountMoveLine(models.Model):
     price_unit_show = fields.Float("單價" , readonly=True)
     checkoutline_id = fields.Many2one('dtsc.checkoutline', string='Checkout Line')
     checkout_id = fields.Many2one('dtsc.checkout', string='Checkout')
+    partnerid = fields.Many2one("res.partner",related="move_id.partner_id", store=True)
+    account_move_change_id = fields.Many2one("account.move",string="項次轉移") 
+    
+    def action_confirm_transfer(self):
+        self.move_id = self.account_move_change_id   
+        self.account_move_change_id = False   
+    def action_cancel_transfer(self):
+        self.account_move_change_id = False
     # account_id = fields.Many2one(
         # comodel_name='account.account',
         # string='Account',
