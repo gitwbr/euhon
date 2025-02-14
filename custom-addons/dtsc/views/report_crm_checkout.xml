@@ -16,7 +16,7 @@
                                 </tr>
                                 <tr>
                                     <td>Mail:<span t-field="company.email" /></td>
-                                    <td>Tel:02-22218868 Fax:22218861</td>
+                                    <td>Fax:<span t-field="company.fax" /></td>
                                 </tr>
                                 <tr>
 									<td>客戶名稱:<span t-field="doc.customer_id.name" /></td>
@@ -125,14 +125,14 @@
                                 <tr>
                                     <td colspan="3">4.下單後請先支付款項</td>
                                 </tr>
-                                <tr>
-                                    <td colspan="4" class="col text-center" style="background-color:gray">匯款銀行:合作金庫 南土城分行006 戶名:科影數位影像(股)公司. 帳號:3605717004868</td>
-                                </tr>
+                                <!-- <tr> -->
+                                    <!-- <td colspan="4" class="col text-center" style="background-color:gray">匯款銀行:合作金庫 南土城分行006 戶名:科影數位影像(股)公司. 帳號:3605717004868</td> -->
+                                <!-- </tr> -->
 								<tr>
 									<td width="10%">業務</td>
 									<td width="40%"></td>
 									<td width="10%">聯絡電話</td>
-									<td width="40%">2221-8868</td>
+									<td width="40%"></td>
 								</tr>
 								<tr>
 									<td width="50%" colspan="2">主管確認簽章</td>

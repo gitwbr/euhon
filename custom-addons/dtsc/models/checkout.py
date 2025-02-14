@@ -221,7 +221,7 @@ class Checkout(models.Model):
         ("closed","結案"),    
         ("cancel","作廢"),    
     ],default='draft' ,string="狀態")
-    last_state = fields.Char("上一個狀態")
+    # last_state = fields.Char("上一個狀態")
     quantity = fields.Integer(string="總數量" , compute="_compute_quantity" )
     unit_all = fields.Integer(string="總才數" , compute="_compute_unit_all" , store = True)
     user_id = fields.Many2one("res.users", string="銷售人員" , compute="_compute_user_id",inverse="_inverse_user_id" , store = True, domain=lambda self: [('groups_id', 'in', self.env.ref('dtsc.group_dtsc_yw').id)] )
@@ -1964,7 +1964,7 @@ class Checkout(models.Model):
                 mail_values = {
                     'email_from': self.env.user.email_formatted,
                     'email_to': self.customer_id.email,
-                    'subject': "科影訂單進度查詢",
+                    'subject': "訂單進度查詢",
                     'body_html': mailstring,
                     # 'attachment_ids': [(0, 0, {
                     # 'name': '施工日曆提醒.pdf',

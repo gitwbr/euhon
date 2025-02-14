@@ -1,7 +1,5 @@
 <odoo>
-	<!-- <record id="1" model="account.tax"> -->
-        <!-- <field name="name">01</field> -->
-    <!-- </record> -->
+	<data noupdate="1">
 	<record id="account_tax_1" model="account.tax">
         <field name="name">銷項5%</field>
         <field name="type_tax_use">sale</field>
@@ -82,18 +80,20 @@
 		<field name="company_id">1</field>
 	</record>
 	
-		<record id="journal_1" model="account.journal">
+	<record id="journal_1" model="account.journal">
 		<field name="name">銷售</field>
 		<field name="code">sale</field>
 		<field name="type">sale</field>
-		<field name="default_account_id">1</field>
-		<field name="suspense_account_id">1</field>
+		<field name="default_account_id" ref="accountaccount_1"/>  <!-- 引用第一个账户 -->
+        <field name="suspense_account_id" ref="accountaccount_1"/>  
 	</record>
 	<record id="journal_2" model="account.journal">
 		<field name="name">應付</field>
 		<field name="code">BILL</field>
 		<field name="type">purchase</field>
-		<field name="default_account_id">2</field>
-		<field name="suspense_account_id">1</field>
+		<field name="default_account_id" ref="accountaccount_2"/>  <!-- 引用第一个账户 -->
+        <field name="suspense_account_id" ref="accountaccount_2"/>
 	</record>
+	
+	</data>
 </odoo>

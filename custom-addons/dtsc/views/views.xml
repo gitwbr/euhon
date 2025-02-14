@@ -223,6 +223,7 @@
       <field name="name">庫存移動</field>
       <field name="res_model">stock.move.line</field>
       <field name="view_mode">tree,form</field>
+      <field name="domain">[('qty_done', '!=', 0)]</field>
       <field name="view_id" ref="stock.view_move_line_tree"/>
     </record>
 	
@@ -231,8 +232,8 @@
       <field name="res_model">stock.quant</field>
       <field name="view_mode">tree</field>
       <field name="view_id" ref="stock.view_stock_quant_tree_inventory_editable"/>
-	  <field name="domain">[('location_id', 'in', [8,20])]</field> <!--只顯示本地庫存商品-->
-      <field name="context">{'search_default_zskc': 1,'group_by' : 'product_id', 'default_is_set_date': False}</field>
+	  <field name="domain">[('quantity', '!=', 0),('location_id.usage', 'in', ['internal'])]</field> <!--只顯示本地庫存商品-->
+      <field name="context">{'group_by' : 'product_id', 'default_is_set_date': False}</field>
     </record>
 	
 	<record model="ir.actions.act_window" id="dtsc.stock_picking">

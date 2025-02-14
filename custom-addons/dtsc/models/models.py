@@ -50,7 +50,11 @@ class UserList(models.Model):
     
     name = fields.Char(string = "師傅")
     worktype_ids = fields.Many2many('dtsc.usertype', string="工種")
-  
+
+class ResCompany(models.Model):
+    _inherit = "res.company"  
+    
+    fax = fields.Char("傳真")  
     
 class ProductAttributeValue(models.Model):
     _inherit = "product.attribute.value"
@@ -249,7 +253,17 @@ class StockPicking(models.Model):
 
         return super_result
     
-                    
+    def action_move_done(self):
+        self.action_confirm()
+        self.action_assign()
+        for picking in self:
+            for move in picking.move_ids:
+                move.quantity_done = move.product_uom_qty  # 设置为调拨数量或自定义的数量
+                for move_line in move.move_line_ids:
+                    move.quantity_done: move.product_uom_qty
+
+            # 跳过验证，直接完成调拨
+            picking.button_validate()                
    
     
     @api.model

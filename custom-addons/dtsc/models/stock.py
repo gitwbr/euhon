@@ -16,15 +16,28 @@ class StockQuantityHistory(models.TransientModel):
     _name = 'stock.quantity.history'
     _description = 'Stock Quantity History'
 
-    inventory_datetime = fields.Datetime('Inventory at Date',
+    inventory_datetime = fields.Date('庫存日期',
         help="Choose a date to get the inventory at that date",
-        default=fields.Datetime.now)
+        default=fields.Date.today)
 
     def open_at_date(self):
+
         internal_locations = self.env['stock.location'].search([('usage', '=', 'internal')])
         internal_location_ids = internal_locations.ids
+        # records = self.env['stock.quant'].search([('location_id', 'in', internal_locations.ids)])
+        # for quant in records: 
+            # quant.inventory_quantity_set = False
+            # quant.inventory_quantity = 0
+            # quant.inventory_diff_quantity = 0
+    
+        # return
+
+        
         self.env['stock.quant'].search([('location_id', 'in', internal_locations.ids)]).write({'stock_date': self.inventory_datetime})
         tree_view_id = self.env.ref('stock.view_stock_quant_tree_inventory_editable').id
+        
+        
+        formatted_datetime = self.inventory_datetime.strftime('%Y-%m-%d')
         
         # print(internal_locations)
         # We pass `to_date` in the context so that `qty_available` will be computed across
@@ -36,7 +49,7 @@ class StockQuantityHistory(models.TransientModel):
             'res_model': 'stock.quant',
             'domain': [('location_id', 'in', internal_location_ids)],
             'context': {'search_default_zskc': 1,'group_by' : 'product_id','default_is_set_date': True},
-            'display_name': str(self.inventory_datetime)+"庫存盤點",
+            'display_name': str(formatted_datetime)+"庫存盤點",
         }
         return action
         
@@ -183,12 +196,7 @@ class StockQuant(models.Model):
         return reserved_quants
     
     def action_set_inventory_quantity_to_zero(self):
-        # print("action_set_inventory_quantity_to_zero")
-        self.env.cr.execute("""
-        UPDATE stock_quant
-        SET inventory_quantity = NULL
-        WHERE id = %s
-        """, (self.id,))
+        self.inventory_quantity = 0
         self.inventory_diff_quantity = 0
         self.inventory_quantity_set = False
     
@@ -196,8 +204,8 @@ class StockQuant(models.Model):
     @api.depends('inventory_quantity','stock_date')
     def _compute_inventory_diff_quantity(self):
         for quant in self: 
-            if quant.inventory_quantity is None:
-                quant.inventory_diff_quantity = False  
+            if quant.inventory_quantity_set == False:
+                quant.inventory_diff_quantity = 0  
                 continue
         
             # if quant.inventory_quantity :
@@ -333,8 +341,7 @@ class StockQuant(models.Model):
 
         # 使用传入的日期，如果未传入，则保持原行为
         move_date = date or fields.Datetime.now()
-        # print("---------------------")
-        # print(move_date)
+
         return {
             'name': self.env.context.get('inventory_name') or name,
             'product_id': self.product_id.id,
@@ -367,13 +374,10 @@ class StockQuant(models.Model):
         move_vals = []
         past_date = ""
         for quant in self:
-            if not self.env.context.get('default_is_set_date', True):  
-                quant.stock_date = fields.Date.today()
-            #如果是盤過去的庫存走這裏
-            print(quant.stock_date.strftime('%Y-%m-%d'))
-            print(datetime.today().strftime('%Y-%m-%d'))
-            if quant.stock_date.strftime('%Y-%m-%d') != datetime.today().strftime('%Y-%m-%d'):
-                print("11111111111111")
+            if self.env.context.get('default_is_set_date') is True:  
+                # quant.stock_date = fields.Date.today()
+                
+            # if quant.stock_date.strftime('%Y-%m-%d') != datetime.today().strftime('%Y-%m-%d'):
                 past_date = quant.stock_date
                 rounding = quant.product_uom_id.rounding
                 # 计算需要调整的库存差异
@@ -383,7 +387,7 @@ class StockQuant(models.Model):
 
                 # 创建库存调整的 stock.move 数据
                 if inventory_diff > 0:
-                    print(inventory_diff)
+                    # print(inventory_diff)
                     move_vals.append(
                         quant._get_inventory_move_values(
                             inventory_diff,
@@ -414,7 +418,6 @@ class StockQuant(models.Model):
                     products_tracked_without_lot.append(quant.product_id.id)
         
         if all_past_inventory:
-            # print("all_past_inventory")
             # past_date = datetime.today()
             moves = self.env['stock.move'].with_context(inventory_mode=False).create(move_vals)
             moves._action_done()
@@ -431,14 +434,14 @@ class StockQuant(models.Model):
                 'inventory_quantity_set': False,
                 'inventory_diff_quantity': 0
             })
-            self.env.cr.execute("""
-                UPDATE stock_quant
-                SET inventory_quantity = NULL
-                WHERE id IN %s
-            """, (tuple(self.ids),))
+            # if self.ids:
+                # self.env.cr.execute("""
+                    # UPDATE stock_quant
+                    # SET inventory_quantity = NULL
+                    # WHERE id IN %s
+                # """, (tuple(self.ids),))
             return
-            
-        # print("out all_past_inventory")
+        
         # for some reason if multi-record, env.context doesn't pass to wizards...
         ctx = dict(self.env.context or {})
         ctx['default_quant_ids'] = self.ids

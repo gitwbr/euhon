@@ -34,6 +34,9 @@
 
 ## 使用说明
 
+## 手动更新
+docker-compose exec web1 odoo -d ceshi -u dtsc --no-http --stop-after-init
+
 ### 1. 客户端管理
 
 使用 `create_client.sh` 脚本来管理客户端：

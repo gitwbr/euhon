@@ -224,7 +224,7 @@
 									<div>
 										<p>
 											<h3>	
-												<span style="margin-right: 20px;font-size: 24px;">科影數位影像股份有限公司</span><span style="font-size: 24px;"><t t-esc="o['title_name']"/></span>
+												<span style="margin-right: 20px;font-size: 24px;"><t t-esc="res_company.name"/></span><span style="font-size: 24px;"><t t-esc="o['title_name']"/></span>
 												<!-- <t t-if="'starttime' in data and data['starttime']">
 													<span style="padding-right: 20px;font-size: 18px;"><strong>帳款區間:</strong><t t-esc="data['starttime']"/>~<t t-esc="data['endtime']"/></span>
 												</t> -->
@@ -242,13 +242,7 @@
 											</h3>
 											
 										</p>
-										<p>新北市中和中山路二段482巷15號2樓     Tel:02-2221-8868    Fax:02-2221-8861
-										
-										
-										
-										
-										
-										</p><!-- 增加右边距 -->
+										<p><t t-esc="res_company.street"/>     Tel:<t t-esc="res_company.phone"/>    Fax:<t t-esc="res_company.fax"/></p>
 									</div>
 								</div>
 								<!-- End Title -->
@@ -673,11 +667,11 @@
 									<div>
 										<p>
 											<h3>	
-												<span style="margin-right: 20px;">科影數位影像股份有限公司</span>對帳單
+												<span style="margin-right: 20px;"><t t-esc="res_company.name"/></span>對帳單
 												
 											</h3>
 										</p>
-										<p>新北市中和中山路二段482巷15號2樓     Tel:02-2221-8868    Fax:02-2221-8861</p><!-- 增加右边距 -->
+										<p><t t-esc="res_company.street"/>     Tel:<t t-esc="res_company.phone"/>    Fax:<t t-esc="res_company.fax"/></p>
 									</div>
 								</div>
 								<hr style="border-top: 2px solid #333; opacity: 1;"/>		

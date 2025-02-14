@@ -122,7 +122,14 @@ export class CustomFilterItemOverride extends CustomFilterItem {
             if (result.length > 0) {
                 const externalId = `${result[0].module}.${result[0].name}`;
                 console.log("External ID:", externalId);
+				if( externalId === "dtsc.view_checkout_tree")
+				{
+					const requiredFields = ["delivery_carrier", "estimated_date","customer_id","create_date","user_id","kaidan"];
+					this.fields = this.fields.filter(field => requiredFields.includes(field.name));
 
+					console.log("Filtered Fields (only required):", this.fields);
+					this.render();
+				}
                 if (externalId === 'dtsc.report_checkout_treee' ||
                     externalId === 'dtsc.report_checkout_sales' ||
                     externalId === 'dtsc.report_make_checkoutline_machine' ||

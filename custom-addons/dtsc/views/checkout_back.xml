@@ -507,7 +507,13 @@
                 <filter name="出貨日-本月" string="出貨日-本月" domain="[('date_labels.name', '=', '出貨日-本月')]"/>
                 <filter name="出貨日-前月" string="出貨日-前月" domain="[('date_labels.name', '=', '出貨日-前月')]"/>
                 <!-- <filter name="出貨日-其他" string="出貨日-其他" domain="[('date_labels.name', '=', '出貨日-其他')]"/> -->
-                       
+                
+				<filter string="客戶分組" name="group_by_customer_id" domain="[]" context="{'group_by': 'customer_id'}"/>       
+				<filter string="交貨方式分組" name="group_by_delivery_carrier" domain="[]" context="{'group_by': 'delivery_carrier'}"/>       
+				<filter string="進單日分組" name="group_by_create_date" domain="[]" context="{'group_by': 'create_date'}"/>       
+				<filter string="發貨日分組" name="group_by_estimated_date" domain="[]" context="{'group_by': 'estimated_date'}"/>       
+				<filter string="銷售人員分組" name="group_by_user_id" domain="[]" context="{'group_by': 'user_id'}"/>       
+				<filter string="開單人員分組" name="group_by_kaidan" domain="[]" context="{'group_by': 'kaidan'}"/>       
 			</search>
 		</field>		
 	</record>

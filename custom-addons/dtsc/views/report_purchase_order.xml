@@ -37,7 +37,7 @@
 												</t>
 											</h3>
 										</p>
-										<p>新北市中和中山路二段482巷15號2樓     Tel:02-2221-8868    Fax:02-2221-8861    日期:<span t-field="o.effective_date" t-options='{"format": "yyyy年MM月dd日"}'/></p>
+										<p><t t-esc="doc.company_id.street"/>     Tel:<t t-esc="doc.company_id.phone"/>    Fax:<t t-esc="doc.company_id.fax"/>    日期:<span t-field="o.effective_date" t-options='{"format": "yyyy年MM月dd日"}'/></p>
 										<!-- <p></p> -->
 									</div>
 									<div style="position: absolute; top: 0; right: 0;font-size: 24px;">

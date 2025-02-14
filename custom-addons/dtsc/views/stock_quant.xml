@@ -92,12 +92,32 @@
 				<!-- 添加新的权限组到 groups 属性 -->
 				<attribute name="groups">stock.group_stock_user,dtsc.group_dtsc_sc</attribute>
 			</xpath>
+			<!-- <field name="location_id" domain="[('usage', '=', 'internal')]"> -->
+			<!-- <field name="location_dest_id" domain="[('usage', '=', 'internal')]"> -->
+			<xpath expr="//field[@name='location_id' and @groups='stock.group_stock_multi_locations']" position="attributes">
+				<attribute name="domain">[('usage', '=', 'internal')]</attribute>
+			</xpath>
 			
-			<!-- 定位到第二个 button_validate 按钮 -->
+			<!-- 只在 location_dest_id 字段添加 domain，保留其他配置 -->
+			<xpath expr="//field[@name='location_dest_id' and @groups='stock.group_stock_multi_locations']" position="attributes">
+				<attribute name="domain">[('usage', '=', 'internal')]</attribute> <!-- 添加 domain -->
+			</xpath><!-- 定位到第二个 button_validate 按钮 -->
 			<xpath expr="//button[@name='button_validate' and contains(@class, 'o_btn_validate')]" position="attributes">
 				<!-- 添加新的权限组到 groups 属性 -->
 				<attribute name="groups">stock.group_stock_user,dtsc.group_dtsc_sc</attribute>
 			</xpath>
+			<button name="action_confirm" position="attributes">				
+				<attribute name="invisible">1</attribute>
+			</button>
+			<button name="action_open_label_type" position="attributes">				
+				<attribute name="invisible">1</attribute>
+			</button>
+			<button name="button_scrap" position="attributes">				
+				<attribute name="invisible">1</attribute>
+			</button>
+			<button name="action_confirm" position="after">
+				<button name="action_move_done" string="確認調撥" type="object" class="oe_highlight" attrs="{'invisible':[('state','not in',['draft'])]}"/>
+			</button>
 		</field>
 	</record>
 	
