@@ -619,6 +619,17 @@ class DtscConfigSettings(models.TransientModel):
     # ftp_target_folder = self.env['ir.config_parameter'].sudo().get_param('dtsc.ftp_target_folder')
     # ftp_local_path = self.env['ir.config_parameter'].sudo().get_param('dtsc.ftp_local_path')
     
+    group_product_variant = fields.Boolean(
+        "Product Variants", 
+        implied_group='product.group_product_variant',
+        default=True
+    )
+
+    group_uom = fields.Boolean(
+        "Units of Measure",
+        implied_group='uom.group_uom',
+        default=True
+    )
     
     
     @api.model

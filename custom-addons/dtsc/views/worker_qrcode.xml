@@ -1,5 +1,5 @@
 <odoo>
-	<record id="action_vat_to_menu" model="ir.actions.server">
+	<!-- <record id="action_vat_to_menu" model="ir.actions.server">
 		<field name="name">同步賬號</field>
 		<field name="model_id" ref="model_dtsc_vatlogin"/>
 		<field name="state">code</field>
@@ -9,9 +9,9 @@
 		<field name="binding_model_id" ref="model_dtsc_vatlogin"/>
 		<field name="binding_type">action</field>
 		<field name="binding_view_types">list</field>
-		<!-- <field name="binding_view_id" ref="dtsc.view_checkout_tree"/> -->
+		
         <field name="groups_id" eval="[(4, ref('dtsc.group_dtsc_mg'))]"/>
-	</record>
+	</record> -->
 
 
 
@@ -28,8 +28,37 @@
 		</field>	
 	</record>
 	
+	<record id="report_worktime_treee" model="ir.ui.view">
+		<field name="name">dtsc.worktime.tree</field>
+		<field name="model">dtsc.worktime</field>
+		<field name="arch" type="xml">
+			<tree>	 			
+				<field name="name"  readonly="1" />
+				<field name="start_time" readonly="1"  />
+				<field name="end_time" readonly="1"  />
+				<field name="seqname" readonly="1"  />
+				<field name="work_type" readonly="1"  />
+				<field name="in_out_type" readonly="1"  />
+				<field name="cai_done" readonly="1" sum="才數" />
+			</tree>
+		</field>	
+	</record>
+	<record id="search_worktime" model="ir.ui.view">
+		<field name="name">dtsc.worktime.search</field>
+		<field name="model">dtsc.worktime</field>
+		<field name="arch" type="xml">
+			<search>
+				<searchpanel>
+					<field name="report_year" string="年"  select="multi"/>
+					<field name="report_month" string="月" context="{'group_by': 'report_year'}" select="multi"/>
 
-
+				</searchpanel>
+				<filter string="結束時間" name="group_by_end_time" domain="[]" context="{'group_by': 'end_time'}"/>	
+				<filter string="工種類型" name="group_by_in_out_type" domain="[]" context="{'group_by': 'in_out_type'}"/>	
+				<filter string="員工姓名" name="group_by_name" domain="[]" context="{'group_by': 'name'}"/>	
+			</search>
+		</field>		
+	</record>
 	<record id="report_workqrcode_treee" model="ir.ui.view">
 		<field name="name">dtsc.workqrcode.report.tree</field>
 		<field name="model">dtsc.workqrcode</field>

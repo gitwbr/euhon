@@ -15,18 +15,12 @@ class LotMprScancode(models.Model):
     _name = "dtsc.lotmprscancode"
     
     barcode_input = fields.Char("條碼輸入") 
-    # errorlog = fields.Char(string="錯誤提示",default="",compute="_compute_errorlog")
- 
-    # def write(self, vals):
-        # 调用父类的 write 方法更新当前记录
-        # res = super(LotMprScancode, self).write(vals)
-        # for record in self:
-            # super(LotMprScancode, record).write({'barcode_input': ''})
-        # return res
-    # @api.depends("barcode_input")
-    # def _compute_errorlog(self):
-        # for record in self:
-            # self.errorlog = ""
+    
+    @api.onchange('barcode_input')
+    def _onchange_barcode_input(self):
+        if self.barcode_input:
+            self.barcode_input = self.barcode_input.lower()
+            
     def clean_view(self):
         self.barcode_input = ""
     def open_form_view(self):
@@ -34,16 +28,16 @@ class LotMprScancode(models.Model):
         # print(parts)
         if len(parts) > 2 and len(parts) < 4:
             # print(self.barcode_input)
-            stock_lot_obj = self.env['stock.lot'].search([('barcode', '=', self.barcode_input)],limit=1)
+            stock_lot_obj = self.env['stock.lot'].search([('barcode', 'ilike', self.barcode_input)],limit=1)
             if stock_lot_obj:
-                lotmprobj = self.env['dtsc.lotmpr'].search([('name', '=', self.barcode_input)],limit=1)
+                lotmprobj = self.env['dtsc.lotmpr'].search([('name', 'ilike', self.barcode_input)],limit=1)
                 formid = 0
                 if lotmprobj:
                     formid = lotmprobj.id
                 else:
                     # print(self.barcode_input)
                     obj = self.env['dtsc.lotmpr'].create({
-                       'name' : self.barcode_input, 
+                       'name' : lotmprobj.name, 
                        'product_id' : stock_lot_obj.product_id.id,
                        'product_lot' : stock_lot_obj.id,
                     })

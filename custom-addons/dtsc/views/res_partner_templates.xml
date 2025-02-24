@@ -195,4 +195,15 @@
 			</xpath>
 		</field>
 	</record>
+	
+	<record id="view_category_form_inherit_uom" model="ir.ui.view">
+		<field name="name">product.category.form.inherit.uom</field>
+		<field name="model">product.category</field>
+		<field name="inherit_id" ref="product.product_category_form_view"/>
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='parent_id']" position="after">
+				<field name="default_uom_id" class="oe_inline"/>
+			</xpath>
+		</field>
+	</record>
 </odoo>

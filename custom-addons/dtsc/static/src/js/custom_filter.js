@@ -160,7 +160,29 @@ export class CustomFilterItemOverride extends CustomFilterItem {
 					this.onRemoveCondition(0);
 					this.onRemoveCondition(0);
                 }
+				if (externalId === 'dtsc.report_worktime_treee') {
+                    const estimatedDateField = this.fields.findIndex(field => field.name === "end_time");
 
+					if (!estimatedDateField) {
+						console.error("Error: end_time not found in searchViewFields.");
+						return;  // **如果找不到，直接返回，防止后续报错**
+					}
+
+					const today = new Date();
+					const formattedDate = today.toISOString().split("T")[0];
+
+					const defaultCondition = {
+						field: estimatedDateField,  // `end_time` 的索引
+						operator: 0,                // `=`（等于）
+						value: formattedDate,
+					};
+
+					this.conditions.push(defaultCondition);
+
+					this.addNewCondition();
+					this.onRemoveCondition(0);
+					this.onRemoveCondition(0);
+                }
                 if (externalId === 'dtsc.report_makeout_product') {
                     const estimatedDateField = this.fields.findIndex(field => field.name === "delivery_date");
 

@@ -56,7 +56,7 @@ class MakeOut(models.Model):
     total_size = fields.Integer(string='本單總才數', compute='_compute_totals' ,store=True)
     supplier_id = fields.Many2one('res.partner', string='委外商', domain=[('supplier_rank', '>', 0)])
     supplier_init_name = fields.Char(string="為外商",related="supplier_id.custom_init_name")
-    pinguanman = fields.Many2many('dtsc.userlist',string="品管" , domain=[('worktype_ids' , 'in' , [3])])
+    pinguanman = fields.Many2many('dtsc.userlist',string="品管" , domain=[('worktype_ids.name', '=', '品管')])
     create_id = fields.Many2one('res.users',string="")
     kaidan = fields.Many2one('dtsc.userlistbefore',string="開單人員") 
     date_labels = fields.Many2many(

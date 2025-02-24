@@ -71,9 +71,9 @@ class MakeIn(models.Model):
         string='日期範圍'
     )
     #1輸出 2後置 3品管 4其他
-    houzhiman = fields.Many2many('dtsc.userlist','dtsc_makein_dtsc_userlist_rel1', 'dtsc_makein_id','dtsc_userlist_id',string="後製" , domain=[('worktype_ids' , 'in' , [2])])
-    pinguanman = fields.Many2many('dtsc.userlist','dtsc_makein_dtsc_userlist_rel2', 'dtsc_makein_id','dtsc_userlist_id',string="品管" , domain=[('worktype_ids' , 'in' , [3])])
-    outmanall = fields.Many2one('dtsc.userlist',string="所有輸出" , domain=[('worktype_ids' , 'in', [1])])
+    houzhiman = fields.Many2many('dtsc.userlist','dtsc_makein_dtsc_userlist_rel1', 'dtsc_makein_id','dtsc_userlist_id',string="後製" , domain=[('worktype_ids.name', '=', '後製')])
+    pinguanman = fields.Many2many('dtsc.userlist','dtsc_makein_dtsc_userlist_rel2', 'dtsc_makein_id','dtsc_userlist_id',string="品管" , domain=[('worktype_ids.name', '=', '品管')])
+    outmanall = fields.Many2one('dtsc.userlist',string="所有輸出" , domain=[('worktype_ids.name', '=', '輸出')])
     search_line_name = fields.Char(compute="_compute_search_line_name", store=True)
     signature = fields.Binary(string='簽名')
     # is_open_makein_qrcode = fields.Boolean(compute="_compute_is_open_makein_qrcode")
@@ -471,7 +471,7 @@ class MakeLine(models.Model):
     output_material = fields.Char(string='輸出材質', compute='_compute_output_material')
     production_size = fields.Char(string='製作尺寸', compute='_compute_production_size')
     lengbiao = fields.Char(string='裱', compute='_compute_lengbiao')
-    outman = fields.Many2one('dtsc.userlist',string="輸出" , domain=[('worktype_ids' , 'in' , [1])])
+    outman = fields.Many2one('dtsc.userlist',string="輸出" , domain=[('worktype_ids.name', '=', '輸出')])
     is_modified = fields.Boolean(string="is modified",default = False)
     is_stock_off = fields.Boolean(default = False,compute="_compute_is_stock_off") 
 

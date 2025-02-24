@@ -144,7 +144,7 @@
 			<xpath expr="//field[@name='user_id']" position="before">
 				<field name="is_set_date" invisible="1"/>					
 				<field name="stock_date" invisible="1"/>					
-				<field name="stock_date_num" invisible="context.get('default_is_set_date') == False"/>			
+				<field name="stock_date_num" invisible="context.get('default_is_set_date') != True "/>			
 				<field name="lastmodifydate"/>					
 				<field name="average_price"/>
 				<field name="total_value"/>

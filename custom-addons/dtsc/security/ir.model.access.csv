@@ -29,6 +29,7 @@ access_dtsc_quotation,dtsc.quotation,model_dtsc_quotation,base.group_user,1,1,1,
 access_dtsc_quotationproductattributeprice,dtsc.quotationproductattributeprice,model_dtsc_quotationproductattributeprice,base.group_user,1,1,1,1
 access_dtsc_department,dtsc.department,model_dtsc_department,dtsc.group_dtsc_bs,1,1,0,0
 access_dtsc_accountreportwizard,dtsc.accountreportwizard,model_dtsc_accountreportwizard,dtsc.group_dtsc_bs,1,1,1,1
+access_dtsc_maketypeselection,dtsc.maketypeselection,model_dtsc_maketypeselection,dtsc.group_dtsc_bs,1,1,1,1
 access_dtsc_stockreportwizard,dtsc.stockreportwizard,model_dtsc_stockreportwizard,dtsc.group_dtsc_bs,1,1,1,1
 access_dtsc_usertype,dtsc.usertype,model_dtsc_usertype,dtsc.group_dtsc_bs,1,1,0,0
 access_dtsc_deliverydate,dtsc.deliverydate,model_dtsc_deliverydate,base.group_user,1,1,1,1
@@ -72,3 +73,4 @@ access_dtsc_order_preview,dtsc.order_preview,model_dtsc_order_preview,base.group
 "access_ir_actions_act_window_system","ir_actions_act_window_system","base.model_ir_actions_act_window","dtsc.group_dtsc_bs",1,1,1,1
 "access_ir_actions_act_window_view_group_system","ir_actions_act_window_view_group_system","base.model_ir_actions_act_window_view","dtsc.group_dtsc_bs",1,1,1,1
 "access_ir_actions_act_window_close_group_system","ir_actions_act_window_close_group_system","base.model_ir_actions_act_window_close","dtsc.group_dtsc_bs",1,1,1,1
+access_dtsc_worktime,dtsc.worktime,model_dtsc_worktime,dtsc.group_dtsc_bs,1,1,1,1

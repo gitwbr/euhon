@@ -13,7 +13,65 @@ import datetime
 from collections import defaultdict
 import qrcode
 from io import BytesIO
+class WorkTime(models.Model):
+    _name = "dtsc.worktime"
+    
+    name = fields.Char("員工姓名")
+    checkout_id = fields.Many2one("dtsc.checkout",string="大圖訂單")
+    checkoutline_id = fields.Many2one("dtsc.checkoutline",string="大圖訂單項次")
+    start_time = fields.Datetime("開始時間")
+    end_time = fields.Datetime("結束時間")
+    cai_done = fields.Float("才數",related="checkoutline_id.total_units",store=True)
+    in_out_type = fields.Selection([
+        ('wn', '内部工單'),
+        ('ww', '委外工單'),
+    ], string='工單類型')
+    work_type = fields.Selection([
+        ('sc', '輸出'),
+        ('lb', '冷裱'),
+        ('gb', '過板'),
+        ('cq', '裁切'),
+        ('pg', '品管'),
+        ('dch', '待出貨'),
+        ('ych', '已出貨'),
+    ], string='工種類型')
+    seqname = fields.Char("項次號",compute="_compute_seqname")
+    report_year = fields.Many2one("dtsc.year",string="年",compute="_compute_year_month",store=True)
+    report_month = fields.Many2one("dtsc.month",string="月",compute="_compute_year_month",store=True)
+    
+    @api.depends("end_time")
+    def _compute_year_month(self):
+        invoice_due_date = self.env['ir.config_parameter'].sudo().get_param('dtsc.invoice_due_date')
+        for record in self:
+            if record.end_time:
+                current_date = record.end_time.date() 
+                if current_date.day > int(invoice_due_date):
+                    if current_date.month == 12:
+                        next_date = current_date.replace(year=current_date.year + 1, month=1 ,day=1)
+                    else:
+                        next_date = current_date.replace(month=current_date.month + 1,day=1)
+                else:
+                    next_date = current_date
+                    
+                next_year_str = next_date.strftime('%Y')  # 两位数的年份
+                next_month_str = next_date.strftime('%m')  # 月份
+                
+                year_record = self.env['dtsc.year'].search([('name', '=', next_year_str)], limit=1)
+                month_record = self.env['dtsc.month'].search([('name', '=', next_month_str)], limit=1)
 
+                record.report_year = year_record.id if year_record else False
+                record.report_month = month_record.id if month_record else False
+            
+            
+    @api.depends("checkout_id","checkoutline_id")
+    def _compute_seqname(self):
+        for record in self:
+            if record.checkoutline_id.sequence:
+                record.seqname = record.checkout_id.name + "-" + str(record.checkoutline_id.sequence)
+            else:
+                record.seqname = record.checkout_id.name
+    
+    
 class WorkerQRcode(models.Model):
     _name = "dtsc.workqrcode"
     
@@ -75,7 +133,7 @@ class WorkerQRcode(models.Model):
 class CheckOut(models.Model):
     _inherit = "dtsc.checkoutline"     
     
-    outman = fields.Many2one('dtsc.userlist',string="輸出" , domain=[('worktype_ids' , 'in' , [1])])    
+    outman = fields.Many2one('dtsc.userlist',string="輸出" , domain=[('worktype_ids.name', '=', '輸出')])    
     lengbiao_sign = fields.Char("冷裱")
     guoban_sign = fields.Char("過板")
     caiqie_sign = fields.Char("裁切")
@@ -168,7 +226,7 @@ class MakeInLine(models.Model):
     
     bar_image = fields.Binary("QRcode", compute='_generate_qrcode_image1')
     
-
+    
 
     def _generate_qrcode_image1(self):
         for record in self:
@@ -192,39 +250,182 @@ class MakeInLine(models.Model):
     @api.onchange("outman")
     def _onchange_outman(self):
         for record in self:
-            record.checkout_line_id.outman = record.outman.id            
-    
+            record.checkout_line_id.outman = record.outman.id
+            worktimeObj = self.env['dtsc.worktime'].sudo().search([("checkoutline_id", "=", record.checkout_line_id.id)])
+
+            if worktimeObj:
+                worktimeObj.sudo().write({
+                    'name': record.outman.name,
+                    'checkoutline_id': record.checkout_line_id.id,
+                    'checkout_id': record.checkout_line_id.checkout_product_id.id,
+                    'work_type': 'sc',  # 这次更新的工种类型
+                    'in_out_type' : 'wn',
+                    'start_time': fields.Datetime.now(),  # 更新开始时间
+                })
+            else:
+                self.env['dtsc.worktime'].sudo().create({
+                    'name': record.outman.name,
+                    'checkoutline_id': record.checkout_line_id.id,
+                    'checkout_id': record.checkout_line_id.checkout_product_id.id,
+                    'work_type': 'sc',  # 輸出
+                    'in_out_type' : 'wn',
+                    'start_time': fields.Datetime.now(),  # 扫码时的开始时间
+                })
+                
     @api.onchange("lengbiao_sign")
     def _onchange_lengbiao_sign(self):
         for record in self:
             record.checkout_line_id.lengbiao_sign = record.lengbiao_sign
-    
+            if not record.lengbiao_sign:
+                worktimeObjs = self.env['dtsc.worktime'].sudo().search([("checkoutline_id", "=", record.checkout_line_id.id),('work_type', '='  ,"lb")])
+                if worktimeObjs:
+                    worktimeObjs.unlink()
+                    record.lengbiao_sign = ""
+            else:
+                split_values = record.lengbiao_sign.split(',')
+                last_name = split_values[-1]    
+                self.env['dtsc.worktime'].sudo().create({
+                    'name': last_name,
+                    'checkoutline_id': record.checkout_line_id.id,
+                    'checkout_id': record.checkout_line_id.checkout_product_id.id,
+                    'work_type': 'lb',  # 冷裱
+                    'in_out_type' : 'wn',
+                    'start_time': fields.Datetime.now(),  # 扫码时的开始时间
+                })
+                worktimeObjs = self.env['dtsc.worktime'].sudo().search([("checkoutline_id", "=", record.checkout_line_id.id),('end_time','=',False),('work_type', '!='  ,"lb")])
+                worktimeObjs.write({
+                    'end_time': fields.Datetime.now(),  # 扫码时的开始时间
+                })
+                
+                
+                
+                
     @api.onchange("guoban_sign")
     def _onchange_guoban_sign(self):
         for record in self:
             record.checkout_line_id.guoban_sign = record.guoban_sign
-    
+            if not record.guoban_sign:
+                worktimeObjs = self.env['dtsc.worktime'].sudo().search([("checkoutline_id", "=", record.checkout_line_id.id),('work_type', '='  ,"gb")])
+                if worktimeObjs:
+                    worktimeObjs.unlink()
+                    record.guoban_sign = ""
+            else:
+                split_values = record.guoban_sign.split(',')
+                last_name = split_values[-1]    
+                self.env['dtsc.worktime'].sudo().create({
+                    'name': last_name,
+                    'checkoutline_id': record.checkout_line_id.id,
+                    'checkout_id': record.checkout_line_id.checkout_product_id.id,
+                    'work_type': 'gb',  # 冷裱
+                    'in_out_type' : 'wn',
+                    'start_time': fields.Datetime.now(),  # 扫码时的开始时间
+                })
+                worktimeObjs = self.env['dtsc.worktime'].sudo().search([("checkoutline_id", "=", record.checkout_line_id.id),('end_time','=',False),('work_type', '!='  ,"gb")])
+                worktimeObjs.write({
+                    'end_time': fields.Datetime.now(),  # 扫码时的开始时间
+                })
+                    
     @api.onchange("caiqie_sign")
     def _onchange_caiqie_sign(self):
         for record in self:
             record.checkout_line_id.caiqie_sign = record.caiqie_sign
-    
+            if not record.caiqie_sign:
+                worktimeObjs = self.env['dtsc.worktime'].sudo().search([("checkoutline_id", "=", record.checkout_line_id.id),('work_type', '='  ,"cq")])
+                if worktimeObjs:
+                    worktimeObjs.unlink()
+                    record.caiqie_sign = ""
+            else:
+                split_values = record.caiqie_sign.split(',')
+                last_name = split_values[-1]    
+                self.env['dtsc.worktime'].sudo().create({
+                    'name': last_name,
+                    'checkoutline_id': record.checkout_line_id.id,
+                    'checkout_id': record.checkout_line_id.checkout_product_id.id,
+                    'work_type': 'cq',  # 冷裱
+                    'in_out_type' : 'wn',
+                    'start_time': fields.Datetime.now(),  # 扫码时的开始时间
+                })
+                worktimeObjs = self.env['dtsc.worktime'].sudo().search([("checkoutline_id", "=", record.checkout_line_id.id),('end_time','=',False),('work_type', '!='  ,"cq")])
+                worktimeObjs.write({
+                    'end_time': fields.Datetime.now(),  # 扫码时的开始时间
+                })
+                
     @api.onchange("pinguan_sign")
     def _onchange_pinguan_sign(self):
         for record in self:
             record.checkout_line_id.pinguan_sign = record.pinguan_sign
-    
+            if not record.pinguan_sign:
+                worktimeObjs = self.env['dtsc.worktime'].sudo().search([("checkoutline_id", "=", record.checkout_line_id.id),('work_type', '='  ,"pg")])
+                if worktimeObjs:
+                    worktimeObjs.unlink()
+                    record.pinguan_sign = ""
+            else:
+                split_values = record.pinguan_sign.split(',')
+                last_name = split_values[-1]    
+                self.env['dtsc.worktime'].sudo().create({
+                    'name': last_name,
+                    'checkoutline_id': record.checkout_line_id.id,
+                    'checkout_id': record.checkout_line_id.checkout_product_id.id,
+                    'work_type': 'pg',  # 冷裱
+                    'in_out_type' : 'wn',
+                    'start_time': fields.Datetime.now(),  # 扫码时的开始时间
+                })
+                worktimeObjs = self.env['dtsc.worktime'].sudo().search([("checkoutline_id", "=", record.checkout_line_id.id),('end_time','=',False),('work_type', '!='  ,"pg")])
+                worktimeObjs.write({
+                    'end_time': fields.Datetime.now(),  # 扫码时的开始时间
+                })
+                
     @api.onchange("daichuhuo_sign")
     def _onchange_daichuhuo_sign(self):
         for record in self:
             record.checkout_line_id.daichuhuo_sign = record.daichuhuo_sign
-    
+            if not record.daichuhuo_sign:
+                worktimeObjs = self.env['dtsc.worktime'].sudo().search([("checkoutline_id", "=", record.checkout_line_id.id),('work_type', '='  ,"dch")])
+                if worktimeObjs:
+                    worktimeObjs.unlink()
+                    record.daichuhuo_sign = ""
+            else:
+                split_values = record.daichuhuo_sign.split(',')
+                last_name = split_values[-1]    
+                self.env['dtsc.worktime'].sudo().create({
+                    'name': last_name,
+                    'checkoutline_id': record.checkout_line_id.id,
+                    'checkout_id': record.checkout_line_id.checkout_product_id.id,
+                    'work_type': 'dch',  # 冷裱
+                    'in_out_type' : 'wn',
+                    'start_time': fields.Datetime.now(),  # 扫码时的开始时间
+                })
+                worktimeObjs = self.env['dtsc.worktime'].sudo().search([("checkoutline_id", "=", record.checkout_line_id.id),('end_time','=',False),('work_type', '!='  ,"dch")])
+                worktimeObjs.write({
+                    'end_time': fields.Datetime.now(),  # 扫码时的开始时间
+                })
+                
     @api.onchange("yichuhuo_sign")
     def _onchange_yichuhuo_sign(self):
         for record in self:
             record.checkout_line_id.yichuhuo_sign = record.yichuhuo_sign
-            
-    
+            if not record.yichuhuo_sign:
+                worktimeObjs = self.env['dtsc.worktime'].sudo().search([("checkoutline_id", "=", record.checkout_line_id.id),('work_type', '='  ,"ych")])
+                if worktimeObjs:
+                    worktimeObjs.unlink()
+                    record.yichuhuo_sign = ""
+            else:
+                split_values = record.yichuhuo_sign.split(',')
+                last_name = split_values[-1]    
+                self.env['dtsc.worktime'].sudo().create({
+                    'name': last_name,
+                    'checkoutline_id': record.checkout_line_id.id,
+                    'checkout_id': record.checkout_line_id.checkout_product_id.id,
+                    'work_type': 'ych',  # 冷裱
+                    'in_out_type' : 'wn',
+                    'start_time': fields.Datetime.now(),  # 扫码时的开始时间
+                    'end_time': fields.Datetime.now(),  # 扫码时的开始时间
+                })
+                worktimeObjs = self.env['dtsc.worktime'].sudo().search([("checkoutline_id", "=", record.checkout_line_id.id),('end_time','=',False),('work_type', '!='  ,"ych")])
+                worktimeObjs.write({
+                    'end_time': fields.Datetime.now(),  # 扫码时的开始时间            
+                })
+                
 class MakeOutLine(models.Model):
     _inherit = "dtsc.makeoutline"  
     
@@ -262,17 +463,76 @@ class MakeOutLine(models.Model):
     def _onchange_pinguan_sign(self):
         for record in self:
             record.checkout_line_id.pinguan_sign = record.pinguan_sign
-    
+            if not record.pinguan_sign:
+                worktimeObjs = self.env['dtsc.worktime'].sudo().search([("checkoutline_id", "=", record.checkout_line_id.id),('work_type', '='  ,"pg")])
+                if worktimeObjs:
+                    worktimeObjs.unlink()
+                    record.pinguan_sign = ""
+            else:
+                split_values = record.pinguan_sign.split(',')
+                last_name = split_values[-1]    
+                self.env['dtsc.worktime'].sudo().create({
+                    'name': last_name,
+                    'checkoutline_id': record.checkout_line_id.id,
+                    'checkout_id': record.checkout_line_id.checkout_product_id.id,
+                    'work_type': 'pg',  # 冷裱
+                    'in_out_type' : 'ww',
+                    'start_time': fields.Datetime.now(),  # 扫码时的开始时间
+                })
+                worktimeObjs = self.env['dtsc.worktime'].sudo().search([("checkoutline_id", "=", record.checkout_line_id.id),('end_time','=',False),('work_type', '!='  ,"pg")])
+                worktimeObjs.write({
+                    'end_time': fields.Datetime.now(),  # 扫码时的开始时间
+                })   
+                
     @api.onchange("daichuhuo_sign")
     def _onchange_daichuhuo_sign(self):
         for record in self:
             record.checkout_line_id.daichuhuo_sign = record.daichuhuo_sign
-    
+            if not record.daichuhuo_sign:
+                worktimeObjs = self.env['dtsc.worktime'].sudo().search([("checkoutline_id", "=", record.checkout_line_id.id),('work_type', '='  ,"dch")])
+                if worktimeObjs:
+                    worktimeObjs.unlink()
+                    record.daichuhuo_sign = ""
+            else:
+                split_values = record.daichuhuo_sign.split(',')
+                last_name = split_values[-1]    
+                self.env['dtsc.worktime'].sudo().create({
+                    'name': last_name,
+                    'checkoutline_id': record.checkout_line_id.id,
+                    'checkout_id': record.checkout_line_id.checkout_product_id.id,
+                    'work_type': 'dch',  # 冷裱
+                    'in_out_type' : 'ww',
+                    'start_time': fields.Datetime.now(),  # 扫码时的开始时间
+                })
+                worktimeObjs = self.env['dtsc.worktime'].sudo().search([("checkoutline_id", "=", record.checkout_line_id.id),('end_time','=',False),('work_type', '!='  ,"dch")])
+                worktimeObjs.write({
+                    'end_time': fields.Datetime.now(),  # 扫码时的开始时间
+                })
     @api.onchange("yichuhuo_sign")
     def _onchange_yichuhuo_sign(self):
         for record in self:
             record.checkout_line_id.yichuhuo_sign = record.yichuhuo_sign
-    
+            if not record.yichuhuo_sign:
+                worktimeObjs = self.env['dtsc.worktime'].sudo().search([("checkoutline_id", "=", record.checkout_line_id.id),('work_type', '='  ,"ych")])
+                if worktimeObjs:
+                    worktimeObjs.unlink()
+                    record.yichuhuo_sign = ""
+            else:
+                split_values = record.yichuhuo_sign.split(',')
+                last_name = split_values[-1]    
+                self.env['dtsc.worktime'].sudo().create({
+                    'name': last_name,
+                    'checkoutline_id': record.checkout_line_id.id,
+                    'checkout_id': record.checkout_line_id.checkout_product_id.id,
+                    'work_type': 'ych',  # 冷裱
+                    'in_out_type' : 'ww',
+                    'start_time': fields.Datetime.now(),  # 扫码时的开始时间
+                    'end_time': fields.Datetime.now(),  # 扫码时的开始时间
+                })
+                worktimeObjs = self.env['dtsc.worktime'].sudo().search([("checkoutline_id", "=", record.checkout_line_id.id),('end_time','=',False),('work_type', '!='  ,"ych")])
+                worktimeObjs.write({
+                    'end_time': fields.Datetime.now(),  # 扫码时的开始时间 
+                })
 class MakeIn(models.Model):
     _inherit = "dtsc.makein"
     
@@ -302,19 +562,7 @@ class MakeIn(models.Model):
     def close_qr_button(self):
         pass
     
-    
-    # def qr_code_handler(self,qr_code):
-        # if not qr_code or len(qr_code) < 2:
-            # raise ValueError("参数不足")
-        # else:
-            # name = qr_code[0]
-            # button_type = qr_code[1]
-            
-            # print(name)
-            # print(button_type)
-            
-        
-        # return {"status": "success"}  # 返回成功的响应 
+ 
             
     def process_qr_code(self, qr_code):
         if not qr_code or len(qr_code) < 3:
@@ -339,16 +587,12 @@ class MakeIn(models.Model):
                     elif qr_code[1] == 'ych':
                         field_name = "yichuhuo_sign"
                     
-                    # print(field_name)
                     if field_name:
-                        # 获取当前字段值
                         current_value = record[field_name] or ""
-                        # 如果字段已有值，追加新的签名
                         if current_value:
                             new_value = f"{current_value},{name}"
                         else:
                             new_value = name
-                        # 写入更新后的值
                         record.write({field_name: new_value})
                         if record.checkout_line_id:
                             checkout_current_value = record.checkout_line_id[field_name] or ""
@@ -358,6 +602,7 @@ class MakeIn(models.Model):
                                 checkout_new_value = name
                             # print(checkout_new_value)
                             record.checkout_line_id.write({field_name: checkout_new_value})
+                      
                 record.write({"is_select":False})   
         return {"status": "success"}  # 返回成功的响应 
         

@@ -2570,7 +2570,7 @@ class CheckOutLine(models.Model):
         for record in self:
             total_after_price = 0
             for after_record in record.aftermakepricelist_lines:
-                total_after_price = after_record.total_price * after_record.qty
+                total_after_price += after_record.total_price * after_record.qty
                 # print(total_after_price)
         
             if record.jijiamoshi in ["forcai", "merge"]:#以才計價

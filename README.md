@@ -36,6 +36,11 @@
 
 ## 手动更新
 docker-compose exec web1 odoo -d ceshi -u dtsc --no-http --stop-after-init
+## 环境进入
+docker-compose exec db3 psql -U odoo3 -d odoo3
+## shell环境
+docker-compose exec web3  odoo shell --database=odoo3 --no-http
+
 
 ### 1. 客户端管理
 

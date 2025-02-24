@@ -208,16 +208,10 @@ class StockQuant(models.Model):
                 quant.inventory_diff_quantity = 0  
                 continue
         
-            # if quant.inventory_quantity :
-            if not self.env.context.get('default_is_set_date', True):  
-                quant.stock_date = fields.Date.today()
-        
-            if quant.stock_date == datetime.today().strftime('%Y-%m-%d'):
-                quant.inventory_diff_quantity = quant.inventory_quantity - quant.quantity
-            else:
+            if self.env.context.get('default_is_set_date') is True:  
                 quant.inventory_diff_quantity = quant.inventory_quantity - quant.stock_date_num
-            # else:
-                # quant.inventory_diff_quantity = 0
+            else:
+                quant.inventory_diff_quantity = quant.inventory_quantity - quant.quantity 
     
     @api.depends('quantity')
     def _compute_average_price(self):

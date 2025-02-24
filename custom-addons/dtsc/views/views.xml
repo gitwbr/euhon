@@ -434,6 +434,11 @@
 		<field name="search_view_id" ref="search_make_machine_checkoutline_report"/>
     </record>
 	
+	<record model="ir.actions.act_window" id="action_work_time">
+		<field name="name">員工績效(工時)</field>
+		<field name="res_model">dtsc.worktime</field>
+		<field name="view_mode">tree,form</field>
+	</record>
 	<!-- <record id="action_scan_qrcode_search" model="ir.actions.server"> -->
 		<!-- <field name="name">查詢</field> -->
 		<!-- <field name="res_model">dtsc.makeout</field> -->
@@ -521,8 +526,8 @@
 	
 	
 	<menuitem id="unit_conversion" parent="dtsc.menu_setting" name="單位換算" sequence="1" action="dtsc.action_window_unit_conversion" groups="dtsc.group_dtsc_gly"/>
-	<menuitem id="product_price_calculator" parent="dtsc.menu_setting" name="價格公式" sequence="2" action="dtsc.action_product_price_calculator" groups="dtsc.group_dtsc_gly"/>
-	<menuitem id="product_price_table" parent="dtsc.menu_setting" name="價格表匯入" sequence="3" action="dtsc.action_product_price_table" groups="dtsc.group_dtsc_gly"/>
+	<!-- <menuitem id="product_price_calculator" parent="dtsc.menu_setting" name="價格公式" sequence="2" action="dtsc.action_product_price_calculator" groups="dtsc.group_dtsc_gly"/> -->
+	<!-- <menuitem id="product_price_table" parent="dtsc.menu_setting" name="價格表匯入" sequence="3" action="dtsc.action_product_price_table" groups="dtsc.group_dtsc_gly"/> -->
 	<menuitem id="customer_classification" parent="dtsc.menu_setting" name="客戶分類" sequence="4" action="dtsc.customer_template_action" groups="dtsc.group_dtsc_yw"/>
 	<menuitem id="make_type" parent="dtsc.menu_setting" name="後加工方式" sequence="5" action="dtsc.make_type_template_action" groups="dtsc.group_dtsc_mg"/>
 	<menuitem id="machine_price" parent="dtsc.menu_setting" name="機台與變價設定" sequence="6" action="dtsc.machine_price_template_action" groups="dtsc.group_dtsc_mg,dtsc.group_dtsc_yw"/>
@@ -545,6 +550,7 @@
     <menuitem id="menu_makeout_chart_dashboard" name="委外生產統計表" parent="menu_chart_dashboard_root" action="action_server_makeout_chart_dashboard" sequence="5"/>
 	<menuitem id="menu_order_preview" name="下單統計表" parent="menu_chart_dashboard_root" action="action_order_preview1" sequence="6"/>
 	<menuitem id="menu_make_order_preview" name="工單狀況表" parent="menu_chart_dashboard_root" action="action_make_machine_chart_dashboard" sequence="7"/>
+	<menuitem id="menu_work_time" name="員工績效(工時)" parent="menu_chart_dashboard_root" action="action_work_time" sequence="8" groups="dtsc.group_dtsc_gly"/>
 	<!-- 
 	<menuitem id="submenu1" name="銷售產品" parent="dtsc.action_window_product" action="dtsc.action_window_product"/>
 
