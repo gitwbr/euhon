@@ -78,11 +78,40 @@ class WorkManage(http.Controller):
         
     @http.route(['/workmanager'], type='http', auth="public", website=True)
     def work_login_page(self, **kwargs):
-        return request.render('dtsc.workshop_management', {})
+        get_param = request.env['ir.config_parameter'].sudo().get_param
+        mode = get_param('dtsc.open_page_with_scanqrcode')
+        if mode:
+            return request.render('dtsc.workshop_management', {})
+        else:        
+            return request.render('dtsc.workshop_management_forgun', {})
+        # return request.render('dtsc.workshop_management', {})
     
     @http.route(['/makesign'], type='http', auth="public", website=True)
     def make_sign_page(self, **kwargs):
-        return request.render('dtsc.make_sign_template', {})
+        get_param = request.env['ir.config_parameter'].sudo().get_param
+        mode = get_param('dtsc.open_page_with_scanqrcode')
+        # print(mode)
+        if mode:
+            return request.render('dtsc.make_sign_template', {})
+        else:        
+            return request.render('dtsc.make_sign_template_forgun', {})
+    
+    @http.route('/switch_to_sxt', type='http', auth='public')
+    def switch_to_sxt_page(self, **kwargs):
+        request.env['ir.config_parameter'].sudo().set_param('dtsc.open_page_with_scanqrcode', True)
+        return http.Response(
+            '{"success": true}', 
+            content_type='application/json'
+        )
+    
+    @http.route('/switch_to_smq', type='http', auth='public')
+    def switch_to_smq_page(self, **kwargs):
+        request.env['ir.config_parameter'].sudo().set_param('dtsc.open_page_with_scanqrcode', False)
+        return http.Response(
+            '{"success": true}', 
+            content_type='application/json'
+        )
+    
     
     @http.route('/qr_code_handler', type='http', auth='public')
     def handle_qr_code(self, **kwargs):
@@ -91,11 +120,11 @@ class WorkManage(http.Controller):
         qr_code = request.params.get('qr_code')
         button_type = request.params.get('button_type')
         
-        print(qr_code) 
-        print(button_type) 
+        # print(qr_code) 
+        # print(button_type) 
         if not qr_code:
             return {'success': False, 'message': '缺少二维码数据'}
-
+        qr_code = qr_code.lower() if qr_code else None
         try:
             # 根据扫描的二维码内容查询相关信息
             if button_type == 'wuliao':
@@ -121,8 +150,8 @@ class WorkManage(http.Controller):
 
                 # 格式化为字符串
                 result['order_time'] = result['order_time'].strftime('%Y-%m-%d %H:%M:%S')
-            print(qr_code) 
-            print(result)
+            # print(qr_code) 
+            # print(result)
             return json.dumps({'success': True, 'data': result})
 
         except Exception as e:
@@ -138,16 +167,16 @@ class WorkManage(http.Controller):
             return {'success': False, 'message': '二维码格式错误'}
         
          # 查询 makein 记录
-        if name[0] == "B":        
-            makein = request.env['dtsc.makein'].sudo().search([('name', '=', name)], limit=1)
+        if name[0] == "b":        
+            makein = request.env['dtsc.makein'].sudo().search([('name', '=ilike', name)], limit=1)
             if not makein:
                 return {'success': False, 'message': '未找到对应的物料'}
             
             # 查询 makeinline 记录
             makeinline = request.env['dtsc.makeinline'].sudo().search([('make_order_id', '=', makein.id), ('sequence', '=', sequence)], limit=1)
             after_jiagong = makeinline.processing_method_after
-        elif name[0] == "C":
-            makein = request.env['dtsc.makeout'].sudo().search([('name', '=', name)], limit=1)
+        elif name[0] == "c":
+            makein = request.env['dtsc.makeout'].sudo().search([('name', '=ilike', name)], limit=1)
             if not makein:
                 return {'success': False, 'message': '未找到对应的物料'}
 
@@ -179,7 +208,7 @@ class WorkManage(http.Controller):
         # return f"找到物料：{makein.name}, 状态：{makein.state}"
 
     def process_yuangong(self, qr_code):
-        employee = request.env['dtsc.workqrcode'].sudo().search([('name', '=', qr_code)], limit=1)
+        employee = request.env['dtsc.workqrcode'].sudo().search([('bar_image_code', '=ilike', qr_code)], limit=1)
         if not employee:
             return {'success': False, 'message': '沒有該員工！','employeename': "無",}
         return {

@@ -37,7 +37,7 @@ class LotMprScancode(models.Model):
                 else:
                     # print(self.barcode_input)
                     obj = self.env['dtsc.lotmpr'].create({
-                       'name' : lotmprobj.name, 
+                       'name' : stock_lot_obj.barcode, 
                        'product_id' : stock_lot_obj.product_id.id,
                        'product_lot' : stock_lot_obj.id,
                     })

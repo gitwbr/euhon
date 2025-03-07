@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'product','mrp','web','sale','stock','website_sale','account','purchase','delivery','crm','note','hr_expense','hr_holidays','hr_attendance'],  # Add 'product' here
+    'depends': ['base','base_import', 'product','mrp','web','sale','stock','website_sale','account','purchase','delivery','crm','note','hr_expense','hr_holidays','hr_attendance'],  # Add 'product' here
 	'qweb': [ 
         'static/src/xml/res_partner.xml',
         'static/src/xml/chattemplate.xml',
@@ -83,7 +83,7 @@
         'views/work_manager.xml',   
         'views/order_preview.xml',   
         'views/report_crm_checkout.xml',   
-        #'views/default_data.xml',   
+        'views/linebot.xml',   
         'views/views.xml',
     ],
 	'assets': {
@@ -99,6 +99,10 @@
             # 'dtsc/static/src/js/work_sign.js',
             'dtsc/static/src/js/qrcode_scan.js',   
             'dtsc/static/src/css/dtsc.css', 
+            'dtsc/static/src/js/geolocation_widget.js',
+            'dtsc/static/src/xml/geolocation_widget.xml',
+            'dtsc/static/src/js/tree_button.js', 
+            'dtsc/static/src/xml/tree_button.xml',  
         ],
         'web.assets_frontend': [
             'dtsc/static/src/js/checkout.js',
@@ -107,7 +111,7 @@
             'dtsc/static/src/css/custom_styles.css',
             'dtsc/static/src/js/website_custom.js',
             'dtsc/static/src/js/html5-qrcode.min.js',
-        ],
+        ]
     },
     # only loaded in demonstration mode
     'demo': [

@@ -77,12 +77,17 @@ class WorkerQRcode(models.Model):
     
     name=fields.Char("員工姓名")
     bar_image = fields.Binary("QRcode", compute='_generate_qrcode_image1')
+    bar_image_code = fields.Char("qrcode code", compute='_generate_bar_image_code',store=True)
+    line_user_id = fields.Char("Line ID")
     
-
+    @api.depends("name")
+    def _generate_bar_image_code(self):
+        for record in self:
+            record.bar_image_code = "employeeID="+str(record.id)
 
     def _generate_qrcode_image1(self):
         for record in self:
-            print(record.name)
+            # print(record.name)
             if record.name:
                 qr = qrcode.QRCode(
                     version=1,
@@ -90,7 +95,7 @@ class WorkerQRcode(models.Model):
                     box_size=10,
                     border=4,
                 )
-                qr.add_data(record.name)
+                qr.add_data(record.bar_image_code)
                 qr.make(fit=True)
                 img = qr.make_image(fill='black', back_color='white')
                 buffered = BytesIO()
@@ -133,7 +138,7 @@ class WorkerQRcode(models.Model):
 class CheckOut(models.Model):
     _inherit = "dtsc.checkoutline"     
     
-    outman = fields.Many2one('dtsc.userlist',string="輸出" , domain=[('worktype_ids.name', '=', '輸出')])    
+    outman = fields.Many2one('dtsc.userlist',string="輸出" , domain=[('worktype_ids.name', '=', '輸出')],store=True)    
     lengbiao_sign = fields.Char("冷裱")
     guoban_sign = fields.Char("過板")
     caiqie_sign = fields.Char("裁切")
@@ -187,7 +192,7 @@ class CheckOut(models.Model):
             # 'default_after_tomorrow': (today + timedelta(days=2)).isoformat(),
         # }
     
-    @api.depends('outman','lengbiao_sign','guoban_sign','guoban_sign','caiqie_sign','pinguan_sign','daichuhuo_sign','yichuhuo_sign')
+    @api.depends('outman','lengbiao_sign','guoban_sign','guoban_sign','caiqie_sign','pinguan_sign','daichuhuo_sign','yichuhuo_sign','total_units')
     def _compute_count(self):
         for record in self:
             record.outman_count =  record.total_units if record.outman else 0
@@ -195,8 +200,8 @@ class CheckOut(models.Model):
             record.guoban_count =  record.total_units if record.guoban_sign else 0
             record.caiqie_count =  record.total_units if record.caiqie_sign else 0
             record.pinguan_count =  record.total_units if record.pinguan_sign else 0
-            record.daichuhuo_count =  record.total_units if record.daichuhuo_sign else 0
             record.yichuhuo_count =  record.total_units if record.yichuhuo_sign else 0
+            record.daichuhuo_count =  record.total_units - record.yichuhuo_count
 
     cai_done = fields.Float("已完成(才)",compute="_compute_cai_done",store=True)
     cai_not_done = fields.Float("未完成(才)",compute="_compute_cai_done",store=True)
@@ -250,7 +255,7 @@ class MakeInLine(models.Model):
     @api.onchange("outman")
     def _onchange_outman(self):
         for record in self:
-            record.checkout_line_id.outman = record.outman.id
+            record.checkout_line_id.write({"outman":record.outman.id})
             worktimeObj = self.env['dtsc.worktime'].sudo().search([("checkoutline_id", "=", record.checkout_line_id.id)])
 
             if worktimeObj:
@@ -275,7 +280,8 @@ class MakeInLine(models.Model):
     @api.onchange("lengbiao_sign")
     def _onchange_lengbiao_sign(self):
         for record in self:
-            record.checkout_line_id.lengbiao_sign = record.lengbiao_sign
+            # record.checkout_line_id.lengbiao_sign = record.lengbiao_sign
+            record.checkout_line_id.write({"lengbiao_sign":record.lengbiao_sign})  
             if not record.lengbiao_sign:
                 worktimeObjs = self.env['dtsc.worktime'].sudo().search([("checkoutline_id", "=", record.checkout_line_id.id),('work_type', '='  ,"lb")])
                 if worktimeObjs:
@@ -303,7 +309,7 @@ class MakeInLine(models.Model):
     @api.onchange("guoban_sign")
     def _onchange_guoban_sign(self):
         for record in self:
-            record.checkout_line_id.guoban_sign = record.guoban_sign
+            record.checkout_line_id.write({"guoban_sign":record.guoban_sign}) 
             if not record.guoban_sign:
                 worktimeObjs = self.env['dtsc.worktime'].sudo().search([("checkoutline_id", "=", record.checkout_line_id.id),('work_type', '='  ,"gb")])
                 if worktimeObjs:
@@ -328,7 +334,7 @@ class MakeInLine(models.Model):
     @api.onchange("caiqie_sign")
     def _onchange_caiqie_sign(self):
         for record in self:
-            record.checkout_line_id.caiqie_sign = record.caiqie_sign
+            record.checkout_line_id.write({"caiqie_sign":record.caiqie_sign}) 
             if not record.caiqie_sign:
                 worktimeObjs = self.env['dtsc.worktime'].sudo().search([("checkoutline_id", "=", record.checkout_line_id.id),('work_type', '='  ,"cq")])
                 if worktimeObjs:
@@ -353,7 +359,7 @@ class MakeInLine(models.Model):
     @api.onchange("pinguan_sign")
     def _onchange_pinguan_sign(self):
         for record in self:
-            record.checkout_line_id.pinguan_sign = record.pinguan_sign
+            record.checkout_line_id.write({"pinguan_sign":record.pinguan_sign}) 
             if not record.pinguan_sign:
                 worktimeObjs = self.env['dtsc.worktime'].sudo().search([("checkoutline_id", "=", record.checkout_line_id.id),('work_type', '='  ,"pg")])
                 if worktimeObjs:
@@ -378,7 +384,7 @@ class MakeInLine(models.Model):
     @api.onchange("daichuhuo_sign")
     def _onchange_daichuhuo_sign(self):
         for record in self:
-            record.checkout_line_id.daichuhuo_sign = record.daichuhuo_sign
+            record.checkout_line_id.write({"daichuhuo_sign":record.daichuhuo_sign}) 
             if not record.daichuhuo_sign:
                 worktimeObjs = self.env['dtsc.worktime'].sudo().search([("checkoutline_id", "=", record.checkout_line_id.id),('work_type', '='  ,"dch")])
                 if worktimeObjs:
@@ -403,7 +409,7 @@ class MakeInLine(models.Model):
     @api.onchange("yichuhuo_sign")
     def _onchange_yichuhuo_sign(self):
         for record in self:
-            record.checkout_line_id.yichuhuo_sign = record.yichuhuo_sign
+            record.checkout_line_id.write({"yichuhuo_sign":record.yichuhuo_sign}) 
             if not record.yichuhuo_sign:
                 worktimeObjs = self.env['dtsc.worktime'].sudo().search([("checkoutline_id", "=", record.checkout_line_id.id),('work_type', '='  ,"ych")])
                 if worktimeObjs:

@@ -260,6 +260,11 @@
 								<label for="is_open_makein_qrcode" string="是否開啓工單掃碼流程："/>
                                 <field name="is_open_makein_qrcode"/>
                             </div>
+							
+                            <div class="col-12 col-lg-6 o_setting_box">	
+								<label for="is_open_full_checkoutorder" string="是否打開高階訂單流程："/>
+                                <field name="is_open_full_checkoutorder"/>
+                            </div>
                         </div>
                     </div>
                 </xpath>

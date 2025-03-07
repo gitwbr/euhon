@@ -12,10 +12,28 @@ import re
 from odoo.exceptions import UserError
 _logger = logging.getLogger(__name__)
 from odoo.tools.float_utils import float_compare, float_is_zero, float_round
-from odoo import models, fields, api, _
+from odoo import models, fields, api, tools, _
 from odoo.exceptions import AccessDenied
 import socket
 
+import base64
+from collections import defaultdict
+import operator
+from odoo.exceptions import ValidationError
+from odoo.http import request
+from odoo.modules import get_module_resource
+from odoo.osv import expression
+class UoMCategory(models.Model):
+    _inherit = "uom.category"
+    
+    @api.model
+    def create(self, vals):
+        """ 在创建新的 `uom.category` 之前，检查是否已经存在相同的 `name` """
+        existing_category = self.env['uom.category'].search([('name', '=', vals.get('name'))], limit=1)
+        if existing_category:
+            raise UserError(f"計量類別 '{vals.get('name')}' 已經存在，請使用其他名稱。")
+        return super(UoMCategory, self).create(vals)
+        
 class Book(models.Model):
 
     _name = 'dtsc.book'
@@ -610,8 +628,9 @@ class DtscConfigSettings(models.TransientModel):
     ftp_password = fields.Char("FTP密碼")
     ftp_target_folder = fields.Char("FTP目標文件夾")
     ftp_local_path = fields.Char("FTP本地路徑")
-    
+    open_page_with_scanqrcode = fields.Boolean("二維碼/掃碼槍",default=False)
     is_open_makein_qrcode = fields.Boolean("是否開啓工單掃碼流程")
+    is_open_full_checkoutorder = fields.Boolean("是否打開高階訂單流程",default=False)
     
     # ftp_server = self.env['ir.config_parameter'].sudo().get_param('dtsc.ftp_server')
     # ftp_user = self.env['ir.config_parameter'].sudo().get_param('dtsc.ftp_user')
@@ -639,6 +658,7 @@ class DtscConfigSettings(models.TransientModel):
         res.update(
             invoice_due_date=get_param('dtsc.invoice_due_date', default='25'),
             is_open_makein_qrcode=get_param('dtsc.is_open_makein_qrcode',default=False),
+            is_open_full_checkoutorder=get_param('dtsc.is_open_full_checkoutorder',default=False),
             ftp_server=get_param('dtsc.ftp_server', default=''),
             ftp_user=get_param('dtsc.ftp_user', default=''),
             ftp_password=get_param('dtsc.ftp_password', default=''),
@@ -652,13 +672,32 @@ class DtscConfigSettings(models.TransientModel):
         set_param = self.env['ir.config_parameter'].sudo().set_param
         set_param('dtsc.invoice_due_date', self.invoice_due_date)
         set_param('dtsc.is_open_makein_qrcode', self.is_open_makein_qrcode)
+        set_param('dtsc.is_open_full_checkoutorder', self.is_open_full_checkoutorder)
         set_param('dtsc.ftp_server', self.ftp_server)
         set_param('dtsc.ftp_user', self.ftp_user)
         set_param('dtsc.ftp_password', self.ftp_password)
         set_param('dtsc.ftp_target_folder', self.ftp_target_folder)
         set_param('dtsc.ftp_local_path', self.ftp_local_path)
 
+class IrUiMenu(models.Model):
+    _inherit = 'ir.ui.menu'
 
+    @api.model
+    def _get_visibility_on_config_parameter(self, menu_xml_id, config_param):
+        param = self.env['ir.config_parameter'].sudo().get_param(config_param)
+        menu = self.env.ref(menu_xml_id, raise_if_not_found=False)
+
+        if menu:
+            menu.active = bool(param)
+
+    @api.model
+    @tools.ormcache_context('self._uid', 'debug', keys=('lang',))
+    def load_menus(self, debug):
+        menus = super(IrUiMenu, self).load_menus(debug)
+        # 添加自定义的可见性处理
+        self._get_visibility_on_config_parameter('dtsc.makein', 'dtsc.is_open_full_checkoutorder')
+        # print("Custom logic applied")
+        return menus
 
 class ResUsers(models.Model):
     _inherit = "res.users"

@@ -3,74 +3,75 @@ import traceback
 import io
 import os
 from odoo import models, fields, api
+import logging
+
+_logger = logging.getLogger(__name__)
 
 class UploadModel(models.Model):
     _name = 'upload.model'
     _description = 'Upload Model'
 
     def upload_to_ftp(self, file_content, filename, folder):
-        # ftp_server = '43.156.27.132'
-        # ftp_username = 'ftpuser'
-        # ftp_password = 'wbrtest'
         ftp_server = self.env['ir.config_parameter'].sudo().get_param('dtsc.ftp_server')
         ftp_username = self.env['ir.config_parameter'].sudo().get_param('dtsc.ftp_user')
         ftp_password = self.env['ir.config_parameter'].sudo().get_param('dtsc.ftp_password')
-        #ftp_port = '8021'
+        
+        _logger.info('FTP連接信息 - 伺服器: %s, 用戶名: %s', ftp_server, ftp_username)
         
         # 本地保存路径
         local_save_path = self.env['ir.config_parameter'].sudo().get_param('dtsc.ftp_local_path')
         local_folder_path = os.path.join(local_save_path, folder)
         local_file_path = os.path.join(local_folder_path, filename)
-        # 本地保存路径
+        
+        _logger.info('本地保存路徑: %s', local_file_path)
 
         try: 
-        
             # 本地保存路径
-            if not os.path.exists(local_save_path):
+            """ if not os.path.exists(local_save_path):
                 os.makedirs(local_save_path, exist_ok=True)
                 os.chmod(local_save_path, 0o755)
+                _logger.info('創建本地保存目錄: %s', local_save_path)
                 
             if not os.path.exists(local_folder_path):
                 os.makedirs(local_folder_path, exist_ok=True)
                 os.chmod(local_folder_path, 0o755)
+                _logger.info('創建本地檔案夾: %s', local_folder_path)
                 
             with open(local_file_path, 'wb') as local_file:
                 local_file.write(file_content)
-            print(f'File saved locally at {local_file_path}')
-            # 本地保存路径
+            _logger.info('檔案已保存到本地: %s', local_file_path) """
         
             with ftplib.FTP(ftp_server, ftp_username, ftp_password) as ftp:
-                print('Connected to FTP server')
-                items = ftp.nlst()
-                print("Current directory contains:")
-                for item in items:
-                    print(item)
+                _logger.info('已連接到FTP伺服器')
                 
-                # 设置FTP连接的编码为UTF-8
+                # 設置FTP連接的編碼為UTF-8
                 ftp.encoding = 'utf-8'
                 
                 current_directory = ftp.pwd()
-                print(f"Current FTP directory: {current_directory}")
+                _logger.info('當前FTP目錄: %s', current_directory)
 
                 target_folder = self.env['ir.config_parameter'].sudo().get_param('dtsc.ftp_target_folder')
-                # 进入或创建文件夹
+                _logger.info('目標FTP目錄: %s', target_folder)
+                
+                # 進入目標目錄
                 ftp.cwd(target_folder)
                 try:
                     ftp.cwd(folder)
+                    _logger.info('進入檔案夾: %s', folder)
                 except ftplib.error_perm:
                     ftp.mkd(folder)
                     ftp.cwd(folder)
+                    _logger.info('創建並進入檔案夾: %s', folder)
 
-                print(f'Uploading file to {folder}/{filename}')
+                _logger.info('開始上傳檔案: %s/%s', folder, filename)
 
-                # 使用 BytesIO 创建一个文件类对象
+                # 使用 BytesIO 創建一個檔案類對象
                 with io.BytesIO(file_content) as fp:
                     ftp.storbinary(f'STOR {filename}', fp)
-                #ftp.storbinary(f'STOR {filename}', file_content)
 
-                print('File upload completed')
+                _logger.info('檔案上傳完成')
                 return True
         except Exception as e:
-            print(f'FTP upload failed: {e}')
-            traceback.print_exc()
+            _logger.error('FTP上傳失敗: %s', str(e))
+            _logger.error('詳細錯誤信息: %s', traceback.format_exc())
             return False

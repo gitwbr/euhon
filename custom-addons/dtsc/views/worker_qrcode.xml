@@ -73,6 +73,7 @@
 				<!-- <field name="is_pg"  readonly="1"  /> -->
 				<!-- <field name="is_cz"  readonly="1"  /> -->
 				<field name="bar_image"  widget="image" readonly="1"  />
+				<field name="line_user_id" />
 
 			</tree>
 		</field>	

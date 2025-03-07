@@ -128,11 +128,23 @@ odoo.define('dtsc.checkout', function (require) {
                 var fileName = $table.find('#project_product_name').val();
                 var folder = this.custom_init_name;
                 var file = $fileInput[0].files[0];
+				var fileName_original = file ? file.name : "";  // 使用文件的原始名称
 
                 if (file) {
+                    // 检查文件名格式
+                    const pattern = /(\d+(?:\.\d+)?)\s*[x×]\s*(\d+(?:\.\d+)?)\s*(?:cm|mm)/i;
+					debugLog("fileName_original:", fileName_original);
+                    if (!fileName_original.match(pattern)) {
+                        var $uploadStatusDiv = $fileInput.siblings('.upload-status');
+                        $uploadStatusDiv.text('文件名必须包含尺寸信息，格式如：100x200cm 或 100x200mm').css('color', 'red').removeClass('d-none');
+                        reject('文件名格式不正确');
+                        return;
+                    }
+
                     var formData = new FormData();
                     formData.append('custom_file', file);
                     formData.append('filename', fileName);
+                    formData.append('fileName_original', fileName_original);
                     formData.append('folder', folder);
 
                     // 获取与当前文件输入控件相关联的进度条和上传状态显示<div>
@@ -160,27 +172,40 @@ odoo.define('dtsc.checkout', function (require) {
                                 return xhr;
                             },
                             success: function(response) {
-                                console.log(response.message);
+                                debugLog('Upload response:', response);
                                 if (response.success) {
-                                    // 更新上传状态消息并显示
-                                    $uploadStatusDiv.text('File uploaded successfully').css('color', 'green').removeClass('d-none');
+                                    // 显示文件尺寸信息
+                                    var sizeInfo = response.size_info;
+                                    var filenameSize = sizeInfo.filename_size;
+                                    var actualSize = {
+                                        width_mm: sizeInfo.width_mm,
+                                        height_mm: sizeInfo.height_mm
+                                    };
+                                    
+                                    var sizeMessage = `檔案上傳成功\n` +
+                                        `檔案名稱尺寸: ${filenameSize.width_mm.toFixed(2)}×${filenameSize.height_mm.toFixed(2)}mm\n` +
+                                        `實際尺寸: ${actualSize.width_mm.toFixed(2)}×${actualSize.height_mm.toFixed(2)}mm`;
+                                    
+                                    $uploadStatusDiv.html(sizeMessage.replace(/\n/g, '<br>')).css('color', 'green').removeClass('d-none');
                                     $progressBar.hide(); // 隐藏进度条
                                     resolve(response.filename); // 文件上传成功
                                 } else {
                                     // 更新上传状态消息并显示
-                                    $uploadStatusDiv.text('Upload failed').css('color', 'red').removeClass('d-none');
-                                    reject(response.error);
+                                    var errorMessage = response.message || response.error || '上传失败';
+                                    $uploadStatusDiv.html(errorMessage.replace(/\n/g, '<br>')).css('color', 'red').removeClass('d-none');
+                                    $progressBar.hide(); // 隐藏进度条
+                                    reject(errorMessage);
                                 }
                             },
                             error: function(xhr, status, error) {
                                 // 更新上传状态消息并显示
-                                $uploadStatusDiv.text('Upload error').css('color', 'red').removeClass('d-none');
+                                $uploadStatusDiv.text('Upload error: ' + error).css('color', 'red').removeClass('d-none');
                                 reject(error);
                             }
                         });
                     } catch (error) {
                         // 更新上传状态消息并显示
-                        $uploadStatusDiv.text('File upload error').css('color', 'red').removeClass('d-none');
+                        $uploadStatusDiv.text('File upload error: ' + error).css('color', 'red').removeClass('d-none');
                         reject(error);
                     }
                 } else {

@@ -11,11 +11,58 @@ from odoo import SUPERUSER_ID
 from datetime import datetime, timedelta
 import os
 import logging
+import requests
 
 _logger = logging.getLogger(__name__)
 
 class Checkout(http.Controller):
+    
+    
+    @http.route('/download_excel_custom', type='http', auth="user")
+    def download_excel_custom(self, **kw):
+        file_url = 'http://34.81.141.63/download/客戶-匯入模板.xlsx'
+        try:
+            # 使用requests获取文件内容
+            response = requests.get(file_url)
+            response.raise_for_status()  # 确保请求成功，否则抛出异常
+        except requests.RequestException as e:
+            return request.not_found()  # 请求失败返回404
+        
+        # 返回文件内容
+        if response.content:
+            return request.make_response(
+                response.content,
+                [
+                    ('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'),
+                    ('Content-Disposition', content_disposition('客戶-匯入模板.xlsx'))
+                ]
+            )
+        else:
+            return request.not_found()  # 如果文件内容为空，返回404
 
+    @http.route('/download_excel_supp', type='http', auth="user")
+    def download_excel_supp(self, **kw):
+        # file_path = '/home/bryant/files/客戶-匯入模板.xlsx'  # 服务器上文件的路径
+        file_url = 'http://34.81.141.63/download/供應商-匯入模板.xlsx'
+        try:
+            # 使用requests获取文件内容
+            response = requests.get(file_url)
+            response.raise_for_status()  # 确保请求成功，否则抛出异常
+        except requests.RequestException as e:
+            return request.not_found()  # 请求失败返回404
+        
+        # 返回文件内容
+        if response.content:
+            return request.make_response(
+                response.content,
+                [
+                    ('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'),
+                    ('Content-Disposition', content_disposition('供應商-匯入模板.xlsx'))
+                ]
+            )
+        else:
+            return request.not_found()  # 如果文件内容为空，返回404
+    
     @http.route(['/checkout'], type='http', auth="public", website=True)
     def checkout(self, **kwargs):
         return http.request.render('dtsc.checkout_page', {})

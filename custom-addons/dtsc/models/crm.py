@@ -74,7 +74,14 @@ class CheckoutInherit(models.Model):
     checkout_order_state = fields.Selection(selection_add=[
         ('waiting_confirmation', '待確認')
     ], ondelete={'waiting_confirmation': 'set default'})
-
+    
+    
+    is_new_partner = fields.Boolean("門店新客")
+    
+    new_partner = fields.Char("新客戶名")
+    new_street = fields.Char("新客戶地址")
+    new_vat = fields.Char("新客戶統編")
+    new_phone = fields.Char("新客戶電話")
     @api.model
     def create(self, vals):
         """
@@ -133,9 +140,24 @@ class CheckoutInherit(models.Model):
         """
         current_date = datetime.now()
         for record in self:
+            if record.is_new_partner:
+                if not record.new_partner:
+                    raise ValueError("請輸入新用戶名") 
+                
+                partner_vals = {
+                    'name': record.new_partner,
+                    'street': record.new_street,
+                    'vat': record.new_vat,
+                    'mobile': record.new_phone,
+                    'is_customer' : True,
+                }
+                new_partner = self.env['res.partner'].create(partner_vals)
+                record.customer_id = new_partner.id
+                record.is_new_partner = False
+                
             if not record.customer_id:
                 raise ValueError("請選擇客戶") 
-
+            
             # 更新订单上的客户分类
             if record.customer_id.customclass_id:
                 record.customer_class_id = record.customer_id.customclass_id.id

@@ -2,7 +2,7 @@ from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 
 from pprint import pprint
-
+import requests
 class BaseImport(models.TransientModel):
     _inherit = 'base_import.import'
 
@@ -131,7 +131,23 @@ class ResPartner(models.Model):
     is_in_by_gly = fields.Boolean(compute='_compute_is_in_by_gly', default=True)
     is_in_by_yw = fields.Boolean(compute='_compute_is_in_by_yw', default=True)
     meeting_count = fields.Integer(store=False,default=0)
- 
+    
+    def downloadexcel_supp(self):
+        """下载供应商 Excel"""
+        # response = requests.get("http://34.81.141.63/download/供應商-匯入模板.xlsx")
+        return {
+            'type': 'ir.actions.act_url',
+            'url': '/download_excel_supp',
+            'target': 'self',
+        }
+
+    def downloadexcel_custom(self):
+        """下载客户 Excel"""
+        return {
+            'type': 'ir.actions.act_url',
+            'url': '/download_excel_custom',
+            'target': 'self',
+        }
     # @api.model
     # def export_data(self, fields_to_export):
         # # 从上下文获取排序字段

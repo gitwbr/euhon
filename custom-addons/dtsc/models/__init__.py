@@ -34,4 +34,5 @@ from . import worker_qrcode
 from . import crm 
 from . import website_sale 
 from . import order_preview 
+from . import linebot
 #from . import purchase_order

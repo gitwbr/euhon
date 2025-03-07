@@ -65,7 +65,7 @@ access_crm_lead,crm.lead,crm.model_crm_lead,dtsc.group_dtsc_yw,1,1,1,0
 access_dtsc_year,dtsc.year,model_dtsc_year,dtsc.group_dtsc_bs,1,1,1,1
 access_dtsc_month,dtsc.month,model_dtsc_month,dtsc.group_dtsc_bs,1,1,1,1
 
-access_dtsc_workqrcode,dtsc.workqrcode,model_dtsc_workqrcode,dtsc.group_dtsc_gly,1,1,1,1
+access_dtsc_workqrcode,dtsc.workqrcode,model_dtsc_workqrcode,dtsc.group_dtsc_bs,1,1,1,1
 access_dtsc_vatlogin,dtsc.vatlogin,model_dtsc_vatlogin,dtsc.group_dtsc_gly,1,1,1,1
 
 access_dtsc_order_preview,dtsc.order_preview,model_dtsc_order_preview,base.group_user,1,1,1,1
@@ -73,4 +73,7 @@ access_dtsc_order_preview,dtsc.order_preview,model_dtsc_order_preview,base.group
 "access_ir_actions_act_window_system","ir_actions_act_window_system","base.model_ir_actions_act_window","dtsc.group_dtsc_bs",1,1,1,1
 "access_ir_actions_act_window_view_group_system","ir_actions_act_window_view_group_system","base.model_ir_actions_act_window_view","dtsc.group_dtsc_bs",1,1,1,1
 "access_ir_actions_act_window_close_group_system","ir_actions_act_window_close_group_system","base.model_ir_actions_act_window_close","dtsc.group_dtsc_bs",1,1,1,1
+
 access_dtsc_worktime,dtsc.worktime,model_dtsc_worktime,dtsc.group_dtsc_bs,1,1,1,1
+access_dtsc_linebot,dtsc.linebot,model_dtsc_linebot,dtsc.group_dtsc_bs,1,1,1,1
+access_dtsc_attendance,dtsc.attendance,model_dtsc_attendance,dtsc.group_dtsc_bs,1,1,1,1

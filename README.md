@@ -190,6 +190,25 @@ du -sh client*/db/*.gz
   - python-barcode
   - Pillow
   - pdfkit
+  - svglib>=1.5.1
+  - PyMuPDF>=1.23.7
+  - Pillow>=10.0.0
+
+### 手动安装依赖记录
+
+#### 2024-02-03 依赖安装
+1. 安装图片处理相关依赖：
+```bash
+docker-compose exec -u root web5 pip3 install --no-cache-dir --force-reinstall pymupdf
+# 查看状态
+   docker-compose exec web5 python3 -c "import fitz; print('PyMuPDF installed successfully')"
+docker-compose exec -u root web5 pip3 install --no-cache-dir svglib>=1.5.1 PyMuPDF>=1.23.7 Pillow>=10.0.0
+```
+
+2. 重启容器使依赖生效：
+```bash
+docker-compose restart web1
+```
 
 ### 安装步骤
 

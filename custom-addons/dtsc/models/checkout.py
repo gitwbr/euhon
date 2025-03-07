@@ -143,7 +143,7 @@ class YourWizard(models.TransientModel):
                 if record.comment:
                     combined_comments += record.comment
             for line in record.product_ids:
-                # if line.product_id.can_be_expensed == True:
+                # if line.product_id.can_be_expensed == True:  #運費也加入出貨單中
                     # continue
                 product_value = {
                     'file_name' : line.project_product_name,
@@ -290,10 +290,8 @@ class Checkout(models.Model):
     
     installproduct_ids = fields.One2many("dtsc.installproduct","checkout_id")
     sequence_count = fields.Integer(string="項數",compute="_compute_sequence_count",store=True)
+
     
-    def _inverse_estimated_date(self):
-        for record in self:
-            record.estimated_date = record.estimated_date
     
     @api.depends('product_ids')  # 监听 product_ids 字段的变化
     def _compute_sequence_count(self):
@@ -607,26 +605,6 @@ class Checkout(models.Model):
                 record.estimated_date = next_day
             else:
                 record.estimated_date = False
-
-    @api.onchange('create_date')
-    def _onchange_create_date(self):
-        for record in self:
-            # 如果 `create_date` 不存在，则使用当前时间
-            base_datetime = fields.Datetime.now() if not record.create_date else fields.Datetime.from_string(record.create_date)
-
-            # 判断当前是星期几（星期一为0，星期日为6）
-            weekday = base_datetime.weekday()
-
-            # 默认增加一天
-            next_day = base_datetime + timedelta(days=1)
-
-            # 如果当前是周五、周六或周日，则跳到下周一
-            if weekday in [4, 5, 6]:  # 周五、周六、周日
-                days_to_add = 7 - weekday
-                next_day = base_datetime + timedelta(days=days_to_add)
-
-            # 更新 estimated_date 字段
-            record.estimated_date = next_day
     '''
         
     # @api.onchange("customer_id")
@@ -826,7 +804,7 @@ class Checkout(models.Model):
             'invoice_date': selected_date,
             'is_online': records[0].is_online,
         })
-        print(invoice.id)
+
         vat_mode = records[0].customer_id.custom_invoice_form
         if vat_mode in [ "21" , "22"] or self.is_online == True:
             bill_invoice = Bill_invoice.create({
@@ -964,9 +942,7 @@ class Checkout(models.Model):
                 "name" : "大圖輸出",
                 "quantity" : 1, 
                 "unit_price" : saleprice,
-                "saleprice" : saleprice,
-                # "taxprice"  : round(saleprice * 0.05 + 0.1),  
-                # "totalprice" : saleprice + round(saleprice * 0.05 + 0.1),      
+                "saleprice" : saleprice,    
             })   
             
         for record in records:

@@ -234,12 +234,9 @@
 							   options="{'no_create': True, 'no_create_edit': True}" 
 							   attrs="{'invisible': [('checkout_order_state', '=', 'waiting_confirmation')], 
 									   'required': [('checkout_order_state', '!=', 'waiting_confirmation')]}"/> -->
-							<field name="customer_id" 
-							   string="客戶" 
-							   options="{'no_create': True, 'no_create_edit': True}" 
-							   required="1"/>
-							<field name="customer_bianhao" readonly="1"/>
-							<field name="customer_class_id" string="客戶分類"  options="{'no_create': True, 'no_create_edit': True}"/>
+							<field name="customer_id" string="客戶" options="{'no_create': True, 'no_create_edit': True}" attrs="{'required': [('is_new_partner', '!=', True)], 'invisible': [('is_new_partner', '=', True)]}"/>
+							<field name="customer_bianhao" readonly="1" attrs="{'invisible': [('is_new_partner', '=', True)]}"/> 
+							<field name="customer_class_id" string="客戶分類"  options="{'no_create': True, 'no_create_edit': True}" attrs="{'invisible': [('is_new_partner', '=', True)]}"/>
 							<field name="comment" placeholder="客戶之特殊要求..."/>
 							<field name="comment_factory"/>
 							<!-- <field name="payment_first" string="先收款再製作" attrs="{'readonly':[('checkout_order_state','not in',['draft'])]}"/> -->

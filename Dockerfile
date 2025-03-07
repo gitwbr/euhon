@@ -29,7 +29,10 @@ RUN pip3 install --no-cache-dir \
     python-barcode \
     Pillow \
     pdfkit \
-    redis
+    redis \
+    haversine \
+    svglib>=1.5.1 \
+    pymupdf>=1.23.7
 
 # 创建中文字体软链接
 RUN ln -sf /usr/share/fonts/truetype/wqy/wqy-zenhei.ttc /usr/share/fonts/wqy-zenhei.ttc && \

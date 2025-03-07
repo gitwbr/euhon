@@ -32,13 +32,35 @@
 		<field name="name">res.partner.tree.supp</field>
 		<field name="model">res.partner</field>
 		<field name="arch" type="xml">
-			<tree string="Contacts" sample="1" multi_edit="1" default_order="custom_id">
+			<!-- <header> -->
+				<!-- <button name="downloadexcel_supp" string="下載供應商匯入模板" class="oe_highlight" type="object"/> -->
+			<!-- </header> -->
+			<tree js_class="res_partner_tree_supp" string="Contacts" sample="1" multi_edit="1" default_order="custom_id">
 				<field name="display_name" string="名稱"/>
 				<field name="function" invisible="1"/>
 				<field name="parent_id" invisible="1" readonly="1"/>
 				<field name="custom_init_name"/>
 				<field name="custom_id"/>
 				<field name="phone"/>
+			</tree>
+		</field>	
+	</record>
+	
+	<record id="view_partner_tree_custom" model="ir.ui.view">
+		<field name="name">res.partner.tree.custom</field>
+		<field name="model">res.partner</field>
+		<field name="arch" type="xml">
+			<!-- <header> -->
+				<!-- <button name="downloadexcel_custom" string="下載客戶匯入模板" class="oe_highlight" type="object"/> -->
+			<!-- </header> -->
+			<tree js_class="res_partner_tree_custom" string="Contacts" sample="1" multi_edit="1" default_order="custom_id">
+				<field name="display_name" string="名稱"/>
+				<field name="function" invisible="1"/>
+				<field name="parent_id" invisible="1" readonly="1"/>
+				<field name="custom_init_name"/>
+				<field name="custom_id"/>
+				<field name="phone" />
+				<field name="sell_user" widget="many2one_avatar_user" string="銷售員" />
 			</tree>
 		</field>	
 	</record>
@@ -128,7 +150,7 @@
 							<field name="custom_delivery_carrier"/>
 							<field name="custom_invoice_form"/>
 							<field name="custom_contact_person"/>
-							<field name="property_payment_term_id"/>
+							<field name="property_payment_term_id" string="客戶付款條款"/>
 							<field name="custom_search_email"/>
 							<field name="nop"/>
 							<field name="vip_path"/>
