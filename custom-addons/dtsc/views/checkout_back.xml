@@ -116,7 +116,21 @@
 		<field name="binding_view_types">list</field>
         <field name="groups_id" eval="[(4, ref('dtsc.group_dtsc_mg'))]"/>
 	</record>
-
+	
+	<record id="action_printexcel_crm_excel" model="ir.actions.server">
+		<field name="name">報價單轉Excel</field>
+		<field name="model_id" ref="model_dtsc_checkout"/>
+		<field name="state">code</field>
+		<field name="code">
+			action = env['dtsc.checkout'].with_context(env.context).action_printexcel_crm()
+		</field>
+		<field name="binding_model_id" ref="model_dtsc_checkout"/>
+		<field name="binding_type">action</field>
+		<field name="binding_view_types">list</field>
+        <field name="groups_id" eval="[(4, ref('dtsc.group_dtsc_mg'))]"/>
+	</record>	
+	
+	
     <record id="view_dtsc_deliverydate_form" model="ir.ui.view">
         <field name="name">dtsc.deliverydate.form</field>
         <field name="model">dtsc.deliverydate</field>
@@ -202,7 +216,7 @@
 					
 					
 					
-					<button name="in_re_check" type="object" class="oe_highlight" string="内部工單重發" attrs="{'invisible':[('checkout_order_state','not in',['producing'])]}" groups="dtsc.group_dtsc_mg" />
+					<button name="in_re_check" type="object" class="oe_highlight" string="内部工單重發" attrs="{'invisible':['|',('is_open_full_checkoutorder','=',False),('checkout_order_state','not in',['producing'])]}" groups="dtsc.group_dtsc_mg" />
 					<button name="out_re_check" type="object" class="oe_highlight" string="委外工單重發" attrs="{'invisible':[('checkout_order_state','not in',['producing'])]}" groups="dtsc.group_dtsc_mg" />
 					<button name="install_re_check" type="object" class="oe_highlight" string="生成施工單" attrs="{'invisible':[('checkout_order_state','not in',['producing','finished','price_review_done','receivable_assigned'])]}" groups="dtsc.group_dtsc_mg" />
 					<button name="chuhuo_re_check" type="object" class="oe_highlight" string="轉出貨單" confirm="確定發貨日期後點擊確定生成出貨單！" attrs="{'invisible':['|',('checkout_order_state','not in',['finished']),('is_delivery','!=',False)]}" groups="dtsc.group_dtsc_mg,dtsc.group_dtsc_sc" />
@@ -234,6 +248,7 @@
 							   options="{'no_create': True, 'no_create_edit': True}" 
 							   attrs="{'invisible': [('checkout_order_state', '=', 'waiting_confirmation')], 
 									   'required': [('checkout_order_state', '!=', 'waiting_confirmation')]}"/> -->
+							<field name="is_new_partner" invisible="1"/>
 							<field name="customer_id" string="客戶" options="{'no_create': True, 'no_create_edit': True}" attrs="{'required': [('is_new_partner', '!=', True)], 'invisible': [('is_new_partner', '=', True)]}"/>
 							<field name="customer_bianhao" readonly="1" attrs="{'invisible': [('is_new_partner', '=', True)]}"/> 
 							<field name="customer_class_id" string="客戶分類"  options="{'no_create': True, 'no_create_edit': True}" attrs="{'invisible': [('is_new_partner', '=', True)]}"/>
@@ -277,6 +292,7 @@
 							<field name="recheck_comment"  attrs="{'invisible': [('is_recheck', '=', False)]}" />
 							<field name="is_current_user"  invisible="1" />
 							<field name="user_id" options="{'no_create': True, 'no_create_edit': True}" groups="dtsc.group_dtsc_gly"  />
+							<field name="is_open_full_checkoutorder" invisible="1" />
 						</group> 
 					</group>
 					<notebook>
@@ -296,7 +312,7 @@
                                         <!-- <field name="is_in_by_mg" invisible="1"/>
                                         <field name="is_in_by_yw" invisible="1"/>
                                         <field name="is_in_by_kj" invisible="1"/> -->
-										<field name="is_purchse" attrs="{'readonly': [('parent.is_in_by_mg', '=', False)]}" />								
+										<field name="is_purchse" attrs="{'readonly': [('parent.is_in_by_mg', '=', False)],'column_invisible':[('parent.is_open_full_checkoutorder', '=', False)]}" />								
 										<field name="is_install" attrs="{'readonly': [('parent.is_in_by_mg', '=', False)]}" />
 										<field name="small_image"   widget="image" class="w100" optional="hide" />
 										<field name="sequence" style="text-align: center;" />

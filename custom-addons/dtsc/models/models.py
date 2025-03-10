@@ -244,7 +244,9 @@ class StockMoveLine(models.Model):
     def _compute_now_stock(self):
         for record in self:
             if record.picking_id.location_id:
-                if record.picking_id.location_id in [ 8 , 20 ]:#如果是調撥單 來源倉庫就是實際倉庫 ，否則 是收貨單 來源倉庫是虛擬倉庫 此時倉庫ID 用目的倉庫地址查詢庫存
+                internal_locations = self.env['stock.location'].search([('usage', '=', 'internal')])
+                internal_location_ids = internal_locations.ids
+                if record.picking_id.location_id in internal_location_ids:#如果是調撥單 來源倉庫就是實際倉庫 ，否則 是收貨單 來源倉庫是虛擬倉庫 此時倉庫ID 用目的倉庫地址查詢庫存
                     location_id = record.picking_id.location_id.id
                 else:
                     location_id = record.picking_id.location_dest_id.id

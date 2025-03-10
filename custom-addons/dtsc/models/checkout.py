@@ -290,8 +290,17 @@ class Checkout(models.Model):
     
     installproduct_ids = fields.One2many("dtsc.installproduct","checkout_id")
     sequence_count = fields.Integer(string="項數",compute="_compute_sequence_count",store=True)
-
     
+    is_open_full_checkoutorder = fields.Boolean(string="簡易流程",compute="_compute_is_open_full_checkoutorder")
+    
+    @api.depends()
+    def _compute_is_open_full_checkoutorder(self):
+        for record in self:
+            record.is_open_full_checkoutorder = self.env['ir.config_parameter'].sudo().get_param('dtsc.is_open_full_checkoutorder')
+    
+    def _inverse_estimated_date(self):
+        for record in self:
+            record.estimated_date = record.estimated_date
     
     @api.depends('product_ids')  # 监听 product_ids 字段的变化
     def _compute_sequence_count(self):
@@ -1001,6 +1010,12 @@ class Checkout(models.Model):
                 elif line.is_purchse == "make_out":
                     make_out_flag = 1
             
+            #簡易流程無委内工單
+            is_open_full_checkoutorder = self.env['ir.config_parameter'].sudo().get_param('dtsc.is_open_full_checkoutorder')
+            if not is_open_full_checkoutorder:
+                make_in_flag = 0 
+                make_out_flag = 1
+                
             if make_in_flag == 1:
                 if only_expensed == False:#含有非服务项次才会检查工单
                     if record.name.startswith('E'):
@@ -1076,7 +1091,12 @@ class Checkout(models.Model):
                 make_in_flag = 1
             elif line.is_purchse == "make_out":
                 make_out_flag = 1
-        
+        ##簡易流程無委内工單
+        is_open_full_checkoutorder = self.env['ir.config_parameter'].sudo().get_param('dtsc.is_open_full_checkoutorder')
+        if not is_open_full_checkoutorder:
+            make_in_flag = 0 
+            make_out_flag = 1
+            
         if make_in_flag == 1:
             if only_expensed == False:#含有非服务项次才会检查工单
                 if self.name.startswith('E'):
@@ -1525,9 +1545,9 @@ class Checkout(models.Model):
             # install_name = install_name + "-E"
         product_values_list = []
         sequence_number = 1
+        is_open_full_checkoutorder = self.env['ir.config_parameter'].sudo().get_param('dtsc.is_open_full_checkoutorder')
         for record in self.product_ids:
-            if record.is_purchse == 'make_out':
-                # print(record.product_id.name) 
+            if not is_open_full_checkoutorder or (record.is_purchse == 'make_out'):#簡易流程全部走外部工單邏輯
                 if record.product_id.can_be_expensed == True:
                     continue                
                 product_value = {
@@ -1677,6 +1697,11 @@ class Checkout(models.Model):
                 make_in_flag = 1
             elif record.is_purchse == "make_out":
                 make_out_flag = 1
+        #簡易流程無委内工單
+        is_open_full_checkoutorder = self.env['ir.config_parameter'].sudo().get_param('dtsc.is_open_full_checkoutorder')
+        if not is_open_full_checkoutorder:
+            make_in_flag = 0 
+            make_out_flag = 1
         
         if make_in_flag == 1:
             if only_expensed == False:#含有非服务项次才会检查工单
@@ -1918,10 +1943,13 @@ class Checkout(models.Model):
             
     def in_out_check(self):
         self.write({"checkout_order_state":"producing"})
-        #checkout_instance = checkout
+        
+        #簡易流程
+        is_open_full_checkoutorder = self.env['ir.config_parameter'].sudo().get_param('dtsc.is_open_full_checkoutorder')
         self.install_check()
         self.out_check()
-        self.in_check()
+        if is_open_full_checkoutorder:
+            self.in_check()
         self.create_sale_order()
         
         #订单确认给客户发送查询邮件

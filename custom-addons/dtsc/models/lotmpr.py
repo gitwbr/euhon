@@ -11,6 +11,9 @@ import math
 from odoo.exceptions import UserError
 import pytz
 from pytz import timezone
+import logging
+
+_logger = logging.getLogger(__name__)
 class LotMprScancode(models.Model):
     _name = "dtsc.lotmprscancode"
     
@@ -28,9 +31,9 @@ class LotMprScancode(models.Model):
         # print(parts)
         if len(parts) > 2 and len(parts) < 4:
             # print(self.barcode_input)
-            stock_lot_obj = self.env['stock.lot'].search([('barcode', 'ilike', self.barcode_input)],limit=1)
+            stock_lot_obj = self.env['stock.lot'].search([('barcode', '=ilike', self.barcode_input)],limit=1)
             if stock_lot_obj:
-                lotmprobj = self.env['dtsc.lotmpr'].search([('name', 'ilike', self.barcode_input)],limit=1)
+                lotmprobj = self.env['dtsc.lotmpr'].search([('name', '=ilike', self.barcode_input)],limit=1)
                 formid = 0
                 if lotmprobj:
                     formid = lotmprobj.id
@@ -93,7 +96,7 @@ class LotMpr(models.Model):
         ("succ","扣料完成"),   
     ],default='draft' ,string="狀態")
     product_lot = fields.Many2one("stock.lot" , "產品序號")
-    lot_stock_num = fields.Char(string = "庫存" ,compute='_compute_lot_stock_num') 
+    lot_stock_num = fields.Char(string = "庫存" ,compute='_compute_lot_stock_num',store=True) 
     final_stock_num = fields.Char(string = "消耗率") 
     uom_id = fields.Many2one(string = "單位" ,related='product_lot.product_uom_id') 
     total_size = fields.Float("基礎總才數",compute='_compute_lot_stock_num')
@@ -351,6 +354,10 @@ class LotMpr(models.Model):
         if other_uom:
             uomid = other_uom.id
         
+        # _logger.info("======")
+        # _logger.info(self.id)
+        # _logger.info(self.lot_stock_num)
+        # _logger.info("======")
         if self.lot_stock_num.isdigit():  # 检查是否是数字
             if int(self.lot_stock_num) < 0:
                 raise ValidationError("此料無庫存!")

@@ -13,6 +13,8 @@ import datetime
 from collections import defaultdict
 import qrcode
 from io import BytesIO
+import logging
+_logger = logging.getLogger(__name__)
 class WorkTime(models.Model):
     _name = "dtsc.worktime"
     
@@ -568,14 +570,25 @@ class MakeIn(models.Model):
     def close_qr_button(self):
         pass
     
- 
+    def check_name(self,qr_code):
+        
+        _logger.info(f"----{qr_code[0]}=----====")
+        employee = self.env['dtsc.workqrcode'].sudo().search([('bar_image_code', '=ilike', qr_code[0])], limit=1)
+        if not employee:
+            return {'success': False, 'message': '沒有該員工！','employeename': "無",}
+        return {
+                'success': True, 
+                'message': '有該員工！',
+                'employeename': employee.name,            
+               }
             
-    def process_qr_code(self, qr_code):
+    def process_qr_code(self, qr_code):        
         if not qr_code or len(qr_code) < 3:
             raise ValueError("参数不足")
         else:
             name = qr_code[0]
             button_type = qr_code[1]
+            _logger.info(f"----{name}=----{button_type}====")
             makein_obj = self.env['dtsc.makein'].browse(qr_code[2])
             for record in makein_obj.order_ids:
                 if record.is_select:
@@ -640,7 +653,18 @@ class MakeOut(models.Model):
         
     def close_qr_button(self):
         pass
-     
+        
+    def check_name(self,qr_code):
+        
+        employee = self.env['dtsc.workqrcode'].sudo().search([('bar_image_code', '=ilike', qr_code[0])], limit=1)
+        if not employee:
+            return {'success': False, 'message': '沒有該員工！','employeename': "無",}
+        return {
+                'success': True, 
+                'message': '有該員工！',
+                'employeename': employee.name,            
+               }
+               
     def process_qr_code(self, qr_code):
         if not qr_code or len(qr_code) < 3:
             raise ValueError("参数不足")

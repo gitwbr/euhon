@@ -11,6 +11,8 @@ import math
 from odoo.exceptions import UserError
 from odoo.tools.float_utils import float_compare, float_is_zero
 
+import pytz
+from pytz import timezone
 _logger = logging.getLogger(__name__)
 class StockQuantityHistory(models.TransientModel):
     _name = 'stock.quantity.history'
@@ -360,14 +362,197 @@ class StockQuant(models.Model):
                 'owner_id': self.owner_id.id,
                 'date': move_date,  # 在 stock.move.line 上设置日期
             })]
-        }    
+        }   
         
+    def confirm_btn(self,mpr_id):
+        quant = self.env["stock.quant"].search([('product_id' , "=" , mpr_id.product_id.id),("lot_id" ,"=" , mpr_id.product_lot.id),("location_id" ,"=" ,mpr_id.stock_location_id.id)],limit=1) #這裡出現的負數我用company_id隱藏，未來要修正
+        mpr_id.write({'final_stock_num': str(round(quant.quantity,3))})        
+        picking = self.env['stock.picking'].create({
+            'picking_type_id' : 1,
+            'location_id': mpr_id.stock_location_id.id,  #库存
+            'location_dest_id': 15, #Production 用于生产
+            'origin' : mpr_id.name, 
+        })
+        mpr_id.picking_id = picking.id
+        move = self.env['stock.move'].create({
+            'name' : mpr_id.name,
+            'reference' : "捲料完成", 
+            'product_id': mpr_id.product_id.id,
+            'product_uom_qty' : quant.quantity,
+            'product_uom' : mpr_id.uom_id.id,
+            "picking_id" : picking.id,
+            "quantity_done" : quant.quantity,
+            'origin' : mpr_id.name,
+            'location_id': mpr_id.stock_location_id.id,  #库存
+            'location_dest_id': 15, #Production 用于生产                
+        })
+        mpr_id.stock_move_id = move.id
+        
+        # stock_lot_obj = self.env['stock.lot'].search([('barcode', '=', self.name)],limit=1)
+        move_line = self.env['stock.move.line'].create({
+            'reference' : "捲料完成"+mpr_id.name, 
+            'origin' : mpr_id.name,
+            "move_id": move.id, 
+            "picking_id" : picking.id,
+            'product_id': mpr_id.product_id.id,
+            'qty_done': quant.quantity ,
+            'product_uom_id' : mpr_id.uom_id.id,                
+            'location_id': mpr_id.stock_location_id.id,  #库存
+            'location_dest_id': 15, #Production 用于生产 
+            'lot_name' : mpr_id.product_lot.name,
+            'lot_id': mpr_id.product_lot.id,
+            'state': "draft", 
+        })                
+        mpr_id.stock_move_line_id = [(4, move_line.id)]
+        move_line_objs = self.env['stock.move.line'].search(["|",("lot_id" ,"=" , False ),("lot_name" ,"=" , False ),("product_id" , "=" ,mpr_id.product_id.id ),('picking_id',"=", picking.id)])
+        move_line_objs.unlink()
+        
+        picking.action_confirm()
+        picking.action_assign()
+        picking.button_validate() 
+        mpr_id.write({'state': "succ"})
+        local_tz = pytz.timezone('Asia/Shanghai')  # 替換為你所在的時區
+        
+        today = datetime.now(local_tz).date()
+        mpr_id.succ_date = today
+    
+    def ok_btn(self,mpr_id,quant):
+        count = 0
+        for record in mpr_id.lotmprline_id:
+            if record.state == "succ":
+                continue
+            if record.shengyu == 0:
+                count = count + 1
+        
+        if count > 1:
+            raise ValidationError("扣料超過2個項次多于此料，請檢查，如需用備料請加入備料序號，保留一個多餘項次!")
+    
+    
+        uom_obj = self.env["uom.uom"]
+        
+        #當前庫存
+        
+        uomid = mpr_id.uom_id.id
+        uom_record = uom_obj.browse(mpr_id.uom_id.id)
+        now_category_id = uom_record.category_id.id
+        other_uom = uom_obj.search([( 'category_id' , "=" , now_category_id ) , ("id","!=",uom_record.id)],limit=1)
+        if other_uom:
+            uomid = other_uom.id
+        
+        # _logger.info("======")
+        # _logger.info(self.id)
+        # _logger.info(self.lot_stock_num)
+        # _logger.info("======")
+        if mpr_id.lot_stock_num.isdigit():  # 检查是否是数字
+            if int(mpr_id.lot_stock_num) < 0:
+                raise ValidationError("此料無庫存!")
+        elif mpr_id.lot_stock_num == "無":  # 检查是否为字符串 "無"
+            raise ValidationError("此料無庫存!")
+        
+        now_stock_p = float(mpr_id.lot_stock_num) * other_uom.factor
+        for record in mpr_id.lotmprline_id:
+            if record.state == "succ":
+                continue
+            
+            if record.sjkl == 0:
+                qty_done_cai = record.yujixiaohao
+            else: 
+                qty_done_cai = record.sjkl
+
+
+            # if (now_stock_p - record.yujixiaohao) < 0 :
+            if (now_stock_p - qty_done_cai) < 0 :
+                raise ValidationError("請去捲料扣料表扣料!") 
+            
+
+            # _logger.info("===========================")
+            # _logger.info(record.name)
+            # _logger.info(qty_done_cai)
+            # _logger.info(mpr_id.name)
+            now_stock_p = now_stock_p - qty_done_cai
+            picking = self.env['stock.picking'].create({
+                'picking_type_id' : 1,
+                'location_id': mpr_id.stock_location_id.id,  #库存
+                'location_dest_id': 15, #Production 用于生产
+                'origin' : record.name, 
+            })
+            record.picking_id = picking.id
+            move = self.env['stock.move'].create({
+                'name' : record.name,
+                'reference' : "工單扣料"+record.name, 
+                'product_id': mpr_id.product_id.id,
+                'product_uom_qty' : qty_done_cai,
+                'product_uom' : uomid,
+                "picking_id" : picking.id,
+                "quantity_done" : qty_done_cai,
+                'origin' : record.name,
+                'location_id': mpr_id.stock_location_id.id,  #库存
+                'location_dest_id': 15, #Production 用于生产                
+            })
+            record.stock_move_id = move.id
+            
+            stock_lot_obj = self.env['stock.lot'].search([('barcode', '=', mpr_id.name)],limit=1)
+            # _logger.info(quant.lot_id.name)
+            # _logger.info(quant.lot_id.id)
+            # _logger.info("===========================")
+            move_line = self.env['stock.move.line'].create({
+                'reference' : "工單扣料"+record.name, 
+                'origin' : record.name,
+                "move_id": move.id, 
+                "picking_id" : picking.id,
+                'product_id': mpr_id.product_id.id,
+                'qty_done': qty_done_cai ,
+                'product_uom_id' : uomid,                
+                'location_id': mpr_id.stock_location_id.id,  #库存
+                'location_dest_id': 15, #Production 用于生产 
+                'lot_name' : quant.lot_id.name,
+                'lot_id': quant.lot_id.id,
+                'state': "draft",
+            })                
+            record.stock_move_line_id = [(4, move_line.id)]
+            # move_line_objs = self.env['stock.move.line'].search(["|",("lot_id" ,"=" , False ),("lot_name" ,"=" , False ),("product_id" , "=" ,mpr_id.product_id.id ),('picking_id',"=", picking.id)])
+            # move_line_objs.unlink()
+            
+            picking.action_confirm()
+            picking.action_assign()
+            picking.button_validate() 
+            _logger.info("====---------------======")
+            record.state = "succ" 
+            record.sjkl = qty_done_cai 
+    
     def action_apply_inventory(self):
         products_tracked_without_lot = []
         all_past_inventory = True
         move_vals = []
         past_date = ""
+        
         for quant in self:
+            if not self.env.context.get('default_is_set_date') is True: 
+                if quant.lot_id and quant.inventory_quantity == 0 and quant.inventory_diff_quantity != 0:
+                    obj = self.env['dtsc.lotmpr']
+                    is_has_mpr = obj.search([('product_lot',"=",quant.lot_id.id)],limit=1)
+                    if not is_has_mpr:
+                        mpr_id = obj.create({
+                           'name' : quant.lot_id.name, 
+                           'product_id' : quant.lot_id.product_id.id,
+                           'product_lot' : quant.lot_id.id,
+                           'lot_stock_num' : str(quant.quantity),
+                        })
+                        _logger.info(f"================{mpr_id.id}")
+                        self.env['dtsc.lotmprline'].create({
+                           'name' : "邊料損耗", 
+                           'yujixiaohao' : 25,
+                           'sjkl' : 25,
+                           "lotmpr_id" : mpr_id.id,
+                        })
+                        self.ok_btn(mpr_id,quant)
+                        self.confirm_btn(mpr_id)
+                    else:
+                        self.ok_btn(is_has_mpr,quant)
+                        self.confirm_btn(is_has_mpr)
+                    continue
+            
+            
             if self.env.context.get('default_is_set_date') is True:  
                 # quant.stock_date = fields.Date.today()
                 

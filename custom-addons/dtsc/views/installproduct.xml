@@ -22,7 +22,7 @@
 		<field name="name">dtsc.installproduct.tree</field>
 		<field name="model">dtsc.installproduct</field>
 		<field name="arch" type="xml">
-			<tree create="false"  decoration-danger="install_state == 'cancel'" decoration-warning="sjsf &gt; 0 and not is_invoice" decoration-info="is_invoice == True">
+			<tree js_class="InstallProductClass" create="false"  decoration-danger="install_state == 'cancel'" decoration-warning="sjsf &gt; 0 and not is_invoice" decoration-info="is_invoice == True">
                 <field name="name" readonly="1"/>
                 <field name="custom_init_name" readonly="1"/>
                 <field name="project_name" readonly="1"/>
@@ -86,6 +86,7 @@
 							<field name="is_out_date" />
 							<field name="out_date" attrs="{'invisible':[('is_out_date','=',False)]}"/>
 							<field name="out_date_end" attrs="{'invisible':[('is_out_date','=',False)]}"/>
+							<field name="car_num"/>
 						</group>	
 						<group colspan="6">
 								<field name="google_comment"/>

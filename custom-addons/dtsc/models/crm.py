@@ -8,6 +8,16 @@ import xlsxwriter
 _logger = logging.getLogger(__name__)
 from datetime import datetime, timedelta, date
 from odoo.http import request
+
+class CrmComment(models.Model):
+    _name = 'dtsc.crmcomment'
+    
+    crmlead_id = fields.Many2one("crm.lead")
+    
+    comment_date = fields.Date("日期")
+    comment_data = fields.Text("内容")
+    comment_price = fields.Float("報價")
+
 class CrmLead(models.Model):
     _inherit = 'crm.lead'
     
@@ -24,7 +34,9 @@ class CrmLead(models.Model):
         store=False,
         help="計算與當前商機關聯的大圖訂單數量"
     )
-
+    
+    crm_comment_ids = fields.One2many("dtsc.crmcomment","crmlead_id")
+    
     @api.depends('checkout_id')
     def _compute_checkout_count(self):
         for lead in self:
@@ -56,9 +68,10 @@ class CrmLead(models.Model):
         从CRM进入时，显示与当前商机关联的所有订单状态。
         """
         self.ensure_one()
-        action = self.env.ref('dtsc.action_window').read()[0]
+        action = self.env.ref('dtsc.action_checkout_tree_view').read()[0]
         # 强制显示所有状态，包括 "待确认"
         action['domain'] = [('crm_lead_id', '=', self.id)]
+        # action['view_id'] = self.env.ref('dtsc.view_checkout_tree_crm').id
         return action
 
 
@@ -70,7 +83,6 @@ class CheckoutInherit(models.Model):
         string="關聯商機",
         help="與此訂單關聯的商機"
     )
-
     checkout_order_state = fields.Selection(selection_add=[
         ('waiting_confirmation', '待確認')
     ], ondelete={'waiting_confirmation': 'set default'})
