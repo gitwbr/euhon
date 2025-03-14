@@ -463,7 +463,7 @@ class Checkout(models.Model):
             # record.comment_customer = record.customer_id.comment_customer
             record.comment_factory = record.customer_id.comment
             
-    @api.depends("customer_id")
+    @api.depends("customer_id","customer_id.sell_user")
     def _compute_user_id(self):
         for record in self:
             if record.customer_id and record.customer_id.sell_user:
@@ -620,7 +620,7 @@ class Checkout(models.Model):
     # def onchange_customer_id(self):
         # self.customer_class_id = self.customer_id.customclass_id.id
         
-    @api.depends("customer_id")
+    @api.depends("customer_id","customer_id.customclass_id")
     def _compute_customer_class_id(self):
         print(self.customer_id.customclass_id.id)
         self.customer_class_id = self.customer_id.customclass_id.id
@@ -835,8 +835,8 @@ class Checkout(models.Model):
             vat_mode = record.customer_id.custom_invoice_form
             
             if vat_mode in [ "21" , "22"] or self.is_online == True:
-                tax_ids = [(6, 0, [1])]
-                saleprice += record.record_price 
+                tax = self.env['account.tax'].search([('name', '=', '銷項5%')], limit=1)
+                tax_ids = [(6, 0, [tax.id])]
             else:
                 tax_ids = [] 
                 
@@ -1156,7 +1156,8 @@ class Checkout(models.Model):
         vat_mode = self.customer_id.custom_invoice_form
         
         if vat_mode in [ "21" , "22"] or self.is_online == True:
-            tax_ids = [(6, 0, [1])]
+            tax = self.env['account.tax'].search([('name', '=', '銷項5%')], limit=1)
+            tax_ids = [(6, 0, [tax.id])]
         else:
             tax_ids = []
         
@@ -1874,7 +1875,8 @@ class Checkout(models.Model):
         vat_mode = self.customer_id.custom_invoice_form
             
         if vat_mode in [ "21" , "22"]:
-            tax_ids = [(6, 0, [1])]
+            tax = self.env['account.tax'].search([('name', '=', '銷項5%')], limit=1)
+            tax_ids = [(6, 0, [tax.id])]
         else:
             tax_ids = []
         
@@ -1919,7 +1921,8 @@ class Checkout(models.Model):
             vat_mode = self.customer_id.custom_invoice_form
             
             if vat_mode in [ "21" , "22"]:
-                tax_ids = [(6, 0, [1])]
+                tax = self.env['account.tax'].search([('name', '=', '銷項5%')], limit=1)
+                tax_ids = [(6, 0, [tax.id])]
             else:
                 tax_ids = []   
                 
@@ -1942,14 +1945,21 @@ class Checkout(models.Model):
             self.write({"sale_order_id":sale_order.id})
             
     def in_out_check(self):
+        _logger.info("=======")
         self.write({"checkout_order_state":"producing"})
         
+        _logger.info("=======")
         #簡易流程
         is_open_full_checkoutorder = self.env['ir.config_parameter'].sudo().get_param('dtsc.is_open_full_checkoutorder')
+        _logger.info("111")
         self.install_check()
+        _logger.info("222")
         self.out_check()
+        _logger.info("333")
         if is_open_full_checkoutorder:
             self.in_check()
+            
+        _logger.info("444")
         self.create_sale_order()
         
         #订单确认给客户发送查询邮件
@@ -1993,9 +2003,9 @@ class Checkout(models.Model):
                 new_record_values['checkout_product_id'] = self.id  # 确保关联正确
                 new_record_values['product_atts'] = None  # 确保关联正确
                 new_record_values['is_copy_last'] = 1  # 是否是复制最后一条
-                print(new_record_values["product_id"])
+                product_atts_ids = last_record.product_atts.ids
                 # pprint(new_record_values)
-                print(self.customer_class_id.id)
+                # print(self.customer_class_id.id)
                 quotation = self.env["dtsc.quotation"].search([("product_id","=" ,new_record_values["product_id"]),("customer_class_id","=" ,self.customer_class_id.id)],limit=1)  # 确保关联正确
 
                 # 打印调试信息
@@ -2004,7 +2014,8 @@ class Checkout(models.Model):
 
                 # 创建新的子记录
                 new_record =  self.product_ids.create(new_record_values)
-                new_record.write({'units_price': quotation.base_price if quotation else 0})
+                new_record.write({'product_atts': [(6, 0, product_atts_ids)],
+                              'units_price': quotation.base_price if quotation else 0})
             except Exception as e:
                 _logger.error(f"Error copying last record: {str(e)}")
                 raise
@@ -2020,6 +2031,7 @@ class Checkout(models.Model):
     #checkout create    
     @api.model
     def create(self,vals):
+        
         if 'kaidan'not in vals or not vals['kaidan']:
             vals['kaidan'] = self.env['dtsc.userlistbefore'].search([('name','=',"無")]).id
             
@@ -2040,7 +2052,7 @@ class Checkout(models.Model):
             next_month_str = next_date.strftime('%m')  # 月份
         
         
-            records = self.env['dtsc.checkout'].search([('name', 'like', 'A'+next_year_str+next_month_str+'%')], order='id desc', limit=1)
+            records = self.env['dtsc.checkout'].search([('name', 'like', 'A'+next_year_str+next_month_str+'%')], order='name desc', limit=1)
             #print("查找數據庫中最後一條",records.name)
             if records:
                 last_name = records.name
@@ -2390,6 +2402,8 @@ class CheckOutLine(models.Model):
     @api.model
     def create(self, vals):
         
+        a = self.env['ir.config_parameter'].sudo().get_param("dtsc.is_open_crm")
+        _logger.info(f"----{a}----")
         vals.pop('is_selected', None)
         context = dict(self._context, no_invalidate=True)
         # pprint(("Vals:", vals))

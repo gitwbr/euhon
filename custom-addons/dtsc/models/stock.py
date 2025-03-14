@@ -462,7 +462,7 @@ class StockQuant(models.Model):
 
             # if (now_stock_p - record.yujixiaohao) < 0 :
             if (now_stock_p - qty_done_cai) < 0 :
-                raise ValidationError("請去捲料扣料表扣料!") 
+                raise ValidationError("捲料:%s存在未能扣除的項次,請去捲料扣料表扣料!" % (quant.lot_id.barcode))  
             
 
             # _logger.info("===========================")

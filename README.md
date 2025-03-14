@@ -199,10 +199,12 @@ du -sh client*/db/*.gz
 #### 2024-02-03 依赖安装
 1. 安装图片处理相关依赖：
 ```bash
-docker-compose exec -u root web5 pip3 install --no-cache-dir --force-reinstall pymupdf
+docker-compose exec -u root web6 pip3 install --no-cache-dir --force-reinstall pymupdf
 # 查看状态
-   docker-compose exec web5 python3 -c "import fitz; print('PyMuPDF installed successfully')"
-docker-compose exec -u root web5 pip3 install --no-cache-dir svglib>=1.5.1 PyMuPDF>=1.23.7 Pillow>=10.0.0
+   docker-compose exec web6 python3 -c "import fitz; print('PyMuPDF installed successfully')"
+docker-compose exec -u root web6 pip3 install --no-cache-dir svglib>=1.5.1 PyMuPDF>=1.23.7 Pillow>=10.0.0
+
+docker-compose exec -u root web6 pip3 install --no-cache-dir --force-reinstall haversine
 ```
 
 2. 重启容器使依赖生效：
@@ -297,7 +299,7 @@ odoo16/
 ```
 
 8 手动更新
-docker-compose restart web1 && sleep 10 && docker-compose exec web1 odoo -d odoo1 -u dtsc --stop-after-init
+docker-compose restart web1 && sleep 10 && docker-compose exec web1 odoo -d odoo1 -u dtsc --stop-after-init  --no-http
 
 ## 服务配置
 

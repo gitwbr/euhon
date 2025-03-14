@@ -330,7 +330,9 @@ class PurchaseOrderLine(models.Model):
     def _compute_taxes_id(self):
         for record in self:
             if record.order_id.supp_invoice_form in [ "21" , "22"]:
-                record.taxes_id = [(6, 0, [3])] 
+                tax = self.env['account.tax'].search([('name', '=', '進項5%')], limit=1)
+                # tax_ids = [(6, 0, [tax.id])]
+                record.taxes_id = [(6, 0, [tax.id])]
             else:
                 record.taxes_id = []    
     
@@ -631,8 +633,10 @@ class DtscConfigSettings(models.TransientModel):
     ftp_target_folder = fields.Char("FTP目標文件夾")
     ftp_local_path = fields.Char("FTP本地路徑")
     open_page_with_scanqrcode = fields.Boolean("二維碼/掃碼槍",default=False)
-    is_open_makein_qrcode = fields.Boolean("是否開啓工單掃碼流程")
+    is_open_makein_qrcode = fields.Boolean("是否開啓工單掃碼流程",default=True)
     is_open_full_checkoutorder = fields.Boolean("是否打開高階訂單流程",default=False)
+    is_open_crm = fields.Boolean("是否打開CRM",default=False)
+    is_open_linebot = fields.Boolean("是否打開LINEBot",default=False)
     
     # ftp_server = self.env['ir.config_parameter'].sudo().get_param('dtsc.ftp_server')
     # ftp_user = self.env['ir.config_parameter'].sudo().get_param('dtsc.ftp_user')
@@ -659,8 +663,10 @@ class DtscConfigSettings(models.TransientModel):
         get_param = self.env['ir.config_parameter'].sudo().get_param
         res.update(
             invoice_due_date=get_param('dtsc.invoice_due_date', default='25'),
-            is_open_makein_qrcode=get_param('dtsc.is_open_makein_qrcode',default=False),
+            is_open_makein_qrcode=get_param('dtsc.is_open_makein_qrcode',default=True),
             is_open_full_checkoutorder=get_param('dtsc.is_open_full_checkoutorder',default=False),
+            is_open_crm=get_param('dtsc.is_open_crm',default=False),
+            is_open_linebot=get_param('dtsc.is_open_linebot',default=False),
             ftp_server=get_param('dtsc.ftp_server', default=''),
             ftp_user=get_param('dtsc.ftp_user', default=''),
             ftp_password=get_param('dtsc.ftp_password', default=''),
@@ -675,6 +681,8 @@ class DtscConfigSettings(models.TransientModel):
         set_param('dtsc.invoice_due_date', self.invoice_due_date)
         set_param('dtsc.is_open_makein_qrcode', self.is_open_makein_qrcode)
         set_param('dtsc.is_open_full_checkoutorder', self.is_open_full_checkoutorder)
+        set_param('dtsc.is_open_linebot', self.is_open_linebot)
+        set_param('dtsc.is_open_crm', self.is_open_crm)
         set_param('dtsc.ftp_server', self.ftp_server)
         set_param('dtsc.ftp_user', self.ftp_user)
         set_param('dtsc.ftp_password', self.ftp_password)
@@ -698,6 +706,9 @@ class IrUiMenu(models.Model):
         menus = super(IrUiMenu, self).load_menus(debug)
         # 添加自定义的可见性处理
         self._get_visibility_on_config_parameter('dtsc.makein', 'dtsc.is_open_full_checkoutorder')
+        self._get_visibility_on_config_parameter('crm.crm_menu_root', 'dtsc.is_open_crm')
+        self._get_visibility_on_config_parameter('linebot', 'dtsc.is_open_linebot')
+        self._get_visibility_on_config_parameter('menu_daka', 'dtsc.is_open_linebot')
         # print("Custom logic applied")
         return menus
 

@@ -60,8 +60,9 @@ function create_client() {
     # 添加服务到 docker-compose.yml
     local CONFIG="  # Client${CLIENT_NUM} 服務\n"
     CONFIG+="  web${CLIENT_NUM}:\n"
-    CONFIG+="    build: .\n"
-    CONFIG+="    image: custom-odoo:16.0\n"
+    #CONFIG+="    build: .\n"
+    #CONFIG+="    image: custom-odoo:16.0\n"
+    CONFIG+="    image: custom-odoo-web_default:latest\n"
     CONFIG+="    depends_on:\n"
     CONFIG+="      - db${CLIENT_NUM}\n"
     CONFIG+="    volumes:\n"
