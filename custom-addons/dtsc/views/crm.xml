@@ -38,6 +38,18 @@
 						</tree>
 					</field>
 				</xpath>
+				
+				<!-- <xpath expr="//page[@name='internal_notes']" position="after"> -->
+					<!-- <page name="crm_user_comment" string="打印備註" > -->
+						<!-- <field name="crm_usercomment"  domain="[('create_id', '=', uid)]" > -->
+							<!-- <tree editable="bottom"> -->
+								<!-- <field name="sequence" />										 -->
+								<!-- <field name="comment" />					 -->
+								<!-- <field name="create_id" invisible="1"/>					 -->
+							<!-- </tree> -->
+						<!-- </field> -->
+					<!-- </page> -->
+				<!-- </xpath> -->
             </field>
         </record>
 		
@@ -66,11 +78,20 @@
 					</group>
 				</xpath>
 				
+				<xpath expr="//field[@name='user_id']" position="after">
+					<field name="crm_date" attrs="{'invisible': [('checkout_order_state', '!=', 'waiting_confirmation')]}"/>
+				</xpath>
 				<xpath expr="//field[@name='customer_id']" position="before">					
 					<field name="new_partner" attrs="{'invisible': [('is_new_partner', '!=', True)]}"/>
 					<field name="new_street" attrs="{'invisible': [('is_new_partner', '!=', True)]}"/>
 					<field name="new_vat" attrs="{'invisible': [('is_new_partner', '!=', True)]}"/>
 					<field name="new_phone" attrs="{'invisible': [('is_new_partner', '!=', True)]}"/>
+					<field name="new_mobile" attrs="{'invisible': [('is_new_partner', '!=', True)]}"/>
+					<field name="new_custom_contact_person" attrs="{'invisible': [('is_new_partner', '!=', True)]}"/>
+					<field name="new_custom_fax" attrs="{'invisible': [('is_new_partner', '!=', True)]}"/>
+					<field name="new_property_payment_term_id" attrs="{'invisible': [('is_new_partner', '!=', True)]}"/>
+					<field name="new_custom_pay_mode" attrs="{'invisible': [('is_new_partner', '!=', True)]}"/>
+					<field name="new_email" attrs="{'invisible': [('is_new_partner', '!=', True)]}"/>
 				</xpath>
 				
 
@@ -153,7 +174,28 @@
 			</field>
 		</record>
 
+		<record id="dtsc.action_crmusercomment" model="ir.actions.act_window">
+			<field name="name">打印備註</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">dtsc.crmusercomment</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[('create_id', '=', uid)]</field>		 
+		</record>
 		
+		<record id="view_crmusercomment_tree" model="ir.ui.view">
+			<field name="name">dtsc.crmusercomment.tree</field>
+			<field name="model">dtsc.crmusercomment</field>
+			<field name="arch" type="xml">
+				<tree editable="bottom" default_order="sequence">				
+					<field name="sequence" width="20px"/>
+					<field name="comment"/>
 
+				</tree>
+			</field>	
+		</record>
+		<menuitem id="crm_user_comment_menu" name="打印備註" parent="crm.crm_menu_root" sequence="100" action="dtsc.action_crmusercomment"/>
+		<record id="crm.crm_lead_action_pipeline" model="ir.actions.act_window">
+			<field name="domain">[('type', '=', 'opportunity'), ('user_id', '=', uid)]</field>
+		</record>
     </data>
 </odoo>

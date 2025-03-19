@@ -80,7 +80,7 @@ class ResPartner(models.Model):
         ('post', '快遞'),
         ('self', '客戶自取'),
         ('diy', '自行施工'),
-        ('other', '其他選項'),
+        # ('other', '其他選項'),
     ], string='交件方式')    
     custom_invoice_form = fields.Selection([
         ('21', '三聯式'),
@@ -94,7 +94,7 @@ class ResPartner(models.Model):
         ('2', '匯款'),
         ('3', '業務收款'),
         ('4', '其他'),
-        ('5', '其他選項'),
+        # ('5', '其他選項'),
     ], string='付款方式' ,default="1") 
     
     nop = fields.Boolean(string="下單界面中不呈現估價",default=False) 

@@ -79,3 +79,4 @@ access_dtsc_linebot,dtsc.linebot,model_dtsc_linebot,dtsc.group_dtsc_bs,1,1,1,1
 access_dtsc_attendance,dtsc.attendance,model_dtsc_attendance,dtsc.group_dtsc_bs,1,1,1,1
 access_dtsc_crmcomment,dtsc.crmcomment,model_dtsc_crmcomment,dtsc.group_dtsc_bs,1,1,1,1
 access_dtsc_reportmounthinstall,dtsc.reportmounthinstall,model_dtsc_reportmounthinstall,dtsc.group_dtsc_bs,1,1,1,1
+access_dtsc_crmusercomment,dtsc.crmusercomment,model_dtsc_crmusercomment,dtsc.group_dtsc_bs,1,1,1,1

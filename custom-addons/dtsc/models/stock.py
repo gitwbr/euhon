@@ -1124,7 +1124,12 @@ class ReportStockQuant(models.AbstractModel):
         end_date = data.get('endtime')
         select_method = data.get('select_method')
         internal_locations = self.env['stock.location'].search([('usage', '=', 'internal')])
-        quants = self.env['stock.quant'].search([('location_id', 'in', internal_locations.ids),("quantity",">",0)])
+        is_print_zero = data.get('is_print_zero')
+        if not is_print_zero:
+            quants = self.env['stock.quant'].search([('location_id', 'in', internal_locations.ids),("quantity",">",0)])
+        else:
+            quants = self.env['stock.quant'].search([('location_id', 'in', internal_locations.ids),("quantity",">=",0)])
+            
         product_quant_map = {}
         
         # key = 0
@@ -1504,7 +1509,11 @@ class ReportStockQuantAmount(models.AbstractModel):
         end_date = data.get('endtime')
         select_method = data.get('select_method')
         internal_locations = self.env['stock.location'].search([('usage', '=', 'internal')])
-        quants = self.env['stock.quant'].search([('location_id', 'in', internal_locations.ids),("quantity",">",0)])
+        is_print_zero = data.get('is_print_zero')
+        if not is_print_zero:
+            quants = self.env['stock.quant'].search([('location_id', 'in', internal_locations.ids),("quantity",">",0)])
+        else:
+            quants = self.env['stock.quant'].search([('location_id', 'in', internal_locations.ids),("quantity",">=",0)])
         product_quant_map = {}
         
         # key = 0
@@ -2072,8 +2081,12 @@ class ReportStockQuantBase(models.AbstractModel):
         # 获取所有特定位置的stock.quant
         end_date = data.get('endtime')
         select_method = data.get('select_method')
-        internal_locations = self.env['stock.location'].search([('usage', '=', 'internal')])
-        quants = self.env['stock.quant'].search([('location_id', 'in', internal_locations.ids),("quantity",">",0)])
+        internal_locations = self.env['stock.location'].search([('usage', '=', 'internal')])        
+        is_print_zero = data.get('is_print_zero')
+        if not is_print_zero:
+            quants = self.env['stock.quant'].search([('location_id', 'in', internal_locations.ids),("quantity",">",0)])
+        else:
+            quants = self.env['stock.quant'].search([('location_id', 'in', internal_locations.ids),("quantity",">=",0)])
         product_quant_map = {}
         
         # key = 0
@@ -2347,7 +2360,7 @@ class Stockreportwizard(models.TransientModel):
 
     # 向导字段定义
     endtime = fields.Date('截止時間')
-    
+    is_print_zero = fields.Boolean('包含0庫存')
     select_method = fields.Selection([
         ("1","庫存表"),
         ("2","庫存表(金額)"),
@@ -2361,6 +2374,7 @@ class Stockreportwizard(models.TransientModel):
         docids=[]
         data = {
             'endtime': self.endtime,
+            'is_print_zero': self.is_print_zero,
             'select_method': self.select_method,
             'docids':docids,
         }

@@ -201,7 +201,7 @@ du -sh client*/db/*.gz
 ```bash
 docker-compose exec -u root web6 pip3 install --no-cache-dir --force-reinstall pymupdf
 # 查看状态
-   docker-compose exec web6 python3 -c "import fitz; print('PyMuPDF installed successfully')"
+   docker-compose exec web3 python3 -c "import fitz; print('PyMuPDF installed successfully')"
 docker-compose exec -u root web6 pip3 install --no-cache-dir svglib>=1.5.1 PyMuPDF>=1.23.7 Pillow>=10.0.0
 
 docker-compose exec -u root web6 pip3 install --no-cache-dir --force-reinstall haversine

@@ -1945,21 +1945,21 @@ class Checkout(models.Model):
             self.write({"sale_order_id":sale_order.id})
             
     def in_out_check(self):
-        _logger.info("=======")
+        _logger.info("===111====")
         self.write({"checkout_order_state":"producing"})
         
-        _logger.info("=======")
+        # _logger.info("=======")
         #簡易流程
         is_open_full_checkoutorder = self.env['ir.config_parameter'].sudo().get_param('dtsc.is_open_full_checkoutorder')
-        _logger.info("111")
+        # _logger.info("111")
         self.install_check()
-        _logger.info("222")
+        # _logger.info("222")
         self.out_check()
-        _logger.info("333")
+        # _logger.info("333")
         if is_open_full_checkoutorder:
             self.in_check()
             
-        _logger.info("444")
+        # _logger.info("444")
         self.create_sale_order()
         
         #订单确认给客户发送查询邮件

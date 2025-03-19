@@ -62,7 +62,19 @@ class MakeIn(models.Model):
     create_id = fields.Many2one('res.users',string="")
     kaidan = fields.Many2one('dtsc.userlistbefore',string="開單人員") 
     no_mprlist = fields.Boolean(default=False)
-    
+    scan_type = fields.Selection([
+        ('gun', '掃碼槍'),
+        ('camera', '攝像頭')
+    ], string='簽名方式',default='gun')
+    scan_mode = fields.Selection([
+        ('lb', '冷裱'),
+        ('gb', '過板'),
+        ('cq', '裁切'),
+        ('pg', '品管'),
+        ('dch', '待出貨'),
+        ('ych', '已出貨'),
+    ], string='簽名類型',default='lb')
+    scan_input = fields.Char("掃碼輸入員工")
     date_labels = fields.Many2many(
         'dtsc.datelabel', 
         'dtsc_makein_datelabel_rel', 
@@ -83,7 +95,57 @@ class MakeIn(models.Model):
         compute="_compute_is_open_makein_qrcode",
         store=False
     )
-
+    @api.onchange('scan_input')
+    def _onchange_scan_input(self):
+        if self.scan_input:
+            employee = self.env['dtsc.workqrcode'].sudo().search([('bar_image_code', '=ilike', self.scan_input)], limit=1)
+            if not employee:
+                self.scan_input = ""
+                raise UserError("未找到該員工，請確認QRcode正確！")
+            else:
+                self.scan_input = employee.name
+                
+    def button_confirm_action(self):
+        if not self.scan_input:
+            raise UserError("請錄入員工QRcode！")    
+        
+        select_flag = 0
+        for record in self.order_ids:
+            if record.is_select:
+                select_flag = 1
+                if self.scan_mode == 'lb':
+                    field_name = "lengbiao_sign"
+                elif self.scan_mode == 'gb':
+                    field_name = "guoban_sign"
+                elif self.scan_mode == 'cq':
+                    field_name = "caiqie_sign"
+                elif self.scan_mode == 'pg':
+                    field_name = "pinguan_sign"
+                elif self.scan_mode == 'dch':
+                    field_name = "daichuhuo_sign"
+                elif self.scan_mode == 'ych':
+                    field_name = "yichuhuo_sign"
+                
+                if field_name:
+                    current_value = record[field_name] or ""
+                    if current_value:
+                        new_value = f"{current_value},{self.scan_input}"
+                    else:
+                        new_value = self.scan_input
+                    record.write({field_name: new_value})
+                    if record.checkout_line_id:
+                        checkout_current_value = record.checkout_line_id[field_name] or ""
+                        if checkout_current_value:
+                            checkout_new_value = f"{checkout_current_value},{self.scan_input}"
+                        else:
+                            checkout_new_value = self.scan_input
+                        record.checkout_line_id.write({field_name: checkout_new_value})
+        if select_flag == 0:
+            raise UserError("請選擇要簽名的項次！") 
+            
+        for record in self.order_ids:
+            record.is_select = False
+        self.write({"scan_input": ""})
     # @api.depends_context
     # def _compute_is_open_makein_qrcode(self):
         # 从配置参数中获取值

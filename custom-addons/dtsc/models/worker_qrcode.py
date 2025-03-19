@@ -880,11 +880,23 @@ class UserList(models.Model):
         
 class vatLogin(models.Model):
     _name = "dtsc.vatlogin"
+    _order = "custom_id"
     
     vat = fields.Char("帳號")
     vat_password = fields.Char("密碼")
     partner_id = fields.Many2one("res.partner")
     coin_can_cust = fields.Boolean(related="partner_id.coin_can_cust")
+    custom_id = fields.Char(related="partner_id.custom_id" ,store=True)
+    search_line = fields.Char(compute= "_compute_search_line",store = True)
+    
+    @api.depends("partner_id","vat","vat_password")
+    def _compute_search_line(self):
+        for record in self:
+            result = ', '.join([
+                record.vat or '',record.vat_password or '',record.partner_id.name or '', record.partner_id.custom_id or '',
+            ])
+                        
+            record.search_line = result    
     
     _sql_constraints = [
         ('unique_vat', 'unique(vat)', 'VAT must be unique!')
@@ -944,24 +956,27 @@ class ResPartner(models.Model):
         vatlogin_obj = self.env['dtsc.vatlogin'].sudo()
         # 查找是否已有对应的 vatlogin
         existing_vatlogin = vatlogin_obj.search([('partner_id', '=', partner.id)], limit=1)
-
-        if partner.vat:  # 如果 VAT 有值
-            if existing_vatlogin:
-                # 更新现有的 vatlogin 记录
-                existing_vatlogin.write({
-                    'vat': partner.vat,
-                    'vat_password': existing_vatlogin.vat_password or partner.vat,
-                })
-            else:
-                # 创建新的 vatlogin 记录
-                vatlogin_obj.create({
-                    'vat': partner.vat,
-                    'vat_password': partner.vat,  # 默认密码设为 VAT
-                    'partner_id': partner.id,
-                })
-        elif existing_vatlogin:
-            # 如果 VAT 被清空，删除对应的 vatlogin
-            existing_vatlogin.unlink()
+        
+        if partner.customer_rank > 0:
+            if partner.vat:  # 如果 VAT 有值
+                if existing_vatlogin:
+                    # 更新现有的 vatlogin 记录
+                    existing_vatlogin.write({
+                        'vat': partner.vat,
+                        'vat_password': existing_vatlogin.vat_password or partner.vat,
+                    })
+                else:
+                    # 创建新的 vatlogin 记录
+                    vatlogin_obj.create({
+                        'vat': partner.vat,
+                        'vat_password': partner.vat,  # 默认密码设为 VAT
+                        'partner_id': partner.id,
+                    })
+            elif existing_vatlogin:
+                # 如果 VAT 被清空，删除对应的 vatlogin
+                existing_vatlogin.unlink()
+        else:
+            pass
 
     def _delete_vatlogin(self, partner):
         """Delete vatlogin record when partner is deleted"""
