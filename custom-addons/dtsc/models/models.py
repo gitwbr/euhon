@@ -15,6 +15,9 @@ from odoo.tools.float_utils import float_compare, float_is_zero, float_round
 from odoo import models, fields, api, tools, _
 from odoo.exceptions import AccessDenied
 import socket
+import requests
+import json
+import hashlib
 
 import base64
 from collections import defaultdict
@@ -23,6 +26,7 @@ from odoo.exceptions import ValidationError
 from odoo.http import request
 from odoo.modules import get_module_resource
 from odoo.osv import expression
+from odoo.tools import config
 class UoMCategory(models.Model):
     _inherit = "uom.category"
     
@@ -345,6 +349,8 @@ class PurchaseOrder(models.Model):
         ('4', '已轉應付'),
         ('5', '作廢'),
     ], string='狀態', default='1')
+    partner_id = fields.Many2one('res.partner', string='Vendor', required=False, change_default=True, tracking=True, domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]", help="You can find a vendor by its Name, TIN, Email or Internal Reference.")
+    
     partner_display_name = fields.Char(string='Partner Display Name', compute='_compute_partner_display_name' ,store=True)
     custom_id = fields.Char(related = "partner_id.custom_id",string="供應商編號")
     invoice_origin = fields.Many2one("account.move")
@@ -360,13 +366,311 @@ class PurchaseOrder(models.Model):
     # supp_invoice_form = fields.Selection(related="partner_id.supp_invoice_form" , string="稅別") 
     no_vat_price = fields.Monetary("不含稅總價",store=True,compute="_compute_no_vat_price")
     
+    is_sign = fields.Selection([
+        ('yes', '已簽核'),
+        ('no', '未簽核'),
+        ('default','不顯示'),
+    ], default='default',string='簽核')  
     
+    def action_view_picking(self):
+        if self.is_sign == "no":
+            raise UserError("此單還未簽核，不能進行此操作！")    
+        return self._get_action_view_picking(self.picking_ids)
+    
+    def button_draft(self):
+        self.write({'state': 'draft'})
+        self.write({'my_state': '1'})
+        self.write({'is_sign': 'default'})
+        return {}
+    
+    def chunk_bubbles(self,bubbles, size=10):
+        for i in range(0, len(bubbles), size):
+            yield bubbles[i:i + size]
+
+    def button_confirm_dtsc(self):
+        access_token = ''
+        lineObj = self.env["dtsc.linebot"].sudo().search([], limit=1)
+        if lineObj and lineObj.line_access_token:
+            access_token = lineObj.line_access_token
+            user_line_ids = self.env["dtsc.workqrcode"].search([("is_zg", "=", True)])
+            for record in user_line_ids:
+                headers = {
+                    "Content-Type": "application/json",
+                    "Authorization": f"Bearer {access_token}"
+                }
+
+                # 👉 Header bubble (採購單提醒)
+                header_bubble = {
+                    "type": "bubble",
+                    "size": "kilo",
+                    "body": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "採購單待確認",
+                                "weight": "bold",
+                                "size": "xl",
+                                "align": "center",
+                                "gravity": "center"
+                            },
+                            {
+                                "type": "box",
+                                "layout": "vertical",
+                                "margin": "lg",
+                                "spacing": "sm",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": f"單號：{self.name}"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": f"客戶名稱：{self.partner_id.name or '待確認'}"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "請儘快確認！"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+
+                # 👉 產生產品 bubble（附上序號）
+                product_bubbles = []
+                for idx, line in enumerate(self.order_line, start=1):
+                    bubble = {
+                        "type": "bubble",
+                        "size": "kilo",
+                        "body": {
+                            "type": "box",
+                            "layout": "vertical",
+                            "spacing": "sm",
+                            "contents": [
+                                {
+                                    "type": "text",
+                                    "text": f"{idx}.：{line.product_id.name}",
+                                    "weight": "bold",
+                                    "size": "md"
+                                },
+                                {
+                                    "type": "text",
+                                    "text": f"數量：{line.product_qty}",
+                                    "size": "sm"
+                                },
+                                {
+                                    "type": "text",
+                                    "text": f"單位：{line.product_uom.name}",
+                                    "size": "sm"
+                                },
+                                {
+                                    "type": "text",
+                                    "text": f"單價：{line.price_unit}",
+                                    "size": "sm"
+                                },
+                                {
+                                    "type": "text",
+                                    "text": f"小計：{line.price_subtotal}",
+                                    "size": "sm"
+                                }
+                            ]
+                        }
+                    }
+                    product_bubbles.append(bubble)
+
+                # 👉 分批發送，每一批都含 header
+                for batch_idx, chunk in enumerate(self.chunk_bubbles(product_bubbles, 9)):  # 9 + 1 = 10
+                    # bubbles_to_send = [header_bubble] + chunk
+                    if batch_idx == 0:
+                        bubbles_to_send = [header_bubble] + chunk
+                    else:
+                        bubbles_to_send = chunk
+                    flex_message = {
+                        "to": record.line_user_id,
+                        "messages": [
+                            {
+                                "type": "flex",
+                                "altText": f"新單據通知 - 第 {batch_idx+1} 批",
+                                "contents": {
+                                    "type": "carousel",
+                                    "contents": bubbles_to_send
+                                }
+                            }
+                        ]
+                    }
+
+                    _logger.info(f"發送給 {record.name or record.line_user_id}：第 {batch_idx+1} 批")
+                    response = requests.post(
+                        "https://api.line.me/v2/bot/message/push",
+                        headers=headers,
+                        data=json.dumps(flex_message, ensure_ascii=False).encode('utf-8')
+                    )
+
+                    if response.status_code != 200:
+                        _logger.error("❌ LINE 發送失敗: %s", response.text)
+                    else:
+                        _logger.info("✅ LINE 發送成功 - 第 %d 批", batch_idx+1)
+    
+    def push_line_sign(self):
+        access_token = ''
+        lineObj = self.env["dtsc.linebot"].sudo().search([], limit=1)
+        if lineObj and lineObj.line_access_token:
+            access_token = lineObj.line_access_token
+            user_line_ids = self.env["dtsc.workqrcode"].search([("is_qh", "=", True)])
+            for record in user_line_ids:
+                headers = {
+                    "Content-Type": "application/json",
+                    "Authorization": f"Bearer {access_token}"
+                }
+                domain = request.httprequest.host
+                
+                # 👉 Header bubble (採購單提醒)
+                header_bubble = {
+                    "type": "bubble",
+                    "size": "kilo",
+                    "body": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "採購單待確認",
+                                "weight": "bold",
+                                "size": "xl",
+                                "align": "center",
+                                "gravity": "center"
+                            },
+                            {
+                                "type": "box",
+                                "layout": "vertical",
+                                "margin": "lg",
+                                "spacing": "sm",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": f"單號：{self.name}"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": f"客戶名稱：{self.partner_id.name or '待確認'}"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "請儘快確認！"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+                header_bubble["footer"] = {
+                    "type": "box",
+                    "layout": "vertical",
+                    "spacing": "sm",
+                    "contents": [
+                        {
+                            "type": "button",
+                            "style": "primary",
+                            "color": "#00B900",
+                            "action": {
+                                "type": "postback",
+                                "label": "簽核此單",
+                                "data": f"action=sign&order_id={self.id}"
+                            }
+                        }
+                    ]
+                }
+                # 👉 產生產品 bubble（附上序號）
+                product_bubbles = []
+                for idx, line in enumerate(self.order_line, start=1):
+                    bubble = {
+                        "type": "bubble",
+                        "size": "kilo",
+                        "body": {
+                            "type": "box",
+                            "layout": "vertical",
+                            "spacing": "sm",
+                            "contents": [
+                                {
+                                    "type": "text",
+                                    "text": f"{idx}.：{line.product_id.name}",
+                                    "weight": "bold",
+                                    "size": "md"
+                                },
+                                {
+                                    "type": "text",
+                                    "text": f"數量：{line.product_qty}",
+                                    "size": "sm"
+                                },
+                                {
+                                    "type": "text",
+                                    "text": f"單位：{line.product_uom.name}",
+                                    "size": "sm"
+                                },
+                                {
+                                    "type": "text",
+                                    "text": f"單價：{line.price_unit}",
+                                    "size": "sm"
+                                },
+                                {
+                                    "type": "text",
+                                    "text": f"小計：{line.price_subtotal}",
+                                    "size": "sm"
+                                }
+                            ]
+                        }
+                    }
+                    product_bubbles.append(bubble)
+
+                # 👉 分批發送，每一批都含 header
+                for batch_idx, chunk in enumerate(self.chunk_bubbles(product_bubbles, 9)):  # 9 + 1 = 10
+                    # bubbles_to_send = [header_bubble] + chunk
+                    if batch_idx == 0:
+                        bubbles_to_send = [header_bubble] + chunk
+                    else:
+                        bubbles_to_send = chunk
+                    flex_message = {
+                        "to": record.line_user_id,
+                        "messages": [
+                            {
+                                "type": "flex",
+                                "altText": f"新單據通知 - 第 {batch_idx+1} 批",
+                                "contents": {
+                                    "type": "carousel",
+                                    "contents": bubbles_to_send
+                                }
+                            }
+                        ]
+                    }
+
+                    _logger.info(f"發送給 {record.name or record.line_user_id}：第 {batch_idx+1} 批")
+                    response = requests.post(
+                        "https://api.line.me/v2/bot/message/push",
+                        headers=headers,
+                        data=json.dumps(flex_message, ensure_ascii=False).encode('utf-8')
+                    )
+
+                    if response.status_code != 200:
+                        _logger.error("❌ LINE 發送失敗: %s", response.text)
+                    else:
+                        _logger.info("✅ LINE 發送成功 - 第 %d 批", batch_idx+1)
+      
     def button_confirm(self):
         for order in self:
+            if not order.partner_id:
+                raise UserError("無法確認訂單，請選擇供應商名稱或主管確認供應商！")
+            else:
+                if order.partner_id and order.partner_id.is_sign_mode:
+                    order.is_sign = 'no' #未簽核
+                    self.push_line_sign()
+                    
             if order.state not in ['draft', 'sent']:
                 continue
             order.order_line._validate_analytic_distribution()
-            # order._add_supplier_to_product() #終止采購單價格同步到供應商報價單中
+            order._add_supplier_to_product() #終止采購單價格同步到供應商報價單中
             # Deal with double validation process
             if order._approval_allowed():
                 order.button_approve()
@@ -620,7 +924,64 @@ class AccountMove(models.Model):
         ('3', '匯款'),
         ('4', '其他'),
     ], string='付款方式')
-    comment_infu = fields.Text("備注")
+    comment_infu = fields.Text("備注")    
+    search_line_namee = fields.Char(compute="_compute_search_line_name", store=True)
+    
+    def _get_move_display_name(self, show_ref=False):
+        ''' Helper to get the display name of an invoice depending of its type.
+        :param show_ref:    A flag indicating of the display name must include or not the journal entry reference.
+        :return:            A string representing the invoice.
+        '''
+        self.ensure_one()
+        name = ''
+        # if self.state == 'draft':
+            # name += {
+                # 'out_invoice': _('Draft Invoice'),
+                # 'out_refund': _('Draft Credit Note'),
+                # 'in_invoice': _('Draft Bill'),
+                # 'in_refund': _('Draft Vendor Credit Note'),
+                # 'out_receipt': _('Draft Sales Receipt'),
+                # 'in_receipt': _('Draft Purchase Receipt'),
+                # 'entry': _('Draft Entry'),
+            # }[self.move_type]
+            # name += ' '
+        if not self.name or self.name == '/':
+            name += '(* %s)' % str(self.id)
+        else:
+            name += self.name
+            if self.env.context.get('input_full_display_name'):
+                if self.partner_id:
+                    name += f', {self.partner_id.name}'
+                if self.date:
+                    name += f', {format_date(self.env, self.date)}'
+        return name + (f" ({shorten(self.ref, width=50)})" if show_ref and self.ref else '')
+        
+        
+    @api.depends('invoice_line_ids.product_id','invoice_line_ids.product_id','partner_id','supp_invoice_form','vat_num','comment_infu','pay_mode','custom_invoice_form','name')
+    def _compute_search_line_name(self):
+        for record in self:
+            product_id_names = [line.product_id.name for line in record.invoice_line_ids if line.product_id.name]
+            ys_names = [line.ys_name for line in record.invoice_line_ids if line.ys_name]
+            names = [line.name for line in record.invoice_line_ids if line.name]
+            in_out_ids = [line.in_out_id for line in record.invoice_line_ids if line.in_out_id]
+            size_values = [line.size_value for line in record.invoice_line_ids if line.size_value]
+            comments = [line.comment for line in record.invoice_line_ids if line.comment]
+            
+            combined_product_id_names = ', '.join(product_id_names)
+            combined_ys_names = ', '.join(ys_names)
+            combined_names = ', '.join(names)
+            combined_in_out_ids = ', '.join(in_out_ids)
+            combined_size_values = ', '.join(size_values)
+            combined_comments = ', '.join(comments)
+            
+            result = ', '.join([
+                combined_product_id_names, combined_ys_names, combined_names or '',combined_in_out_ids or '', 
+                combined_size_values, combined_comments, 
+                record.partner_id.name or '',record.supp_invoice_form or '',record.vat_num or '', record.comment_infu or '',record.pay_mode or '',
+                record.custom_invoice_form or '',record.name or '',
+            ])
+            
+            record.search_line_namee = result    
     
 class DtscConfigSettings(models.TransientModel):
     _inherit = 'res.config.settings'
@@ -694,10 +1055,13 @@ class IrUiMenu(models.Model):
 
     @api.model
     def _get_visibility_on_config_parameter(self, menu_xml_id, config_param):
-        param = self.env['ir.config_parameter'].sudo().get_param(config_param)
+        param = config.get(config_param)
         menu = self.env.ref(menu_xml_id, raise_if_not_found=False)
-
-        if menu:
+        _logger.info("=================")
+        _logger.info(menu_xml_id)
+        _logger.info(config.get('is_open_crm'))
+        _logger.info("=================")
+        if menu:            
             menu.active = bool(param)
 
     @api.model
@@ -705,10 +1069,11 @@ class IrUiMenu(models.Model):
     def load_menus(self, debug):
         menus = super(IrUiMenu, self).load_menus(debug)
         # 添加自定义的可见性处理
-        self._get_visibility_on_config_parameter('dtsc.makein', 'dtsc.is_open_full_checkoutorder')
-        self._get_visibility_on_config_parameter('crm.crm_menu_root', 'dtsc.is_open_crm')
-        self._get_visibility_on_config_parameter('linebot', 'dtsc.is_open_linebot')
-        self._get_visibility_on_config_parameter('menu_daka', 'dtsc.is_open_linebot')
+        
+        self._get_visibility_on_config_parameter('dtsc.makein', 'is_open_full_checkoutorder')
+        self._get_visibility_on_config_parameter('crm.crm_menu_root', 'is_open_crm')
+        self._get_visibility_on_config_parameter('linebot', 'is_open_linebot')
+        self._get_visibility_on_config_parameter('menu_daka', 'is_open_linebot')
         # print("Custom logic applied")
         return menus
 

@@ -129,56 +129,21 @@ class UploadController(http.Controller):
                       width, height, unit, width_mm, height_mm)
 
             def check_dimensions(width_actual, height_actual, width_expected, height_expected):
-                """檢查尺寸是否符合要求，考慮誤差容忍度和等比例關係"""
-                # 计算宽高比
-                actual_ratio = width_actual / height_actual
-                expected_ratio = width_expected / height_expected
+                """檢查尺寸是否符合要求"""
+                # 先乘後除計算等比例高度，並四捨五入到小數點後1位
+                height_actual_scaled = round(height_actual * width_expected / width_actual, 1)
+                _logger.info('等比例縮放後的高度: %s', height_actual_scaled)
                 
-                _logger.info('實際尺寸: %.2fx%.2fmm, 預期尺寸: %.2fx%.2fmm', 
-                          width_actual, height_actual, width_expected, height_expected)
-                _logger.info('實際寬高比: %.3f, 預期寬高比: %.3f', actual_ratio, expected_ratio)
-                
-                # 检查宽高比是否接近（允许10%误差）
-                ratio_tolerance = 0.1
-                ratio_diff = abs(actual_ratio - expected_ratio)
-                _logger.info('寬高比差異: %.3f (允許誤差: %.1f)', ratio_diff, ratio_tolerance)
-                
-                if ratio_diff <= ratio_tolerance:
-                    _logger.info('寬高比在允許範圍內，進行等比例檢查')
-                    # 找到最合适的缩放比例（使用宽度和高度的平均比例）
-                    scale = round((width_actual / width_expected + height_actual / height_expected) / 2, 1)
-                    _logger.info('計算出的縮放比例: %.1f', scale)
-                    
-                    # 将实际尺寸按比例缩放到预期尺寸的数量级
-                    width_actual_scaled = width_actual / scale
-                    height_actual_scaled = height_actual / scale
-                    _logger.info('縮放後的實際尺寸: %.2fx%.2fmm', width_actual_scaled, height_actual_scaled)
-                    
-                    # 使用原来的误差判断逻辑检查缩放后的尺寸
-                    width_diff = width_actual_scaled - width_expected
-                    height_diff = height_actual_scaled - height_expected
-                    _logger.info('縮放後的尺寸差異 - 寬度: %.2fmm, 高度: %.2fmm', width_diff, height_diff)
-                    
-                    if width_actual_scaled + self.TOLERANCE < width_expected or height_actual_scaled + self.TOLERANCE < height_expected:
-                        _logger.info('縮放後尺寸過小（誤差範圍: %.1fmm）', self.TOLERANCE)
+                # 將預期高度也四捨五入到小數點後1位
+                height_expected_rounded = round(height_expected, 1)
+                _logger.info('要求的的高度: %s', height_expected_rounded)
+                # 轉換為字符串比較，避免浮點數精度問題
+                if str(height_actual_scaled) != str(height_expected_rounded):
+                    if height_actual_scaled < height_expected_rounded:
                         return False, "smaller"
-                    if width_actual_scaled - width_expected > self.MAX_SIZE_DIFF or height_actual_scaled - height_expected > self.MAX_SIZE_DIFF:
-                        _logger.info('縮放後尺寸過大（最大允許差異: %.1fmm）', self.MAX_SIZE_DIFF)
+                    else:
                         return False, "larger"
-                    _logger.info('等比例檢查通過')
-                    return True, "ok"
-                
-                _logger.info('寬高比不符合要求，使用原始檢查邏輯')
-                # 如果宽高比不接近，使用原来的检查逻辑
-                if width_actual + self.TOLERANCE < width_expected or height_actual + self.TOLERANCE < height_expected:
-                    _logger.info('原始尺寸過小')
-                    return False, "smaller"
-                if width_actual - width_expected > self.MAX_SIZE_DIFF or height_actual - height_expected > self.MAX_SIZE_DIFF:
-                    _logger.info('原始尺寸過大')
-                    return False, "larger"
-                _logger.info('原始檢查通過')
                 return True, "ok"
-
             # 創建一個字節流對象
             file_stream = io.BytesIO(file_content)
             _logger.info('開始檢查圖片檔案，檔案擴展名: %s', file_extension)
@@ -204,7 +169,7 @@ class UploadController(http.Controller):
                         # 檢查尺寸
                         is_valid, reason = check_dimensions(width_mm_actual, height_mm_actual, width_mm, height_mm)
                         if not is_valid:
-                            if reason == "smaller":
+                            """ if reason == "smaller":
                                 return {
                                     'success': False,
                                     'error': f'等比例處理後檔案實際尺寸({width_mm_actual:.2f}x{height_mm_actual:.2f}mm)小於要求尺寸({width_mm:.2f}x{height_mm:.2f}mm)'
@@ -213,6 +178,10 @@ class UploadController(http.Controller):
                                 return {
                                     'success': False,
                                     'error': f'等比例處理後檔案實際尺寸({width_mm_actual:.2f}x{height_mm_actual:.2f}mm)超過要求尺寸({width_mm:.2f}x{height_mm:.2f}mm)5mm以上'
+                                } """
+                            return {
+                                    'success': False,
+                                    'error': f'等比例處理後檔案實際尺寸({width_mm_actual:.2f}x{height_mm_actual:.2f}mm)不符合要求尺寸({width_mm:.2f}x{height_mm:.2f}mm)'
                                 }
                         
                         return {

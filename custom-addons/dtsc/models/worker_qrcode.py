@@ -34,7 +34,7 @@ class WorkTime(models.Model):
         ('gb', '過板'),
         ('cq', '裁切'),
         ('pg', '品管'),
-        ('dch', '待出貨'),
+        ('dch', '完成包裝'),
         ('ych', '已出貨'),
     ], string='工種類型')
     seqname = fields.Char("項次號",compute="_compute_seqname")
@@ -81,6 +81,10 @@ class WorkerQRcode(models.Model):
     bar_image = fields.Binary("QRcode", compute='_generate_qrcode_image1')
     bar_image_code = fields.Char("qrcode code", compute='_generate_bar_image_code',store=True)
     line_user_id = fields.Char("Line ID")
+    
+    is_zg = fields.Boolean("主管")
+    is_qh = fields.Boolean("簽核")
+    
     
     @api.depends("name")
     def _generate_bar_image_code(self):
@@ -145,7 +149,7 @@ class CheckOut(models.Model):
     guoban_sign = fields.Char("過板")
     caiqie_sign = fields.Char("裁切")
     pinguan_sign = fields.Char("品管")
-    daichuhuo_sign = fields.Char("待出貨")
+    daichuhuo_sign = fields.Char("完成包裝")
     yichuhuo_sign = fields.Char("已出貨")
 
     outman_count = fields.Float("輸出",compute="_compute_count",store=True)
@@ -153,7 +157,7 @@ class CheckOut(models.Model):
     guoban_count = fields.Float("過板",compute="_compute_count",store=True)
     caiqie_count = fields.Float("裁切",compute="_compute_count",store=True)
     pinguan_count = fields.Float("品管",compute="_compute_count",store=True)
-    daichuhuo_count = fields.Float("待出貨",compute="_compute_count",store=True)
+    daichuhuo_count = fields.Float("完成包裝",compute="_compute_count",store=True)
     yichuhuo_count = fields.Float("已出貨",compute="_compute_count",store=True)
 
     def go_make(self):
@@ -227,7 +231,7 @@ class MakeInLine(models.Model):
     guoban_sign = fields.Char("過板")
     caiqie_sign = fields.Char("裁切")
     pinguan_sign = fields.Char("品管")
-    daichuhuo_sign = fields.Char("待出貨")
+    daichuhuo_sign = fields.Char("完成包裝")
     yichuhuo_sign = fields.Char("已出貨")
     is_disable = fields.Boolean("是否隱藏")    
     
@@ -443,7 +447,7 @@ class MakeOutLine(models.Model):
     # guoban_sign = fields.Char("過板")
     # caiqie_sign = fields.Char("裁切")
     pinguan_sign = fields.Char("品管")
-    daichuhuo_sign = fields.Char("待出貨")
+    daichuhuo_sign = fields.Char("完成包裝")
     yichuhuo_sign = fields.Char("已出貨")
     is_disable = fields.Boolean("是否隱藏")
     bar_image = fields.Binary("QRcode", compute='_generate_qrcode_image1')    

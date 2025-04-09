@@ -66,7 +66,7 @@
 		<field name="name">dtsc.makeout.product.report.tree</field>
 		<field name="model">dtsc.makeout</field>
 		<field name="arch" type="xml">
-			<tree default_order="display_name_reportt,name">		
+			<tree default_order="display_name_reportt,delivery_date desc">		
 				<!-- <group expand="1" string="分組結果">			 -->
 					<field name="display_name_reportt" readonly="1"  />
 					<field name="name" readonly="1"  />

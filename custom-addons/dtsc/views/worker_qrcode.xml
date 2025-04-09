@@ -73,16 +73,11 @@
 		<field name="name">dtsc.workqrcode.report.tree</field>
 		<field name="model">dtsc.workqrcode</field>
 		<field name="arch" type="xml">
-			<tree>	 			
+			<tree editable="bottom">	 			
 				<field name="name"  readonly="1"  />
-				<!-- <field name="gonghao"  readonly="1"  /> -->
-				<!-- <field name="is_iq"  readonly="1"  /> -->
-				<!-- <field name="is_cx"  readonly="1"  /> -->
-				<!-- <field name="is_sc"  readonly="1"  /> -->
-				<!-- <field name="is_hz"  readonly="1"  /> -->
-				<!-- <field name="is_pg"  readonly="1"  /> -->
-				<!-- <field name="is_cz"  readonly="1"  /> -->
 				<field name="bar_image"  widget="image" readonly="1"  />
+				<field name="is_zg" />
+				<field name="is_qh" />
 				<field name="line_user_id" />
 
 			</tree>

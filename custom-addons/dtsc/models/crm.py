@@ -100,6 +100,7 @@ class CheckoutInherit(models.Model):
     is_new_partner = fields.Boolean("新客戶")
     crm_date = fields.Date("報價日期")
     new_partner = fields.Char("新客戶名")
+    new_init = fields.Char("新簡稱")
     new_street = fields.Char("新客戶地址")
     new_vat = fields.Char("新客戶統編")
     new_email = fields.Char("新客戶郵箱")
@@ -189,6 +190,8 @@ class CheckoutInherit(models.Model):
                     'property_payment_term_id' : record.new_property_payment_term_id,
                     'custom_pay_mode':record.new_custom_pay_mode,
                     'is_customer' : True,
+                    'sell_user' : self.env.user.id,
+                    'custom_init_name' : record.new_init,
                 }   
                 
                 new_partner = self.env['res.partner'].create(partner_vals)
