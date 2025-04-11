@@ -657,7 +657,45 @@ class PurchaseOrder(models.Model):
                         _logger.error("❌ LINE 發送失敗: %s", response.text)
                     else:
                         _logger.info("✅ LINE 發送成功 - 第 %d 批", batch_idx+1)
-      
+    
+    def _add_supplier_to_product(self):
+        for line in self.order_line:
+            partner = self.partner_id if not self.partner_id.parent_id else self.partner_id.parent_id
+            product = line.product_id
+            template = product.product_tmpl_id
+
+            # 轉換價格（採購幣別 -> 商品幣別）
+            currency = partner.property_purchase_currency_id or self.env.company.currency_id
+            price = self.currency_id._convert(
+                line.price_unit, currency,
+                line.company_id, line.date_order or fields.Date.today(),
+                round=False
+            )
+
+            # 換算成產品預設 UoM 的價格
+            if template.uom_po_id != line.product_uom:
+                default_uom = template.uom_po_id
+                price = line.product_uom._compute_price(price, default_uom)
+
+            # 準備供應商資料
+            supplierinfo = self._prepare_supplier_info(partner, line, price, currency)
+
+            # 嘗試找出是否已經存在 supplierinfo
+            existing_seller = template.seller_ids.filtered(lambda s: s.partner_id.id == partner.id)
+
+            if existing_seller:
+                # ✅ 已存在供應商 → 更新價格、UoM、產品名稱等
+                existing_seller.sudo().write({
+                    'price': supplierinfo['price'],
+            
+                })
+            else:
+                # ✅ 新供應商 → 新增
+                template.sudo().write({
+                    'seller_ids': [(0, 0, supplierinfo)],
+                })
+
+    
     def button_confirm(self):
         for order in self:
             if not order.partner_id:

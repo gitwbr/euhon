@@ -10,10 +10,12 @@ from dateutil.relativedelta import relativedelta
 import math
 from odoo.exceptions import UserError
 from odoo.tools.float_utils import float_compare, float_is_zero
-
+from io import BytesIO
 import pytz
 from pytz import timezone
 _logger = logging.getLogger(__name__)
+import xlsxwriter
+import base64
 class StockQuantityHistory(models.TransientModel):
     _name = 'stock.quantity.history'
     _description = 'Stock Quantity History'
@@ -1071,7 +1073,59 @@ class StockMoveLine(models.Model):
     report_year = fields.Many2one("dtsc.year",string="年",compute="_compute_year_month",store=True)
     report_month = fields.Many2one("dtsc.month",string="月",compute="_compute_year_month",store=True) 
     
-    
+    def action_printexcel_move_line(self):
+        active_ids = self._context.get('active_ids')
+        records = self.env['stock.move.line'].browse(active_ids)
+        output = BytesIO()
+        workbook = xlsxwriter.Workbook(output, {'in_memory': True})
+        worksheet = workbook.add_worksheet('盤點損耗表')
+        bold_format = workbook.add_format({'bold': True, 'font_size': 14})
+        worksheet.set_column('A:A', 20) 
+        worksheet.set_column('B:B', 30) 
+        worksheet.set_column('C:C', 40) 
+        worksheet.set_column('D:D', 20) 
+        worksheet.set_column('E:E', 15) 
+        worksheet.set_column('F:F', 15) 
+        worksheet.set_column('G:G', 15) 
+        worksheet.set_column('H:H', 15) 
+        # 写入表头
+        worksheet.write(0, 0, '日期', bold_format)
+        worksheet.write(0, 1, '產品', bold_format)
+        worksheet.write(0, 2, '參照', bold_format)
+        worksheet.write(0, 3, '移動前', bold_format)
+        worksheet.write(0, 4, '移動後', bold_format)
+        worksheet.write(0, 5, '完成', bold_format)
+        worksheet.write(0, 6, '量度單位', bold_format)
+        row = 1
+        for record in records:
+            worksheet.write(row, 0, record.date.strftime('%Y-%m-%d %H:%M:%S'))
+            worksheet.write(row, 1, record.product_id.name if record.product_id else "")
+            worksheet.write(row, 2, record.reference if record.reference else "")
+            worksheet.write(row, 3, str(round(record.move_before_quantity,2)) if record.move_before_quantity else "0")
+            worksheet.write(row, 4, str(round(record.move_after_quantity,2)) if record.move_after_quantity else "0")
+            if record.move_before_quantity > record.move_after_quantity: 
+                worksheet.write(row, 5, str(-round(record.qty_done,2)) if record.qty_done else "")
+            else:
+                worksheet.write(row, 5, str(round(record.qty_done,2)) if record.qty_done else "")
+            worksheet.write(row, 6, str(record.product_uom_id.name) if record.product_uom_id else "")           
+            row = row + 1
+        
+        workbook.close()
+        output.seek(0) 
+
+        # 创建 Excel 文件并返回
+        attachment = self.env['ir.attachment'].create({
+            'name': "盤點損耗表.xlsx",
+            'datas': base64.b64encode(output.getvalue()),
+            'res_model': 'stock.move.line',
+            'type': 'binary'
+        })
+
+        return {
+            'type': 'ir.actions.act_url',
+            'url': f'/web/content/{attachment.id}?download=true',
+            'target': 'new',
+        }
     @api.depends("date")
     def _compute_year_month(self):
         # invoice_due_date = self.env['ir.config_parameter'].sudo().get_param('dtsc.invoice_due_date')
@@ -1272,7 +1326,12 @@ class ReportStockQuant(models.AbstractModel):
                             total_value += purchase_qty * purchase_price
                             qty_consumed += purchase_qty
                             total_qty_needed -= purchase_qty
-
+                    if total_qty_needed > 0 and qty_consumed == 0:
+                        total_value = total_qty_needed * quant.product_id.standard_price
+                        average_price = quant.product_id.standard_price                        
+                    else:    
+                        average_price = total_value / qty_consumed if qty_consumed > 0 else 0.0
+                    
                     average_price = total_value / qty_consumed if qty_consumed > 0 else 0.0
 
                 if not is_print_zero:
@@ -1420,8 +1479,11 @@ class ReportStockQuant(models.AbstractModel):
                             total_value += purchase_qty * purchase_price
                             qty_consumed += purchase_qty
                             total_qty_needed -= purchase_qty
-
-                    average_price = total_value / qty_consumed if qty_consumed > 0 else 0.0
+                    if total_qty_needed > 0 and qty_consumed == 0:
+                        total_value = total_qty_needed * product_id.standard_price
+                        average_price = product_id.standard_price                        
+                    else:    
+                        average_price = total_value / qty_consumed if qty_consumed > 0 else 0.0
                 if not is_print_zero:
                     if round(data['quantity'], 2) > 0:
                         report_data.append({
@@ -1676,8 +1738,12 @@ class ReportStockQuantAmount(models.AbstractModel):
                             total_value += purchase_qty * purchase_price
                             qty_consumed += purchase_qty
                             total_qty_needed -= purchase_qty
-
-                    average_price = total_value / qty_consumed if qty_consumed > 0 else 0.0
+                    
+                    if total_qty_needed > 0 and qty_consumed == 0:
+                        total_value = total_qty_needed * quant.product_id.standard_price
+                        average_price = quant.product_id.standard_price                        
+                    else:    
+                        average_price = total_value / qty_consumed if qty_consumed > 0 else 0.0
 
                 if not is_print_zero:
                     if round(quant.quantity, 2) > 0:
@@ -1820,7 +1886,11 @@ class ReportStockQuantAmount(models.AbstractModel):
                             qty_consumed += purchase_qty
                             total_qty_needed -= purchase_qty
 
-                    average_price = total_value / qty_consumed if qty_consumed > 0 else 0.0
+                    if total_qty_needed > 0 and qty_consumed == 0:
+                        total_value = total_qty_needed * product_id.standard_price
+                        average_price = product_id.standard_price                        
+                    else:    
+                        average_price = total_value / qty_consumed if qty_consumed > 0 else 0.0
                 if not is_print_zero:
                     if round(data['quantity'], 2) > 0:
                         report_data.append({
@@ -2266,7 +2336,11 @@ class ReportStockQuantBase(models.AbstractModel):
                             qty_consumed += purchase_qty
                             total_qty_needed -= purchase_qty
 
-                    average_price = total_value / qty_consumed if qty_consumed > 0 else 0.0
+                    if total_qty_needed > 0 and qty_consumed == 0:
+                        total_value = total_qty_needed * quant.product_id.standard_price
+                        average_price = quant.product_id.standard_price                        
+                    else:    
+                        average_price = total_value / qty_consumed if qty_consumed > 0 else 0.0
 
                 if not is_print_zero:
                     if round(quant.quantity, 2) > 0:
@@ -2408,7 +2482,12 @@ class ReportStockQuantBase(models.AbstractModel):
                             qty_consumed += purchase_qty
                             total_qty_needed -= purchase_qty
 
-                    average_price = total_value / qty_consumed if qty_consumed > 0 else 0.0
+                    
+                    if total_qty_needed > 0 and qty_consumed == 0:
+                        total_value = total_qty_needed * product_id.standard_price
+                        average_price = product_id.standard_price                        
+                    else:    
+                        average_price = total_value / qty_consumed if qty_consumed > 0 else 0.0
                 if not is_print_zero:
                     if round(data['quantity'], 2) > 0:
                         report_data.append({

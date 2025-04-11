@@ -20,9 +20,10 @@ from odoo.tools import config
 class ScanMode(models.Model):
     _name = 'dtsc.scanmode'
     _description = 'Scan Mode'
-
+    _order = "sequence"
     name = fields.Char("Name")
     code = fields.Char("Code")
+    sequence = fields.Integer()
 
 class MakeIn(models.Model):
     _name = 'dtsc.makein'
@@ -126,6 +127,8 @@ class MakeIn(models.Model):
                         field_name = "guoban_sign"
                     elif mode.code == 'cq':
                         field_name = "caiqie_sign"
+                    elif mode.code == 'hz':
+                        field_name = "houzhi_sign"
                     elif mode.code == 'pg':
                         field_name = "pinguan_sign"
                     elif mode.code == 'dch':

@@ -110,6 +110,8 @@ class MakeOut(models.Model):
                         field_name = "guoban_sign"
                     elif mode.code == 'cq':
                         field_name = "caiqie_sign"
+                    elif mode.code == 'hz':
+                        field_name = "houzhi_sign"
                     elif mode.code == 'pg':
                         field_name = "pinguan_sign"
                     elif mode.code == 'dch':

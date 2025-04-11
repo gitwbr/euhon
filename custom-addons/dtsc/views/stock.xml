@@ -12,6 +12,19 @@
 		<!-- </field> -->
 	
 	<!-- </record> -->
+	<record id="action_printexcel_crm_excel" model="ir.actions.server">
+		<field name="name">盤點損耗表</field>
+		<field name="model_id" ref="model_stock_move_line"/>
+		<field name="state">code</field>
+		<field name="code">
+			action = env['stock.move.line'].with_context(env.context).action_printexcel_move_line()
+		</field>
+		<field name="binding_model_id" ref="model_stock_move_line"/>
+		<field name="binding_type">action</field>
+		<field name="binding_view_types">list</field>
+	</record>
+	
+	
 	<record id="stock_picking_form_view_inherit" model="ir.ui.view">
 		<field name="name">stock.picking.form.view.inherit</field>
 		<field name="model">stock.picking</field>

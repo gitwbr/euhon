@@ -121,6 +121,7 @@
         <field name="model_id" ref="dtsc.model_dtsc_checkoutline"/>
         <field name="group_id" ref="dtsc.group_dtsc_yw"/>
         <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
     </record>
 	<!-- 大圖訂單 -->
 	<!-- 委內 -->

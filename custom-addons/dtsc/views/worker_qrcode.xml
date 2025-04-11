@@ -136,7 +136,7 @@
 								<t t-esc="line.product_width" />x<t t-esc="line.product_height" />
 							</td>
 							<!-- 定义状态分组 -->
-							<t t-set="groups" t-value="{'生產中': ['outman', 'lengbiao_sign', 'guoban_sign', 'caiqie_sign'], '待出貨': ['pinguan_sign','daichuhuo_sign'], '已出貨': ['yichuhuo_sign']}"/>
+							<t t-set="groups" t-value="{'生產中': ['outman', 'lengbiao_sign', 'guoban_sign', 'caiqie_sign', 'houzhi_sign'], '待出貨': ['pinguan_sign','daichuhuo_sign'], '已出貨': ['yichuhuo_sign']}"/>
 							<t t-set="last_active_group" t-value="None"/>
 
 							<!-- 查找最后一个有值的状态分组 -->
